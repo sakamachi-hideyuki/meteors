@@ -1,0 +1,25 @@
+html {
+  font-size: 200%;
+}
+body {
+  background: #f00;
+  font-size: 0;
+  margin: 0;
+}
+div.image-and-text {
+  display: inline-block;
+  overflow: hidden;
+}
+div.image-and-text > div.text {
+  background: #fff;
+  color: #000;
+  font-family: sans-serif;
+  font-size: 0.6rem;
+  padding-right: 0.2rem;
+  text-align: right;
+}
+div.image-and-text > div.text > a {
+  color: #000;
+  font-size: 0.5rem;
+  text-decoration: none;
+}

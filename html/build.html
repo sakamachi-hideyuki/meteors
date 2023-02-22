@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>build</title>
+  </head>
+  <body>
+    <p>
+      Wordの「名前を付けて保存」のダイアログで、<br />
+      ファイルの種類: Webページ(フィルター後)<br />
+      ツール - Web オプション - エンコード - このドキュメントを保存する形式:
+      Unicode (UTF-8)<br />
+      を選択して保存したHTML:
+    </p>
+    <div>
+      <iframe id="inputIframe" src="流星と昴の日本神話.htm"></iframe>
+    </div>
+    <div>
+      <button id="buildButton">Web公開用HTMLのビルド</button>
+    </div>
+    <div id="outputElem"></div>
+    <script src="shared.js"></script>
+    <script src="build.js"></script>
+  </body>
+</html>
