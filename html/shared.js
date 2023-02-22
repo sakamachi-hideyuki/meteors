@@ -1,15 +1,19 @@
 class Shared {
   static bookTitle = "流星と昴の日本神話";
 
+  static author = "坂町英之";
+
   static pleiadesAttributionHtml = `<div class="text">This photo is adapted from "Orion, Taurus and Pleiades" <a href="https://commons.wikimedia.org/wiki/File:Orion,_Taurus_and_Pleiades.jpg" target="_blank">https://commons.wikimedia.org/wiki/File:Orion,_Taurus_and_Pleiades.jpg</a></div>
 <div class="text">by Panda~thwiki, used under CC BY 4.0. <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">https://creativecommons.org/licenses/by/4.0/</a></div>`;
 
-  static photoCoverAlt = "写真：オリオン座、おうし座、昴";
+  static photoCoverAlt = `${this.bookTitle}　${this.author}`;
+
+  static photoPleiadesAlt = "写真：オリオン座、おうし座、昴";
 
   static photoCoverHtml = `
 <div id="cover" class="image-and-text">
 <div class="image"><img src="images/cover-web.jpg" alt="${this.photoCoverAlt}"></div>
-<div class="text">${this.photoCoverAlt}</div>
+<div class="text">${this.photoPleiadesAlt}</div>
 ${this.pleiadesAttributionHtml}
 </div>
 `;
@@ -111,7 +115,7 @@ ${this.pleiadesAttributionHtml}
 `;
 
   static altToHtml = {
-    [Shared.photoCoverAlt]: "",
+    [Shared.photoPleiadesAlt]: "",
     [Shared.titleImageAlt]: "",
     [Shared.photoMeteorAlt]: Shared.photoMeteorHtml,
     [Shared.figUkeiAlt]: Shared.figUkeiHtml,
