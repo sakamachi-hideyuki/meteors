@@ -85,9 +85,9 @@ class Builder {
   }
 
   removeElemsAndDescendants(rootElem, selector) {
-    Array.from(rootElem.querySelectorAll(selector)).forEach((el) =>
-      el.parentElement.removeChild(el)
-    );
+    Array.from(rootElem.querySelectorAll(selector)).forEach((el) => {
+      el.remove();
+    });
   }
 
   removeElems(rootElem, selector) {
@@ -95,7 +95,7 @@ class Builder {
       while (el.firstChild) {
         el.parentElement.insertBefore(el.firstChild, el);
       }
-      el.parentElement.removeChild(el);
+      el.remove();
     });
   }
 
@@ -104,11 +104,14 @@ class Builder {
       const textIndent = el.style.textIndent;
       for (const name of el.getAttributeNames()) {
         if (name.toLowerCase() === "alt") {
+        // alt属性は削除しない
           continue;
         }
+        // それ以外の属性は削除
         el.removeAttribute(name);
       }
       if (textIndent) {
+        // style属性のtext-indentのみ復活
         el.style.textIndent = textIndent;
       }
     });
@@ -152,7 +155,7 @@ class Builder {
         ancestor = ancestor.parentElement;
       }
       if (html == "") {
-        ancestor.parentElement.removeChild(ancestor);
+        ancestor.remove();
       } else {
         const newElem = this.htmlToElem(html);
         ancestor.replaceWith(newElem);
