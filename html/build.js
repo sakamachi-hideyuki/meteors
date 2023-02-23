@@ -325,7 +325,7 @@ class Builder {
 <header class="cover-header">
 ${Shared.photoCoverHtml}
 <div id="website-desc">
-本Webサイトは<a href="https://www.amazon.co.jp/dp/B09DX3WVX6/" target="_blank">書籍『${Shared.bookTitle}』(著:坂町英之)</a>の内容を著者がWeb公開したものです。
+本Webサイトは<a href="https://www.amazon.co.jp/dp/B09DX3WVX6/" target="_blank">書籍『${Shared.bookTitle}』(著:${Shared.author})</a>の内容を著者がWeb公開したものです。
 </div>
 </header>
 `;

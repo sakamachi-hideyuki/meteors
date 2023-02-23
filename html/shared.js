@@ -18,7 +18,7 @@ ${this.pleiadesAttributionHtml}
 </div>
 `;
 
-  static titleImageAlt = "流星と昴の日本神話";
+  static titleImageAlt = this.bookTitle;
 
   static photoMeteorAlt =
     "2020年12月4日14時30分(中央ヨーロッパ時間)、ノルウェーのシーボットンで撮影された、おうし座北流星群の火球";
