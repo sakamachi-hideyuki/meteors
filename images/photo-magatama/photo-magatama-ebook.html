@@ -4,19 +4,29 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../photo.css">
 <style>
-img {
-  width: 40rem;
+body {
+  background-color: #f00;
+  font-size: 0;
+  margin: 0;
+}
+div.title-and-image {
+  width: fit-content;
+}
+div.title {
+  background-color: #fff;
+  font-family: serif;
+  font-size: 4rem;
+  line-height: 4rem;
+  padding-bottom: 1rem;
+  text-align: right;
 }
 </style>
 </head>
 <body>
-<div id="content"></div>
-<script src="../../html/shared.js"></script>
-<script>
-document.getElementById('content').innerHTML = Shared.photoMagatamaHtml;
-document.querySelector('img').src = 'src/A200c000042.jpg';
-</script>
+<div class="title-and-image">
+<div class="title">玉の章</div>
+<img src="photo-magatama+caption.png">
+</div>
 </body>
 </html>
