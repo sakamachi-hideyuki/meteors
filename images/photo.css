@@ -23,3 +23,16 @@ div.image-and-text > div.text > a {
   font-size: 0.5rem;
   text-decoration: none;
 }
+
+figure.title-and-image {
+  margin: 0;
+  width: fit-content;
+}
+figure.title-and-image > figcaption {
+  background-color: #fff;
+  font-family: serif;
+  font-size: 2rem;
+  line-height: 2rem;
+  padding-bottom: 0.5rem;
+  text-align: right;
+}
