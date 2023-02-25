@@ -203,7 +203,7 @@ class Builder {
     for (const h2Section of h2Sections) {
       if (
         prevH2Section != null &&
-        prevH2Section.lastElementChild.className === "image-and-text"
+        prevH2Section.lastElementChild.className === "image-and-caption"
       ) {
         h2Section.prepend(prevH2Section.lastElementChild);
       }

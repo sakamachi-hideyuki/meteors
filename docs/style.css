@@ -159,42 +159,40 @@ a.top-of-page:hover {
 
 
 /* 画像と画像説明文 */
-div.image-and-text {
-  font-size: 0;
-  padding-bottom: 2rem;
-}
-/* 画像領域 */
-div.image-and-text > div.image {
+figure.image-and-caption {
   background-color: #000;
+  font-size: 0;
+  margin: 0 0 2rem 0;
   text-align: center;
 }
 /* 画像 */
-div.image-and-text > div.image > img {
+figure.image-and-caption > img {
   width: 100%;
 }
 /* 画像説明文 */
-div.image-and-text > div.text {
+figure.image-and-caption > figcaption {
+  background: #fff;
+  color: #000;
   font-family: sans-serif;
   font-size: 0.6rem;
   padding-right: 0.2rem;
   text-align: right;
 }
 /* 画像説明文中のリンク */
-div.image-and-text > div.text > a {
+figure.image-and-caption > figcaption > a {
   color: #000;
   font-size: 0.5rem;
 }
 /* 各章先頭の画像と画像説明文 */
-.h2-section > div.image-and-text {
-  padding-top: 1rem;
-  padding-bottom: 0rem;
+.h2-section > figure.image-and-caption {
+  margin: 1rem 0 0 0;
 }
 /* 表紙画像 */
-div.image-and-text#cover > div.image > img {
+figure.image-and-caption#cover > img {
   max-width: 60rem;
 }
 /* 甕の章　大甕の画像 */
-div.image-and-text#photo-ogame > div.image > img {
+figure.image-and-caption#photo-ogame > img {
   width: 50%;
 }
 
