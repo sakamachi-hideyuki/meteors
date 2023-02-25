@@ -21,8 +21,11 @@ figure.image-and-caption > figcaption {
 }
 figure.image-and-caption > figcaption > a {
   color: #000;
-  font-size: 0.5rem;
   text-decoration: none;
+}
+figure.image-and-caption > figcaption > a::after {
+  content: " " attr(href);
+  font-size: 0.5rem;
 }
 
 figure.title-and-image {

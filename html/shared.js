@@ -3,8 +3,8 @@ class Shared {
 
   static author = "坂町英之";
 
-  static pleiadesAttributionHtml = `This photo is adapted from "Orion, Taurus and Pleiades" <a href="https://commons.wikimedia.org/wiki/File:Orion,_Taurus_and_Pleiades.jpg" target="_blank">https://commons.wikimedia.org/wiki/File:Orion,_Taurus_and_Pleiades.jpg</a><br>
-by Panda~thwiki, used under CC BY 4.0. <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">https://creativecommons.org/licenses/by/4.0/</a>`;
+  static pleiadesAttributionHtml = `This photo is adapted from <a href="https://commons.wikimedia.org/wiki/File:Orion,_Taurus_and_Pleiades.jpg" target="_blank">"Orion, Taurus and Pleiades"</a><br>
+by Panda~thwiki, used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoCoverAlt = `${this.bookTitle}　${this.author}`;
 
@@ -27,7 +27,7 @@ ${this.pleiadesAttributionHtml}</figcaption>
 <figure id="photo-meteor" class="image-and-caption">
 <img src="images/photo-meteor-web.jpg" alt="${this.photoMeteorAlt}">
 <figcaption>${this.photoMeteorAlt}<br>
-出典：Norsk meteornettverk/Universitetet i Tromsø/Ketil Vegum <a href="http://norskmeteornettverk.no/wordpress/?p=3202" target="_blank">http://norskmeteornettverk.no/wordpress/?p=3202</a></figcaption>
+出典：<a href="http://norskmeteornettverk.no/wordpress/?p=3202" target="_blank">Norsk meteornettverk/Universitetet i Tromsø/Ketil Vegum</a></figcaption>
 </figure>
 `;
 
@@ -47,8 +47,8 @@ ${this.pleiadesAttributionHtml}</figcaption>
 <figure id="photo-tategushi" class="image-and-caption">
 <img src="images/photo-tategushi-web.jpg" alt="${this.photoTategushiAlt}">
 <figcaption>${this.photoTategushiAlt}<br>
-出典：JOMON ARCHIVES（八戸市教育委員会撮影） <a href="https://jomon-japan.jp/archives#/asset/360" target="_blank">https://jomon-japan.jp/archives#/asset/360</a><br>
-Licensed under CC BY 4.0. <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">https://creativecommons.org/licenses/by/4.0/</a></figcaption>
+出典：<a href="https://jomon-japan.jp/archives#/asset/360" target="_blank">JOMON ARCHIVES（八戸市教育委員会撮影）</a><br>
+Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
 </figure>
 `;
 
@@ -58,8 +58,8 @@ Licensed under CC BY 4.0. <a href="https://creativecommons.org/licenses/by/4.0/"
 <figure id="photo-ogame" class="image-and-caption">
 <img src="images/photo-ogame-web.jpg" alt="${this.photoOgameAlt}">
 <figcaption>${this.photoOgameAlt}<br>
-出典：銚子市／銚子市デジタルアーカイブ <a href="https://adeac.jp/choshi-city/catalog/mp010261-200010" target="_blank">https://adeac.jp/choshi-city/catalog/mp010261-200010</a><br>
-Licensed under CC BY 4.0. <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">https://creativecommons.org/licenses/by/4.0/</a></figcaption>
+出典：<a href="https://adeac.jp/choshi-city/catalog/mp010261-200010" target="_blank">銚子市／銚子市デジタルアーカイブ</a><br>
+Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
 </figure>
 `;
 
@@ -69,8 +69,8 @@ Licensed under CC BY 4.0. <a href="https://creativecommons.org/licenses/by/4.0/"
 <figure id="photo-magatama" class="image-and-caption">
 <img src="images/photo-magatama-web.jpg" alt="${this.photoMagatamaAlt}">
 <figcaption>${this.photoMagatamaAlt}<br>
-出典：JOMON ARCHIVES（青森県埋蔵文化財調査センター所蔵、田中義道撮影） <a href="https://jomon-japan.jp/archives#/asset/504" target="_blank">https://jomon-japan.jp/archives#/asset/504</a><br>
-Licensed under CC BY 4.0. <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">https://creativecommons.org/licenses/by/4.0/</a></figcaption>
+出典：<a href="https://jomon-japan.jp/archives#/asset/504" target="_blank">JOMON ARCHIVES（青森県埋蔵文化財調査センター所蔵、田中義道撮影）</a><br>
+Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
 </figure>
 `;
 
@@ -99,8 +99,9 @@ ${this.pleiadesAttributionHtml}</figcaption>
   static photoOtomatsuriHtml = `
 <figure id="photo-otomatsuri" class="image-and-caption">
 <img src="images/photo-otomatsuri-web.jpg" alt="${this.photoOtomatsuriAlt}">
-<figcaption>${this.photoOtomatsuriAlt} © panpanzupan <a href="https://find47.jp/ja/i/t5MU6" target="_blank">https://find47.jp/ja/i/t5MU6</a><br>
-Licensed under CC BY 4.0. <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">https://creativecommons.org/licenses/by/4.0/</a></figcaption>
+<figcaption>${this.photoOtomatsuriAlt} © panpanzupan<br>
+出典：<a href="https://find47.jp/ja/i/t5MU6" target="_blank">FIND/47</a><br>
+Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
 </figure>
 `;
 
@@ -109,8 +110,9 @@ Licensed under CC BY 4.0. <a href="https://creativecommons.org/licenses/by/4.0/"
   static photoIwakuraHtml = `
 <figure id="photo-iwakura" class="image-and-caption">
 <img src="images/photo-iwakura-web.jpg" alt="${this.photoIwakuraAlt}">
-<figcaption>${this.photoIwakuraAlt} © rikky_photography <a href="https://find47.jp/ja/i/o0gM4" target="_blank">https://find47.jp/ja/i/o0gM4</a><br>
-Licensed under CC BY 4.0. <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">https://creativecommons.org/licenses/by/4.0/</a></figcaption>
+<figcaption>${this.photoIwakuraAlt} © rikky_photography<br>
+出典：<a href="https://find47.jp/ja/i/o0gM4" target="_blank">FIND/47</a><br>
+Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
 </figure>
 `;
 
