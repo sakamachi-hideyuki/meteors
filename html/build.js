@@ -65,7 +65,7 @@ class Builder {
       const index = i + 1;
       const curPage = pages[index];
       const prevPage = pages[index - 1];
-      const nextPage = index + 1 < pages.length ? pages[index + 1] : null;
+      const nextPage = pages[index + 1];
 
       curPage.html = this.createPageHtml(
         `${curPage.title} - ${Shared.bookTitle}`,
@@ -104,7 +104,7 @@ class Builder {
       const textIndent = el.style.textIndent;
       for (const name of el.getAttributeNames()) {
         if (name.toLowerCase() === "alt") {
-        // alt属性は削除しない
+          // alt属性は削除しない
           continue;
         }
         // それ以外の属性は削除
@@ -348,9 +348,7 @@ ${tocHtml}
     return nextPage == null
       ? ""
       : `
-<div class="next-page">
-<a href="${nextPage.filename}">≫&nbsp;次ページ: ${nextPage.title}</a>
-</div>
+<a class="next-page" href="${nextPage.filename}">≫&nbsp;次ページ: ${nextPage.title}</a>
 `;
   }
 
@@ -366,10 +364,14 @@ ${tocHtml}
 <a href="index.html#toc-${curPage.id}">目次</a>
 </li>
 <li>
-${prevPage == null ? "" : `<a href="${prevPage.filename}">前ページ&nbsp;≪</a>`}
+<a href="${prevPage.filename}">前ページ&nbsp;≪</a>
 </li>
 <li>
-${nextPage == null ? "" : `<a href="${nextPage.filename}">≫&nbsp;次ページ</a>`}
+${
+  nextPage == undefined
+    ? ""
+    : `<a href="${nextPage.filename}">≫&nbsp;次ページ</a>`
+}
 </li>
 </ul>
 </nav>
@@ -391,9 +393,9 @@ ${Builder.googleAnalyticsHtml}
 ${headerHtml}
 <main>
 ${contentHtml}
-${nextPageLinkHtml}
 </main>
 <footer>
+${nextPageLinkHtml}
 <div class="copyright">© 2021 Sakamachi Hideyuki</div>
 <a class="top-of-page" href="#" title="ページ先頭へ">↑</a>
 </footer>

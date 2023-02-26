@@ -122,9 +122,10 @@ section.title-only + section > h3 {
 }
 
 /* ページ下部の次ページへのリンク */
-div.next-page {
-  text-align: center;
-  padding-bottom: 1rem;
+a.next-page {
+  display: block;
+  margin: 0 auto 1rem auto;
+  width: fit-content;
 }
 
 /* ページ下部のコピーライト文 */
