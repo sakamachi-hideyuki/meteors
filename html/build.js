@@ -122,9 +122,7 @@ class Builder {
   }
 
   removeUnnecessaryParagraphs(rootElem) {
-    rootElem.innerHTML = rootElem.innerHTML
-      .replace(/(<p>\n?<\/p>)+/g, "") // 内容のないpを削除
-      .replace(/(<p>&nbsp;<\/p>\n)+/g, "<p>&nbsp;</p>\n"); // 連続空行は１行に
+    rootElem.innerHTML = rootElem.innerHTML.replace(/(<p>\n?<\/p>)+/g, ""); // 内容のないpを削除
   }
 
   convertTextIndents(rootElem) {
@@ -290,7 +288,8 @@ class Builder {
       }
       intro.appendChild(node);
     }
-    return intro.outerHTML;
+    // 連続空行は１行に
+    return intro.outerHTML.replace(/(<p>&nbsp;<\/p>\n)+/g, "<p>&nbsp;</p>\n");
   }
 
   createTocHtml(tocData) {
