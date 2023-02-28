@@ -216,6 +216,8 @@ section#appendix p {
   line-height: 1.4rem;
 }
 section#appendix b {
+  display: block;
+  padding-top: 1rem;
   font-size: 1rem;
 }
 
