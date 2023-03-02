@@ -48,7 +48,7 @@ ${this.pleiadesAttributionHtml}</figcaption>
 <img src="images/photo-tategushi-web.jpg" alt="${this.photoTategushiAlt}">
 <figcaption>${this.photoTategushiAlt}<br>
 出典：<a href="https://jomon-japan.jp/archives#/asset/360" target="_blank">JOMON ARCHIVES（八戸市教育委員会撮影）</a><br>
-Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Licensed under CC BY 4.0</a></figcaption>
 </figure>
 `;
 
@@ -59,7 +59,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 <img src="images/photo-ogame-web.jpg" alt="${this.photoOgameAlt}">
 <figcaption>${this.photoOgameAlt}<br>
 出典：<a href="https://adeac.jp/choshi-city/catalog/mp010261-200010" target="_blank">銚子市／銚子市デジタルアーカイブ</a><br>
-Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Licensed under CC BY 4.0</a></figcaption>
 </figure>
 `;
 
@@ -70,7 +70,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 <img src="images/photo-magatama-web.jpg" alt="${this.photoMagatamaAlt}">
 <figcaption>${this.photoMagatamaAlt}<br>
 出典：<a href="https://jomon-japan.jp/archives#/asset/504" target="_blank">JOMON ARCHIVES（青森県埋蔵文化財調査センター所蔵、田中義道撮影）</a><br>
-Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Licensed under CC BY 4.0</a></figcaption>
 </figure>
 `;
 
@@ -101,7 +101,7 @@ ${this.pleiadesAttributionHtml}</figcaption>
 <img src="images/photo-otomatsuri-web.jpg" alt="${this.photoOtomatsuriAlt}">
 <figcaption>${this.photoOtomatsuriAlt} © panpanzupan<br>
 出典：<a href="https://find47.jp/ja/i/t5MU6" target="_blank">FIND/47</a><br>
-Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Licensed under CC BY 4.0</a></figcaption>
 </figure>
 `;
 
@@ -112,7 +112,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 <img src="images/photo-iwakura-web.jpg" alt="${this.photoIwakuraAlt}">
 <figcaption>${this.photoIwakuraAlt} © rikky_photography<br>
 出典：<a href="https://find47.jp/ja/i/o0gM4" target="_blank">FIND/47</a><br>
-Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Licensed under CC BY 4.0</a></figcaption>
 </figure>
 `;
 
