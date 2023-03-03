@@ -223,6 +223,10 @@ class Builder {
         }
       }
     }
+    rootElem.querySelectorAll(".h3-section").forEach((el) => {
+      // 末尾の空行は削除
+      el.innerHTML = el.innerHTML.replace(/(<p[^>]*>&nbsp;<\/p>\n+)+$/g, "");
+    });
   }
 
   setH3SectionIdsAndClasses(rootElem) {
@@ -291,8 +295,9 @@ class Builder {
       }
       intro.appendChild(node);
     }
-    // 連続空行は１行に
-    return intro.outerHTML.replace(/(<p>&nbsp;<\/p>\n)+/g, "<p>&nbsp;</p>\n");
+    // 末尾の空行は削除
+    intro.innerHTML = intro.innerHTML.replace(/(<p[^>]*>&nbsp;<\/p>\n)+$/g, "");
+    return intro.outerHTML;
   }
 
   createTocHtml(tocData) {
