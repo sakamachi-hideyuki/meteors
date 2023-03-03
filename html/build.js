@@ -44,7 +44,7 @@ class Builder {
     this.moveH2SectionImages(rootElem);
 
     this.createH3Sections(rootElem);
-    this.setH3SectionIds(rootElem);
+    this.setH3SectionIdsAndClasses(rootElem);
     this.setTitleOnlyClasses(rootElem);
 
     const tocData = this.createTocData(rootElem);
@@ -122,7 +122,7 @@ class Builder {
   }
 
   removeUnnecessaryParagraphs(rootElem) {
-    rootElem.innerHTML = rootElem.innerHTML.replace(/(<p>\n?<\/p>)+/g, ""); // 内容のないpを削除
+    rootElem.innerHTML = rootElem.innerHTML.replace(/<p>\n?<\/p>\n?/g, ""); // 内容のないpを削除
   }
 
   convertTextIndents(rootElem) {
@@ -225,7 +225,7 @@ class Builder {
     }
   }
 
-  setH3SectionIds(rootElem) {
+  setH3SectionIdsAndClasses(rootElem) {
     const h2Sections = Array.from(rootElem.querySelectorAll(".h2-section"));
     for (const h2Section of h2Sections) {
       const h3Sections = Array.from(h2Section.querySelectorAll(".h3-section"));
@@ -235,12 +235,15 @@ class Builder {
         const h3Title = h3Section.querySelector("h3").innerText;
         if (h3Title.endsWith("まとめ")) {
           h3Section.id = `${h2Section.id}--summary`;
+          h3Section.classList.add('summary');
         } else if (h3Title.startsWith("補足")) {
           supplementCount++;
           h3Section.id = `${h2Section.id}--supplement-${supplementCount}`;
+          h3Section.classList.add('supplement');
         } else {
           sectionCount++;
           h3Section.id = `${h2Section.id}--section-${sectionCount}`;
+          h3Section.classList.add('section');
         }
       }
     }
@@ -346,9 +349,7 @@ ${tocHtml}
   createNextPageLinkHtml(nextPage) {
     return nextPage == null
       ? ""
-      : `
-<a class="next-page" href="${nextPage.filename}">≫&nbsp;次ページ: ${nextPage.title}</a>
-`;
+      : `<a class="next-page" href="${nextPage.filename}">≫&nbsp;次ページ: ${nextPage.title}</a>`;
   }
 
   createStickyHeaderHtml(prevPage, curPage, nextPage) {

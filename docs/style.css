@@ -1,6 +1,6 @@
 :root {
   --sticky-header-height: 3rem;
-  --max-content-width: 40rem;
+  --max-content-width: 42rem;
 }
 
 html {
@@ -119,6 +119,26 @@ h3 {
 section.title-only + section > h3 {
   border-top: none;
   padding-top: 0;
+}
+
+section.summary {
+  border: 1px solid #000;
+  border-radius: 0.5rem;
+  margin: 0 0 1rem 0;
+  padding: 0 1rem;
+}
+section.summary h3 {
+  border-top: none;
+}
+
+section.supplement {
+  border: 2px solid #ddd;
+  border-radius: 0.5rem;
+  margin: 0 0 1rem 0;
+  padding: 0 1rem;
+}
+section.supplement h3 {
+  border-top: none;
 }
 
 /* ページ下部の次ページへのリンク */
