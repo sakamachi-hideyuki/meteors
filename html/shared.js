@@ -4,7 +4,7 @@ class Shared {
   static author = "坂町英之";
 
   static pleiadesAttributionHtml = `This photo is adapted from <a href="https://commons.wikimedia.org/wiki/File:Orion,_Taurus_and_Pleiades.jpg" target="_blank">"Orion, Taurus and Pleiades"</a><br>
-by Panda~thwiki, used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
+by Panda~thwiki, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">used under CC BY 4.0</a>`;
 
   static photoCoverAlt = `${this.bookTitle}　${this.author}`;
 
