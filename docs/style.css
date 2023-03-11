@@ -129,7 +129,7 @@ section.title-only + section > h3 {
 /* 章のまとめ */
 section.summary {
   border: 2px solid #666;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   margin: 0 0 1rem 0;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -141,7 +141,7 @@ section.summary h3 {
 /* 補足 */
 section.supplement {
   border: 2px solid #ddd;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   margin: 0 0 1rem 0;
   padding-left: 1rem;
   padding-right: 1rem;
