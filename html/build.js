@@ -1,4 +1,7 @@
 class Builder {
+  static canonicalHtml =
+    '<link rel="canonical" href="https://sakamachi-hideyuki.github.io/meteors/">';
+
   static googleAnalyticsHtml = `
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45DHNXBNFZ"></script>
@@ -56,6 +59,7 @@ class Builder {
     const h1SectionHtml = this.createH1SectionHtml(introductionHtml, tocHtml);
     pages[0].html = this.createPageHtml(
       Shared.bookTitle,
+      Builder.canonicalHtml,
       coverHeaderHtml,
       h1SectionHtml,
       this.createNextPageLinkHtml(pages[1])
@@ -69,6 +73,7 @@ class Builder {
 
       curPage.html = this.createPageHtml(
         `${curPage.title} - ${Shared.bookTitle}`,
+        "",
         this.createStickyHeaderHtml(prevPage, curPage, nextPage),
         h2Section.outerHTML,
         this.createNextPageLinkHtml(nextPage)
@@ -239,15 +244,15 @@ class Builder {
         const h3Title = h3Section.querySelector("h3").innerText;
         if (h3Title.endsWith("まとめ")) {
           h3Section.id = `${h2Section.id}--summary`;
-          h3Section.classList.add('summary');
+          h3Section.classList.add("summary");
         } else if (h3Title.startsWith("補足")) {
           supplementCount++;
           h3Section.id = `${h2Section.id}--supplement-${supplementCount}`;
-          h3Section.classList.add('supplement');
+          h3Section.classList.add("supplement");
         } else {
           sectionCount++;
           h3Section.id = `${h2Section.id}--section-${sectionCount}`;
-          h3Section.classList.add('section');
+          h3Section.classList.add("section");
         }
       }
     }
@@ -384,7 +389,13 @@ ${
 `;
   }
 
-  createPageHtml(title, headerHtml, contentHtml, nextPageLinkHtml) {
+  createPageHtml(
+    title,
+    canonicalHtml,
+    headerHtml,
+    contentHtml,
+    nextPageLinkHtml
+  ) {
     return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -392,6 +403,7 @@ ${Builder.googleAnalyticsHtml}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
+${canonicalHtml}
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
