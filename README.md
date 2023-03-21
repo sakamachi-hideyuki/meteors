@@ -5,3 +5,6 @@
 
 Web公開サイトURL:
 [https://sakamachi-hideyuki.github.io/meteors/](https://sakamachi-hideyuki.github.io/meteors/)
+
+- 二〇二三年二月二十三日　第二十版をWeb公開（最初のWeb公開）
+- 二〇二三年三月二十一日　第二十一版をWeb公開
