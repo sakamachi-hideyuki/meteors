@@ -9,4 +9,5 @@ copy photo-meteor\photo-meteor-web.jpg _web\.
 copy photo-ogame\photo-ogame-web.jpg _web\.
 copy photo-otomatsuri\photo-otomatsuri-web.jpg _web\.
 copy photo-tategushi\photo-tategushi-web.jpg _web\.
+copy _web\*.* ..\docs\images\.
 pause
