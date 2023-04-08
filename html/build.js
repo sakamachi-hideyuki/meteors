@@ -368,19 +368,19 @@ ${tocHtml}
 <nav>
 <ul>
 <li>
-<a href="index.html">先頭ページ</a>
+<a href="index.html">≪&nbsp;先頭ページ</a>
 </li>
 <li>
 <a href="index.html#toc-${curPage.id}">目次</a>
 </li>
 <li>
-<a href="${prevPage.filename}">前ページ&nbsp;≪</a>
+<a href="${prevPage.filename}">&lt;&nbsp;前ページ</a>
 </li>
 <li>
 ${
   nextPage == undefined
     ? ""
-    : `<a href="${nextPage.filename}">≫&nbsp;次ページ</a>`
+    : `<a href="${nextPage.filename}">次ページ&nbsp;&gt;</a>`
 }
 </li>
 </ul>
