@@ -285,7 +285,7 @@ class Builder {
       });
     const indexPage = {
       id: "index",
-      title: "先頭ページ",
+      title: "先頭頁",
       filename: "index.html",
     };
     pages.splice(0, 0, indexPage);
@@ -359,7 +359,7 @@ ${tocHtml}
   createNextPageLinkHtml(nextPage) {
     return nextPage == null
       ? ""
-      : `<a class="next-page" href="${nextPage.filename}">≫&nbsp;次ページ: ${nextPage.title}</a>`;
+      : `<a class="next-page" href="${nextPage.filename}">次頁&nbsp;&gt;&nbsp;${nextPage.title}</a>`;
   }
 
   createStickyHeaderHtml(prevPage, curPage, nextPage) {
@@ -368,19 +368,19 @@ ${tocHtml}
 <nav>
 <ul>
 <li>
-<a href="index.html">≪&nbsp;先頭ページ</a>
+<a href="index.html">≪&nbsp;先頭頁</a>
 </li>
 <li>
 <a href="index.html#toc-${curPage.id}">目次</a>
 </li>
 <li>
-<a href="${prevPage.filename}">&lt;&nbsp;前ページ</a>
+<a href="${prevPage.filename}">&lt;&nbsp;前頁</a>
 </li>
 <li>
 ${
   nextPage == undefined
     ? ""
-    : `<a href="${nextPage.filename}">次ページ&nbsp;&gt;</a>`
+    : `<a href="${nextPage.filename}">次頁&nbsp;&gt;</a>`
 }
 </li>
 </ul>
