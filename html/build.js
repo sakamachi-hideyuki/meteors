@@ -413,7 +413,7 @@ ${contentHtml}
 </main>
 <footer>
 ${nextPageLinkHtml}
-<div class="copyright">© 2021 Sakamachi Hideyuki</div>
+<div class="copyright">${Shared.bookTitle} © 2021 SAKAMACHI HIDEYUKI</div>
 <a class="top-of-page" href="#" title="ページ先頭へ">↑</a>
 </footer>
 </body>
