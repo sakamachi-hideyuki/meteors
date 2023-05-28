@@ -422,7 +422,7 @@ ${nextPageLinkHtml}
   }
 }
 
-document.getElementById("buildButton").addEventListener("click", (ev) => {
+document.getElementById("buildButton").addEventListener("click", () => {
   const inputIframe = document.getElementById("inputIframe");
   const inputElem =
     inputIframe.contentWindow.document.querySelector("body>div");
@@ -443,4 +443,9 @@ document.getElementById("buildButton").addEventListener("click", (ev) => {
     p.appendChild(a);
     outputElem.appendChild(p);
   });
+});
+
+document.getElementById("saveButton").addEventListener("click", () => {
+  const links = document.querySelectorAll("a[download]");
+  Array.from(links).forEach((el) => el.click());
 });
