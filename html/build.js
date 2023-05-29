@@ -48,13 +48,15 @@ class Builder {
 
     this.createH3Sections(rootElem);
     this.setH3SectionIdsAndClasses(rootElem);
+    this.moveH3Sections(rootElem);
+    this.removeBlankLinesAtEndOfSections(rootElem);
     this.setTitleOnlyClasses(rootElem);
 
-    const tocData = this.createTocData(rootElem);
-    const pages = this.createPageData(tocData);
-
     const introductionHtml = this.createIntroductionHtml(rootElem);
-    const tocHtml = this.createTocHtml(tocData);
+
+    const pages = this.createPageData(rootElem);
+
+    const tocHtml = this.createTocHtml(pages);
     const coverHeaderHtml = this.createCoverHeaderHtml();
     const h1SectionHtml = this.createH1SectionHtml(introductionHtml, tocHtml);
     pages[0].html = this.createPageHtml(
@@ -65,20 +67,33 @@ class Builder {
       this.createNextPageLinkHtml(pages[1])
     );
 
-    rootElem.querySelectorAll(".h2-section").forEach((h2Section, i) => {
-      const index = i + 1;
-      const curPage = pages[index];
-      const prevPage = pages[index - 1];
-      const nextPage = pages[index + 1];
-
-      curPage.html = this.createPageHtml(
-        `${curPage.title} - ${Shared.bookTitle}`,
+    let h2Title;
+    for (let i = 1; i < pages.length; i++) {
+      if (pages[i].html === undefined) {
+        continue;
+      }
+      let pageTitle;
+      if (pages[i].level === 2) {
+        h2Title = pages[i].title;
+        pageTitle = `${pages[i].title} - ${Shared.bookTitle}`;
+      } else {
+        pageTitle = `${pages[i].title} - ${h2Title} - ${Shared.bookTitle}`;
+      }
+      let nextPage;
+      for (let j = i + 1; j < pages.length; j++) {
+        if (pages[j].html !== undefined) {
+          nextPage = pages[j];
+          break;
+        }
+      }
+      pages[i].html = this.createPageHtml(
+        pageTitle,
         "",
-        this.createStickyHeaderHtml(prevPage, curPage, nextPage),
-        h2Section.outerHTML,
+        this.createStickyHeaderHtml(pages[i - 1], pages[i], nextPage),
+        pages[i].html,
         this.createNextPageLinkHtml(nextPage)
       );
-    });
+    }
 
     return pages;
   }
@@ -147,7 +162,7 @@ class Builder {
     Array.from(rootElem.querySelectorAll("img")).forEach((el) => {
       const alt = el.getAttribute("alt") ?? "";
       const html = Shared.altToHtml[alt];
-      if (html == undefined) {
+      if (html === undefined) {
         throw new Error(`Unknown alt: ${alt}`);
       }
       let ancestor = el.parentElement;
@@ -157,7 +172,7 @@ class Builder {
       ) {
         ancestor = ancestor.parentElement;
       }
-      if (html == "") {
+      if (html === "") {
         ancestor.remove();
       } else {
         const newElem = this.htmlToElem(html);
@@ -177,13 +192,13 @@ class Builder {
   }
 
   createH2Sections(rootElem) {
-    let h2Section = null;
+    let h2Section = undefined;
     for (const node of Array.from(rootElem.childNodes)) {
       if (node.nodeType === 1 && node.tagName.toLowerCase() === "h2") {
         h2Section = this.htmlToElem('<section class="h2-section"></section>');
         node.replaceWith(h2Section);
       }
-      if (h2Section != null) {
+      if (h2Section !== undefined) {
         h2Section.appendChild(node);
       }
     }
@@ -193,7 +208,7 @@ class Builder {
     rootElem.querySelectorAll(".h2-section").forEach((el) => {
       const h2Title = el.querySelector("h2").innerText;
       const id = Builder.h2TitleToId[h2Title];
-      if (id == undefined) {
+      if (id === undefined) {
         throw new Error(`Unknown h2 title: ${h2Title}`);
       }
       el.id = id;
@@ -202,10 +217,10 @@ class Builder {
 
   moveH2SectionImages(rootElem) {
     const h2Sections = Array.from(rootElem.querySelectorAll(".h2-section"));
-    let prevH2Section = null;
+    let prevH2Section = undefined;
     for (const h2Section of h2Sections) {
       if (
-        prevH2Section != null &&
+        prevH2Section !== undefined &&
         prevH2Section.lastElementChild.className === "image-and-caption"
       ) {
         h2Section.prepend(prevH2Section.lastElementChild);
@@ -217,21 +232,17 @@ class Builder {
   createH3Sections(rootElem) {
     const h2Sections = Array.from(rootElem.querySelectorAll(".h2-section"));
     for (const h2Section of h2Sections) {
-      let h3Section = null;
+      let h3Section = undefined;
       for (const node of Array.from(h2Section.childNodes)) {
         if (node.nodeType === 1 && node.tagName.toLowerCase() === "h3") {
           h3Section = this.htmlToElem('<section class="h3-section"></section>');
           node.replaceWith(h3Section);
         }
-        if (h3Section != null) {
+        if (h3Section !== undefined) {
           h3Section.appendChild(node);
         }
       }
     }
-    rootElem.querySelectorAll(".h3-section").forEach((el) => {
-      // 末尾の空行は削除
-      el.innerHTML = el.innerHTML.replace(/(<p[^>]*>&nbsp;<\/p>\n+)+$/g, "");
-    });
   }
 
   setH3SectionIdsAndClasses(rootElem) {
@@ -258,42 +269,36 @@ class Builder {
     }
   }
 
+  moveH3Sections(rootElem) {
+    const h2Sections = Array.from(rootElem.querySelectorAll(".h2-section"));
+    for (const h2Section of h2Sections) {
+      const h3Sections = Array.from(h2Section.querySelectorAll(".h3-section"));
+      const nextH2Section = h2Section.nextElementSibling;
+      for (const h3Section of h3Sections) {
+        nextH2Section.before(h3Section);
+      }
+    }
+  }
+
+  removeBlankLinesAtEndOfSections(rootElem) {
+    rootElem.querySelectorAll("section").forEach((el) => {
+      // 末尾の空行は削除
+      el.innerHTML = el.innerHTML.replace(/(<p[^>]*>&nbsp;<\/p>\n+)+$/g, "");
+    });
+  }
+
+
   setTitleOnlyClasses(rootElem) {
     rootElem.querySelectorAll(".h3-section").forEach((el) => {
-      if (el.querySelector("p") == null) {
+      if (el.querySelector("p") === null) {
         el.classList.add("title-only");
       }
     });
   }
 
-  createTocData(rootElem) {
-    return Array.from(rootElem.querySelectorAll("h2, h3")).map((el) => {
-      const level = Number(el.tagName.substring(1) - 1); // h2->1, h3->2
-      const id = el.parentElement.id;
-      const title = el.innerText;
-      const href =
-        level === 1 ? `${id}.html` : `${id.replace(/--.*/, ".html")}#${id}`;
-      return { level, id, title, href };
-    });
-  }
-
-  createPageData(tocData) {
-    const pages = tocData
-      .filter((i) => i.level === 1)
-      .map((i) => {
-        return { id: i.id, title: i.title, filename: i.href };
-      });
-    const indexPage = {
-      id: "index",
-      title: "先頭ページ",
-      filename: "index.html",
-    };
-    pages.splice(0, 0, indexPage);
-    return pages;
-  }
-
   createIntroductionHtml(rootElem) {
     const intro = this.htmlToElem('<div id="introduction"></div>');
+    // 最初のsectionの手前までのノードを取り出す
     for (const node of Array.from(rootElem.childNodes)) {
       if (node.nodeType === 1 && node.tagName.toLowerCase() === "section") {
         break;
@@ -305,30 +310,69 @@ class Builder {
     return intro.outerHTML;
   }
 
-  createTocHtml(tocData) {
+  createPageData(rootElem) {
+    const pages = Array.from(rootElem.querySelectorAll("h2, h3")).map((el) => {
+      const level = Number(el.tagName.substring(1)); // h2->2, h3->3
+      const id = el.parentElement.id;
+      const title = el.innerText;
+      const filename = `${id}.html`;
+      const section = el.parentElement;
+      const html = section.outerHTML;
+      const titleOnly = section.classList.contains("title-only");
+      return { level, id, title, filename, html, titleOnly };
+    });
+    // タイトルのみのセクションがある場合、htmlとfilenameを修正
+    for (let i = 0; i < pages.length; i++) {
+      if (pages[i].titleOnly) {
+        for (let j = i + 1; j < pages.length; j++) {
+          pages[i].html += pages[j].html; // 最初のタイトルのみのセクションにhtmlをまとめる
+          pages[j].html = undefined;
+          pages[j].filename = pages[i].filename; // filenameは全部同じにする
+          if (!pages[j].titleOnly) {
+            i = j;
+            break;
+          }
+        }
+      }
+    }
+    const indexPage = {
+      level: 1,
+      id: "index",
+      title: "先頭ページ",
+      filename: "index.html",
+      html: "",
+      titleOnly: false,
+    };
+    pages.splice(0, 0, indexPage);
+    return pages;
+  }
+
+  createTocHtml(pages) {
     const tocNav = document.createElement("nav");
     tocNav.id = "toc";
     const tocUl = document.createElement("ul");
     tocNav.appendChild(tocUl);
-    let curUls = [null, tocUl, null];
-    let curLevel = 1;
-    for (const toc of tocData) {
-      if (toc.level == curLevel) {
-      } else if (toc.level == curLevel + 1) {
+    let curUls = [undefined, undefined, tocUl, undefined];
+    let curLevel = 2;
+    for (const page of pages) {
+      if (page.level === 1) {
+        continue; // h1は目次にしない
+      } else if (page.level === curLevel) {
+      } else if (page.level === curLevel + 1) {
         const newUl = document.createElement("ul");
         curUls[curLevel].lastElementChild.appendChild(newUl);
-        curUls[toc.level] = newUl;
-        curLevel = toc.level;
-      } else if (toc.level < curLevel) {
-        curLevel = toc.level;
+        curUls[page.level] = newUl;
+        curLevel = page.level;
+      } else if (page.level < curLevel) {
+        curLevel = page.level;
       } else {
         throw new Error();
       }
       const li = document.createElement("li");
       const a = document.createElement("a");
-      a.href = toc.href;
-      a.id = `toc-${toc.id}`;
-      a.innerText = toc.title;
+      a.href = page.filename;
+      a.id = `toc-${page.id}`;
+      a.innerText = page.title;
       li.appendChild(a);
       curUls[curLevel].appendChild(li);
     }
@@ -356,12 +400,6 @@ ${tocHtml}
 `;
   }
 
-  createNextPageLinkHtml(nextPage) {
-    return nextPage == null
-      ? ""
-      : `<a class="next-page" href="${nextPage.filename}">次ページ&nbsp;&gt;&nbsp;${nextPage.title}</a>`;
-  }
-
   createStickyHeaderHtml(prevPage, curPage, nextPage) {
     return `
 <header class="sticky-header">
@@ -387,6 +425,12 @@ ${
 </nav>
 </header>
 `;
+  }
+
+  createNextPageLinkHtml(nextPage) {
+    return nextPage === undefined
+      ? ""
+      : `<a class="next-page" href="${nextPage.filename}">次ページ&nbsp;&gt;&nbsp;${nextPage.title}</a>`;
   }
 
   createPageHtml(
@@ -431,18 +475,21 @@ document.getElementById("buildButton").addEventListener("click", () => {
   const pages = new Builder().build(inputHtml);
 
   const outputElem = document.getElementById("outputElem");
+  outputElem.innerHTML = "";
 
-  pages.forEach((page) => {
-    const dataUrl =
-      "data:text/html;charset=UTF-8," + encodeURIComponent(page.html);
-    const p = document.createElement("p");
-    const a = document.createElement("a");
-    a.href = dataUrl;
-    a.download = page.filename;
-    a.innerText = page.filename;
-    p.appendChild(a);
-    outputElem.appendChild(p);
-  });
+  pages
+    .filter((page) => page.html !== undefined)
+    .forEach((page) => {
+      const dataUrl =
+        "data:text/html;charset=UTF-8," + encodeURIComponent(page.html);
+      const p = document.createElement("p");
+      const a = document.createElement("a");
+      a.href = dataUrl;
+      a.download = page.filename;
+      a.innerText = page.filename;
+      p.appendChild(a);
+      outputElem.appendChild(p);
+    });
 });
 
 document.getElementById("saveButton").addEventListener("click", () => {

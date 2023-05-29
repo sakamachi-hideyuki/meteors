@@ -107,11 +107,6 @@ header.sticky-header > nav > ul > li > a {
 section.h3-section {
   /* 目次から項へ遷移した際に固定見出しと重ならないようにする */
   scroll-margin-top: var(--sticky-header-height);
-  padding-bottom: 2rem;
-}
-/* 見出しのみの項 */
-section.title-only {
-  padding-bottom: 0;
 }
 
 /* ページの見出し */
@@ -125,8 +120,6 @@ h2 {
 }
 /* 項の見出し */
 h3 {
-  border-top: 1px dotted #000;
-  break-before: page;
   font-size: 1.4rem;
   font-weight: normal;
   margin: 0;
@@ -135,43 +128,14 @@ h3 {
 }
 /* 連続している項の見出し */
 section.title-only + section > h3 {
-  border-top: none;
-  break-before: auto;
   padding-top: 0;
-}
-
-/* 章のまとめ */
-section.summary {
-  border: 1px solid #000;
-  border-radius: 0.25rem;
-  break-before: page;
-  margin: 0 0 1rem 0;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-section.summary h3 {
-  border-top: none;
-  break-before: auto;
-}
-
-/* 補足 */
-section.supplement {
-  border: 1px solid #000;
-  border-radius: 0.25rem;
-  break-before: page;
-  margin: 0 0 1rem 0;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-section.supplement h3 {
-  border-top: none;
-  break-before: auto;
 }
 
 /* ページ下部の次ページへのリンク */
 a.next-page {
   display: block;
   margin: 0 auto 1rem auto;
+  padding-top: 2rem;
   width: fit-content;
 }
 
