@@ -410,13 +410,15 @@ ${tocHtml}
 <nav class="navbar">
 <ul>
 <li>
-<a href="index.html">≪&nbsp;先頭ページ</a>
+<a href="./">≪&nbsp;先頭ページ</a>
 </li>
 <li>
-<a href="index.html#toc-${curPage.id}">目次</a>
+<a href="./#toc-${curPage.id}">目次</a>
 </li>
 <li>
-<a href="${prevPage.filename}">&lt;&nbsp;前ページ</a>
+<a href="${
+      prevPage.filename === "index.html" ? "./" : prevPage.filename
+    }">&lt;&nbsp;前ページ</a>
 </li>
 <li>
 ${
