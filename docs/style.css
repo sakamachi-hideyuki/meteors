@@ -103,12 +103,6 @@ header.sticky-header > nav > ul > li > a {
   color: #000;
 }
 
-/* 項 */
-section.h3-section {
-  /* 目次から項へ遷移した際に固定見出しと重ならないようにする */
-  scroll-margin-top: var(--sticky-header-height);
-}
-
 /* ページの見出し */
 h1,
 h2 {
@@ -134,8 +128,7 @@ section.title-only + section > h3 {
 /* ページ下部の次ページへのリンク */
 a.next-page {
   display: block;
-  margin: 0 auto 1rem auto;
-  padding-top: 2rem;
+  margin: 2rem auto 1rem auto;
   width: fit-content;
 }
 
