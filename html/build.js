@@ -67,17 +67,17 @@ class Builder {
       this.createNextPageLinkHtml(pages[1])
     );
 
-    let h2Title;
+    let h2SectionTitle;
     for (let i = 1; i < pages.length; i++) {
       if (pages[i].html === undefined) {
         continue;
       }
       let pageTitle;
       if (pages[i].level === 2) {
-        h2Title = pages[i].title;
+        h2SectionTitle = pages[i].title;
         pageTitle = `${pages[i].title} - ${Shared.bookTitle}`;
       } else {
-        pageTitle = `${pages[i].title} - ${h2Title} - ${Shared.bookTitle}`;
+        pageTitle = `${pages[i].title} - ${h2SectionTitle} - ${Shared.bookTitle}`;
       }
       let nextPage;
       for (let j = i + 1; j < pages.length; j++) {
@@ -86,10 +86,16 @@ class Builder {
           break;
         }
       }
+      const navbarAndHeaderHtml = this.createNavbarAndHeaderHtml(
+        `${Shared.bookTitle} - ${h2SectionTitle}`,
+        pages[i - 1],
+        pages[i],
+        nextPage
+      );
       pages[i].html = this.createPageHtml(
         pageTitle,
         "",
-        this.createStickyHeaderHtml(pages[i - 1], pages[i], nextPage),
+        navbarAndHeaderHtml,
         pages[i].html,
         this.createNextPageLinkHtml(nextPage)
       );
@@ -287,7 +293,6 @@ class Builder {
     });
   }
 
-
   setTitleOnlyClasses(rootElem) {
     rootElem.querySelectorAll(".h3-section").forEach((el) => {
       if (el.querySelector("p") === null) {
@@ -400,10 +405,9 @@ ${tocHtml}
 `;
   }
 
-  createStickyHeaderHtml(prevPage, curPage, nextPage) {
+  createNavbarAndHeaderHtml(h2SectionTitle, prevPage, curPage, nextPage) {
     return `
-<header class="sticky-header">
-<nav>
+<nav class="navbar">
 <ul>
 <li>
 <a href="index.html">≪&nbsp;先頭ページ</a>
@@ -423,6 +427,8 @@ ${
 </li>
 </ul>
 </nav>
+<header>
+<div class="h2-section-title">${h2SectionTitle}</div>
 </header>
 `;
   }

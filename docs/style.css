@@ -23,7 +23,7 @@ html {
   }
 }
 @media print {
-  header.sticky-header {
+  nav.navbar {
     display: none;
   }
   a.top-of-page {
@@ -59,8 +59,8 @@ main {
   padding: 0 1rem;
 }
 
-/* 固定ヘッダー */
-header.sticky-header {
+/* 固定ナビゲーションバー */
+nav.navbar {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   background-color: rgba(255, 255, 255, 0.5);
@@ -72,11 +72,7 @@ header.sticky-header {
   height: var(--sticky-header-height);
   z-index: 999;
 }
-/* 固定ヘッダーのナビゲーションバー */
-header.sticky-header > nav {
-  height: 100%;
-}
-header.sticky-header > nav > ul {
+nav.navbar > ul {
   height: 100%;
   list-style: none;
   margin: 0 auto;
@@ -87,7 +83,7 @@ header.sticky-header > nav > ul {
   align-items: center;
   justify-content: space-around;
 }
-header.sticky-header > nav > ul > li {
+nav.navbar > ul > li {
   border-left: 1px solid #333;
   font-size: 0.8rem;
   height: 1rem; /* 文字がなくてもボーダーを付けるため */
@@ -96,11 +92,19 @@ header.sticky-header > nav > ul > li {
 
   width: 100%;
 }
-header.sticky-header > nav > ul > li:first-child {
+nav.navbar > ul > li:first-child {
   border-left: none;
 }
-header.sticky-header > nav > ul > li > a {
+nav.navbar > ul > li > a {
   color: #000;
+}
+
+/* 章タイトル */
+.h2-section-title {
+  font-size: 0.7rem;
+  line-height: 2rem;
+  text-align: center;
+  height: 50%;
 }
 
 /* ページの見出し */
