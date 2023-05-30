@@ -133,7 +133,7 @@ section.title-only + section > h3 {
 a.next-page {
   display: block;
   font-size: 0.9rem;
-  margin: 2rem auto 1rem auto;
+  margin: 2rem auto 2rem auto;
   width: fit-content;
 }
 
