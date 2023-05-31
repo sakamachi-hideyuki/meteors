@@ -6,6 +6,7 @@
 html {
   /* AndroidのChromeで別ページの途中へ遷移できなくなるので使わないでおく */
   /* scroll-behavior: smooth; */
+  height: 100%;
 }
 @media screen and (min-width: 768px) {
   html {
@@ -23,11 +24,8 @@ html {
   }
 }
 @media print {
-  nav.navbar {
+  nav#navbar {
     display: none;
-  }
-  a.top-of-page {
-    display: none !important;
   }
   figure.image-and-caption > figcaption > a::after {
     content: " " attr(href);
@@ -38,7 +36,15 @@ body {
   background-color: #fff;
   color: #000;
   font-family: serif;
+  height: 100%;
   margin: 0;
+
+  display: grid;
+  grid-template:
+    "navbar" auto
+    "header" auto
+    "main" 1fr
+    "footer" auto;
 }
 p {
   line-height: 2rem;
@@ -52,27 +58,21 @@ a:hover {
   text-decoration: underline;
 }
 
-/* メインコンテンツ */
-main {
-  margin: 0 auto;
-  max-width: var(--max-content-width);
-  padding: 0 1rem;
-}
-
 /* 固定ナビゲーションバー */
-nav.navbar {
+nav#navbar {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  grid-area: navbar;
 
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
   height: var(--sticky-header-height);
   z-index: 999;
 }
-nav.navbar > ul {
+nav#navbar > ul {
   height: 100%;
   list-style: none;
   margin: 0 auto;
@@ -83,7 +83,7 @@ nav.navbar > ul {
   align-items: center;
   justify-content: space-around;
 }
-nav.navbar > ul > li {
+nav#navbar > ul > li {
   border-left: 1px solid #333;
   font-size: 0.8rem;
   height: 1rem; /* 文字がなくてもボーダーを付けるため */
@@ -92,14 +92,32 @@ nav.navbar > ul > li {
 
   width: 100%;
 }
-nav.navbar > ul > li:first-child {
+nav#navbar > ul > li:first-child {
   border-left: none;
 }
-nav.navbar > ul > li > a {
+nav#navbar > ul > li > a {
   color: #000;
 }
 
-/* 章タイトル */
+/* ヘッダー */
+header {
+  grid-area: header;
+}
+
+/* メインコンテンツ */
+main {
+  grid-area: main;
+  margin: 0 auto;
+  max-width: var(--max-content-width);
+  padding: 0 1rem;
+}
+
+/* フッター */
+footer {
+  grid-area: footer;
+}
+
+/* 書名 - 章タイトル */
 .h2-section-title {
   font-size: 0.7rem;
   line-height: 2rem;
@@ -130,7 +148,7 @@ section.title-only + section > h3 {
 }
 
 /* ページ下部の次ページへのリンク */
-a.next-page {
+a#next-page {
   display: block;
   font-size: 0.9rem;
   margin: 2rem auto 2rem auto;
@@ -138,7 +156,7 @@ a.next-page {
 }
 
 /* ページ下部のコピーライト文 */
-div.copyright {
+div#copyright {
   background-color: #eee;
   color: #999;
   font-family: sans-serif;

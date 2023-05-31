@@ -386,7 +386,7 @@ class Builder {
 
   createCoverHeaderHtml() {
     return `
-<header class="cover-header">
+<header>
 ${Shared.photoCoverHtml}
 <div id="website-desc">
 本Webサイトは <a href="https://www.amazon.co.jp/dp/B09DX3WVX6/" target="_blank">書籍『${Shared.bookTitle}』(著:${Shared.author})</a> の内容を著者がWeb公開したものです。
@@ -407,7 +407,7 @@ ${tocHtml}
 
   createNavbarAndHeaderHtml(h2SectionTitle, prevPage, curPage, nextPage) {
     return `
-<nav class="navbar">
+<nav id="navbar">
 <ul>
 <li>
 <a href="./">≪&nbsp;先頭ページ</a>
@@ -438,7 +438,7 @@ ${
   createNextPageLinkHtml(nextPage) {
     return nextPage === undefined
       ? ""
-      : `<a class="next-page" href="${nextPage.filename}">次ページ&nbsp;&gt;&nbsp;${nextPage.title}</a>`;
+      : `<a id="next-page" href="${nextPage.filename}">次ページ&nbsp;&gt;&nbsp;${nextPage.title}</a>`;
   }
 
   createPageHtml(
@@ -462,10 +462,10 @@ ${canonicalHtml}
 ${headerHtml}
 <main>
 ${contentHtml}
+${nextPageLinkHtml}
 </main>
 <footer>
-${nextPageLinkHtml}
-<div class="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
+<div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
 </footer>
 </body>
 </html>
