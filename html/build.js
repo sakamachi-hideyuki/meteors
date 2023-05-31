@@ -52,62 +52,9 @@ class Builder {
     this.removeBlankLinesAtEndOfSections(rootElem);
     this.setTitleOnlyClasses(rootElem);
 
-    const introductionHtml = this.createIntroductionHtml(rootElem);
-
-    const pages = this.createPageData(rootElem);
-
-    const tocHtml = this.createTocHtml(pages);
-    const coverHeaderHtml = this.createCoverHeaderHtml();
-    const h1SectionHtml = this.createH1SectionHtml(introductionHtml, tocHtml);
-    pages[0].html = this.createPageHtml(
-      Shared.bookTitle,
-      Builder.canonicalHtml,
-      coverHeaderHtml,
-      h1SectionHtml,
-      this.createNextPageLinkHtml(pages[1])
-    );
-
-    let h2SectionTitle;
-    for (let i = 1; i < pages.length; i++) {
-      if (pages[i].html === undefined) {
-        continue;
-      }
-      let pageTitle;
-      if (pages[i].level === 2) {
-        h2SectionTitle = pages[i].title;
-        pageTitle = `${pages[i].title} - ${Shared.bookTitle}`;
-      } else {
-        pageTitle = `${pages[i].title} - ${h2SectionTitle} - ${Shared.bookTitle}`;
-      }
-      let nextPage;
-      for (let j = i + 1; j < pages.length; j++) {
-        if (pages[j].html !== undefined) {
-          nextPage = pages[j];
-          break;
-        }
-      }
-      const navbarAndHeaderHtml = this.createNavbarAndHeaderHtml(
-        `${Shared.bookTitle} - ${h2SectionTitle}`,
-        pages[i - 1],
-        pages[i],
-        nextPage
-      );
-      pages[i].html = this.createPageHtml(
-        pageTitle,
-        "",
-        navbarAndHeaderHtml,
-        pages[i].html,
-        this.createNextPageLinkHtml(nextPage)
-      );
-    }
+    const pages = this.createPages(rootElem);
 
     return pages;
-  }
-
-  htmlToElem(html) {
-    const dummy = document.createElement("div");
-    dummy.innerHTML = html;
-    return dummy.children[0];
   }
 
   removeElemsAndDescendants(rootElem, selector) {
@@ -301,18 +248,54 @@ class Builder {
     });
   }
 
-  createIntroductionHtml(rootElem) {
-    const intro = this.htmlToElem('<div id="introduction"></div>');
-    // 最初のsectionの手前までのノードを取り出す
-    for (const node of Array.from(rootElem.childNodes)) {
-      if (node.nodeType === 1 && node.tagName.toLowerCase() === "section") {
-        break;
+  createPages(rootElem) {
+    const pages = this.createPageData(rootElem);
+    const introductionHtml = this.createIntroductionHtml(rootElem);
+    const tocHtml = this.createTocHtml(pages);
+    const coverHeaderHtml = this.createCoverHeaderHtml();
+    const h1SectionHtml = this.createH1SectionHtml(introductionHtml, tocHtml);
+    pages[0].html = this.createPageHtml(
+      Shared.bookTitle,
+      Builder.canonicalHtml,
+      coverHeaderHtml,
+      h1SectionHtml,
+      this.createNextPageLinkHtml(pages[1])
+    );
+
+    let h2SectionTitle;
+    for (let i = 1; i < pages.length; i++) {
+      if (pages[i].html === undefined) {
+        continue;
       }
-      intro.appendChild(node);
+      let pageTitle;
+      if (pages[i].level === 2) {
+        h2SectionTitle = pages[i].title;
+        pageTitle = `${pages[i].title} - ${Shared.bookTitle}`;
+      } else {
+        pageTitle = `${pages[i].title} - ${h2SectionTitle} - ${Shared.bookTitle}`;
+      }
+      let nextPage;
+      for (let j = i + 1; j < pages.length; j++) {
+        if (pages[j].html !== undefined) {
+          nextPage = pages[j];
+          break;
+        }
+      }
+      const navbarAndHeaderHtml = this.createNavbarAndHeaderHtml(
+        `${Shared.bookTitle} - ${h2SectionTitle}`,
+        pages[i - 1],
+        pages[i],
+        nextPage
+      );
+      pages[i].html = this.createPageHtml(
+        pageTitle,
+        "",
+        navbarAndHeaderHtml,
+        pages[i].html,
+        this.createNextPageLinkHtml(nextPage)
+      );
     }
-    // 末尾の空行は削除
-    intro.innerHTML = intro.innerHTML.replace(/(<p[^>]*>&nbsp;<\/p>\n)+$/g, "");
-    return intro.outerHTML;
+    return pages;
   }
 
   createPageData(rootElem) {
@@ -350,6 +333,20 @@ class Builder {
     };
     pages.splice(0, 0, indexPage);
     return pages;
+  }
+
+  createIntroductionHtml(rootElem) {
+    const intro = this.htmlToElem('<div id="introduction"></div>');
+    // 最初のsectionの手前までのノードを取り出す
+    for (const node of Array.from(rootElem.childNodes)) {
+      if (node.nodeType === 1 && node.tagName.toLowerCase() === "section") {
+        break;
+      }
+      intro.appendChild(node);
+    }
+    // 末尾の空行は削除
+    intro.innerHTML = intro.innerHTML.replace(/(<p[^>]*>&nbsp;<\/p>\n)+$/g, "");
+    return intro.outerHTML;
   }
 
   createTocHtml(pages) {
@@ -470,6 +467,12 @@ ${nextPageLinkHtml}
 </body>
 </html>
 `;
+  }
+
+  htmlToElem(html) {
+    const dummy = document.createElement("div");
+    dummy.innerHTML = html;
+    return dummy.children[0];
   }
 }
 
