@@ -158,7 +158,6 @@ a#next-page {
 /* ページ下部のコピーライト文 */
 div#copyright {
   background-color: #eee;
-  color: #999;
   font-family: sans-serif;
   font-size: 0.6rem;
   line-height: 2rem;
