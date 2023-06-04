@@ -252,45 +252,39 @@ class Builder {
     const pages = this.createPageData(rootElem);
     const introductionHtml = this.createIntroductionHtml(rootElem);
     const tocHtml = this.createTocHtml(pages);
-    const coverHeaderHtml = this.createCoverHeaderHtml();
-    const h1SectionHtml = this.createH1SectionHtml(introductionHtml, tocHtml);
-    pages[0].html = this.createPageHtml(
-      Shared.bookTitle,
-      Builder.canonicalHtml,
-      coverHeaderHtml,
-      h1SectionHtml,
+    pages[0].html = this.createIndexHtml(
+      introductionHtml,
+      tocHtml,
       this.createNextPageLinkHtml(pages[1])
     );
 
-    let h2SectionTitle;
+    let h2SectionTitle = undefined;
     for (let i = 1; i < pages.length; i++) {
       if (pages[i].html === undefined) {
         continue;
       }
-      let pageTitle;
+      let h3SectionTitle = undefined;
       if (pages[i].level === 2) {
         h2SectionTitle = pages[i].title;
-        pageTitle = `${pages[i].title} - ${Shared.bookTitle}`;
       } else {
-        pageTitle = `${pages[i].title} - ${h2SectionTitle} - ${Shared.bookTitle}`;
+        h3SectionTitle = pages[i].title;
       }
-      let nextPage;
+      let nextPage = undefined;
       for (let j = i + 1; j < pages.length; j++) {
         if (pages[j].html !== undefined) {
           nextPage = pages[j];
           break;
         }
       }
-      const navbarAndHeaderHtml = this.createNavbarAndHeaderHtml(
-        `${Shared.bookTitle} - ${h2SectionTitle}`,
+      const navbarHtml = this.createNavbarHtml(
         pages[i - 1],
         pages[i],
         nextPage
       );
       pages[i].html = this.createPageHtml(
-        pageTitle,
-        "",
-        navbarAndHeaderHtml,
+        h2SectionTitle,
+        h3SectionTitle,
+        navbarHtml,
         pages[i].html,
         this.createNextPageLinkHtml(nextPage)
       );
@@ -381,30 +375,42 @@ class Builder {
     return tocNav.outerHTML;
   }
 
-  createCoverHeaderHtml() {
-    return `
+  createIndexHtml(introductionHtml, tocHtml, nextPageLinkHtml) {
+    return `<!DOCTYPE html>
+<html lang="ja">
+<head>
+${Builder.googleAnalyticsHtml}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${Shared.bookTitle}</title>
+${Builder.canonicalHtml}
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 <header>
 ${Shared.photoCoverHtml}
 <div id="website-desc">
 本Webサイトは <a href="https://www.amazon.co.jp/dp/B09DX3WVX6/" target="_blank">書籍『${Shared.bookTitle}』(著:${Shared.author})</a> の内容を著者がWeb公開したものです。
 </div>
 </header>
-`;
-  }
-
-  createH1SectionHtml(introductionHtml, tocHtml) {
-    return `
+<main>
 <section class="h1-section" id="index">
 <h1>${Shared.bookTitle}</h1>
 ${introductionHtml}
 ${tocHtml}
 </section>
+${nextPageLinkHtml}
+</main>
+<footer>
+<div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
+</footer>
+</body>
+</html>
 `;
   }
 
-  createNavbarAndHeaderHtml(h2SectionTitle, prevPage, curPage, nextPage) {
-    return `
-<nav id="navbar">
+  createNavbarHtml(prevPage, curPage, nextPage) {
+    return `<nav id="navbar">
 <ul>
 <li>
 <a href="./">≪&nbsp;先頭ページ</a>
@@ -419,17 +425,13 @@ ${tocHtml}
 </li>
 <li>
 ${
-  nextPage == undefined
+  nextPage === undefined
     ? ""
     : `<a href="${nextPage.filename}">次ページ&nbsp;&gt;</a>`
 }
 </li>
 </ul>
-</nav>
-<header>
-<div class="h2-section-title">${h2SectionTitle}</div>
-</header>
-`;
+</nav>`;
   }
 
   createNextPageLinkHtml(nextPage) {
@@ -439,12 +441,15 @@ ${
   }
 
   createPageHtml(
-    title,
-    canonicalHtml,
-    headerHtml,
+    h2SectionTitle,
+    h3SectionTitle,
+    navbarHtml,
     contentHtml,
     nextPageLinkHtml
   ) {
+    const title = h3SectionTitle === undefined
+      ? `${h2SectionTitle} - ${Shared.bookTitle}`
+      : `${h3SectionTitle} - ${h2SectionTitle} - ${Shared.bookTitle}`;
     return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -452,11 +457,13 @@ ${Builder.googleAnalyticsHtml}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
-${canonicalHtml}
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-${headerHtml}
+${navbarHtml}
+<header>
+<div class="h2-section-title">${Shared.bookTitle} - ${h2SectionTitle}</div>
+</header>
 <main>
 ${contentHtml}
 ${nextPageLinkHtml}
