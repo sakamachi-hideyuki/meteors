@@ -1,4 +1,6 @@
 class Builder {
+  static amazonUrl = "https://www.amazon.co.jp/dp/B09DX3WVX6/";
+
   static canonicalHtml =
     '<link rel="canonical" href="https://sakamachi-hideyuki.github.io/meteors/">';
 
@@ -33,11 +35,12 @@ class Builder {
     this.removeElemsAndDescendants(rootElem, "[class^=MsoToc], br");
     this.removeElems(rootElem, "a, span");
     this.removeUnnecessaryAttrs(rootElem);
-    this.removeBlankLines(rootElem);
-    this.removeUnnecessaryParagraphs(rootElem);
 
     this.convertTextIndents(rootElem);
     this.convertImages(rootElem);
+
+    this.removeBlankLines(rootElem);
+    this.removeUnnecessaryParagraphs(rootElem);
 
     this.changeTagNames(rootElem, "h2", "h3");
     this.changeTagNames(rootElem, "h1", "h2");
@@ -90,14 +93,6 @@ class Builder {
     });
   }
 
-  removeBlankLines(rootElem) {
-    rootElem.innerHTML = rootElem.innerHTML.replace(/\n+/g, "\n");
-  }
-
-  removeUnnecessaryParagraphs(rootElem) {
-    rootElem.innerHTML = rootElem.innerHTML.replace(/<p>\n?<\/p>\n?/g, ""); // 内容のないpを削除
-  }
-
   convertTextIndents(rootElem) {
     rootElem.querySelectorAll("*[style]").forEach((el) => {
       const textIndent = el.style.textIndent;
@@ -132,6 +127,14 @@ class Builder {
         ancestor.replaceWith(newElem);
       }
     });
+  }
+
+  removeBlankLines(rootElem) {
+    rootElem.innerHTML = rootElem.innerHTML.replace(/\n+/g, "\n");
+  }
+
+  removeUnnecessaryParagraphs(rootElem) {
+    rootElem.innerHTML = rootElem.innerHTML.replace(/<p>\n?<\/p>\n?/g, ""); // 内容のないpを削除
   }
 
   changeTagNames(rootElem, oldTagName, newTagName) {
@@ -390,7 +393,7 @@ ${Builder.canonicalHtml}
 <header>
 ${Shared.photoCoverHtml}
 <div id="website-desc">
-本Webサイトは <a href="https://www.amazon.co.jp/dp/B09DX3WVX6/" target="_blank">書籍『${Shared.bookTitle}』(著:${Shared.author})</a> の内容を著者がWeb公開したものです。
+本Webサイトは <a href="${Builder.amazonUrl}" target="_blank">書籍『${Shared.bookTitle}』(著:${Shared.author})</a> の内容を著者がWeb公開したものです。
 </div>
 </header>
 <main>
@@ -447,9 +450,10 @@ ${
     contentHtml,
     nextPageLinkHtml
   ) {
-    const title = h3SectionTitle === undefined
-      ? `${h2SectionTitle} - ${Shared.bookTitle}`
-      : `${h3SectionTitle} - ${h2SectionTitle} - ${Shared.bookTitle}`;
+    const title =
+      h3SectionTitle === undefined
+        ? `${h2SectionTitle} - ${Shared.bookTitle}`
+        : `${h3SectionTitle} - ${h2SectionTitle} - ${Shared.bookTitle}`;
     return `<!DOCTYPE html>
 <html lang="ja">
 <head>
