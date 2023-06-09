@@ -253,6 +253,8 @@ class Builder {
 
   createPages(rootElem) {
     const pages = this.createPageData(rootElem);
+    this.combineTitleOnlyPages(pages);
+    this.createLinks(pages);
     const introductionHtml = this.createIntroductionHtml(rootElem);
     const tocHtml = this.createTocHtml(pages);
     pages[0].html = this.createIndexHtml(
@@ -261,16 +263,9 @@ class Builder {
       this.createNextPageLinkHtml(pages[1])
     );
 
-    let h2SectionTitle = undefined;
     for (let i = 1; i < pages.length; i++) {
       if (pages[i].html === undefined) {
         continue;
-      }
-      let h3SectionTitle = undefined;
-      if (pages[i].level === 2) {
-        h2SectionTitle = pages[i].title;
-      } else {
-        h3SectionTitle = pages[i].title;
       }
       let nextPage = undefined;
       for (let j = i + 1; j < pages.length; j++) {
@@ -285,8 +280,8 @@ class Builder {
         nextPage
       );
       pages[i].html = this.createPageHtml(
-        h2SectionTitle,
-        h3SectionTitle,
+        pages[i].h2Title,
+        pages[i].h3Title,
         navbarHtml,
         pages[i].html,
         this.createNextPageLinkHtml(nextPage)
@@ -296,16 +291,51 @@ class Builder {
   }
 
   createPageData(rootElem) {
-    const pages = Array.from(rootElem.querySelectorAll("h2, h3")).map((el) => {
-      const level = Number(el.tagName.substring(1)); // h2->2, h3->3
-      const id = el.parentElement.id;
-      const title = el.innerText;
-      const filename = `${id}.html`;
+    const pages = [];
+    const indexPage = {
+      level: 1,
+      id: "index",
+      title: "先頭ページ",
+      h2Title: "",
+      h3Title: "",
+      filename: "index.html",
+      html: "",
+      titleOnly: false,
+    };
+    pages.push(indexPage);
+    const els = Array.from(rootElem.querySelectorAll("h2, h3"));
+    let h2Title = "";
+    for (const el of els) {
       const section = el.parentElement;
+      const level = Number(el.tagName.substring(1)); // h2->2, h3->3
+      const id = section.id;
+      const title = el.innerText;
+      let h3Title = "";
+      if (level === 2) {
+        h2Title = title;
+      } else {
+        h3Title = title;
+      }
+      const filename = `${id}.html`;
       const html = section.outerHTML;
       const titleOnly = section.classList.contains("title-only");
-      return { level, id, title, filename, html, titleOnly };
-    });
+      const page = {
+        level,
+        id,
+        title,
+        h2Title,
+        h3Title,
+        filename,
+        html,
+        titleOnly,
+      };
+      pages.push(page);
+    }
+    console.log(pages);
+    return pages;
+  }
+
+  combineTitleOnlyPages(pages) {
     // タイトルのみのセクションがある場合、htmlとfilenameを修正
     for (let i = 0; i < pages.length; i++) {
       if (pages[i].titleOnly) {
@@ -320,16 +350,59 @@ class Builder {
         }
       }
     }
-    const indexPage = {
-      level: 1,
-      id: "index",
-      title: "先頭ページ",
-      filename: "index.html",
-      html: "",
-      titleOnly: false,
-    };
-    pages.splice(0, 0, indexPage);
-    return pages;
+  }
+
+  createLinks(pages) {
+    const preface = pages.find(p => p.id === "preface");
+    const appendix = pages.find(p => p.id === "appendix");
+    for (let i = 0; i < pages.length; i++) {
+      const page = pages[i];
+      if (page.html === undefined || page.id === 'revision-history') {
+        continue;
+      }
+      page.html = page.html.replaceAll(/「序文」/g, (s) => {
+        return `<a href="${preface.filename}">${s}</a>`;
+      });
+      page.html = page.html.replaceAll(/付録参照/g, (s) => {
+        return `<a href="${appendix.filename}">${s}</a>`;
+      });
+      page.html = page.html.replaceAll(/「([^<>「」]+の章)」([^<>「」項]+)の項/g, (s, p1, p2) => {
+        const index = p2.indexOf("、");
+        if (index !== -1) {
+          p2 = p2.substring(0, index);
+        }
+        const target = pages.find(p => p.h2Title === p1 && p.h3Title === p2);
+        if (target === undefined) {
+          console.error(`createLinks: ${s} not found.`);
+          return s;
+        }
+        return `<a href="${target.filename}">${s}</a>`;
+      });
+      page.html = page.html.replaceAll(/本章の([^<>「」項]+)の項/g, (s, p1) => {
+        const index = p1.indexOf("、");
+        if (index !== -1) {
+          p1 = p1.substring(0, index);
+        }
+        const target = pages.find(p => p.h2Title === page.h2Title && p.h3Title === p1);
+        if (target === undefined) {
+          console.error(`createLinks: ${s} not found.`);
+          return s;
+        }
+        return `<a href="${target.filename}">${s}</a>`;
+      });
+      page.html = page.html.replaceAll(/前項/g, (s) => {
+        const target = pages[i - 1];
+        return `<a href="${target.filename}">${s}</a>`;
+      });
+      page.html = page.html.replaceAll(/「(補足　[^<>「」]+)」/g, (s, p1) => {
+        const target = pages.find(p => p.h3Title === p1);
+        if (target === undefined) {
+          console.error(`createLinks: ${s} not found.`);
+          return s;
+        }
+        return `<a href="${target.filename}">${s}</a>`;
+      });
+    }
   }
 
   createIntroductionHtml(rootElem) {
@@ -443,17 +516,11 @@ ${
       : `<a id="next-page" href="${nextPage.filename}">次ページ&nbsp;&gt;&nbsp;${nextPage.title}</a>`;
   }
 
-  createPageHtml(
-    h2SectionTitle,
-    h3SectionTitle,
-    navbarHtml,
-    contentHtml,
-    nextPageLinkHtml
-  ) {
+  createPageHtml(h2Title, h3Title, navbarHtml, contentHtml, nextPageLinkHtml) {
     const title =
-      h3SectionTitle === undefined
-        ? `${h2SectionTitle} - ${Shared.bookTitle}`
-        : `${h3SectionTitle} - ${h2SectionTitle} - ${Shared.bookTitle}`;
+      h3Title === ""
+        ? `${h2Title} - ${Shared.bookTitle}`
+        : `${h3Title} - ${h2Title} - ${Shared.bookTitle}`;
     return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -466,7 +533,7 @@ ${Builder.googleAnalyticsHtml}
 <body>
 ${navbarHtml}
 <header>
-<div class="h2-section-title">${Shared.bookTitle} - ${h2SectionTitle}</div>
+<div class="h2-section-title">${Shared.bookTitle} - ${h2Title}</div>
 </header>
 <main>
 ${contentHtml}
