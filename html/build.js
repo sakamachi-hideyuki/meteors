@@ -527,8 +527,11 @@ ${
   createPageHtml(h2Title, h3Title, navbarHtml, contentHtml, nextPageLinkHtml) {
     const title =
       h3Title === ""
-        ? `${h2Title} - ${Shared.bookTitle}`
-        : `${h3Title} - ${h2Title} - ${Shared.bookTitle}`;
+        ? `${h2Title} | ${Shared.bookTitle}`
+        : `${h2Title}　${h3Title} | ${Shared.bookTitle}`;
+    const h2TitleDiv = h3Title === ""
+        ? ""
+        : `<div class="h2-title">${h2Title}</div>`;
     return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -541,7 +544,8 @@ ${Builder.googleAnalyticsHtml}
 <body>
 ${navbarHtml}
 <header>
-<div class="h2-section-title">${Shared.bookTitle} - ${h2Title}</div>
+<div class="h1-title">${Shared.bookTitle}</div>
+${h2TitleDiv}
 </header>
 <main>
 ${contentHtml}
