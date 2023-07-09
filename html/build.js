@@ -366,6 +366,11 @@ class Builder {
       page.html = page.html.replaceAll(/付録参照/g, (s) => {
         return `<a href="${appendix.filename}">${s}</a>`;
       });
+      if (page.id !== 'appendix') {
+        page.html = page.html.replace(/神名末尾のパターン/, (s) => {
+          return `<a href="${appendix.filename}">${s}</a>`;
+        });
+      }
       page.html = page.html.replaceAll(/「([^<>「」]+の章)」([^<>「」項]+)の項/g, (s, p1, p2) => {
         const index = p2.indexOf("、");
         if (index !== -1) {
