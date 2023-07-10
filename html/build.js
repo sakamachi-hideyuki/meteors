@@ -353,11 +353,11 @@ class Builder {
   }
 
   createLinks(pages) {
-    const preface = pages.find(p => p.id === "preface");
-    const appendix = pages.find(p => p.id === "appendix");
+    const preface = pages.find((p) => p.id === "preface");
+    const appendix = pages.find((p) => p.id === "appendix");
     for (let i = 0; i < pages.length; i++) {
       const page = pages[i];
-      if (page.html === undefined || page.id === 'revision-history') {
+      if (page.html === undefined || page.id === "revision-history") {
         continue;
       }
       page.html = page.html.replaceAll(/「序文」/g, (s) => {
@@ -366,29 +366,36 @@ class Builder {
       page.html = page.html.replaceAll(/付録参照/g, (s) => {
         return `<a href="${appendix.filename}">${s}</a>`;
       });
-      if (page.id !== 'appendix') {
+      if (page.id !== "appendix") {
         page.html = page.html.replace(/神名末尾のパターン/, (s) => {
           return `<a href="${appendix.filename}">${s}</a>`;
         });
       }
-      page.html = page.html.replaceAll(/「([^<>「」]+の章)」([^<>「」項]+)の項/g, (s, p1, p2) => {
-        const index = p2.indexOf("、");
-        if (index !== -1) {
-          p2 = p2.substring(0, index);
+      page.html = page.html.replaceAll(
+        /「([^<>「」]+の章)」([^<>「」項]+)の項/g,
+        (s, p1, p2) => {
+          const index = p2.indexOf("、");
+          if (index !== -1) {
+            p2 = p2.substring(0, index);
+          }
+          const target = pages.find(
+            (p) => p.h2Title === p1 && p.h3Title === p2
+          );
+          if (target === undefined) {
+            console.error(`createLinks: ${s} not found.`);
+            return s;
+          }
+          return `<a href="${target.filename}">${s}</a>`;
         }
-        const target = pages.find(p => p.h2Title === p1 && p.h3Title === p2);
-        if (target === undefined) {
-          console.error(`createLinks: ${s} not found.`);
-          return s;
-        }
-        return `<a href="${target.filename}">${s}</a>`;
-      });
+      );
       page.html = page.html.replaceAll(/本章の([^<>「」項]+)の項/g, (s, p1) => {
         const index = p1.indexOf("、");
         if (index !== -1) {
           p1 = p1.substring(0, index);
         }
-        const target = pages.find(p => p.h2Title === page.h2Title && p.h3Title === p1);
+        const target = pages.find(
+          (p) => p.h2Title === page.h2Title && p.h3Title === p1
+        );
         if (target === undefined) {
           console.error(`createLinks: ${s} not found.`);
           return s;
@@ -396,7 +403,7 @@ class Builder {
         return `<a href="${target.filename}">${s}</a>`;
       });
       page.html = page.html.replaceAll(/「([^<>「」]+の章)」で/g, (s, p1) => {
-        const target = pages.find(p => p.h2Title === p1 && p.h3Title === "");
+        const target = pages.find((p) => p.h2Title === p1 && p.h3Title === "");
         if (target === undefined) {
           console.error(`createLinks: ${s} not found.`);
           return s;
@@ -408,7 +415,7 @@ class Builder {
         return `<a href="${target.filename}">${s}</a>`;
       });
       page.html = page.html.replaceAll(/「(補足　[^<>「」]+)」/g, (s, p1) => {
-        const target = pages.find(p => p.h3Title === p1);
+        const target = pages.find((p) => p.h3Title === p1);
         if (target === undefined) {
           console.error(`createLinks: ${s} not found.`);
           return s;
@@ -534,9 +541,8 @@ ${
       h3Title === ""
         ? `${h2Title} - ${Shared.bookTitle}`
         : `${h2Title}　${h3Title} - ${Shared.bookTitle}`;
-    const h2TitleDiv = h3Title === ""
-        ? ""
-        : `<div class="h2-title">${h2Title}</div>`;
+    const h2TitleDiv =
+      h3Title === "" ? "" : `<div class="h2-title">${h2Title}</div>`;
     return `<!DOCTYPE html>
 <html lang="ja">
 <head>
