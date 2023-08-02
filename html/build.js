@@ -424,6 +424,10 @@ class Builder {
         const target = pages[i - 1];
         return `<a href="${target.filename}">${s}</a>`;
       });
+      page.html = page.html.replaceAll(/次項/g, (s) => {
+        const target = pages[i + 1];
+        return `<a href="${target.filename}">${s}</a>`;
+      });
       page.html = page.html.replaceAll(/「(補足　[^<>「」]+)」/g, (s, p1) => {
         const target = pages.find((p) => p.h3Title === p1);
         if (target === undefined) {
