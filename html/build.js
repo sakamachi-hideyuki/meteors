@@ -410,6 +410,16 @@ class Builder {
         }
         return `<a href="${target.filename}">「${p1}」</a>で`;
       });
+      page.html = page.html.replaceAll(/本章冒頭/g, (s) => {
+        const target = pages.find(
+          (p) => p.h2Title === page.h2Title && p.h3Title === ""
+        );
+        if (target === undefined) {
+          console.error(`createLinks: ${s} not found.`);
+          return s;
+        }
+        return `<a href="${target.filename}">${s}</a>`;
+      });
       page.html = page.html.replaceAll(/前項/g, (s) => {
         const target = pages[i - 1];
         return `<a href="${target.filename}">${s}</a>`;
