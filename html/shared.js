@@ -31,7 +31,7 @@ ${this.pleiadesAttributionHtml}</figcaption>
 </figure>
 `;
 
-  static figUkeiAlt = "蛇韓鋤之剣と五百箇御統";
+  static figUkeiAlt = "素戔嗚尊の剣と五百箇御統";
 
   static figUkeiHtml = `
 <figure id="fig-ukei" class="image-and-caption">
