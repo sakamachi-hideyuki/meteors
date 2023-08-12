@@ -562,10 +562,7 @@ ${
   }
 
   createPageHtml(h2Title, h3Title, navbarHtml, contentHtml, nextPageLinkHtml) {
-    const title =
-      h3Title === ""
-        ? `${h2Title} - ${Shared.bookTitle}`
-        : `${h2Title}　${h3Title} - ${Shared.bookTitle}`;
+    const documentTitle = this.createDocumentTitle(h2Title, h3Title);
     const h2TitleDiv =
       h3Title === "" ? "" : `<div class="h2-title">${h2Title}</div>`;
     return `<!DOCTYPE html>
@@ -574,7 +571,7 @@ ${
 ${Builder.googleAnalyticsHtml}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${title}</title>
+<title>${documentTitle}</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -593,6 +590,18 @@ ${nextPageLinkHtml}
 </body>
 </html>
 `;
+  }
+
+  createDocumentTitle(h2Title, h3Title) {
+    if (h3Title === "") {
+      return `${h2Title} - ${Shared.bookTitle}`;
+    } else if (h3Title.endsWith("まとめ")) {
+      return `${h3Title.replace('「', '').replace('」', '　')} - ${Shared.bookTitle}`;
+    } else if (h3Title.startsWith("補足")) {
+      return `${h3Title} - ${Shared.bookTitle}`;
+    } else {
+      return `${h2Title}　${h3Title} - ${Shared.bookTitle}`;
+    }
   }
 
   htmlToElem(html) {
