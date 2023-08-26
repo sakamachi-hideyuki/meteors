@@ -34,14 +34,16 @@ class Builder {
 
     this.removeElemsAndDescendants(rootElem, "[class^=MsoToc], br");
     this.removeElems(rootElem, "a, span");
+    this.convertClassToStyle(rootElem);
     this.removeUnnecessaryAttrs(rootElem);
 
-    this.convertTextIndents(rootElem);
+    this.convertToRem(rootElem);
     this.convertImages(rootElem);
 
     this.removeBlankLines(rootElem);
     this.removeUnnecessaryParagraphs(rootElem);
 
+    this.changeTagNames(rootElem, "h3", "h4");
     this.changeTagNames(rootElem, "h2", "h3");
     this.changeTagNames(rootElem, "h1", "h2");
 
@@ -75,8 +77,39 @@ class Builder {
     });
   }
 
+  convertClassToStyle(rootElem) {
+    rootElem.querySelectorAll("p").forEach((el) => {
+      if (el.className === "10") {
+        // リスト1のスタイルの場合
+        if (!el.style.marginLeft) {
+          el.style.marginLeft = "10.5pt";
+        }
+        if (!el.style.textIndent) {
+          el.style.textIndent = "-10.5pt";
+        }
+      } else if (el.className === "21") {
+        // リスト2のスタイルの場合
+        if (!el.style.marginLeft) {
+          el.style.marginLeft = "21pt";
+        }
+        if (!el.style.textIndent) {
+          el.style.textIndent = "-10.5pt";
+        }
+      } else if (el.className === "30") {
+        // リスト3のスタイルの場合
+        if (!el.style.marginLeft) {
+          el.style.marginLeft = "31.5pt";
+        }
+        if (!el.style.textIndent) {
+          el.style.textIndent = "-10.5pt";
+        }
+      }
+    });
+  }
+
   removeUnnecessaryAttrs(rootElem) {
     rootElem.querySelectorAll("*").forEach((el) => {
+      const marginLeft = el.style.marginLeft;
       const textIndent = el.style.textIndent;
       for (const name of el.getAttributeNames()) {
         if (name.toLowerCase() === "alt") {
@@ -86,24 +119,38 @@ class Builder {
         // それ以外の属性は削除
         el.removeAttribute(name);
       }
+      if (marginLeft) {
+        // style属性のmargin-leftは復活
+        el.style.marginLeft = marginLeft;
+      }
       if (textIndent) {
-        // style属性のtext-indentのみ復活
+        // style属性のtext-indentは復活
         el.style.textIndent = textIndent;
       }
     });
   }
 
-  convertTextIndents(rootElem) {
+  convertToRem(rootElem) {
     rootElem.querySelectorAll("*[style]").forEach((el) => {
-      const textIndent = el.style.textIndent;
-      if (textIndent && textIndent.endsWith("pt")) {
-        // ptを数値で取得
-        const pt = Number(textIndent.substring(0, textIndent.length - 2));
-        // 10.5ptあたり1remに変換、四捨五入で小数部１桁にする
-        const rem = Math.round((pt / 10.5) * 10) / 10;
-        el.style.textIndent = `${rem}rem`;
+      if (el.style.marginLeft) {
+        el.style.marginLeft = this.toRem(el.style.marginLeft);
+      }
+      if (el.style.textIndent) {
+        el.style.textIndent = this.toRem(el.style.textIndent);
       }
     });
+  }
+
+  toRem(str) {
+    // pt/mmを数値で取得
+    const pt = Number(str.substring(0, str.length - 2));
+    if (pt === 0) {
+      // 0mmの場合
+      return null;
+    }
+    // 10.5ptあたり1remに変換、四捨五入で小数部１桁にする
+    const rem = Math.round((pt / 10.5) * 10) / 10;
+    return `${rem}rem`;
   }
 
   convertImages(rootElem) {
@@ -595,9 +642,7 @@ ${nextPageLinkHtml}
   createDocumentTitle(h2Title, h3Title) {
     if (h3Title === "") {
       return `${h2Title} - ${Shared.bookTitle}`;
-    } else if (h3Title.endsWith("まとめ")) {
-      return `${h3Title.replace('「', '').replace('」', '　')} - ${Shared.bookTitle}`;
-    } else if (h3Title.startsWith("補足")) {
+    } else if (h3Title.endsWith("まとめ") || h3Title.startsWith("補足")) {
       return `${h3Title} - ${Shared.bookTitle}`;
     } else {
       return `${h2Title}　${h3Title} - ${Shared.bookTitle}`;

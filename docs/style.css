@@ -159,6 +159,13 @@ h3 {
 section.title-only + section > h3 {
   padding-top: 0;
 }
+/* ページタイトル(その他の神の項の各神名) */
+h4 {
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin: 0;
+  text-align: center;
+}
 
 /* ページ下部の次ページへのリンク */
 a#next-page {
@@ -238,17 +245,14 @@ div#introduction {
 nav#toc ul {
   list-style: none;
   line-height: 2.5rem;
+  padding-left: 2rem;
 }
 
 /* 付録 */
-section#appendix p {
-  font-size: 0.9rem;
-  line-height: 1.4rem;
-}
 section#appendix b {
   display: block;
-  padding-top: 1rem;
-  font-size: 1rem;
+  padding-top: 2rem;
+  font-size: 1.1rem;
 }
 
 /* 改版履歴 */
