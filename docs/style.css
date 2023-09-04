@@ -48,7 +48,7 @@ body {
 }
 p {
   line-height: 2rem;
-  margin: 0;
+  text-align: justify;
 }
 a {
   color: #06c;
@@ -56,6 +56,31 @@ a {
 }
 a:hover {
   text-decoration: underline;
+}
+
+/* 空行 */
+p.blank-line {
+  line-height: 0;
+  margin: 0.5rem 0;
+}
+/* 字下げ1 */
+p.indent-1 {
+  margin: 1rem 0;
+}
+/* リスト1(箇条書き レベル1) */
+p.list-1 {
+  margin: 0 0 0 2rem;
+  text-indent: -1rem;
+}
+/* リスト2(箇条書き レベル2) */
+p.list-2 {
+  margin: 0 0 0 3rem;
+  text-indent: -1rem;
+}
+/* リスト3(箇条書き レベル3) */
+p.list-3 {
+  margin: 0 0 0 4rem;
+  text-indent: -1rem;
 }
 
 /* 固定ナビゲーションバー */
@@ -133,7 +158,7 @@ div.h2-title {
 
 /* ページタイトル(Webサイトの先頭ページの場合) */
 h1 {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: normal;
   margin: 0;
   padding-top: 2rem;
@@ -141,7 +166,7 @@ h1 {
 }
 /* ページタイトル(章の先頭ページの場合) */
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: normal;
   margin: 0;
   padding-top: 2rem;
@@ -149,7 +174,7 @@ h2 {
 }
 /* ページタイトル(項のページの場合) */
 h3 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: normal;
   margin: 0;
   padding-top: 2rem;
@@ -161,7 +186,7 @@ section.title-only + section > h3 {
 }
 /* ページタイトル(その他の神の項の各神名) */
 h4 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: normal;
   margin: 0;
   text-align: center;
@@ -251,8 +276,9 @@ nav#toc ul {
 /* 付録 */
 section#appendix b {
   display: block;
-  padding-top: 2rem;
   font-size: 1.1rem;
+  line-height: 1.1rem;
+  padding-top: 2rem;
 }
 
 /* 改版履歴 */
