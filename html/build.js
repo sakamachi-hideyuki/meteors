@@ -32,8 +32,9 @@ class Builder {
     const rootElem = document.createElement("div");
     rootElem.innerHTML = inputHtml;
 
+    const oldLinks = this.getOldLinks(rootElem);
     this.removeElemsAndDescendants(rootElem, "[class^=MsoToc], br");
-    this.removeElems(rootElem, "a, span");
+    this.removeElems(rootElem, 'a[href], a[name^="_Toc"], span');
     this.convertClass(rootElem);
     this.removeUnnecessaryAttrs(rootElem);
 
@@ -57,9 +58,30 @@ class Builder {
     this.removeBlankLinesAtEndOfSections(rootElem);
     this.setTitleOnlyClasses(rootElem);
 
-    const pages = this.createPages(rootElem);
+    const pages = this.createPageData(rootElem);
+    this.combineTitleOnlyPages(pages);
+    this.createLinks(pages);
+    this.createPageHtmls(pages);
+
+    console.log("pages:");
+    console.log(pages);
+
+    this.validateLinks(oldLinks, pages);
 
     return pages;
+  }
+
+  getOldLinks(rootElem) {
+    const oldLinks = [];
+    Array.from(rootElem.querySelectorAll("a[href]")).forEach((el) => {
+      const href = el.getAttribute("href");
+      if (!href.startsWith("#") || href.startsWith("#_Toc")) {
+        return;
+      }
+      const link = { href, text: el.innerText };
+      oldLinks.push(link);
+    });
+    return oldLinks;
   }
 
   removeElemsAndDescendants(rootElem, selector) {
@@ -104,8 +126,13 @@ class Builder {
     rootElem.querySelectorAll("*").forEach((el) => {
       const textIndent = el.style.textIndent;
       for (const name of el.getAttributeNames()) {
-        if (name.toLowerCase() === "alt" || name.toLowerCase() === "class") {
-          // alt/class属性は削除しない
+        if (
+          name.toLowerCase() === "alt" ||
+          name.toLowerCase() === "class" ||
+          name.toLowerCase() === "href" ||
+          name.toLowerCase() === "name"
+        ) {
+          // alt/class/href/name属性は削除しない
           continue;
         }
         // それ以外の属性は削除
@@ -283,47 +310,10 @@ class Builder {
     });
   }
 
-  createPages(rootElem) {
-    const pages = this.createPageData(rootElem);
-    this.combineTitleOnlyPages(pages);
-    this.createLinks(pages);
-    const introductionHtml = this.createIntroductionHtml(rootElem);
-    const tocHtml = this.createTocHtml(pages);
-    pages[0].html = this.createIndexHtml(
-      introductionHtml,
-      tocHtml,
-      this.createNextPageLinkHtml(pages[1])
-    );
-
-    for (let i = 1; i < pages.length; i++) {
-      if (pages[i].html === undefined) {
-        continue;
-      }
-      let nextPage = undefined;
-      for (let j = i + 1; j < pages.length; j++) {
-        if (pages[j].html !== undefined) {
-          nextPage = pages[j];
-          break;
-        }
-      }
-      const navbarHtml = this.createNavbarHtml(
-        pages[i - 1],
-        pages[i],
-        nextPage
-      );
-      pages[i].html = this.createPageHtml(
-        pages[i].h2Title,
-        pages[i].h3Title,
-        navbarHtml,
-        pages[i].html,
-        this.createNextPageLinkHtml(nextPage)
-      );
-    }
-    return pages;
-  }
-
   createPageData(rootElem) {
     const pages = [];
+
+    const introductionHtml = this.createIntroductionHtml(rootElem);
     const indexPage = {
       level: 1,
       id: "index",
@@ -331,14 +321,18 @@ class Builder {
       h2Title: "",
       h3Title: "",
       filename: "index.html",
-      html: "",
+      contentHtml: introductionHtml,
       titleOnly: false,
+      anchorName: undefined,
     };
     pages.push(indexPage);
+
     const els = Array.from(rootElem.querySelectorAll("h2, h3"));
     let h2Title = "";
     for (const el of els) {
+      const anchorName = el.querySelector("a")?.getAttribute("name");
       const section = el.parentElement;
+      this.removeElems(section, "a[name]");
       const level = Number(el.tagName.substring(1)); // h2->2, h3->3
       const id = section.id;
       const title = el.innerText;
@@ -349,7 +343,7 @@ class Builder {
         h3Title = title;
       }
       const filename = `${id}.html`;
-      const html = section.outerHTML;
+      const contentHtml = section.outerHTML;
       const titleOnly = section.classList.contains("title-only");
       const page = {
         level,
@@ -358,13 +352,27 @@ class Builder {
         h2Title,
         h3Title,
         filename,
-        html,
+        contentHtml,
         titleOnly,
+        anchorName,
       };
       pages.push(page);
     }
-    console.log(pages);
     return pages;
+  }
+
+  createIntroductionHtml(rootElem) {
+    const intro = this.htmlToElem('<div id="introduction"></div>');
+    // 最初のsectionの手前までのノードを取り出す
+    for (const node of Array.from(rootElem.childNodes)) {
+      if (node.nodeType === 1 && node.tagName.toLowerCase() === "section") {
+        break;
+      }
+      intro.appendChild(node);
+    }
+    // 末尾の空行は削除
+    intro.innerHTML = intro.innerHTML.replace(/(<p[^>]*>&nbsp;<\/p>\n)+$/g, "");
+    return intro.outerHTML;
   }
 
   combineTitleOnlyPages(pages) {
@@ -372,8 +380,8 @@ class Builder {
     for (let i = 0; i < pages.length; i++) {
       if (pages[i].titleOnly) {
         for (let j = i + 1; j < pages.length; j++) {
-          pages[i].html += pages[j].html; // 最初のタイトルのみのセクションにhtmlをまとめる
-          pages[j].html = undefined;
+          pages[i].contentHtml += pages[j].contentHtml; // 最初のタイトルのみのセクションにcontentHtmlをまとめる
+          pages[j].contentHtml = undefined;
           pages[j].filename = pages[i].filename; // filenameは全部同じにする
           if (!pages[j].titleOnly) {
             i = j;
@@ -390,25 +398,28 @@ class Builder {
     for (let i = 0; i < pages.length; i++) {
       const page = pages[i];
       // タイトルのみのセクションや改版履歴のページはスキップ
-      if (page.html === undefined || page.id === "revision-history") {
+      if (page.contentHtml === undefined || page.id === "revision-history") {
         continue;
       }
       // "「序文」"をリンク化
-      page.html = page.html.replaceAll(/「序文」/g, (s) => {
+      page.contentHtml = page.contentHtml.replaceAll(/「序文」/g, (s) => {
         return `<a href="${preface.filename}">${s}</a>`;
       });
       // "付録参照"をリンク化
-      page.html = page.html.replaceAll(/付録参照/g, (s) => {
+      page.contentHtml = page.contentHtml.replaceAll(/付録参照/g, (s) => {
         return `<a href="${appendix.filename}">${s}</a>`;
       });
       // 「付録　神名末尾のパターン」以外のページでは"神名末尾のパターン"をリンク化
       if (page.id !== "appendix") {
-        page.html = page.html.replace(/神名末尾のパターン/, (s) => {
-          return `<a href="${appendix.filename}">${s}</a>`;
-        });
+        page.contentHtml = page.contentHtml.replace(
+          /神名末尾のパターン/,
+          (s) => {
+            return `<a href="${appendix.filename}">${s}</a>`;
+          }
+        );
       }
       // "「～の章)」～の項"をリンク化
-      page.html = page.html.replaceAll(
+      page.contentHtml = page.contentHtml.replaceAll(
         /「([^<>「」]+の章)」([^<>「」項]+)の項/g,
         (s, p1, p2) => {
           const index = p2.indexOf("、");
@@ -426,31 +437,39 @@ class Builder {
         }
       );
       // "本章の～の項"をリンク化
-      page.html = page.html.replaceAll(/本章の([^<>「」項]+)の項/g, (s, p1) => {
-        const index = p1.indexOf("、");
-        if (index !== -1) {
-          p1 = p1.substring(0, index);
+      page.contentHtml = page.contentHtml.replaceAll(
+        /本章の([^<>「」項]+)の項/g,
+        (s, p1) => {
+          const index = p1.indexOf("、");
+          if (index !== -1) {
+            p1 = p1.substring(0, index);
+          }
+          const target = pages.find(
+            (p) => p.h2Title === page.h2Title && p.h3Title === p1
+          );
+          if (target === undefined) {
+            console.error(`createLinks: ${s} not found.`);
+            return s;
+          }
+          return `<a href="${target.filename}">${s}</a>`;
         }
-        const target = pages.find(
-          (p) => p.h2Title === page.h2Title && p.h3Title === p1
-        );
-        if (target === undefined) {
-          console.error(`createLinks: ${s} not found.`);
-          return s;
-        }
-        return `<a href="${target.filename}">${s}</a>`;
-      });
+      );
       // "「～の章」で"をリンク化
-      page.html = page.html.replaceAll(/「([^<>「」]+の章)」で/g, (s, p1) => {
-        const target = pages.find((p) => p.h2Title === p1 && p.h3Title === "");
-        if (target === undefined) {
-          console.error(`createLinks: ${s} not found.`);
-          return s;
+      page.contentHtml = page.contentHtml.replaceAll(
+        /「([^<>「」]+の章)」で/g,
+        (s, p1) => {
+          const target = pages.find(
+            (p) => p.h2Title === p1 && p.h3Title === ""
+          );
+          if (target === undefined) {
+            console.error(`createLinks: ${s} not found.`);
+            return s;
+          }
+          return `<a href="${target.filename}">「${p1}」</a>で`;
         }
-        return `<a href="${target.filename}">「${p1}」</a>で`;
-      });
+      );
       // "本章冒頭"をリンク化
-      page.html = page.html.replaceAll(/本章冒頭/g, (s) => {
+      page.contentHtml = page.contentHtml.replaceAll(/本章冒頭/g, (s) => {
         const target = pages.find(
           (p) => p.h2Title === page.h2Title && p.h3Title === ""
         );
@@ -461,39 +480,62 @@ class Builder {
         return `<a href="${target.filename}">${s}</a>`;
       });
       // "前項"をリンク化
-      page.html = page.html.replaceAll(/前項/g, (s) => {
+      page.contentHtml = page.contentHtml.replaceAll(/前項/g, (s) => {
         const target = pages[i - 1];
         return `<a href="${target.filename}">${s}</a>`;
       });
       // "次項"をリンク化
-      page.html = page.html.replaceAll(/次項/g, (s) => {
+      page.contentHtml = page.contentHtml.replaceAll(/次項/g, (s) => {
         const target = pages[i + 1];
         return `<a href="${target.filename}">${s}</a>`;
       });
       // "「補足　～」"をリンク化
-      page.html = page.html.replaceAll(/「(補足　[^<>「」]+)」/g, (s, p1) => {
-        const target = pages.find((p) => p.h3Title === p1);
-        if (target === undefined) {
-          console.error(`createLinks: ${s} not found.`);
-          return s;
+      page.contentHtml = page.contentHtml.replaceAll(
+        /「(補足　[^<>「」]+)」/g,
+        (s, p1) => {
+          const target = pages.find((p) => p.h3Title === p1);
+          if (target === undefined) {
+            console.error(`createLinks: ${s} not found.`);
+            return s;
+          }
+          return `<a href="${target.filename}">${s}</a>`;
         }
-        return `<a href="${target.filename}">${s}</a>`;
-      });
+      );
     }
   }
 
-  createIntroductionHtml(rootElem) {
-    const intro = this.htmlToElem('<div id="introduction"></div>');
-    // 最初のsectionの手前までのノードを取り出す
-    for (const node of Array.from(rootElem.childNodes)) {
-      if (node.nodeType === 1 && node.tagName.toLowerCase() === "section") {
-        break;
+  createPageHtmls(pages) {
+    const tocHtml = this.createTocHtml(pages);
+    pages[0].html = this.createIndexHtml(
+      pages[0].contentHtml,
+      tocHtml,
+      this.createNextPageLinkHtml(pages[1])
+    );
+
+    for (let i = 1; i < pages.length; i++) {
+      if (pages[i].contentHtml === undefined) {
+        continue;
       }
-      intro.appendChild(node);
+      let nextPage = undefined;
+      for (let j = i + 1; j < pages.length; j++) {
+        if (pages[j].contentHtml !== undefined) {
+          nextPage = pages[j];
+          break;
+        }
+      }
+      const navbarHtml = this.createNavbarHtml(
+        pages[i - 1],
+        pages[i],
+        nextPage
+      );
+      pages[i].html = this.createPageHtml(
+        pages[i].h2Title,
+        pages[i].h3Title,
+        navbarHtml,
+        pages[i].contentHtml,
+        this.createNextPageLinkHtml(nextPage)
+      );
     }
-    // 末尾の空行は削除
-    intro.innerHTML = intro.innerHTML.replace(/(<p[^>]*>&nbsp;<\/p>\n)+$/g, "");
-    return intro.outerHTML;
   }
 
   createTocHtml(pages) {
@@ -633,6 +675,54 @@ ${nextPageLinkHtml}
       return `${h2Title}　${h3Title} - ${Shared.bookTitle}`;
     }
   }
+
+  validateLinks(oldLinks, pages) {
+    this.convertHref(oldLinks, pages);
+    const newLinks = this.getNewLinks(pages);
+
+    console.log("oldLinks:");
+    console.log(oldLinks);
+    console.log("newLinks:");
+    console.log(newLinks);
+    for (let i = 0; i < oldLinks.length; i++) {
+      const oldLink = oldLinks[i];
+      const newLink = newLinks[i];
+      const oldLinkJson = JSON.stringify(oldLink);
+      const newLinkJson = JSON.stringify(newLink);
+      if (newLink === undefined || oldLink.href !== newLink.href || oldLink.text !== newLink.text) {
+        throw new Error(`link unmatch: i=${i} oldLinkJson=${oldLinkJson}, newLinkJson=${newLinkJson}`);
+      }
+    }
+  }
+
+  convertHref(oldLinks, pages) {
+    oldLinks.forEach(link => {
+      const anchorName = link.href.substring(1);
+      const page = pages.find((p) => p.anchorName === anchorName);
+      link.href = page.filename;
+    });
+  }
+
+  getNewLinks(pages) {
+    const newLinks = [];
+    pages.forEach((page) => {
+      if (page.contentHtml === undefined) {
+        return;
+      }
+      const elem = document.createElement("div");
+      elem.innerHTML = page.contentHtml;
+      Array.from(elem.querySelectorAll("a[href]")).forEach((el) => {
+        const href = el.getAttribute("href");
+        if (href.startsWith("http")) {
+          return;
+        }
+        const link = { href, text: el.innerText, filename: page.filename };
+        newLinks.push(link);
+      });
+    });
+    return newLinks;
+  }
+
 
   htmlToElem(html) {
     const dummy = document.createElement("div");
