@@ -63,8 +63,8 @@ p.blank-line {
   line-height: 0;
   margin: 0.5rem 0;
 }
-/* 字下げ1 */
-p.indent-1 {
+/* 段落 */
+p.par {
   margin: 1rem 0;
 }
 /* リスト1(箇条書き レベル1) */

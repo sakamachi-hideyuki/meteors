@@ -106,7 +106,10 @@ class Builder {
         el.setAttribute("class", "blank-line");
       } else if (el.className === "12") {
         // 字下げ1
-        el.setAttribute("class", "indent-1");
+        el.setAttribute("class", "par");
+      // } else if (el.className === "a4") {
+      //   // 段落
+      //   el.setAttribute("class", "par");
       } else if (el.className === "10") {
         // リスト1
         el.setAttribute("class", "list-1");
