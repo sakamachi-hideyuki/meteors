@@ -4,23 +4,16 @@
 }
 
 html {
-  /* AndroidのChromeで別ページの途中へ遷移できなくなるので使わないでおく */
-  /* scroll-behavior: smooth; */
   height: 100%;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 640px) {
   html {
     font-size: 125%;
   }
 }
-@media screen and (min-width: 1536px) {
+@media screen and (min-width: 1280px) {
   html {
     font-size: 150%;
-  }
-}
-@media screen and (min-width: 2304px) {
-  html {
-    font-size: 175%;
   }
 }
 @media print {
@@ -48,7 +41,7 @@ body {
 }
 p {
   line-height: 2rem;
-  text-align: justify;
+  margin: 0;
 }
 a {
   color: #06c;
@@ -61,7 +54,7 @@ a:hover {
 /* 空行 */
 p.blank-line {
   line-height: 0;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 /* 段落 */
 p.par {
@@ -87,7 +80,7 @@ p.list-3 {
 nav#navbar {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(238, 238, 238, 0.5);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   grid-area: navbar;
 
@@ -127,6 +120,7 @@ nav#navbar > ul > li > a {
 /* ヘッダー */
 header {
   grid-area: header;
+  padding-top: var(--sticky-header-height);
 }
 
 /* メインコンテンツ */
@@ -144,15 +138,14 @@ footer {
 
 /* Webサイトのタイトル */
 div.h1-title {
-  font-size: 0.7rem;
-  line-height: 1.7rem;
+  font-size: 0.8rem;
+  line-height: 1.8rem;
   text-align: center;
-  padding-top: var(--sticky-header-height);
 }
 /* 章のタイトル */
 div.h2-title {
-  font-size: 0.7rem;
-  line-height: 0.7rem;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
   text-align: center;
 }
 
@@ -161,15 +154,15 @@ h1 {
   font-size: 1.7rem;
   font-weight: normal;
   margin: 0;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   text-align: center;
 }
 /* ページタイトル(章の先頭ページの場合) */
 h2 {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: normal;
   margin: 0;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   text-align: center;
 }
 /* ページタイトル(項のページの場合) */
@@ -177,7 +170,7 @@ h3 {
   font-size: 1.3rem;
   font-weight: normal;
   margin: 0;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   text-align: center;
 }
 /* 連続している項のページタイトル */
@@ -242,13 +235,20 @@ figure.image-and-caption + p {
 .h2-section > figure.image-and-caption {
   margin: 1rem 0 0 0;
 }
+
+/* 目次 */
+html#html-toc {
+  scroll-padding-top: 10rem;
+}
+nav#toc ul {
+  list-style: none;
+  line-height: 2.5rem;
+  padding-left: 2rem;
+}
+
 /* 表紙画像 */
 figure.image-and-caption#cover > img {
   max-width: 60rem;
-}
-/* 甕の章　大甕の画像 */
-figure.image-and-caption#photo-ogame > img {
-  width: 50%;
 }
 
 /* Webサイトの説明 */
@@ -256,21 +256,14 @@ div#website-desc {
   background-color: #eee;
   font-family: sans-serif;
   font-size: 0.8rem;
-  margin-top: 1rem;
+  margin: 1rem 0;
   padding: 0.5rem;
   text-align: center;
 }
 
-/* 導入部 */
-div#introduction {
-  padding-bottom: 2rem;
-}
-
-/* 目次 */
-nav#toc ul {
-  list-style: none;
-  line-height: 2.5rem;
-  padding-left: 2rem;
+/* 甕の章　大甕の画像 */
+figure.image-and-caption#photo-ogame > img {
+  width: 50%;
 }
 
 /* 付録 */
@@ -285,4 +278,7 @@ section#appendix b {
 section#revision-history p {
   font-size: 0.9rem;
   line-height: 1.4rem;
+}
+section#revision-history p.blank-line {
+  line-height: 0;
 }
