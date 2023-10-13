@@ -66,7 +66,13 @@ class Builder {
     console.log("pages:");
     console.log(pages);
 
-    this.validateLinks(oldLinks, pages);
+    this.convertHref(oldLinks, pages);
+    const newLinks = this.getNewLinks(pages);
+    this.validateLinks(oldLinks, newLinks);
+
+    const summariesS = this.getSummariesS(pages);
+    const summariesC = this.getSummariesC(pages);
+    this.validateSummaries(summariesS, summariesC);
 
     return pages;
   }
@@ -106,6 +112,7 @@ class Builder {
         el.setAttribute("class", "blank-line");
       } else if (
         el.className === "par" ||
+        el.className === "par-bold" ||
         el.className === "list-1" ||
         el.className === "list-2" ||
         el.className === "list-3"
@@ -314,7 +321,7 @@ class Builder {
       filename: "toc.html",
       contentHtml: undefined,
       titleOnly: false,
-      anchorName: undefined,
+      anchorNames: [],
     };
     pages.push(tocPage);
 
@@ -328,14 +335,16 @@ class Builder {
       filename: "index.html",
       contentHtml: introductionHtml,
       titleOnly: false,
-      anchorName: undefined,
+      anchorNames: [],
     };
     pages.push(indexPage);
 
     const els = Array.from(rootElem.querySelectorAll("h2, h3"));
     let h2Title = "";
     for (const el of els) {
-      const anchorName = el.querySelector("a")?.getAttribute("name");
+      const anchorNames = Array.from(el.querySelectorAll("a")).map((a) =>
+        a.getAttribute("name")
+      );
       const section = el.parentElement;
       this.removeElems(section, "a[name]");
       const level = Number(el.tagName.substring(1)); // h2->2, h3->3
@@ -359,7 +368,7 @@ class Builder {
         filename,
         contentHtml,
         titleOnly,
-        anchorName,
+        anchorNames,
       };
       pages.push(page);
     }
@@ -574,10 +583,8 @@ ${Builder.googleAnalyticsHtml}
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-<div class="h1-title">${Shared.bookTitle}</div>
-</header>
 <main>
+<div class="h1-title">${Shared.bookTitle}</div>
 <h2>目次</h2>
 <nav id="toc">
 ${tocUl.outerHTML}
@@ -606,13 +613,13 @@ ${Builder.canonicalHtml}
 ${navbarHtml}
 <header>
 ${Shared.photoCoverHtml}
-<div id="website-desc">
-本Webサイトは <a href="${Builder.amazonUrl}" target="_blank">書籍『${Shared.bookTitle}』(著:${Shared.author})</a> の内容を著者がWeb公開したものです。
-</div>
 </header>
 <main>
 <section class="h1-section" id="index">
 <h1>${Shared.bookTitle}</h1>
+<div id="website-desc">
+本Webサイトは <a href="${Builder.amazonUrl}" target="_blank">書籍『${Shared.bookTitle}』(著:${Shared.author})</a> の内容を著者がWeb公開したものです。
+</div>
 ${page.contentHtml}
 </section>
 ${nextPageLinkHtml}
@@ -640,11 +647,9 @@ ${Builder.googleAnalyticsHtml}
 </head>
 <body>
 ${navbarHtml}
-<header>
+<main>
 <div class="h1-title">${Shared.bookTitle}</div>
 ${h2TitleDiv}
-</header>
-<main>
 ${page.contentHtml}
 ${nextPageLinkHtml}
 </main>
@@ -698,38 +703,11 @@ ${
       : `<a id="next-page" href="${nextPage.filename}">次ページ&nbsp;&gt;&nbsp;${nextPage.title}</a>`;
   }
 
-  validateLinks(oldLinks, pages) {
-    this.convertHref(oldLinks, pages);
-    const newLinks = this.getNewLinks(pages);
-
-    console.log("oldLinks:");
-    console.log(oldLinks);
-    console.log("newLinks:");
-    console.log(newLinks);
-    const len = Math.max(oldLinks.length, newLinks.length);
-    for (let i = 0; i < len; i++) {
-      const oldLink = oldLinks[i];
-      const newLink = newLinks[i];
-      const oldLinkJson = JSON.stringify(oldLink);
-      const newLinkJson = JSON.stringify(newLink);
-      if (
-        oldLink === undefined ||
-        newLink === undefined ||
-        oldLink.href !== newLink.href ||
-        oldLink.text !== newLink.text
-      ) {
-        throw new Error(
-          `link unmatch: i=${i} oldLinkJson=${oldLinkJson}, newLinkJson=${newLinkJson}`
-        );
-      }
-    }
-  }
-
   convertHref(oldLinks, pages) {
-    oldLinks.forEach((link) => {
-      const anchorName = link.href.substring(1);
-      const page = pages.find((p) => p.anchorName === anchorName);
-      link.href = page.filename;
+    oldLinks.forEach((oldLink) => {
+      const anchorName = oldLink.href.substring(1);
+      const page = pages.find((p) => p.anchorNames.includes(anchorName));
+      oldLink.href = page.filename;
     });
   }
 
@@ -751,6 +729,97 @@ ${
       });
     });
     return newLinks;
+  }
+
+  validateLinks(oldLinks, newLinks) {
+    console.log("oldLinks:");
+    console.log(oldLinks);
+    console.log("newLinks:");
+    console.log(newLinks);
+    const len = Math.max(oldLinks.length, newLinks.length);
+    for (let i = 0; i < len; i++) {
+      const oldLink = oldLinks[i];
+      const newLink = newLinks[i];
+      if (
+        oldLink === undefined ||
+        newLink === undefined ||
+        oldLink.href !== newLink.href ||
+        oldLink.text !== newLink.text
+      ) {
+        const oldLinkJson = JSON.stringify(oldLink);
+        const newLinkJson = JSON.stringify(newLink);
+        throw new Error(
+          `link unmatch: i=${i} oldLinkJson=${oldLinkJson}, newLinkJson=${newLinkJson}`
+        );
+      }
+    }
+  }
+
+  getSummariesS(pages) {
+    const begin = '<p class="par-bold">【本項のまとめ】</p>\n';
+    const end = "</section>";
+    const summaries = [];
+    pages.forEach((page) => {
+      if (page.contentHtml === undefined) {
+        return;
+      }
+      const beginIndex = page.contentHtml.indexOf(begin);
+      const endIndex = page.contentHtml.lastIndexOf(end);
+      if (beginIndex === -1 || endIndex === -1) {
+        return;
+      }
+      const summary = page.contentHtml.substring(
+        beginIndex + begin.length,
+        endIndex
+      );
+      summaries.push(summary);
+    });
+    return summaries;
+  }
+
+  getSummariesC(pages) {
+    const begin = '<p class="list-1">';
+    const end = "</section>";
+    const separator = '<p class="blank-line">&nbsp;</p>\n';
+    const summaries = [];
+    pages.forEach((page) => {
+      if (!page.title.endsWith("まとめ")) {
+        return;
+      }
+      const beginIndex = page.contentHtml.indexOf(begin);
+      const endIndex = page.contentHtml.indexOf(end);
+      if (beginIndex === -1 || endIndex === -1) {
+        return;
+      }
+      const html = page.contentHtml.substring(beginIndex, endIndex);
+      const sums = html.split(separator);
+      summaries.push(...sums);
+    });
+    return summaries;
+  }
+
+  validateSummaries(summariesS, summariesC) {
+    console.log("summariesS:");
+    console.log(summariesS);
+    console.log("summariesC:");
+    console.log(summariesC);
+    const len = Math.max(summariesS.length, summariesC.length);
+    for (let i = 0; i < len; i++) {
+      const summaryS = summariesS[i];
+      const summaryC = summariesC[i];
+      if (
+        summaryS === undefined ||
+        summaryC === undefined ||
+        summaryS !== summaryC
+      ) {
+        throw new Error(
+          `summary unmatch: i=${i} summaryS=
+${summaryS}
+, summaryC=
+${summaryC}`
+        );
+      }
+    }
   }
 
   htmlToElem(html) {
