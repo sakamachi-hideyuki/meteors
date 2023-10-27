@@ -209,7 +209,7 @@ figure.image-and-caption {
   text-align: center;
 }
 /* 画像 */
-figure.image-and-caption > img {
+figure.image-and-caption img {
   height: auto;
   width: 100%;
 }
@@ -266,7 +266,7 @@ html#html-index main {
 figure.image-and-caption#photo-pleiades {
   background-color: #000;
 }
-figure.image-and-caption#photo-pleiades > img {
+figure.image-and-caption#photo-pleiades img {
   max-width: 60rem;
 }
 /* 先頭ページ　Webサイトの説明 */
@@ -281,7 +281,7 @@ div#website-desc {
 figure.image-and-caption#photo-ogame {
   background-color: #fff;
 }
-figure.image-and-caption#photo-ogame > img {
+figure.image-and-caption#photo-ogame img {
   width: 50%;
 }
 
