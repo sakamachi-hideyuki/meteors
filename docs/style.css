@@ -44,8 +44,8 @@ body {
 nav#navbar {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  background-color: rgba(238, 238, 238, 0.4);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   grid-area: navbar;
 
   position: fixed;
@@ -210,6 +210,7 @@ figure.image-and-caption {
 }
 /* 画像 */
 figure.image-and-caption > img {
+  height: auto;
   width: 100%;
 }
 /* キャプション */
@@ -220,10 +221,6 @@ figure.image-and-caption > figcaption {
   font-size: 0.6rem;
   padding-right: 0.2rem;
   text-align: right;
-}
-/* キャプション中のリンク */
-figure.image-and-caption > figcaption > a {
-  color: #000;
 }
 /* 画像とキャプションの後のp */
 figure.image-and-caption + p {
@@ -265,22 +262,18 @@ html#html-index header {
 html#html-index main {
   padding-top: 0;
 }
-/* 表紙画像 */
-figure.image-and-caption#cover {
+/* 先頭ページ　画像 */
+figure.image-and-caption#photo-pleiades {
   background-color: #000;
 }
-figure.image-and-caption#cover > img {
+figure.image-and-caption#photo-pleiades > img {
   max-width: 60rem;
 }
-/* Webサイトの説明 */
+/* 先頭ページ　Webサイトの説明 */
 div#website-desc {
-  background-color: #eee;
-  border: 1px solid #ccc;
-  border-radius: 0.2rem;
   font-family: sans-serif;
   font-size: 0.7rem;
-  margin: 1rem 0;
-  padding: 0.4rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 

@@ -612,7 +612,7 @@ ${Builder.canonicalHtml}
 <body>
 ${navbarHtml}
 <header>
-${Shared.photoCoverHtml}
+${Shared.photoPleiadesWebHtml}
 </header>
 <main>
 <section class="h1-section" id="index">
@@ -760,7 +760,7 @@ ${
     const end = "</section>";
     const summaries = [];
     pages.forEach((page) => {
-      if (page.contentHtml === undefined) {
+      if (page.h3Title.startsWith("補足") || page.contentHtml === undefined) {
         return;
       }
       const beginIndex = page.contentHtml.indexOf(begin);

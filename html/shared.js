@@ -4,15 +4,21 @@ class Shared {
   static author = "坂町英之";
 
   static pleiadesAttributionHtml = `This photo is adapted from <a href="https://commons.wikimedia.org/wiki/File:Orion,_Taurus_and_Pleiades.jpg" target="_blank">"Orion, Taurus and Pleiades"</a><br>
-by Panda~thwiki, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">used under CC BY 4.0</a>`;
-
-  static photoCoverAlt = `${this.bookTitle}　${this.author}`;
+by Panda~thwiki, used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoPleiadesAlt = "写真：オリオン座、おうし座、昴";
 
-  static photoCoverHtml = `
-<figure id="cover" class="image-and-caption">
-<img src="images/cover-web.jpg" alt="${this.photoCoverAlt}">
+  static photoPleiadesWebHtml = `
+<figure id="photo-pleiades" class="image-and-caption">
+<img src="images/photo-pleiades-web.webp" width="1920" height="960" alt="${this.photoPleiadesAlt}">
+<figcaption>${this.photoPleiadesAlt}<br>
+${this.pleiadesAttributionHtml}</figcaption>
+</figure>
+`;
+
+  static photoPleiadesEbookHtml = `
+<figure id="photo-pleiades" class="image-and-caption">
+<img src="sauna200.png" width="1280" height="853" alt="${this.photoPleiadesAlt}">
 <figcaption>${this.photoPleiadesAlt}<br>
 ${this.pleiadesAttributionHtml}</figcaption>
 </figure>
@@ -25,7 +31,7 @@ ${this.pleiadesAttributionHtml}</figcaption>
 
   static photoMeteorHtml = `
 <figure id="photo-meteor" class="image-and-caption">
-<img src="images/photo-meteor-web.jpg" alt="${this.photoMeteorAlt}">
+<img src="images/photo-meteor-web.webp" width="1280" height="845" alt="${this.photoMeteorAlt}">
 <figcaption>${this.photoMeteorAlt}<br>
 出典：<a href="http://norskmeteornettverk.no/wordpress/?p=3202" target="_blank">Norsk meteornettverk/Universitetet i Tromsø/Ketil Vegum</a></figcaption>
 </figure>
@@ -35,7 +41,7 @@ ${this.pleiadesAttributionHtml}</figcaption>
 
   static figUkeiHtml = `
 <figure id="fig-ukei" class="image-and-caption">
-<img src="images/fig-ukei-web.jpg" alt="${this.figUkeiAlt}">
+<img src="images/fig-ukei-web.webp" width="1280" height="800" alt="${this.figUkeiAlt}">
 <figcaption>${this.figUkeiAlt}<br>
 ${this.pleiadesAttributionHtml}</figcaption>
 </figure>
@@ -45,10 +51,10 @@ ${this.pleiadesAttributionHtml}</figcaption>
 
   static photoTategushiHtml = `
 <figure id="photo-tategushi" class="image-and-caption">
-<img src="images/photo-tategushi-web.jpg" alt="${this.photoTategushiAlt}">
+<img src="images/photo-tategushi-web.webp" width="1280" height="860" alt="${this.photoTategushiAlt}">
 <figcaption>${this.photoTategushiAlt}<br>
 出典：<a href="https://jomon-japan.jp/archives#/asset/360" target="_blank">JOMON ARCHIVES（八戸市教育委員会撮影）</a><br>
-<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Licensed under CC BY 4.0</a></figcaption>
+Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
 </figure>
 `;
 
@@ -56,10 +62,10 @@ ${this.pleiadesAttributionHtml}</figcaption>
 
   static photoOgameHtml = `
 <figure id="photo-ogame" class="image-and-caption">
-<img src="images/photo-ogame-web.jpg" alt="${this.photoOgameAlt}">
+<img src="images/photo-ogame-web.webp" width="960" height="1280" alt="${this.photoOgameAlt}">
 <figcaption>${this.photoOgameAlt}<br>
 出典：<a href="https://adeac.jp/choshi-city/catalog/mp010261-200010" target="_blank">銚子市／銚子市デジタルアーカイブ</a><br>
-<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Licensed under CC BY 4.0</a></figcaption>
+Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
 </figure>
 `;
 
@@ -67,10 +73,10 @@ ${this.pleiadesAttributionHtml}</figcaption>
 
   static photoMagatamaHtml = `
 <figure id="photo-magatama" class="image-and-caption">
-<img src="images/photo-magatama-web.jpg" alt="${this.photoMagatamaAlt}">
+<img src="images/photo-magatama-web.webp" width="1280" height="857" alt="${this.photoMagatamaAlt}">
 <figcaption>${this.photoMagatamaAlt}<br>
 出典：<a href="https://jomon-japan.jp/archives#/asset/504" target="_blank">JOMON ARCHIVES（青森県埋蔵文化財調査センター所蔵、田中義道撮影）</a><br>
-<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Licensed under CC BY 4.0</a></figcaption>
+Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
 </figure>
 `;
 
@@ -78,7 +84,7 @@ ${this.pleiadesAttributionHtml}</figcaption>
 
   static figIzanaginotsurugiHtml = `
 <figure id="fig-izanakinotsurugi" class="image-and-caption">
-<img src="images/fig-izanakinotsurugi-web.jpg" alt="${this.figIzanaginotsurugiAlt}">
+<img src="images/fig-izanakinotsurugi-web.webp" width="1280" height="800" alt="${this.figIzanaginotsurugiAlt}">
 <figcaption>${this.figIzanaginotsurugiAlt}<br>
 ${this.pleiadesAttributionHtml}</figcaption>
 </figure>
@@ -88,7 +94,7 @@ ${this.pleiadesAttributionHtml}</figcaption>
 
   static figAmanoyachimataHtml = `
 <figure id="fig-amanoyachimata" class="image-and-caption">
-<img src="images/fig-amanoyachimata-web.jpg" alt="${this.figAmanoyachimataAlt}">
+<img src="images/fig-amanoyachimata-web.webp" width="1280" height="800" alt="${this.figAmanoyachimataAlt}">
 <figcaption>${this.figAmanoyachimataAlt}<br>
 ${this.pleiadesAttributionHtml}</figcaption>
 </figure>
@@ -98,10 +104,10 @@ ${this.pleiadesAttributionHtml}</figcaption>
 
   static photoOtomatsuriHtml = `
 <figure id="photo-otomatsuri" class="image-and-caption">
-<img src="images/photo-otomatsuri-web.jpg" alt="${this.photoOtomatsuriAlt}">
+<img src="images/photo-otomatsuri-web.webp" width="1280" height="852" alt="${this.photoOtomatsuriAlt}">
 <figcaption>${this.photoOtomatsuriAlt} © panpanzupan<br>
 出典：<a href="https://find47.jp/ja/i/t5MU6" target="_blank">FIND/47</a><br>
-<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Licensed under CC BY 4.0</a></figcaption>
+Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
 </figure>
 `;
 
@@ -109,10 +115,10 @@ ${this.pleiadesAttributionHtml}</figcaption>
 
   static photoIwakuraHtml = `
 <figure id="photo-iwakura" class="image-and-caption">
-<img src="images/photo-iwakura-web.jpg" alt="${this.photoIwakuraAlt}">
+<img src="images/photo-iwakura-web.webp" width="1280" height="853" alt="${this.photoIwakuraAlt}">
 <figcaption>${this.photoIwakuraAlt} © rikky_photography<br>
 出典：<a href="https://find47.jp/ja/i/o0gM4" target="_blank">FIND/47</a><br>
-<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Licensed under CC BY 4.0</a></figcaption>
+Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
 </figure>
 `;
 
