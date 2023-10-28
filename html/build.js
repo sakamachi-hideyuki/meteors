@@ -584,11 +584,13 @@ ${Builder.googleAnalyticsHtml}
 </head>
 <body>
 <main>
+<div id="content">
 <div class="h1-title">${Shared.bookTitle}</div>
 <h2>目次</h2>
 <nav id="toc">
 ${tocUl.outerHTML}
 </nav>
+</div>
 </main>
 <footer>
 <div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
@@ -611,10 +613,9 @@ ${Builder.canonicalHtml}
 </head>
 <body>
 ${navbarHtml}
-<header>
-${Shared.photoPleiadesWebHtml}
-</header>
 <main>
+${Shared.photoPleiadesWebHtml}
+<div id="content">
 <section class="h1-section" id="index">
 <h1>${Shared.bookTitle}</h1>
 <div id="website-desc">
@@ -623,6 +624,7 @@ ${Shared.photoPleiadesWebHtml}
 ${page.contentHtml}
 </section>
 ${nextPageLinkHtml}
+</div>
 </main>
 <footer>
 <div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
@@ -648,10 +650,12 @@ ${Builder.googleAnalyticsHtml}
 <body>
 ${navbarHtml}
 <main>
+<div id="content">
 <div class="h1-title">${Shared.bookTitle}</div>
 ${h2TitleDiv}
 ${page.contentHtml}
 ${nextPageLinkHtml}
+</div>
 </main>
 <footer>
 <div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
@@ -857,13 +861,15 @@ document.getElementById("buildButton").addEventListener("click", () => {
 
 document.getElementById("saveButtonForFirefox").addEventListener("click", () => {
   const links = document.querySelectorAll("a[download]");
-  Array.from(links).forEach((el) => el.click());
+  for (const link of links) {
+    link.click();
+  }
 });
 
 document.getElementById("saveButtonForChrome").addEventListener("click", async () => {
   const links = document.querySelectorAll("a[download]");
-  for (const el of links) {
-    el.click();
+  for (const link of links) {
+    link.click();
     await pause(110);
   }
 });

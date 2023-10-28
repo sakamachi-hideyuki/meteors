@@ -27,8 +27,8 @@ html {
 }
 
 body {
-  background-color: #fff;
-  color: #000;
+  background-color: #111;
+  color: #fff;
   font-family: serif;
   height: 100%;
   margin: 0;
@@ -83,10 +83,16 @@ nav#navbar > ul > li > a {
 
 /* メインコンテンツ */
 main {
+  background-color: #fff;
+  color: #000;
   grid-area: main;
+  padding-top: var(--sticky-header-height);
+}
+
+div#content {
   margin: 0 auto;
   max-width: var(--max-content-width);
-  padding: var(--sticky-header-height) 1rem 0 1rem;
+  padding: 0 1rem;
 }
 
 /* フッター */
@@ -152,8 +158,6 @@ a#next-page {
 
 /* ページ下部のコピーライト文 */
 div#copyright {
-  background-color: #111;
-  color: #fff;
   font-family: sans-serif;
   font-size: 0.6rem;
   line-height: 2rem;
@@ -244,21 +248,6 @@ html#html-toc nav#toc ul {
   padding-left: 2rem;
 }
 
-/* 先頭ページ */
-html#html-index > body {
-  grid-template:
-    "navbar" auto
-    "header" auto
-    "main" 1fr
-    "footer" auto;
-}
-html#html-index header {
-  grid-area: header;
-  padding-top: var(--sticky-header-height);
-}
-html#html-index main {
-  padding-top: 0;
-}
 /* 先頭ページ　画像 */
 figure.image-and-caption#photo-pleiades {
   background-color: #000;
