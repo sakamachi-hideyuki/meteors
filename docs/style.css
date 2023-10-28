@@ -280,8 +280,8 @@ div#website-desc {
 /* 甕の章　大甕の画像 */
 figure.image-and-caption#photo-ogame {
   background-color: #fff;
-}
-figure.image-and-caption#photo-ogame img {
+  margin-left: auto;
+  margin-right: auto;
   width: 50%;
 }
 
