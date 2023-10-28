@@ -680,7 +680,7 @@ ${
     ? ""
     : `<a href="${
         prevPage.filename === "index.html" ? "./" : prevPage.filename
-      }">&lt;&nbsp;前ページ</a>`
+      }">◀&nbsp;前ページ</a>`
 }
 </li>
 <li>
@@ -690,7 +690,7 @@ ${
 ${
   nextPage === undefined
     ? ""
-    : `<a href="${nextPage.filename}">次ページ&nbsp;&gt;</a>`
+    : `<a href="${nextPage.filename}">次ページ&nbsp;▶</a>`
 }
 </li>
 </ul>
@@ -700,7 +700,7 @@ ${
   createNextPageLinkHtml(nextPage) {
     return nextPage === undefined
       ? ""
-      : `<a id="next-page" href="${nextPage.filename}">次ページ&nbsp;&gt;&nbsp;${nextPage.title}</a>`;
+      : `<a id="next-page" href="${nextPage.filename}">次ページ&nbsp;▶&nbsp;${nextPage.title}</a>`;
   }
 
   convertHref(oldLinks, pages) {
