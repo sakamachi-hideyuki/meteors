@@ -855,7 +855,21 @@ document.getElementById("buildButton").addEventListener("click", () => {
     });
 });
 
-document.getElementById("saveButton").addEventListener("click", () => {
+document.getElementById("saveButtonForFirefox").addEventListener("click", () => {
   const links = document.querySelectorAll("a[download]");
   Array.from(links).forEach((el) => el.click());
 });
+
+document.getElementById("saveButtonForChrome").addEventListener("click", async () => {
+  const links = document.querySelectorAll("a[download]");
+  for (const el of links) {
+    el.click();
+    await pause(110);
+  }
+});
+
+function pause(millisec) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, millisec);
+  });
+}
