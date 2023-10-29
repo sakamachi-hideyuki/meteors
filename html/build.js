@@ -688,7 +688,7 @@ ${
 }
 </li>
 <li>
-<a href="toc.html#toc-${curPage.id}">☰&nbsp;目次</a>
+<a href="toc.html#toc-${curPage.id}">目次</a>
 </li>
 <li>
 ${
