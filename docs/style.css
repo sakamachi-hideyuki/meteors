@@ -119,7 +119,7 @@ h1 {
   font-size: 1.7rem;
   font-weight: normal;
   margin: 0;
-  padding-top: 1.5rem;
+  padding-top: 2rem;
   text-align: center;
 }
 /* 章の先頭ページのページタイトル */
@@ -160,7 +160,7 @@ a#next-page {
 /* ページ下部のコピーライト文 */
 div#copyright {
   font-family: sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   line-height: 2rem;
   text-align: center;
 }
@@ -218,7 +218,8 @@ figure.image-and-caption img {
 /* キャプション */
 figure.image-and-caption > figcaption {
   font-family: sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
   padding-right: 0.2rem;
   text-align: right;
 }
@@ -260,8 +261,8 @@ figure.image-and-caption#photo-pleiades > figcaption {
 /* 先頭ページ　Webサイトの説明 */
 div#website-desc {
   font-family: sans-serif;
-  font-size: 0.7rem;
-  margin-bottom: 2rem;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
@@ -269,7 +270,8 @@ div#website-desc {
 figure.image-and-caption#photo-ogame {
   margin-left: auto;
   margin-right: auto;
-  width: 55%;
+  width: 50%;
+  min-width: 15rem;
 }
 
 /* 改版履歴 */
