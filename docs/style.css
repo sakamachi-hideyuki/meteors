@@ -230,7 +230,6 @@ figure.image-and-caption + p {
   margin: 1rem 0 0 0;
 }
 
-
 /* 目次 */
 html#html-toc {
   scroll-padding-top: 10rem;
@@ -270,8 +269,8 @@ div#website-desc {
 figure.image-and-caption#photo-ogame {
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
   min-width: 15rem;
+  width: 50%;
 }
 
 /* 改版履歴 */
