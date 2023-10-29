@@ -220,7 +220,6 @@ figure.image-and-caption > figcaption {
   font-family: sans-serif;
   font-size: 12px;
   line-height: 20px;
-  padding: 0 4px;
   text-align: left;
 }
 /* 画像とキャプションの後のp */
@@ -257,6 +256,7 @@ figure.image-and-caption#photo-pleiades img {
 }
 figure.image-and-caption#photo-pleiades > figcaption {
   background-color: #fff;
+  padding: 0 4px;
   text-align: right;
 }
 /* 先頭ページ　Webサイトの説明 */
