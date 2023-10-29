@@ -250,7 +250,7 @@ figure.image-and-caption#photo-pleiades {
   background-color: #000;
 }
 figure.image-and-caption#photo-pleiades img {
-  max-width: 60rem;
+  max-width: 64rem;
 }
 figure.image-and-caption#photo-pleiades > figcaption {
   background-color: #fff;
