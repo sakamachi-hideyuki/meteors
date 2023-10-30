@@ -288,9 +288,10 @@ figure.image-and-caption#photo-ogame {
 
 /* 改版履歴 */
 section#revision-history p {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   line-height: 1.4rem;
 }
 section#revision-history p.blank-line {
-  line-height: 0;
+  line-height: 0rem;
+  margin: 0.7rem 0;
 }
