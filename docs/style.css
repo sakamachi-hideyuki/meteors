@@ -1,5 +1,5 @@
 :root {
-  --sticky-header-height: 2rem;
+  --sticky-header-height: 2.25rem;
   --max-content-width: 42rem;
 }
 
@@ -66,7 +66,7 @@ nav#navbar > ul {
 }
 nav#navbar > ul > li {
   border-left: 1px solid #333;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   height: 1rem; /* 文字がなくてもボーダーを付けるため */
   line-height: 1rem;
   text-align: center;
