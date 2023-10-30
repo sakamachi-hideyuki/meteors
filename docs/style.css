@@ -6,9 +6,21 @@
 html {
   height: 100%;
 }
+/* 画像のキャプション */
+figure.image-and-caption > figcaption {
+  font-family: sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: right;
+}
+
 @media screen and (min-width: 640px) {
   html {
     font-size: 125%;
+  }
+  figure.image-and-caption > figcaption {
+    font-size: 15px;
+    line-height: 25px;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -214,20 +226,9 @@ figure.image-and-caption img {
   height: auto;
   width: 100%;
 }
-/* 画像のキャプション */
-figure.image-and-caption > figcaption {
-  font-family: sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.25rem;
-  text-align: left;
-}
 /* 画像とキャプションの後のp */
 figure.image-and-caption + p {
   margin-top: 2rem;
-}
-/* 各章先頭の画像とキャプション */
-.h2-section > figure.image-and-caption {
-  margin: 1rem 0 0 0;
 }
 
 /* 目次 */
@@ -255,7 +256,6 @@ figure.image-and-caption#photo-pleiades img {
 figure.image-and-caption#photo-pleiades > figcaption {
   background-color: #fff;
   padding: 0 0.25rem;
-  text-align: right;
 }
 /* 先頭ページ　Webサイトの説明 */
 div#website-desc {
@@ -266,12 +266,22 @@ div#website-desc {
   text-align: center;
 }
 
+/* 速の章　火球の画像のキャプション */
+figure.image-and-caption#photo-meteor > figcaption {
+  text-align: left;
+}
+
 /* 甕の章　大甕の画像 */
 figure.image-and-caption#photo-ogame {
   margin-left: auto;
   margin-right: auto;
   min-width: 15rem;
   width: 50%;
+}
+
+/* 玉の章　勾玉の画像のキャプション */
+figure.image-and-caption#photo-magatama > figcaption {
+  text-align: left;
 }
 
 /* 改版履歴 */
