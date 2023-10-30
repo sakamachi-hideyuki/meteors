@@ -159,8 +159,8 @@ a#next-page {
 /* ページ下部のコピーライト文 */
 div#copyright {
   font-family: sans-serif;
-  font-size: 12px;
-  line-height: 48px;
+  font-size: 0.75rem;
+  line-height: 3rem;
   text-align: center;
 }
 
@@ -214,11 +214,11 @@ figure.image-and-caption img {
   height: auto;
   width: 100%;
 }
-/* キャプション */
+/* 画像のキャプション */
 figure.image-and-caption > figcaption {
   font-family: sans-serif;
-  font-size: 12px;
-  line-height: 20px;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
   text-align: left;
 }
 /* 画像とキャプションの後のp */
@@ -254,13 +254,14 @@ figure.image-and-caption#photo-pleiades img {
 }
 figure.image-and-caption#photo-pleiades > figcaption {
   background-color: #fff;
-  padding: 0 4px;
+  padding: 0 0.25rem;
   text-align: right;
 }
 /* 先頭ページ　Webサイトの説明 */
 div#website-desc {
   font-family: sans-serif;
   font-size: 0.75rem;
+  line-height: 1.25rem;
   margin-bottom: 1rem;
   text-align: center;
 }
