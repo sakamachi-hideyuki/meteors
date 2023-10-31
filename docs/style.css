@@ -231,15 +231,6 @@ figure.image-and-caption img {
 /* 画像のキャプション */
 figure.image-and-caption > figcaption {
   font-family: sans-serif;
-  text-align: right;
-}
-/* 左揃えにする画像のキャプション */
-/* (行折り返しがあるものや、右揃えだとリンクが近接するもの) */
-figure.image-and-caption#photo-meteor > figcaption,
-figure.image-and-caption#photo-tategushi > figcaption,
-figure.image-and-caption#photo-magatama > figcaption,
-figure.image-and-caption#photo-otomatsuri > figcaption,
-figure.image-and-caption#photo-iwakura > figcaption {
   text-align: left;
 }
 /* 画像とキャプションの後のp */
@@ -272,6 +263,7 @@ figure.image-and-caption#photo-pleiades img {
 figure.image-and-caption#photo-pleiades > figcaption {
   background-color: #fff;
   padding: 0 0.25rem;
+  text-align: right;
 }
 /* 先頭ページ　Webサイトの説明 */
 div#website-desc {
