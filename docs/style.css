@@ -3,6 +3,9 @@
   --max-content-width: 42rem;
 }
 
+html {
+  font-size: 16px;
+}
 /* 画像のキャプション */
 figure.image-and-caption > figcaption {
   font-size: 13px;
