@@ -711,6 +711,9 @@ ${
     oldLinks.forEach((oldLink) => {
       const anchorName = oldLink.href.substring(1);
       const page = pages.find((p) => p.anchorNames.includes(anchorName));
+      if (page === undefined) {
+        throw new Error(`page not found. anchorName=${anchorName}`);
+      }
       oldLink.href = page.filename;
     });
   }
@@ -760,7 +763,7 @@ ${
   }
 
   getSummariesS(pages) {
-    const begin = '<p class="par-bold">【本項のまとめ】</p>\n';
+    const begin = '<p class="par-bold">【まとめ】</p>\n';
     const end = "</section>";
     const summaries = [];
     pages.forEach((page) => {
