@@ -115,7 +115,7 @@ h1 {
   font-size: 1.7rem;
   font-weight: normal;
   margin: 0;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   text-align: center;
 }
 /* 章の先頭ページのページタイトル */
@@ -123,7 +123,7 @@ h2 {
   font-size: 1.5rem;
   font-weight: normal;
   margin: 0;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   text-align: center;
 }
 /* 項のページのページタイトル */
