@@ -673,13 +673,13 @@ ${nextPageLinkHtml}
 
   createDocumentTitle(page) {
     if (
-      page.h3Title === "" ||
-      page.title.endsWith("まとめ") ||
-      page.title.startsWith("補足")
+      page.h3Title !== "" &&
+      !page.h3Title.endsWith("まとめ") &&
+      !page.h3Title.startsWith("補足")
     ) {
-      return `${page.title} - ${Shared.bookTitle}`;
-    } else {
       return `${page.h2Title}　${page.title} - ${Shared.bookTitle}`;
+    } else {
+      return `${page.title} - ${Shared.bookTitle}`;
     }
   }
 
@@ -774,11 +774,8 @@ ${
     const begin = '<p class="par-bold">【まとめ】</p>\n';
     const end = "</section>";
     const summaries = [];
-    pages.forEach((page) => {
-      // 補足のまとめは除外
-      if (page.h3Title.startsWith("補足")) {
-        return;
-      }
+    // 補足以外の【まとめ】を収集
+    pages.filter((p) => !p.h3Title.startsWith("補足")).forEach((page) => {
       const beginIndex = page.contentHtml.indexOf(begin);
       const endIndex = page.contentHtml.lastIndexOf(end);
       if (beginIndex === -1 || endIndex === -1) {
@@ -798,11 +795,8 @@ ${
     const end = "</section>";
     const separator = '<p class="blank-line">&nbsp;</p>\n';
     const summaries = [];
-    pages.forEach((page) => {
-      // 章のまとめ以外はスキップ
-      if (!page.h3Title.endsWith("まとめ")) {
-        return;
-      }
+    // 章のまとめを収集
+    pages.filter((p) => p.h3Title.endsWith("まとめ")).forEach((page) => {
       const beginIndex = page.contentHtml.indexOf(begin);
       const endIndex = page.contentHtml.indexOf(end);
       if (beginIndex === -1 || endIndex === -1) {
@@ -887,6 +881,7 @@ document
     const links = document.querySelectorAll("a[download]");
     for (const link of links) {
       link.click();
+      // Chromeでは1秒間に最大10ダウンロードの制限があるため
       await pause(110);
     }
   });
