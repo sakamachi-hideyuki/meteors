@@ -319,7 +319,7 @@ class Builder {
       h2Title: "",
       h3Title: "",
       filename: "toc.html",
-      contentHtml: undefined,
+      contentHtml: "",
       titleOnly: false,
       anchorNames: [],
     };
@@ -390,12 +390,14 @@ class Builder {
   }
 
   combineTitleOnlyPages(pages) {
-    // タイトルのみのセクションがある場合、htmlとfilenameを修正
+    // タイトルのみのセクションがある場合、title、contentHtml、filenameを修正
     for (let i = 0; i < pages.length; i++) {
       if (pages[i].titleOnly) {
         for (let j = i + 1; j < pages.length; j++) {
+          pages[i].title += "、" + pages[j].title; // 最初のタイトルのみのセクションにtitleをまとめる
+          pages[j].title = "";
           pages[i].contentHtml += pages[j].contentHtml; // 最初のタイトルのみのセクションにcontentHtmlをまとめる
-          pages[j].contentHtml = undefined;
+          pages[j].contentHtml = "";
           pages[j].filename = pages[i].filename; // filenameは全部同じにする
           if (!pages[j].titleOnly) {
             i = j;
@@ -411,8 +413,12 @@ class Builder {
     const appendix = pages.find((p) => p.id === "appendix");
     for (let i = 0; i < pages.length; i++) {
       const page = pages[i];
-      // タイトルのみのセクションや改版履歴のページはスキップ
-      if (page.contentHtml === undefined || page.id === "revision-history") {
+      // 目次、改版履歴のページやタイトルのみのセクションはスキップ
+      if (
+        page.id === "toc" ||
+        page.id === "revision-history" ||
+        page.contentHtml === ""
+      ) {
         continue;
       }
       // "「序文」"をリンク化
@@ -432,7 +438,7 @@ class Builder {
           }
         );
       }
-      // "「～の章)」～の項"をリンク化
+      // "「～の章」～の項"をリンク化
       page.contentHtml = page.contentHtml.replaceAll(
         /「([^<>「」]+の章)」([^<>「」項]+)の項/g,
         (s, p1, p2) => {
@@ -528,12 +534,12 @@ class Builder {
     );
 
     for (let i = 2; i < pages.length; i++) {
-      if (pages[i].contentHtml === undefined) {
+      if (pages[i].contentHtml === "") {
         continue;
       }
       let nextPage = undefined;
       for (let j = i + 1; j < pages.length; j++) {
-        if (pages[j].contentHtml !== undefined) {
+        if (pages[j].contentHtml !== "") {
           nextPage = pages[j];
           break;
         }
@@ -568,7 +574,7 @@ class Builder {
       const a = document.createElement("a");
       a.href = page.filename === "index.html" ? "./" : page.filename;
       a.id = `toc-${page.id}`;
-      a.innerText = page.title;
+      a.innerText = page.h3Title === "" ? page.title : page.h3Title;
       li.appendChild(a);
       curUls[curLevel].appendChild(li);
       curUls[curLevel].appendChild(document.createTextNode("\n"));
@@ -635,7 +641,7 @@ ${nextPageLinkHtml}
   }
 
   createPageHtml(page, navbarHtml, nextPageLinkHtml) {
-    const documentTitle = this.createDocumentTitle(page.h2Title, page.h3Title);
+    const documentTitle = this.createDocumentTitle(page);
     const h2TitleDiv =
       page.h3Title === "" ? "" : `<div class="h2-title">${page.h2Title}</div>`;
     return `<!DOCTYPE html>
@@ -665,13 +671,15 @@ ${nextPageLinkHtml}
 `;
   }
 
-  createDocumentTitle(h2Title, h3Title) {
-    if (h3Title === "") {
-      return `${h2Title} - ${Shared.bookTitle}`;
-    } else if (h3Title.endsWith("まとめ") || h3Title.startsWith("補足")) {
-      return `${h3Title} - ${Shared.bookTitle}`;
+  createDocumentTitle(page) {
+    if (
+      page.h3Title === "" ||
+      page.title.endsWith("まとめ") ||
+      page.title.startsWith("補足")
+    ) {
+      return `${page.title} - ${Shared.bookTitle}`;
     } else {
-      return `${h2Title}　${h3Title} - ${Shared.bookTitle}`;
+      return `${page.h2Title}　${page.title} - ${Shared.bookTitle}`;
     }
   }
 
@@ -721,7 +729,7 @@ ${
   getNewLinks(pages) {
     const newLinks = [];
     pages.forEach((page) => {
-      if (page.contentHtml === undefined) {
+      if (page.contentHtml === "") {
         return;
       }
       const elem = document.createElement("div");
@@ -767,7 +775,8 @@ ${
     const end = "</section>";
     const summaries = [];
     pages.forEach((page) => {
-      if (page.h3Title.startsWith("補足") || page.contentHtml === undefined) {
+      // 補足のまとめは除外
+      if (page.h3Title.startsWith("補足")) {
         return;
       }
       const beginIndex = page.contentHtml.indexOf(begin);
@@ -790,7 +799,8 @@ ${
     const separator = '<p class="blank-line">&nbsp;</p>\n';
     const summaries = [];
     pages.forEach((page) => {
-      if (!page.title.endsWith("まとめ")) {
+      // 章のまとめ以外はスキップ
+      if (!page.h3Title.endsWith("まとめ")) {
         return;
       }
       const beginIndex = page.contentHtml.indexOf(begin);
@@ -862,20 +872,24 @@ document.getElementById("buildButton").addEventListener("click", () => {
     });
 });
 
-document.getElementById("saveButtonForFirefox").addEventListener("click", () => {
-  const links = document.querySelectorAll("a[download]");
-  for (const link of links) {
-    link.click();
-  }
-});
+document
+  .getElementById("saveButtonForFirefox")
+  .addEventListener("click", () => {
+    const links = document.querySelectorAll("a[download]");
+    for (const link of links) {
+      link.click();
+    }
+  });
 
-document.getElementById("saveButtonForChrome").addEventListener("click", async () => {
-  const links = document.querySelectorAll("a[download]");
-  for (const link of links) {
-    link.click();
-    await pause(110);
-  }
-});
+document
+  .getElementById("saveButtonForChrome")
+  .addEventListener("click", async () => {
+    const links = document.querySelectorAll("a[download]");
+    for (const link of links) {
+      link.click();
+      await pause(110);
+    }
+  });
 
 function pause(millisec) {
   return new Promise((resolve, reject) => {
