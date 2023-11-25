@@ -6,7 +6,7 @@ class Shared {
   static pleiadesAttributionHtml = `Adapted from <a href="https://commons.wikimedia.org/wiki/File:Orion,_Taurus_and_Pleiades.jpg" target="_blank">"Orion, Taurus and Pleiades"</a><br>
 by Panda~thwiki, used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
-  static photoPleiadesAlt = "写真：オリオン座、おうし座、昴";
+  static photoPleiadesAlt = "オリオン座、おうし座、昴";
 
   static photoPleiadesWebHtml = `
 <figure id="photo-pleiades" class="image-and-caption">

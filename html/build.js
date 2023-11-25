@@ -111,6 +111,7 @@ class Builder {
         // 空行
         el.setAttribute("class", "blank-line");
       } else if (
+        el.className === "desc" ||
         el.className === "par" ||
         el.className === "par-bold" ||
         el.className === "list-1" ||
@@ -320,6 +321,8 @@ class Builder {
       h3Title: "",
       filename: "toc.html",
       contentHtml: "",
+      descHtml: "",
+      descText: "",
       titleOnly: false,
       anchorNames: [],
     };
@@ -334,6 +337,8 @@ class Builder {
       h3Title: "",
       filename: "index.html",
       contentHtml: introductionHtml,
+      descHtml: "",
+      descText: "",
       titleOnly: false,
       anchorNames: [],
     };
@@ -358,6 +363,9 @@ class Builder {
       }
       const filename = `${id}.html`;
       const contentHtml = section.outerHTML;
+      const descElem = section.querySelector("p.desc");
+      const descHtml = descElem?.innerHTML ?? "";
+      const descText = descElem?.innerText ?? "";
       const titleOnly = section.classList.contains("title-only");
       const page = {
         level,
@@ -367,6 +375,8 @@ class Builder {
         h3Title,
         filename,
         contentHtml,
+        descHtml,
+        descText,
         titleOnly,
         anchorNames,
       };
@@ -390,15 +400,21 @@ class Builder {
   }
 
   combineTitleOnlyPages(pages) {
-    // タイトルのみのセクションがある場合、title、contentHtml、filenameを修正
+    // タイトルのみのセクションがある場合、title、contentHtml、descHtml、descText、filenameを修正
     for (let i = 0; i < pages.length; i++) {
       if (pages[i].titleOnly) {
         for (let j = i + 1; j < pages.length; j++) {
-          pages[i].title += "、" + pages[j].title; // 最初のタイトルのみのセクションにtitleをまとめる
+          // 最初のタイトルのみのセクションにtitle、contentHtml、descHtml、descTextをまとめる
+          pages[i].title += "、" + pages[j].title;
           pages[j].title = "";
-          pages[i].contentHtml += pages[j].contentHtml; // 最初のタイトルのみのセクションにcontentHtmlをまとめる
+          pages[i].contentHtml += pages[j].contentHtml;
           pages[j].contentHtml = "";
-          pages[j].filename = pages[i].filename; // filenameは全部同じにする
+          pages[i].descHtml += pages[j].descHtml;
+          pages[j].descHtml = "";
+          pages[i].descText += pages[j].descText;
+          pages[j].descText = "";
+          // filenameは全部同じにする
+          pages[j].filename = pages[i].filename;
           if (!pages[j].titleOnly) {
             i = j;
             break;
@@ -413,16 +429,19 @@ class Builder {
     const appendix = pages.find((p) => p.id === "appendix");
     for (let i = 0; i < pages.length; i++) {
       const page = pages[i];
-      // 目次、改版履歴のページやタイトルのみのセクションはスキップ
+      // 目次、先頭ページ、序文、付録、改版履歴のページや、コンテンツなしのページはスキップ
       if (
         page.id === "toc" ||
+        page.id === "index" ||
+        page.id === "preface" ||
+        page.id === "appendix" ||
         page.id === "revision-history" ||
         page.contentHtml === ""
       ) {
         continue;
       }
-      // "「序文」"をリンク化
-      page.contentHtml = page.contentHtml.replaceAll(/「序文」/g, (s) => {
+      // "序文"をリンク化
+      page.contentHtml = page.contentHtml.replaceAll(/序文/g, (s) => {
         return `<a href="${preface.filename}">${s}</a>`;
       });
       // "付録参照"をリンク化
@@ -553,6 +572,35 @@ class Builder {
   }
 
   createTocHtml(pages) {
+    return `<!DOCTYPE html>
+<html lang="ja" id="html-toc">
+<head>
+${Builder.googleAnalyticsHtml}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>目次 - ${Shared.bookTitle}</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<div id="content">
+<div class="h1-title">${Shared.bookTitle}</div>
+<h2>目次</h2>
+<nav id="toc">
+${this.createTocUlHtml(pages)}
+</nav>
+</div>
+</main>
+<footer>
+<div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
+</footer>
+<a class="top-of-page" href="#" title="ページ先頭へ">↑</a>
+</body>
+</html>
+`;
+  }
+
+  createTocUlHtml(pages) {
     const tocUl = document.createElement("ul");
     let curUls = [undefined, undefined, tocUl, undefined];
     let curLevel = 2;
@@ -570,40 +618,25 @@ class Builder {
       } else {
         throw new Error();
       }
+      if (page.contentHtml === "") {
+        continue;
+      }
       const li = document.createElement("li");
       const a = document.createElement("a");
       a.href = page.filename === "index.html" ? "./" : page.filename;
       a.id = `toc-${page.id}`;
-      a.innerText = page.h3Title === "" ? page.title : page.h3Title;
+      a.innerText = page.title;
       li.appendChild(a);
+      if (page.descHtml !== "") {
+        const descDiv = document.createElement("div");
+        descDiv.className = "desc";
+        descDiv.innerHTML = page.descHtml;
+        li.appendChild(descDiv);
+      }
       curUls[curLevel].appendChild(li);
       curUls[curLevel].appendChild(document.createTextNode("\n"));
     }
-    return `<!DOCTYPE html>
-<html lang="ja" id="html-toc">
-<head>
-${Builder.googleAnalyticsHtml}
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>目次 - ${Shared.bookTitle}</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<main>
-<div id="content">
-<div class="h1-title">${Shared.bookTitle}</div>
-<h2>目次</h2>
-<nav id="toc">
-${tocUl.outerHTML}
-</nav>
-</div>
-</main>
-<footer>
-<div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
-</footer>
-</body>
-</html>
-`;
+    return tocUl.outerHTML;
   }
 
   createIndexHtml(page, navbarHtml, nextPageLinkHtml) {
@@ -641,15 +674,19 @@ ${nextPageLinkHtml}
   }
 
   createPageHtml(page, navbarHtml, nextPageLinkHtml) {
+    const metaDescription =
+      page.descText === ""
+        ? ""
+        : `<meta name="description" content="${page.descText}">`;
     const documentTitle = this.createDocumentTitle(page);
-    const h2TitleDiv =
-      page.h3Title === "" ? "" : `<div class="h2-title">${page.h2Title}</div>`;
+    const h2TitleDiv = this.createH2TitleDiv(page);
     return `<!DOCTYPE html>
 <html lang="ja" id="html-${page.id}">
 <head>
 ${Builder.googleAnalyticsHtml}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+${metaDescription}
 <title>${documentTitle}</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -683,6 +720,18 @@ ${nextPageLinkHtml}
     }
   }
 
+  createH2TitleDiv(page) {
+    if (
+      page.h3Title !== "" &&
+      !page.h3Title.endsWith("まとめ") &&
+      !page.h3Title.startsWith("補足")
+    ) {
+      return `<div class="h2-title">${page.h2Title}</div>`;
+    } else {
+      return "";
+    }
+  }
+
   createNavbarHtml(prevPage, curPage, nextPage) {
     return `<nav id="navbar">
 <ul>
@@ -710,9 +759,17 @@ ${
   }
 
   createNextPageLinkHtml(nextPage) {
-    return nextPage === undefined
-      ? ""
-      : `<a id="next-page" href="${nextPage.filename}">次ページ&nbsp;▶&nbsp;${nextPage.title}</a>`;
+    if (nextPage === undefined) {
+      return "";
+    }
+    const descDiv =
+      nextPage.descHtml === ""
+        ? ""
+        : `<div class="desc">${nextPage.descHtml}</div>`;
+    return `<nav id="next-page">
+<a href="${nextPage.filename}">次ページ▶${nextPage.title}</a>
+${descDiv}
+</nav>`;
   }
 
   convertHref(oldLinks, pages) {
@@ -775,18 +832,20 @@ ${
     const end = "</section>";
     const summaries = [];
     // 補足以外の【まとめ】を収集
-    pages.filter((p) => !p.h3Title.startsWith("補足")).forEach((page) => {
-      const beginIndex = page.contentHtml.indexOf(begin);
-      const endIndex = page.contentHtml.lastIndexOf(end);
-      if (beginIndex === -1 || endIndex === -1) {
-        return;
-      }
-      const summary = page.contentHtml.substring(
-        beginIndex + begin.length,
-        endIndex
-      );
-      summaries.push(summary);
-    });
+    pages
+      .filter((p) => !p.h3Title.startsWith("補足"))
+      .forEach((page) => {
+        const beginIndex = page.contentHtml.indexOf(begin);
+        const endIndex = page.contentHtml.lastIndexOf(end);
+        if (beginIndex === -1 || endIndex === -1) {
+          return;
+        }
+        const summary = page.contentHtml.substring(
+          beginIndex + begin.length,
+          endIndex
+        );
+        summaries.push(summary);
+      });
     return summaries;
   }
 
@@ -796,16 +855,18 @@ ${
     const separator = '<p class="blank-line">&nbsp;</p>\n';
     const summaries = [];
     // 章のまとめを収集
-    pages.filter((p) => p.h3Title.endsWith("まとめ")).forEach((page) => {
-      const beginIndex = page.contentHtml.indexOf(begin);
-      const endIndex = page.contentHtml.indexOf(end);
-      if (beginIndex === -1 || endIndex === -1) {
-        return;
-      }
-      const html = page.contentHtml.substring(beginIndex, endIndex);
-      const sums = html.split(separator);
-      summaries.push(...sums);
-    });
+    pages
+      .filter((p) => p.h3Title.endsWith("まとめ"))
+      .forEach((page) => {
+        const beginIndex = page.contentHtml.indexOf(begin);
+        const endIndex = page.contentHtml.indexOf(end);
+        if (beginIndex === -1 || endIndex === -1) {
+          return;
+        }
+        const html = page.contentHtml.substring(beginIndex, endIndex);
+        const sums = html.split(separator);
+        summaries.push(...sums);
+      });
     return summaries;
   }
 
@@ -815,6 +876,7 @@ ${
     console.log("summariesC:");
     console.log(summariesC);
     const len = Math.max(summariesS.length, summariesC.length);
+    const errors = [];
     for (let i = 0; i < len; i++) {
       const summaryS = summariesS[i];
       const summaryC = summariesC[i];
@@ -823,13 +885,17 @@ ${
         summaryC === undefined ||
         summaryS !== summaryC
       ) {
-        throw new Error(
+        errors.push(
           `summary unmatch: i=${i} summaryS=
 ${summaryS}
 , summaryC=
 ${summaryC}`
         );
       }
+    }
+    if (errors.length !== 0) {
+      errors.forEach((e) => console.error(e));
+      throw new Error(`summary unmatch: ${errors.length} error(s)`);
     }
   }
 
