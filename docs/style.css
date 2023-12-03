@@ -9,17 +9,17 @@ html {
 }
 @media screen and (min-width: 641px) {
   html {
-    font-size: 125%;
+    font-size: 120%;
   }
 }
 @media screen and (min-width: 1281px) {
   html {
-    font-size: 150%;
+    font-size: 140%;
   }
 }
 @media screen and (min-width: 1921px) {
   html {
-    font-size: 175%;
+    font-size: 160%;
   }
 }
 
