@@ -197,7 +197,7 @@ p.blank-line {
 /* 項の短い説明 */
 p.desc {
   font-size: 0.85rem;
-  line-height: 1.7rem;
+  line-height: normal;
   text-align: center;
 }
 /* 段落 */
