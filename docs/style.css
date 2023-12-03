@@ -7,14 +7,19 @@ html {
   font-size: 16px;
   height: 100%;
 }
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 641px) {
   html {
     font-size: 125%;
   }
 }
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1281px) {
   html {
     font-size: 150%;
+  }
+}
+@media screen and (min-width: 1921px) {
+  html {
+    font-size: 175%;
   }
 }
 
