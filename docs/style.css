@@ -6,6 +6,7 @@
 html {
   font-size: 16px;
   height: 100%;
+  scroll-behavior: smooth;
 }
 @media screen and (min-width: 641px) {
   html {
@@ -268,6 +269,7 @@ figure.image-and-caption + p {
 
 /* 目次 */
 html#html-toc {
+  scroll-behavior: auto;
   scroll-padding-top: 10rem;
 }
 html#html-toc > body {
