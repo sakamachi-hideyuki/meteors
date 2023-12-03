@@ -148,7 +148,7 @@ h4 {
 
 /* ページ下部の次ページへのリンク */
 nav#next-page {
-  margin: 3rem 0;
+  margin: 4rem 0;
 }
 nav#next-page > a {
   display: block;
