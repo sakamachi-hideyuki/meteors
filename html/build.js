@@ -668,6 +668,7 @@ ${nextPageLinkHtml}
 <footer>
 <div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
 </footer>
+<a class="top-of-page" href="#" title="ページ先頭へ">↑</a>
 </body>
 </html>
 `;
@@ -703,6 +704,7 @@ ${nextPageLinkHtml}
 <footer>
 <div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
 </footer>
+<a class="top-of-page" href="#" title="ページ先頭へ">↑</a>
 </body>
 </html>
 `;

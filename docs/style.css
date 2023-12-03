@@ -173,6 +173,24 @@ div#copyright {
   text-align: center;
 }
 
+/* ページ先頭へスクロールするボタン */
+a.top-of-page {
+  background-color: #333;
+  color: #fff;
+  display: block;
+  font-family: sans-serif;
+  line-height: 2.5rem;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  z-index: 998;
+
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  width: 2.5rem;
+}
+
 /* リンク */
 a {
   color: #06c;
@@ -269,23 +287,6 @@ html#html-toc nav#toc li {
 }
 html#html-toc nav#toc div.desc {
   font-size: 0.85rem;
-}
-/* ページ先頭へスクロールするボタン */
-html#html-toc a.top-of-page {
-  background-color: #333;
-  color: #fff;
-  display: block;
-  font-family: sans-serif;
-  line-height: 2.5rem;
-  outline: none;
-  text-align: center;
-  text-decoration: none;
-  z-index: 998;
-
-  position: fixed;
-  bottom: 1.25rem;
-  right: 1.25rem;
-  width: 2.5rem;
 }
 
 /* 先頭ページ　画像 */
