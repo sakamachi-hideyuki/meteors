@@ -107,13 +107,13 @@ div#content {
 /* Webサイトのタイトル */
 div.h1-title {
   font-size: 0.8rem;
-  margin: 0.75rem 0;
+  margin: 1rem 0;
   text-align: center;
 }
 /* 章のタイトル */
 div.h2-title {
   font-size: 0.8rem;
-  margin: 0.75rem 0;
+  margin: -1rem 0 1rem 0;
   text-align: center;
 }
 
