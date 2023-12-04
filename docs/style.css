@@ -172,6 +172,7 @@ div#copyright {
   font-size: 0.75rem;
   line-height: 1.5rem;
   text-align: center;
+  border: #111 solid 1px;
 }
 
 /* ページ先頭へスクロールするボタン */
