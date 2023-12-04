@@ -170,13 +170,13 @@ footer {
 div#copyright {
   font-family: sans-serif;
   font-size: 0.75rem;
-  line-height: 2.5rem;
+  line-height: 1.5rem;
   text-align: center;
 }
 
 /* ページ先頭へスクロールするボタン */
 a.top-of-page {
-  background-color: #333;
+  background-color: #111;
   color: #fff;
   display: block;
   font-family: sans-serif;
