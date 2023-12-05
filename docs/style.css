@@ -307,6 +307,9 @@ figure.image-and-caption#photo-pleiades > figcaption {
 /* 先頭ページ　Webサイトの説明 */
 div#website-desc {
   background-color: #eee;
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 1px 0;
   font-family: sans-serif;
   font-size: 0.75rem;
   line-height: 1.25rem;
