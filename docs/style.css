@@ -34,7 +34,7 @@ html {
 }
 
 body {
-  background-color: #111;
+  background-color: #222;
   color: #fff;
   font-family: serif;
   height: 100%;
@@ -172,12 +172,12 @@ div#copyright {
   font-size: 0.75rem;
   line-height: 1.5rem;
   text-align: center;
-  border: #111 solid 1px;
+  border: #222 solid 1px;
 }
 
 /* ページ先頭へスクロールするボタン */
 a.top-of-page {
-  background-color: #111;
+  background-color: #222;
   color: #fff;
   display: block;
   font-family: sans-serif;
@@ -306,10 +306,12 @@ figure.image-and-caption#photo-pleiades > figcaption {
 }
 /* 先頭ページ　Webサイトの説明 */
 div#website-desc {
+  background-color: #eee;
   font-family: sans-serif;
   font-size: 0.75rem;
   line-height: 1.25rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0 2.5rem 0;
+  padding: 0.25rem 1rem;
   text-align: center;
 }
 

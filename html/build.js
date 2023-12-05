@@ -654,12 +654,12 @@ ${Builder.canonicalHtml}
 ${navbarHtml}
 <main>
 ${Shared.photoPleiadesWebHtml}
-<div id="content">
-<section class="h1-section" id="index">
-<h1>${Shared.bookTitle}</h1>
 <div id="website-desc">
 本Webサイトは <a href="${Builder.amazonUrl}" target="_blank">書籍『${Shared.bookTitle}』(著:${Shared.author})</a> の内容を著者がWeb公開したものです。
 </div>
+<div id="content">
+<section class="h1-section" id="index">
+<h1>${Shared.bookTitle}</h1>
 ${page.contentHtml}
 </section>
 ${nextPageLinkHtml}
