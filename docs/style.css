@@ -231,17 +231,17 @@ p.par-bold {
 }
 /* リスト1(箇条書き レベル1) */
 p.list-1 {
-  margin: 0 0 0 2rem;
+  margin: 0 0 0 1rem;
   text-indent: -1rem;
 }
 /* リスト2(箇条書き レベル2) */
 p.list-2 {
-  margin: 0 0 0 3rem;
+  margin: 0 0 0 2rem;
   text-indent: -1rem;
 }
 /* リスト3(箇条書き レベル3) */
 p.list-3 {
-  margin: 0 0 0 4rem;
+  margin: 0 0 0 3rem;
   text-indent: -1rem;
 }
 
