@@ -33,165 +33,15 @@ html {
   }
 }
 
-body {
-  background-color: #222;
-  color: #fff;
-  font-family: serif;
-  height: 100%;
-  margin: 0;
-
-  display: grid;
-  grid-template:
-    "navbar" auto
-    "main" 1fr
-    "footer" auto;
-}
-
-/* 固定ナビゲーションバー */
-nav#navbar {
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  grid-area: navbar;
-
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: var(--sticky-header-height);
-  z-index: 999;
-}
-nav#navbar > ul {
-  height: 100%;
-  list-style: none;
-  margin: 0 auto;
-  max-width: var(--max-content-width);
-  padding: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-nav#navbar > ul > li {
-  border-left: 1px solid #333;
-  font-size: 0.8rem;
-  height: 1rem; /* 文字がなくてもボーダーを付けるため */
-  line-height: 1rem;
-  text-align: center;
-
-  width: 100%;
-}
-nav#navbar > ul > li:first-child {
-  border-left: none;
-}
-nav#navbar > ul > li > a {
-  color: #000;
-  text-decoration-line: none;
-}
-
-/* メイン */
-main {
-  background-color: #fff;
-  color: #000;
-  grid-area: main;
-  padding-top: var(--sticky-header-height);
-}
-
-/* コンテンツ */
-div#content {
-  margin: 0 auto;
-  max-width: var(--max-content-width);
-  padding: 0 1rem;
-}
-
-/* Webサイトのタイトル */
-div.h1-title {
-  font-size: 0.8rem;
-  margin: 1rem 0;
-  text-align: center;
-}
-/* 章のタイトル */
-div.h2-title {
-  font-size: 0.8rem;
-  margin: -1rem 0 1rem 0;
-  text-align: center;
-}
-
-/* Webサイトの先頭ページのページタイトル */
-h1 {
-  font-size: 1.7rem;
-  font-weight: normal;
-  margin: 1.5rem 0 0 0;
-  text-align: center;
-}
-/* 章の先頭ページのページタイトル */
-h2 {
-  font-size: 1.5rem;
-  font-weight: normal;
-  margin: 1.5rem 0 0 0;
-  text-align: center;
-}
-/* 項のページのページタイトル */
-h3 {
-  font-size: 1.3rem;
-  font-weight: normal;
-  margin: 0;
-  text-align: center;
-}
-/* その他の神の項の各神名 */
-h4 {
-  font-size: 1.1rem;
-  font-weight: normal;
-  margin: 0;
-  text-align: center;
-}
-
-/* ページ下部の次ページへのリンク */
-nav#next-page {
-  margin: 4rem 0;
-  text-align: center;
-}
-nav#next-page > div.desc {
-  font-size: 0.85rem;
-}
-
-/* フッター */
-footer {
-  grid-area: footer;
-}
-
-/* ページ下部のコピーライト文 */
-div#copyright {
-  font-family: sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.5rem;
-  text-align: center;
-  border: #222 solid 1px;
-}
-
-/* ページ先頭へスクロールするボタン */
-a.top-of-page {
-  background-color: #222;
-  color: #fff;
-  display: block;
-  font-family: sans-serif;
-  line-height: 2.5rem;
-  outline: none;
-  text-align: center;
-  text-decoration: none;
-  z-index: 998;
-
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  width: 2.5rem;
-}
-
 /* リンク */
 a {
   color: #06c;
+  text-decoration-line: none;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2rem;
+}
+a:hover {
+  text-decoration-line: underline;
 }
 /* 下線 */
 u {
@@ -262,6 +112,162 @@ figure.image-and-caption + p {
   margin-top: 2rem;
 }
 
+body {
+  background-color: #222;
+  color: #fff;
+  font-family: serif;
+  height: 100%;
+  margin: 0;
+
+  display: grid;
+  grid-template:
+    "navbar" auto
+    "main" 1fr
+    "footer" auto;
+}
+
+/* 固定ナビゲーションバー */
+nav#navbar {
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  grid-area: navbar;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--sticky-header-height);
+  z-index: 999;
+}
+nav#navbar > ul {
+  height: 100%;
+  list-style: none;
+  margin: 0 auto;
+  max-width: var(--max-content-width);
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+nav#navbar > ul > li {
+  border-left: 1px solid #333;
+  font-size: 0.8rem;
+  height: 1rem; /* 文字がなくてもボーダーを付けるため */
+  line-height: 1rem;
+  text-align: center;
+
+  width: 100%;
+}
+nav#navbar > ul > li:first-child {
+  border-left: none;
+}
+nav#navbar > ul > li > a {
+  color: #000;
+}
+
+/* メイン */
+main {
+  background-color: #fff;
+  color: #000;
+  grid-area: main;
+  padding-top: var(--sticky-header-height);
+}
+
+/* コンテンツ */
+div#content {
+  margin: 0 auto;
+  max-width: var(--max-content-width);
+  padding: 0 1rem;
+}
+
+/* Webサイトのタイトル */
+div.h1-title {
+  font-size: 0.8rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+/* 章のタイトル */
+div.h2-title {
+  font-size: 0.8rem;
+  margin: -1rem 0 1rem 0;
+  text-align: center;
+}
+
+/* Webサイトの先頭ページのページタイトル */
+h1 {
+  font-size: 1.7rem;
+  font-weight: normal;
+  margin: 1.5rem 0 0 0;
+  text-align: center;
+}
+/* 章の先頭ページのページタイトル */
+h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin: 1.5rem 0 0 0;
+  text-align: center;
+}
+/* 項のページのページタイトル */
+h3 {
+  font-size: 1.3rem;
+  font-weight: normal;
+  margin: 0;
+  text-align: center;
+}
+/* その他の神の項の各神名 */
+h4 {
+  font-size: 1.1rem;
+  font-weight: normal;
+  margin: 0;
+  text-align: center;
+}
+
+/* ページ下部の次ページへのリンク */
+nav#next-page {
+  margin: 4rem 0;
+  text-align: center;
+}
+nav#next-page > a {
+  font-size: 1.1rem;
+}
+nav#next-page > div.desc {
+  font-size: 0.85rem;
+}
+
+/* フッター */
+footer {
+  grid-area: footer;
+}
+
+/* ページ下部のコピーライト文 */
+div#copyright {
+  font-family: sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  text-align: center;
+  border: #222 solid 1px;
+}
+
+/* ページ先頭へスクロールするボタン */
+a.top-of-page {
+  background-color: #222;
+  color: #fff;
+  display: block;
+  font-family: sans-serif;
+  line-height: 2.5rem;
+  outline: none;
+  text-align: center;
+  text-decoration-line: none;
+  z-index: 998;
+
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 2.5rem;
+}
+
 /* 目次 */
 html#html-toc {
   scroll-behavior: auto;
@@ -281,6 +287,9 @@ html#html-toc nav#toc > ul > li > ul {
 html#html-toc nav#toc li {
   list-style: none;
   margin-top: 1rem;
+}
+html#html-toc nav#toc a {
+  text-decoration-line: underline;
 }
 html#html-toc nav#toc div.desc {
   font-size: 0.85rem;
@@ -320,9 +329,9 @@ figure.image-and-caption#photo-ogame {
 /* 改版履歴 */
 section#revision-history p {
   font-size: 0.8rem;
-  line-height: 1.4rem;
+  line-height: 1.2rem;
 }
 section#revision-history p.blank-line {
   line-height: 0rem;
-  margin: 0.7rem 0;
+  margin: 0.6rem 0;
 }
