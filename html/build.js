@@ -53,7 +53,7 @@ class Builder {
     this.moveH2SectionImages(rootElem);
 
     this.createH3Sections(rootElem);
-    this.setH3SectionIdsAndClasses(rootElem);
+    this.setH3SectionIds(rootElem);
     this.moveH3Sections(rootElem);
     this.removeBlankLinesAtEndOfSections(rootElem);
     this.setTitleOnlyClasses(rootElem);
@@ -110,6 +110,7 @@ class Builder {
       if (el.tagName.toLowerCase() === "p" && el.innerText === "\u00A0") {
         // 空行
         el.setAttribute("class", "blank-line");
+        el.removeAttribute("style");
       } else if (
         el.className === "desc" ||
         el.className === "par" ||
@@ -260,7 +261,7 @@ class Builder {
     }
   }
 
-  setH3SectionIdsAndClasses(rootElem) {
+  setH3SectionIds(rootElem) {
     const h2Sections = Array.from(rootElem.querySelectorAll(".h2-section"));
     for (const h2Section of h2Sections) {
       const h3Sections = Array.from(h2Section.querySelectorAll(".h3-section"));
@@ -268,17 +269,16 @@ class Builder {
       let supplementCount = 0;
       for (const h3Section of h3Sections) {
         const h3Title = h3Section.querySelector("h3").innerText;
-        if (h3Title.endsWith("まとめ")) {
+        if (h3Title === 'その他の神') {
+          h3Section.id = `${h2Section.id}--section-o`;
+        } else if (h3Title.endsWith("まとめ")) {
           h3Section.id = `${h2Section.id}--summary`;
-          h3Section.classList.add("summary");
         } else if (h3Title.startsWith("補足")) {
           supplementCount++;
           h3Section.id = `${h2Section.id}--supplement-${supplementCount}`;
-          h3Section.classList.add("supplement");
         } else {
           sectionCount++;
           h3Section.id = `${h2Section.id}--section-${sectionCount}`;
-          h3Section.classList.add("section");
         }
       }
     }
@@ -646,7 +646,7 @@ ${this.createTocUlHtml(pages)}
 ${Builder.googleAnalyticsHtml}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="日本神話に星の神は少ないと言われているが、実際には星が付く名の神社は多く祭神も様々であり、日本神話では様々な星の神・神話が「見立て」を用いて語られている。">
+<meta name="description" content="日本神話に星の神は少ないと言われているが、実際は星が付く名の神社は多く祭神も様々で、日本神話では様々な星の神・神話が「見立て」を用いて語られている。">
 <title>${Shared.bookTitle}</title>
 ${Builder.canonicalHtml}
 <link rel="stylesheet" href="style.css">

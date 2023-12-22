@@ -15,7 +15,7 @@ move %FROM_DIR%\chapter-of-haya--section-7.html ..\docs
 move %FROM_DIR%\chapter-of-haya--section-8.html ..\docs
 move %FROM_DIR%\chapter-of-haya--section-9.html ..\docs
 move %FROM_DIR%\chapter-of-haya--section-10.html ..\docs
-move %FROM_DIR%\chapter-of-haya--section-12.html ..\docs
+move %FROM_DIR%\chapter-of-haya--section-o.html ..\docs
 move %FROM_DIR%\chapter-of-haya--summary.html ..\docs
 move %FROM_DIR%\chapter-of-haya--supplement-1.html ..\docs
 move %FROM_DIR%\chapter-of-haya--supplement-2.html ..\docs
@@ -55,7 +55,7 @@ move %FROM_DIR%\chapter-of-mika--section-10.html ..\docs
 move %FROM_DIR%\chapter-of-mika--section-11.html ..\docs
 move %FROM_DIR%\chapter-of-mika--section-12.html ..\docs
 move %FROM_DIR%\chapter-of-mika--section-13.html ..\docs
-move %FROM_DIR%\chapter-of-mika--section-14.html ..\docs
+move %FROM_DIR%\chapter-of-mika--section-o.html ..\docs
 move %FROM_DIR%\chapter-of-mika--summary.html ..\docs
 move %FROM_DIR%\chapter-of-mika--supplement-1.html ..\docs
 move %FROM_DIR%\chapter-of-mika--supplement-2.html ..\docs
@@ -72,7 +72,7 @@ move %FROM_DIR%\chapter-of-tama--section-14.html ..\docs
 move %FROM_DIR%\chapter-of-tama--section-15.html ..\docs
 move %FROM_DIR%\chapter-of-tama--section-16.html ..\docs
 move %FROM_DIR%\chapter-of-tama--section-18.html ..\docs
-move %FROM_DIR%\chapter-of-tama--section-19.html ..\docs
+move %FROM_DIR%\chapter-of-tama--section-o.html ..\docs
 move %FROM_DIR%\chapter-of-tama--summary.html ..\docs
 move %FROM_DIR%\chapter-of-tama--supplement-1.html ..\docs
 move %FROM_DIR%\chapter-of-tama--supplement-2.html ..\docs
@@ -92,7 +92,7 @@ move %FROM_DIR%\chapter-of-hi--section-12.html ..\docs
 move %FROM_DIR%\chapter-of-hi--section-13.html ..\docs
 move %FROM_DIR%\chapter-of-hi--section-14.html ..\docs
 move %FROM_DIR%\chapter-of-hi--section-15.html ..\docs
-move %FROM_DIR%\chapter-of-hi--section-16.html ..\docs
+move %FROM_DIR%\chapter-of-hi--section-o.html ..\docs
 move %FROM_DIR%\chapter-of-hi--summary.html ..\docs
 move %FROM_DIR%\chapter-of-hi--supplement-1.html ..\docs
 move %FROM_DIR%\chapter-of-hi--supplement-2.html ..\docs
@@ -117,7 +117,7 @@ move %FROM_DIR%\chapter-of-ishi--section-15.html ..\docs
 move %FROM_DIR%\chapter-of-ishi--section-16.html ..\docs
 move %FROM_DIR%\chapter-of-ishi--section-17.html ..\docs
 move %FROM_DIR%\chapter-of-ishi--section-18.html ..\docs
-move %FROM_DIR%\chapter-of-ishi--section-19.html ..\docs
+move %FROM_DIR%\chapter-of-ishi--section-o.html ..\docs
 move %FROM_DIR%\chapter-of-ishi--summary.html ..\docs
 move %FROM_DIR%\chapter-of-ishi--supplement-1.html ..\docs
 move %FROM_DIR%\chapter-of-ishi--supplement-2.html ..\docs
