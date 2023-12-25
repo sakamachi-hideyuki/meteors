@@ -14,7 +14,7 @@ export class PageSplitter {
     const pages = [];
 
     const tocPage = {
-      level: 1,
+      tocLevel: 0,
       id: "toc",
       title: "目次",
       h2Title: "",
@@ -30,7 +30,7 @@ export class PageSplitter {
 
     const h1Section = rootElem.querySelector(".h1-section");
     const indexPage = {
-      level: 2,
+      tocLevel: 1,
       id: "index",
       title: "先頭ページ",
       h2Title: "",
@@ -52,14 +52,16 @@ export class PageSplitter {
       );
       const section = el.parentElement;
       DomUtils.removeElems(section, "a[name]");
-      const level = Number(el.tagName.substring(1)); // h2->2, h3->3
       const id = section.id;
       const title = el.innerText;
+      let tocLevel;
       let h3Title = "";
-      if (level === 2) {
+      if (el.tagName.toLowerCase() === "h2") {
         h2Title = title;
+        tocLevel = 1;
       } else {
         h3Title = title;
+        tocLevel = 2;
       }
       const filename = `${id}.html`;
       const contentHtml = section.outerHTML;
@@ -68,7 +70,7 @@ export class PageSplitter {
       const descText = descElem?.innerText ?? "";
       const titleOnly = section.classList.contains("title-only");
       const page = {
-        level,
+        tocLevel,
         id,
         title,
         h2Title,

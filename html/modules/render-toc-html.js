@@ -29,19 +29,19 @@ ${renderTocUl(pages)}
 
 function renderTocUl(pages) {
   const tocUl = document.createElement("ul");
-  let curUls = [undefined, undefined, tocUl, undefined];
-  let curLevel = 2;
+  let curUls = [undefined, tocUl, undefined];
+  let curLevel = 1;
   for (const page of pages) {
-    if (page.level === 1) {
+    if (page.tocLevel === 0) {
       continue; // 目次ページは目次に入れない
-    } else if (page.level === curLevel) {
-    } else if (page.level === curLevel + 1) {
+    } else if (page.tocLevel === curLevel) {
+    } else if (page.tocLevel === curLevel + 1) {
       const newUl = document.createElement("ul");
       curUls[curLevel].lastElementChild.appendChild(newUl);
-      curUls[page.level] = newUl;
-      curLevel = page.level;
-    } else if (page.level < curLevel) {
-      curLevel = page.level;
+      curUls[page.tocLevel] = newUl;
+      curLevel = page.tocLevel;
+    } else if (page.tocLevel < curLevel) {
+      curLevel = page.tocLevel;
     } else {
       throw new Error();
     }

@@ -19,7 +19,6 @@ export class PageConverter {
 
     DomUtils.removeElemsAndDescendants(rootElem, "[class^=MsoToc], br");
     DomUtils.removeElems(rootElem, 'a[href], a[name^="_Toc"], span');
-    this.#removeUnnecessaryClasses(rootElem);
     this.#removeUnnecessaryAttrs(rootElem);
 
     this.#convertBlankLines(rootElem);
@@ -49,32 +48,32 @@ export class PageConverter {
     return rootElem.innerHTML;
   }
 
-  static #removeUnnecessaryClasses(rootElem) {
-    rootElem.querySelectorAll("*").forEach((el) => {
-      if (
-        el.className === "blank-line" ||
-        el.className === "desc" ||
-        el.className === "par" ||
-        el.className === "par-bold" ||
-        el.className === "list-1" ||
-        el.className === "list-2" ||
-        el.className === "list-3"
-      ) {
-        // そのまま残す
-      } else {
-        el.removeAttribute("class");
-      }
-    });
-  }
-
+  /**
+   * 不要な属性を削除する.
+   */
   static #removeUnnecessaryAttrs(rootElem) {
     rootElem.querySelectorAll("*").forEach((el) => {
       const textIndent = el.style.textIndent;
       const attrNames = el.getAttributeNames();
       for (const attrName of attrNames) {
-        if (attrName === "alt" || attrName === "class" || attrName === "name") {
-          // alt/class/name属性は削除しない
+        if (attrName === "alt" || attrName === "name") {
+          // alt, name属性は削除しない
           continue;
+        }
+        if (attrName === "class") {
+          const className = el.getAttribute(attrName);
+          // class属性は使用しているものは削除しない
+          if (
+            className === "blank-line" ||
+            className === "desc" ||
+            className === "par" ||
+            className === "par-bold" ||
+            className === "list-1" ||
+            className === "list-2" ||
+            className === "list-3"
+          ) {
+            continue;
+          }
         }
         // それ以外の属性は削除
         el.removeAttribute(attrName);
@@ -86,6 +85,9 @@ export class PageConverter {
     });
   }
 
+  /**
+   * 空行のp要素をclass属性が"blank-line"、style属性なしに変換する.
+   */
   static #convertBlankLines(rootElem) {
     rootElem.querySelectorAll("*").forEach((el) => {
       if (el.tagName.toLowerCase() === "p" && el.innerText === "\u00A0") {
@@ -96,6 +98,9 @@ export class PageConverter {
     });
   }
 
+  /**
+   * 各text-indentスタイルの値の単位をremに変換する.
+   */
   static #convertTextIndents(rootElem) {
     rootElem.querySelectorAll("*[style]").forEach((el) => {
       if (el.style.textIndent) {
@@ -105,8 +110,11 @@ export class PageConverter {
   }
 
   /**
-   * text-indentの数値の単位をremに変換する.
+   * 指定のtext-indentの値の単位をremに変換する.
    * ptまたは0mmのみを想定.
+   *
+   * @param textIndent text-indentの値
+   * @retrun remに単位変換後の値
    */
   static #toRem(textIndent) {
     if (textIndent.endsWith("pt")) {
@@ -122,13 +130,18 @@ export class PageConverter {
     }
   }
 
+  /**
+   * 電子書籍用画像をWeb用画像に変換する.
+   */
   static #convertImages(rootElem) {
     Array.from(rootElem.querySelectorAll("img")).forEach((el) => {
       const alt = el.getAttribute("alt") ?? "";
+      // imgのaltに対応するWeb用画像HTMLを取得
       const html = Shared.altToHtml[alt];
       if (html === undefined) {
         throw new Error(`Unknown alt: ${alt}`);
       }
+      // imgの祖先のp要素またはtable要素を探す
       let ancestor = el.parentElement;
       while (
         ancestor.tagName.toLowerCase() !== "p" &&
@@ -136,6 +149,7 @@ export class PageConverter {
       ) {
         ancestor = ancestor.parentElement;
       }
+      // imgの祖先のp要素またはtable要素をWeb用画像HTMLに置換
       if (html === "") {
         ancestor.remove();
       } else {
@@ -146,7 +160,7 @@ export class PageConverter {
   }
 
   /**
-   * 内容のないpを削除する.
+   * 内容のないp要素を削除する.
    */
   static #removeUnnecessaryParagraphs(rootElem) {
     rootElem.innerHTML = rootElem.innerHTML.replace(/<p[^>]*>\n?<\/p>\n?/g, "");
