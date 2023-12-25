@@ -36,15 +36,15 @@ const renderDescMeta = (page) =>
     : `<meta name="description" content="${page.descText}">`;
 
 const renderDocumentTitle = (page) =>
-  page.h3Title !== "" &&
-  !page.h3Title.endsWith("まとめ") &&
-  !page.h3Title.startsWith("補足")
-    ? `${page.h2Title}　${page.title} - ${Shared.bookTitle}`
-    : `${page.title} - ${Shared.bookTitle}`;
+  page.h3Title === "" ||
+  page.h3Title.endsWith("まとめ") ||
+  page.h3Title.startsWith("補足")
+    ? `${page.title} - ${Shared.bookTitle}`
+    : `${page.h2Title}　${page.title} - ${Shared.bookTitle}`;
 
 const renderH2TitleDiv = (page) =>
-  page.h3Title !== "" &&
-  !page.h3Title.endsWith("まとめ") &&
-  !page.h3Title.startsWith("補足")
-    ? `<div class="h2-title">${page.h2Title}</div>`
-    : "";
+  page.h3Title === "" ||
+  page.h3Title.endsWith("まとめ") ||
+  page.h3Title.startsWith("補足")
+    ? ""
+    : `<div class="h2-title">${page.h2Title}</div>`;
