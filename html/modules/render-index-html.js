@@ -1,4 +1,7 @@
-export function renderIndexHtml(page, navbarHtml, nextPageLinkHtml) {
+import { renderNavbarNav } from "./render-navbar-nav.js";
+import { renderNextPageNav } from "./render-next-page-nav.js";
+
+export function renderIndexHtml(page, nextPage) {
   return `<!DOCTYPE html>
 <html lang="ja" id="html-${page.id}">
 <head>
@@ -11,7 +14,7 @@ ${Shared.googleAnalyticsHtml}
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-${navbarHtml}
+${renderNavbarNav(page, undefined, nextPage)}
 <main>
 ${Shared.photoPleiadesWebHtml}
 <div id="website-desc">
@@ -19,7 +22,7 @@ ${Shared.photoPleiadesWebHtml}
 </div>
 <div id="content">
 ${page.contentHtml}
-${nextPageLinkHtml}
+${renderNextPageNav(nextPage)}
 </div>
 </main>
 <footer>

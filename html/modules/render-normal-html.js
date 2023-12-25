@@ -1,28 +1,25 @@
-export function renderNormalHtml(page, navbarHtml, nextPageLinkHtml) {
-  const metaDescription =
-    page.descText === ""
-      ? ""
-      : `<meta name="description" content="${page.descText}">`;
-  const documentTitle = renderDocumentTitle(page);
-  const h2TitleDiv = renderH2TitleDiv(page);
+import { renderNavbarNav } from "./render-navbar-nav.js";
+import { renderNextPageNav } from "./render-next-page-nav.js";
+
+export function renderNormalHtml(page, prevPage, nextPage) {
   return `<!DOCTYPE html>
 <html lang="ja" id="html-${page.id}">
 <head>
 ${Shared.googleAnalyticsHtml}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-${metaDescription}
-<title>${documentTitle}</title>
+${renderDescMeta(page)}
+<title>${renderDocumentTitle(page)}</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-${navbarHtml}
+${renderNavbarNav(page, prevPage, nextPage)}
 <main>
 <div id="content">
 <div class="h1-title">${Shared.bookTitle}</div>
-${h2TitleDiv}
+${renderH2TitleDiv(page)}
 ${page.contentHtml}
-${nextPageLinkHtml}
+${renderNextPageNav(nextPage)}
 </div>
 </main>
 <footer>
@@ -32,6 +29,13 @@ ${nextPageLinkHtml}
 </body>
 </html>
 `;
+}
+
+function renderDescMeta(page) {
+  if (page.descText === "") {
+    return "";
+  }
+  return `<meta name="description" content="${page.descText}">`;
 }
 
 function renderDocumentTitle(page) {
