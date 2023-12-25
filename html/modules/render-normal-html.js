@@ -1,8 +1,8 @@
 import { renderNavbarNav } from "./render-navbar-nav.js";
 import { renderNextPageNav } from "./render-next-page-nav.js";
 
-export function renderNormalHtml(page, prevPage, nextPage) {
-  return `<!DOCTYPE html>
+export const renderNormalHtml = (page, prevPage, nextPage) =>
+  `<!DOCTYPE html>
 <html lang="ja" id="html-${page.id}">
 <head>
 ${Shared.googleAnalyticsHtml}
@@ -29,35 +29,22 @@ ${renderNextPageNav(nextPage)}
 </body>
 </html>
 `;
-}
 
-function renderDescMeta(page) {
-  if (page.descText === "") {
-    return "";
-  }
-  return `<meta name="description" content="${page.descText}">`;
-}
+const renderDescMeta = (page) =>
+  page.descText === ""
+    ? ""
+    : `<meta name="description" content="${page.descText}">`;
 
-function renderDocumentTitle(page) {
-  if (
-    page.h3Title !== "" &&
-    !page.h3Title.endsWith("まとめ") &&
-    !page.h3Title.startsWith("補足")
-  ) {
-    return `${page.h2Title}　${page.title} - ${Shared.bookTitle}`;
-  } else {
-    return `${page.title} - ${Shared.bookTitle}`;
-  }
-}
+const renderDocumentTitle = (page) =>
+  page.h3Title !== "" &&
+  !page.h3Title.endsWith("まとめ") &&
+  !page.h3Title.startsWith("補足")
+    ? `${page.h2Title}　${page.title} - ${Shared.bookTitle}`
+    : `${page.title} - ${Shared.bookTitle}`;
 
-function renderH2TitleDiv(page) {
-  if (
-    page.h3Title !== "" &&
-    !page.h3Title.endsWith("まとめ") &&
-    !page.h3Title.startsWith("補足")
-  ) {
-    return `<div class="h2-title">${page.h2Title}</div>`;
-  } else {
-    return "";
-  }
-}
+const renderH2TitleDiv = (page) =>
+  page.h3Title !== "" &&
+  !page.h3Title.endsWith("まとめ") &&
+  !page.h3Title.startsWith("補足")
+    ? `<div class="h2-title">${page.h2Title}</div>`
+    : "";

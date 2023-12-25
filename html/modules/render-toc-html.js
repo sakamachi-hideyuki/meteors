@@ -1,5 +1,5 @@
-export function renderTocHtml(pages) {
-  return `<!DOCTYPE html>
+export const renderTocHtml = (pages) =>
+  `<!DOCTYPE html>
 <html lang="ja" id="html-toc">
 <head>
 ${Shared.googleAnalyticsHtml}
@@ -25,7 +25,6 @@ ${renderTocUl(pages)}
 </body>
 </html>
 `;
-}
 
 function renderTocUl(pages) {
   const tocUl = document.createElement("ul");
