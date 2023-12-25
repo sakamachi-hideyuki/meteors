@@ -1,4 +1,20 @@
 class Shared {
+  static googleAnalyticsHtml = `
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-45DHNXBNFZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-45DHNXBNFZ');
+</script>
+`;
+
+  static websiteUrl = "https://sakamachi-hideyuki.github.io/meteors/";
+
+  static amazonUrl = "https://www.amazon.co.jp/dp/B09DX3WVX6/";
+
   static bookTitle = "流星と昴の日本神話";
 
   static author = "坂町英之";
