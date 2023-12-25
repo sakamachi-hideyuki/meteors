@@ -13,10 +13,18 @@ export class PageLinker {
       ) {
         continue;
       }
+      const prevPage = pages[i - 1];
+      let nextPage = undefined;
+      for (let j = i + 1; j < pages.length; j++) {
+        if (pages[j].contentHtml !== "") {
+          nextPage = pages[j];
+          break;
+        }
+      }
       this.#linkPreface(pages, page);
       this.#linkAppendix(pages, page);
       this.#linkChapter(pages, page);
-      this.#linkSection(pages, page, i);
+      this.#linkSection(pages, page, prevPage, nextPage);
       this.#linkSupplement(pages, page);
     }
   }
@@ -70,7 +78,7 @@ export class PageLinker {
     });
   }
 
-  static #linkSection(pages, page, pageIndex) {
+  static #linkSection(pages, page, prevPage, nextPage) {
     // "「～の章」～の項"をリンク化
     page.contentHtml = page.contentHtml.replaceAll(
       /「([^<>「」]+の章)」([^<>「」項]+)の項/g,
@@ -107,13 +115,11 @@ export class PageLinker {
     );
     // "前項"をリンク化
     page.contentHtml = page.contentHtml.replaceAll(/前項/g, (s) => {
-      const target = pages[pageIndex - 1];
-      return `<a href="${target.filename}">${s}</a>`;
+      return `<a href="${prevPage.filename}">${s}</a>`;
     });
     // "次項"をリンク化
     page.contentHtml = page.contentHtml.replaceAll(/次項/g, (s) => {
-      const target = pages[pageIndex + 1];
-      return `<a href="${target.filename}">${s}</a>`;
+      return `<a href="${nextPage.filename}">${s}</a>`;
     });
   }
 

@@ -9,10 +9,12 @@ export class PageRenderer {
     pages[1].html = renderIndexHtml(pages[1], pages[2]);
 
     for (let i = 2; i < pages.length; i++) {
-      if (pages[i].contentHtml === "") {
-        pages[i].html = "";
+      const page = pages[i];
+      if (page.contentHtml === "") {
+        page.html = "";
         continue;
       }
+      const prevPage = pages[i - 1];
       let nextPage = undefined;
       for (let j = i + 1; j < pages.length; j++) {
         if (pages[j].contentHtml !== "") {
@@ -20,7 +22,7 @@ export class PageRenderer {
           break;
         }
       }
-      pages[i].html = renderNormalHtml(pages[i], pages[i - 1], nextPage);
+      page.html = renderNormalHtml(page, prevPage, nextPage);
     }
   }
 }
