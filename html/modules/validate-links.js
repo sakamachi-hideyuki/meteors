@@ -10,7 +10,7 @@ function getOldLinks(html) {
   rootElem.innerHTML = html;
 
   const oldLinks = [];
-  Array.from(rootElem.querySelectorAll("a[href]")).forEach((el) => {
+  rootElem.querySelectorAll("a[href]").forEach((el) => {
     const href = el.getAttribute("href");
     if (!href.startsWith("#") || href.startsWith("#_Toc")) {
       return;
@@ -40,7 +40,7 @@ function getNewLinks(pages) {
     }
     const elem = document.createElement("div");
     elem.innerHTML = page.contentHtml;
-    Array.from(elem.querySelectorAll("a[href]")).forEach((el) => {
+    elem.querySelectorAll("a[href]").forEach((el) => {
       const href = el.getAttribute("href");
       if (href.startsWith("http")) {
         return;
