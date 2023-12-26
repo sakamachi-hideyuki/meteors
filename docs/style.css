@@ -1,5 +1,5 @@
 :root {
-  --sticky-header-height: 2.25rem;
+  --navbar-height: 2.25rem;
   --max-content-width: 40rem;
 }
 
@@ -137,7 +137,7 @@ nav#navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  height: var(--sticky-header-height);
+  height: var(--navbar-height);
   z-index: 999;
 }
 nav#navbar > ul {
@@ -172,7 +172,7 @@ main {
   background-color: #fff;
   color: #000;
   grid-area: main;
-  padding-top: var(--sticky-header-height);
+  padding-top: var(--navbar-height);
 }
 
 /* コンテンツ */
@@ -185,12 +185,14 @@ div#content {
 /* Webサイトのタイトル */
 div.h1-title {
   font-size: 0.8rem;
+  font-weight: bold;
   margin: 1rem 0;
   text-align: center;
 }
 /* 章のタイトル */
 div.h2-title {
   font-size: 0.8rem;
+  font-weight: bold;
   margin: -1rem 0 1rem 0;
   text-align: center;
 }
