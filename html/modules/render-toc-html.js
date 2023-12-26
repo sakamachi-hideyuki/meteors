@@ -31,16 +31,18 @@ function renderTocUl(pages) {
   let curUls = [undefined, tocUl, undefined];
   let curLevel = 1;
   for (const page of pages) {
-    if (page.tocLevel === 0) {
+    if (page.id === "toc") {
       continue; // 目次ページは目次に入れない
-    } else if (page.tocLevel === curLevel) {
-    } else if (page.tocLevel === curLevel + 1) {
+    }
+    const newLevel = page.h3Title === "" ? 1 : 2;
+    if (newLevel === curLevel) {
+    } else if (newLevel === curLevel + 1) {
       const newUl = document.createElement("ul");
       curUls[curLevel].lastElementChild.appendChild(newUl);
-      curUls[page.tocLevel] = newUl;
-      curLevel = page.tocLevel;
-    } else if (page.tocLevel < curLevel) {
-      curLevel = page.tocLevel;
+      curUls[newLevel] = newUl;
+      curLevel = newLevel;
+    } else if (newLevel < curLevel) {
+      curLevel = newLevel;
     } else {
       throw new Error();
     }

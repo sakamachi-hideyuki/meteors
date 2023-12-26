@@ -1,6 +1,6 @@
-import { LinkValidator } from "./link-validator.js";
-import { PageBuilder } from "./page-builder.js";
-import { SummaryValidator } from "./summary-validator.js";
+import { buildPages } from "./build-pages.js";
+import { validateSummaries } from "./validate-summaries.js";
+import { validateLinks } from "./validate-links.js";
 
 document.getElementById("buildButton").addEventListener("click", () => {
   const inputIframe = document.getElementById("inputIframe");
@@ -8,13 +8,13 @@ document.getElementById("buildButton").addEventListener("click", () => {
     inputIframe.contentWindow.document.querySelector("body>div");
   const inputHtml = inputElem.innerHTML;
 
-  const pages = PageBuilder.build(inputHtml);
+  const pages = buildPages(inputHtml);
 
   console.log("pages:");
   console.log(pages);
 
-  LinkValidator.validate(inputHtml, pages);
-  SummaryValidator.validate(pages);
+  validateLinks(inputHtml, pages);
+  validateSummaries(pages);
 
   const outputElem = document.getElementById("outputElem");
   outputElem.innerHTML = "";
