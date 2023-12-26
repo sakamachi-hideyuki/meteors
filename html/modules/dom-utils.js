@@ -30,5 +30,5 @@ export function changeTagNames(rootElem, oldTagName, newTagName) {
 export function htmlToElem(html) {
   const dummy = document.createElement("div");
   dummy.innerHTML = html;
-  return dummy.children[0];
+  return dummy.firstElementChild;
 }

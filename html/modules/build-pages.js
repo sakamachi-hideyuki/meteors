@@ -4,8 +4,7 @@ import { renderPages } from "./render-pages.js";
 import { splitPages } from "./split-pages.js";
 
 export function buildPages(html) {
-  const convertedHtml = convertPages(html);
-  const pages = splitPages(convertedHtml);
+  const pages = splitPages(convertPages(html));
   linkPages(pages);
   renderPages(pages);
   return pages;
