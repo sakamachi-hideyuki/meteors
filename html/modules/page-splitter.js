@@ -13,7 +13,27 @@ export class PageSplitter {
 
     const pages = [];
 
-    const tocPage = {
+    const tocPage = this.#createTocPageData();
+    pages.push(tocPage);
+
+    const h1 = rootElem.querySelector("h1");
+    const indexPage = this.#createIndexPageData(h1);
+    pages.push(indexPage);
+
+    const h2h3s = Array.from(rootElem.querySelectorAll("h2, h3"));
+    let h2Title = "";
+    for (const h2h3 of h2h3s) {
+      if (h2h3.tagName.toLowerCase() === "h2") {
+        h2Title = h2h3.innerText;
+      }
+      const page = this.#createNormalPageData(h2h3, h2Title);
+      pages.push(page);
+    }
+    return pages;
+  }
+
+  static #createTocPageData() {
+    return {
       tocLevel: 0,
       id: "toc",
       title: "目次",
@@ -26,42 +46,40 @@ export class PageSplitter {
       titleOnly: false,
       anchorNames: [],
     };
-    pages.push(tocPage);
+  }
 
-    const h1Section = rootElem.querySelector(".h1-section");
-    const indexPage = {
+  static #createIndexPageData(h1) {
+    return {
       tocLevel: 1,
       id: "index",
       title: "先頭ページ",
       h2Title: "",
       h3Title: "",
       filename: "index.html",
-      contentHtml: h1Section.outerHTML,
+      contentHtml: h1.parentElement.outerHTML,
       descHtml: "",
       descText: "",
       titleOnly: false,
       anchorNames: [],
     };
-    pages.push(indexPage);
+  }
 
-    const els = Array.from(rootElem.querySelectorAll("h2, h3"));
-    let h2Title = "";
-    for (const el of els) {
-      const anchorNames = Array.from(el.querySelectorAll("a")).map((a) =>
+  static #createNormalPageData(h2h3, h2Title) {
+      const anchorNames = Array.from(h2h3.querySelectorAll("a")).map((a) =>
         a.getAttribute("name")
       );
-      const section = el.parentElement;
+      const section = h2h3.parentElement;
       DomUtils.removeElems(section, "a[name]");
       const id = section.id;
-      const title = el.innerText;
+      const title = h2h3.innerText;
       let tocLevel;
-      let h3Title = "";
-      if (el.tagName.toLowerCase() === "h2") {
-        h2Title = title;
+      let h3Title;
+      if (h2h3.tagName.toLowerCase() === "h2") {
         tocLevel = 1;
+        h3Title = "";
       } else {
-        h3Title = title;
         tocLevel = 2;
+        h3Title = title;
       }
       const filename = `${id}.html`;
       const contentHtml = section.outerHTML;
@@ -69,7 +87,7 @@ export class PageSplitter {
       const descHtml = descElem?.innerHTML ?? "";
       const descText = descElem?.innerText ?? "";
       const titleOnly = section.classList.contains("title-only");
-      const page = {
+      return {
         tocLevel,
         id,
         title,
@@ -82,9 +100,6 @@ export class PageSplitter {
         titleOnly,
         anchorNames,
       };
-      pages.push(page);
-    }
-    return pages;
   }
 
   static #combineTitleOnlyPages(pages) {
