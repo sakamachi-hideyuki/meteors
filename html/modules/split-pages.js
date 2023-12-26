@@ -11,22 +11,15 @@ function createPages(html) {
   rootElem.innerHTML = html;
 
   const pages = [];
+  pages.push(createTocPageData());
+  pages.push(createIndexPageData(rootElem.querySelector("h1")));
 
-  const tocPage = createTocPageData();
-  pages.push(tocPage);
-
-  const h1 = rootElem.querySelector("h1");
-  const indexPage = createIndexPageData(h1);
-  pages.push(indexPage);
-
-  const h2h3s = Array.from(rootElem.querySelectorAll("h2, h3"));
   let h2Title = "";
-  for (const h2h3 of h2h3s) {
+  for (const h2h3 of rootElem.querySelectorAll("h2, h3")) {
     if (h2h3.tagName.toLowerCase() === "h2") {
       h2Title = h2h3.innerText;
     }
-    const page = createNormalPageData(h2h3, h2Title);
-    pages.push(page);
+    pages.push(createNormalPageData(h2h3, h2Title));
   }
   return pages;
 }
