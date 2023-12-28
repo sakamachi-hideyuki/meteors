@@ -6,6 +6,15 @@ import {
   removeElemsAndDescendants,
 } from "./dom-utils.js";
 
+const availableClasses = [
+  "desc",
+  "par",
+  "par-bold",
+  "list-1",
+  "list-2",
+  "list-3",
+];
+
 const h2TitleToId = {
   "序文　星の神を祀る神社": "preface",
   速の章: "chapter-of-haya",
@@ -67,17 +76,9 @@ function removeUnnecessaryAttrs(rootElem) {
         continue;
       }
       if (attrName === "class") {
-        const className = el.getAttribute(attrName);
         // class属性は使用しているものは削除しない
-        if (
-          className === "blank-line" ||
-          className === "desc" ||
-          className === "par" ||
-          className === "par-bold" ||
-          className === "list-1" ||
-          className === "list-2" ||
-          className === "list-3"
-        ) {
+        const className = el.getAttribute(attrName);
+        if (availableClasses.includes(className)) {
           continue;
         }
       }
