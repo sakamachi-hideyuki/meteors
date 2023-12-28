@@ -26,12 +26,12 @@ export function convertPages(html) {
   removeElems(rootElem, 'a[href], a[name^="_Toc"], span');
   removeUnnecessaryAttrs(rootElem);
 
-  convertBlankLines(rootElem);
+  convertBlankPs(rootElem);
   convertTextIndents(rootElem);
   convertImages(rootElem);
 
   removeBlankLines(rootElem);
-  removeUnnecessaryParagraphs(rootElem);
+  removeUnnecessaryPs(rootElem);
 
   changeTagNames(rootElem, "h3", "h4");
   changeTagNames(rootElem, "h2", "h3");
@@ -48,7 +48,8 @@ export function convertPages(html) {
 
   createH1Section(rootElem);
 
-  removeBlankLinesAtEndOfSections(rootElem);
+  removeBlankLines(rootElem);
+  removeBlankPsAtEndOfSections(rootElem);
 
   return rootElem.innerHTML;
 }
@@ -93,7 +94,7 @@ function removeUnnecessaryAttrs(rootElem) {
 /**
  * 空行のp要素をclass属性が"blank-line"、style属性なしに変換する.
  */
-function convertBlankLines(rootElem) {
+function convertBlankPs(rootElem) {
   rootElem.querySelectorAll("*").forEach((el) => {
     if (el.tagName.toLowerCase() === "p" && el.innerText === "\u00A0") {
       // 空行
@@ -167,7 +168,7 @@ function convertImages(rootElem) {
 /**
  * 内容のないp要素を削除する.
  */
-function removeUnnecessaryParagraphs(rootElem) {
+function removeUnnecessaryPs(rootElem) {
   rootElem.innerHTML = rootElem.innerHTML.replace(/<p[^>]*>\n?<\/p>\n?/g, "");
 }
 
@@ -311,19 +312,18 @@ function createH1Section(rootElem) {
   }
   const h1Section = htmlToElem(
     `<section class="h1-section" id="index">
-<h1>${Shared.bookTitle}</h1>
-${intro.innerHTML}
+<h1>${Shared.bookTitle}</h1>${intro.innerHTML}
 </section>`
   );
   rootElem.prepend(h1Section);
 }
 
 /**
- * 各セクションの末尾の空行を削除する.
+ * 各セクションの末尾の空行のp要素を削除する.
  */
-function removeBlankLinesAtEndOfSections(rootElem) {
+function removeBlankPsAtEndOfSections(rootElem) {
   rootElem.querySelectorAll("section").forEach((el) => {
-    // 末尾の空行は削除
-    el.innerHTML = el.innerHTML.replace(/(<p[^>]*>&nbsp;<\/p>\n+)+$/g, "");
+    // 末尾の空行のp要素は削除
+    el.innerHTML = el.innerHTML.replace(/(<p[^>]*>&nbsp;<\/p>\n)+$/g, "");
   });
 }
