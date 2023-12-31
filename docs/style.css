@@ -186,15 +186,19 @@ div#content {
 div.h1-title {
   font-size: 0.8rem;
   font-weight: bold;
+  letter-spacing: 0.3rem;
   margin: 1rem 0;
   text-align: center;
+  text-indent: 0.3rem;
 }
 /* 章のタイトル */
 div.h2-title {
   font-size: 0.8rem;
   font-weight: bold;
+  letter-spacing: 0.3rem;
   margin: -1rem 0 1rem 0;
   text-align: center;
+  text-indent: 0.3rem;
 }
 
 /* Webサイトの先頭ページのページタイトル */
