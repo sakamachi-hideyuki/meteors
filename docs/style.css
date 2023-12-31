@@ -199,24 +199,30 @@ div.h2-title {
 
 /* Webサイトの先頭ページのページタイトル */
 h1 {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   font-weight: bold;
+  letter-spacing: 0.8rem;
   margin: 1.5rem 0 0 0;
   text-align: center;
+  text-indent: 0.8rem;
 }
 /* 章の先頭ページのページタイトル */
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
+  letter-spacing: 0.5rem;
   margin: 1.5rem 0 0 0;
   text-align: center;
+  text-indent: 0.5rem;
 }
 /* 項のページのページタイトル */
 h3 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
+  letter-spacing: 0.3rem;
   margin: 0;
   text-align: center;
+  text-indent: 0.3rem;
 }
 /* その他の神の項の各神名 */
 h4 {
