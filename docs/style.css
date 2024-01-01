@@ -62,6 +62,7 @@ p.blank-line {
 p.desc {
   font-size: 0.85rem;
   line-height: normal;
+  margin: 1rem 0;
   text-align: center;
 }
 /* 段落 */
@@ -70,8 +71,8 @@ p.par {
 }
 /* 太字の段落 */
 p.par-bold {
-  margin: 1rem 0;
   font-weight: bold;
+  margin: 1rem 0;
 }
 /* リスト1(箇条書き レベル1) */
 p.list-1 {
