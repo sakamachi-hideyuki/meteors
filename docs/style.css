@@ -99,15 +99,15 @@ figure.image-and-caption {
 /* 画像 */
 figure.image-and-caption img {
   animation-duration: 1s;
-  animation-name: fade-in-keyframes;
+  animation-name: fade-in;
   height: auto;
   width: 100%;
 }
-@keyframes fade-in-keyframes {
-  from {
+@keyframes fade-in {
+  0% {
     opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
   }
 }
