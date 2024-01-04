@@ -98,8 +98,18 @@ figure.image-and-caption {
 }
 /* 画像 */
 figure.image-and-caption img {
+  animation-duration: 1s;
+  animation-name: fade-in-keyframes;
   height: auto;
   width: 100%;
+}
+@keyframes fade-in-keyframes {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 /* 画像のキャプション */
 figure.image-and-caption > figcaption {
