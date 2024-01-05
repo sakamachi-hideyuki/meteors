@@ -93,13 +93,13 @@ function removeUnnecessaryAttrs(rootElem) {
 }
 
 /**
- * 空行のp要素をclass属性が"blank-line"、style属性なしに変換する.
+ * 空行のp要素をclass属性が"blank"、style属性なしに変換する.
  */
 function convertBlankPs(rootElem) {
   rootElem.querySelectorAll("*").forEach((el) => {
     if (el.tagName.toLowerCase() === "p" && el.innerText === "\u00A0") {
       // 空行
-      el.setAttribute("class", "blank-line");
+      el.setAttribute("class", "blank");
       el.removeAttribute("style");
     }
   });

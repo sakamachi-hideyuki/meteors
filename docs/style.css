@@ -54,7 +54,7 @@ p {
   margin: 0;
 }
 /* 空行 */
-p.blank-line {
+p.blank {
   line-height: 0;
   margin: 1rem 0;
 }
@@ -354,7 +354,7 @@ section#revision-history p {
   font-size: 0.8rem;
   line-height: 1.2rem;
 }
-section#revision-history p.blank-line {
+section#revision-history p.blank {
   line-height: 0rem;
   margin: 0.6rem 0;
 }

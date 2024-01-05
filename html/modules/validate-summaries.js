@@ -29,7 +29,7 @@ function getSummariesS(pages) {
 function getSummariesC(pages) {
   const begin = '<p class="list-1">';
   const end = "</section>";
-  const separator = '<p class="blank-line">&nbsp;</p>\n';
+  const separator = '<p class="blank">&nbsp;</p>\n';
   const summaries = [];
   // 章のまとめを収集
   pages
