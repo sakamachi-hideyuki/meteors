@@ -164,12 +164,12 @@ nav#navbar > ul {
 }
 nav#navbar > ul > li {
   border-left: 1px solid #333;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   height: 1rem; /* 文字がなくてもボーダーを付けるため */
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.3rem;
   line-height: 1rem;
   text-align: center;
-  text-indent: 0.2rem;
+  text-indent: 0.3rem;
 
   width: 100%;
 }
