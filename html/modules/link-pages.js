@@ -42,13 +42,11 @@ function linkAppendix(pages, page) {
     const target = pages.find((p) => p.id === "appendix");
     return `<a href="${target.filename}">${s}</a>`;
   });
-  // 「付録　神名末尾のパターン」以外のページでは最初の"神名末尾のパターン"をリンク化
-  if (page.id !== "appendix") {
-    page.contentHtml = page.contentHtml.replace(/神名末尾のパターン/, (s) => {
-      const target = pages.find((p) => p.id === "appendix");
-      return `<a href="${target.filename}">${s}</a>`;
-    });
-  }
+  // 最初の"神名末尾のパターン"をリンク化
+  page.contentHtml = page.contentHtml.replace(/神名末尾のパターン/, (s) => {
+    const target = pages.find((p) => p.id === "appendix");
+    return `<a href="${target.filename}">${s}</a>`;
+  });
 }
 
 function linkChapter(pages, page) {
