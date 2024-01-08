@@ -18,9 +18,9 @@ const renderPrevLink = (prevPage) =>
     ? ""
     : `<a href="${
         prevPage.filename === "index.html" ? "./" : prevPage.filename
-      }">◀&nbsp;前ページ</a>`;
+      }">◀前ページ</a>`;
 
 const renderNextLink = (nextPage) =>
   nextPage === undefined
     ? ""
-    : `<a href="${nextPage.filename}">次ページ&nbsp;▶</a>`;
+    : `<a href="${nextPage.filename}">次ページ▶</a>`;
