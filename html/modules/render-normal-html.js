@@ -1,5 +1,5 @@
-import { renderNavbarNav } from "./render-navbar-nav.js";
-import { renderNextPageNav } from "./render-next-page-nav.js";
+import { renderHeader } from "./render-header.js";
+import { renderFooter } from "./render-footer.js";
 
 export const renderNormalHtml = (page, prevPage, nextPage) =>
   `<!DOCTYPE html>
@@ -13,19 +13,15 @@ ${renderDescMeta(page)}
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-${renderNavbarNav(page, prevPage, nextPage)}
+${renderHeader(page, prevPage, nextPage)}
 <main>
 <div id="content">
 <div class="h1-title">${Shared.bookTitle}</div>
 ${renderH2TitleDiv(page)}
 ${page.contentHtml}
-${renderNextPageNav(nextPage)}
 </div>
 </main>
-<footer>
-<div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
-</footer>
-<a class="top-of-page" href="#" title="ページ先頭へ">▲</a>
+${renderFooter(nextPage)}
 </body>
 </html>
 `;

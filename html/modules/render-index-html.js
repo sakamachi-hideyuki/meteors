@@ -1,5 +1,5 @@
-import { renderNavbarNav } from "./render-navbar-nav.js";
-import { renderNextPageNav } from "./render-next-page-nav.js";
+import { renderHeader } from "./render-header.js";
+import { renderFooter } from "./render-footer.js";
 
 export const renderIndexHtml = (page, nextPage) =>
   `<!DOCTYPE html>
@@ -14,7 +14,7 @@ ${Shared.googleAnalyticsHtml}
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-${renderNavbarNav(page, undefined, nextPage)}
+${renderHeader(page, undefined, nextPage)}
 <main>
 ${Shared.photoPleiadesWebHtml}
 <div id="website-desc">
@@ -24,13 +24,9 @@ ${Shared.photoPleiadesWebHtml}
 </div>
 <div id="content">
 ${page.contentHtml}
-${renderNextPageNav(nextPage)}
 </div>
 </main>
-<footer>
-<div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
-</footer>
-<a class="top-of-page" href="#" title="ページ先頭へ">▲</a>
+${renderFooter(nextPage)}
 </body>
 </html>
 `;

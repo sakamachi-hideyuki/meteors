@@ -1,5 +1,6 @@
-export const renderNavbarNav = (page, prevPage, nextPage) =>
-  `<nav id="navbar">
+export const renderHeader = (page, prevPage, nextPage) =>
+  `<header>
+<nav id="navbar">
 <ul>
 <li>
 ${renderPrevLink(prevPage)}
@@ -11,7 +12,8 @@ ${renderPrevLink(prevPage)}
 ${renderNextLink(nextPage)}
 </li>
 </ul>
-</nav>`;
+</nav>
+</header>`;
 
 const renderPrevLink = (prevPage) =>
   prevPage === undefined
@@ -21,6 +23,4 @@ const renderPrevLink = (prevPage) =>
       }">◀前ページ</a>`;
 
 const renderNextLink = (nextPage) =>
-  nextPage === undefined
-    ? ""
-    : `<a href="${nextPage.filename}">次ページ▶</a>`;
+  nextPage === undefined ? "" : `<a href="${nextPage.filename}">次ページ▶</a>`;

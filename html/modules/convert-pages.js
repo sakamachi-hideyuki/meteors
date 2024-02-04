@@ -8,11 +8,11 @@ import {
 
 const availableClasses = [
   "desc",
-  "par",
-  "par-bold",
+  "heading",
   "list-1",
   "list-2",
   "list-3",
+  "par",
 ];
 
 const h2TitleToId = {

@@ -1,3 +1,5 @@
+import { renderFooter } from "./render-footer.js";
+
 export const renderTocHtml = (pages) =>
   `<!DOCTYPE html>
 <html lang="ja" id="html-toc">
@@ -18,10 +20,7 @@ ${renderTocUl(pages)}
 </nav>
 </div>
 </main>
-<footer>
-<div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
-</footer>
-<a class="top-of-page" href="#" title="ページ先頭へ">▲</a>
+${renderFooter(undefined)}
 </body>
 </html>
 `;

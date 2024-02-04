@@ -5,17 +5,24 @@ export function validateSummaries(pages) {
 }
 
 function getSummariesS(pages) {
-  const begin = '<p class="par-bold">【まとめ】</p>\n';
-  const end = "</section>";
+  const begin = '<p class="heading">【まとめ】</p>\n';
+  const end1 = '<p class="blank">';
+  const end2 = "</section>";
   const summaries = [];
   // 補足以外の【まとめ】を収集
   pages
     .filter((p) => !p.h3Title.startsWith("補足"))
     .forEach((page) => {
       const beginIndex = page.contentHtml.indexOf(begin);
-      const endIndex = page.contentHtml.lastIndexOf(end);
-      if (beginIndex === -1 || endIndex === -1) {
+      if (beginIndex === -1) {
         return;
+      }
+      let endIndex = page.contentHtml.indexOf(end1, beginIndex);
+      if (endIndex === -1) {
+        endIndex = page.contentHtml.indexOf(end2, beginIndex);
+        if (endIndex === -1) {
+          return;
+        }
       }
       const summary = page.contentHtml.substring(
         beginIndex + begin.length,

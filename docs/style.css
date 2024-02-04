@@ -1,5 +1,5 @@
 :root {
-  --navbar-height: 2.5rem;
+  --header-height: 2.5rem;
   --max-content-width: 40rem;
 }
 
@@ -7,6 +7,8 @@ html {
   font-size: 16px;
   height: 100%;
   scroll-behavior: smooth;
+  /* PCのChromeで文字が薄い点を改善 */
+  text-shadow: 0px 0px 0px #00000080 !important;
 }
 @media screen and (min-width: 641px) {
   html {
@@ -25,7 +27,7 @@ html {
 }
 
 @media print {
-  nav#navbar {
+  header {
     display: none;
   }
   main {
@@ -70,7 +72,8 @@ p.par {
   margin: 1rem 0;
 }
 /* 太字の段落 */
-p.par-bold {
+p.heading {
+  border-bottom: 1px solid #000;
   font-weight: bold;
   margin: 1rem 0;
 }
@@ -132,24 +135,28 @@ body {
 
   display: grid;
   grid-template:
-    "navbar" auto
+    "header" auto
     "main" 1fr
     "footer" auto;
 }
 
-/* 固定ナビゲーションバー */
-nav#navbar {
+/* 固定ヘッダー */
+header {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  grid-area: navbar;
+  grid-area: header;
 
   position: fixed;
   top: 0;
   width: 100%;
-  height: var(--navbar-height);
+  height: var(--header-height);
   z-index: 999;
+}
+/* ナビゲーションバー */
+nav#navbar {
+  height: 100%;
 }
 nav#navbar > ul {
   height: 100%;
@@ -185,7 +192,7 @@ main {
   background-color: #fff;
   color: #000;
   grid-area: main;
-  padding-top: var(--navbar-height);
+  padding-top: var(--header-height);
 }
 
 /* コンテンツ */
@@ -251,7 +258,9 @@ h4 {
 
 /* ページ下部の次ページへのリンク */
 nav#next-page {
-  margin: 4rem 0;
+  background-color: #fff;
+  color: #000;
+  padding: 4rem 1rem;
   text-align: center;
 }
 nav#next-page > a {
