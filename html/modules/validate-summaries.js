@@ -1,6 +1,8 @@
+import { removeElems } from "./dom-utils.js";
+
 export function validateSummaries(pages) {
-  const summariesS = getSummariesS(pages);
-  const summariesC = getSummariesC(pages);
+  const summariesS = getSummariesS(pages).map(removeLinks);
+  const summariesC = getSummariesC(pages).map(removeLinks);
   validate(summariesS, summariesC);
 }
 
@@ -52,6 +54,13 @@ function getSummariesC(pages) {
       summaries.push(...sums);
     });
   return summaries;
+}
+
+function removeLinks(html) {
+  const rootElem = document.createElement("div");
+  rootElem.innerHTML = html;
+  removeElems(rootElem, 'a[href]');
+  return rootElem.innerHTML;
 }
 
 function validate(summariesS, summariesC) {

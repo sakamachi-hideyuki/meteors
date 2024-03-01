@@ -25,6 +25,9 @@ export function linkPages(pages) {
     linkChapter(pages, page);
     linkSection(pages, page, prevPage, nextPage);
     linkSupplement(pages, page);
+    if (page.id.endsWith("--summary")) {
+      linkSummary(pages, page);
+    }
   }
 }
 
@@ -131,6 +134,23 @@ function linkSupplement(pages, page) {
         return s;
       }
       return `<a href="${target.filename}">${s}</a>`;
+    }
+  );
+}
+
+function linkSummary(pages, page) {
+  // "<p class="list-1">・～"をリンク化
+  page.contentHtml = page.contentHtml.replaceAll(
+    /<p class="list-1">・([^（…<]+)/g,
+    (s, p1) => {
+      const target = pages.find(
+        (p) => p.h2Title === page.h2Title && p.h3Title === p1
+      );
+      if (target === undefined) {
+        console.error(`createLinks: ${p1} not found.`);
+        return s;
+      }
+      return `<p class="list-1">・<a href="${target.filename}">${p1}</a>`;
     }
   );
 }

@@ -8,8 +8,8 @@ export const renderNormalHtml = (page, prevPage, nextPage) =>
 ${Shared.googleAnalyticsHtml}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-${renderDescMeta(page)}
 <title>${renderDocumentTitle(page)}</title>
+${renderDescMeta(page)}
 <link rel="stylesheet" href="style.css">
 </head>
 <body>

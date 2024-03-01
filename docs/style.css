@@ -10,6 +10,7 @@ html {
   /* PCのChromeで文字が薄い点を改善 */
   text-shadow: 0px 0px 0px #00000080 !important;
 }
+
 @media screen and (min-width: 641px) {
   html {
     font-size: 120%;
@@ -33,97 +34,6 @@ html {
   main {
     padding-top: 0;
   }
-}
-
-/* リンク */
-a {
-  color: #06c;
-  text-decoration-line: none;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2rem;
-}
-a:hover {
-  text-decoration-line: underline;
-}
-/* 下線 */
-u {
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2rem;
-}
-
-p {
-  line-height: 2rem;
-  margin: 0;
-}
-/* 空行 */
-p.blank {
-  line-height: 0;
-  margin: 1rem 0;
-}
-/* 項の短い説明 */
-p.desc {
-  font-size: 0.85rem;
-  line-height: normal;
-  margin: 1rem 0;
-  text-align: center;
-}
-/* 段落 */
-p.par {
-  margin: 1rem 0;
-}
-/* 太字の段落 */
-p.heading {
-  border-bottom: 1px solid #000;
-  font-weight: bold;
-  margin: 1rem 0;
-}
-/* リスト1(箇条書き レベル1) */
-p.list-1 {
-  margin: 0 0 0 1rem;
-  text-indent: -1rem;
-}
-/* リスト2(箇条書き レベル2) */
-p.list-2 {
-  margin: 0 0 0 2rem;
-  text-indent: -1rem;
-}
-/* リスト3(箇条書き レベル3) */
-p.list-3 {
-  margin: 0 0 0 3rem;
-  text-indent: -1rem;
-}
-
-/* 画像とキャプション */
-figure.image-and-caption {
-  font-size: 0;
-  margin: 0;
-  text-align: center;
-}
-/* 画像 */
-figure.image-and-caption img {
-  animation-duration: 1s;
-  animation-name: fade-in;
-  height: auto;
-  width: 100%;
-}
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-/* 画像のキャプション */
-figure.image-and-caption > figcaption {
-  font-family: sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.25rem;
-  text-align: left;
-}
-/* 画像とキャプションの後のp */
-figure.image-and-caption + p {
-  margin-top: 2rem;
 }
 
 body {
@@ -152,7 +62,7 @@ header {
   top: 0;
   width: 100%;
   height: var(--header-height);
-  z-index: 999;
+  z-index: 2;
 }
 /* ナビゲーションバー */
 nav#navbar {
@@ -256,6 +166,97 @@ h4 {
   text-align: center;
 }
 
+p {
+  line-height: 2rem;
+  margin: 0;
+}
+/* 空行 */
+p.blank {
+  line-height: 0;
+  margin: 1rem 0;
+}
+/* 項の短い説明 */
+p.desc {
+  font-size: 0.85rem;
+  line-height: normal;
+  margin: 0.5rem 0 2rem 0;
+  text-align: center;
+}
+/* 段落 */
+p.par {
+  margin: 1rem 0;
+}
+/* 太字の段落 */
+p.heading {
+  border-bottom: 1px solid #000;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+/* リスト1(箇条書き レベル1) */
+p.list-1 {
+  margin: 0 0 0 1rem;
+  text-indent: -1rem;
+}
+/* リスト2(箇条書き レベル2) */
+p.list-2 {
+  margin: 0 0 0 2rem;
+  text-indent: -1rem;
+}
+/* リスト3(箇条書き レベル3) */
+p.list-3 {
+  margin: 0 0 0 3rem;
+  text-indent: -1rem;
+}
+
+/* リンク */
+a {
+  color: #06c;
+  text-decoration-line: none;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2rem;
+}
+a:hover {
+  text-decoration-line: underline;
+}
+/* 下線 */
+u {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2rem;
+}
+
+/* 画像とキャプション */
+figure.image-and-caption {
+  font-size: 0;
+  margin: 0;
+  text-align: center;
+}
+/* 画像 */
+figure.image-and-caption img {
+  animation-duration: 1s;
+  animation-name: fade-in;
+  height: auto;
+  width: 100%;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* 画像のキャプション */
+figure.image-and-caption > figcaption {
+  font-family: sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  text-align: left;
+}
+/* 画像とキャプションの後のp */
+figure.image-and-caption + p {
+  margin-top: 2rem;
+}
+
 /* ページ下部の次ページへのリンク */
 nav#next-page {
   background-color: #fff;
@@ -294,7 +295,7 @@ a.top-of-page {
   outline: none;
   text-align: center;
   text-decoration-line: none;
-  z-index: 998;
+  z-index: 1;
 
   position: fixed;
   bottom: 1.5rem;

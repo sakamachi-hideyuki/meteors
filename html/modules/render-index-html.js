@@ -8,8 +8,8 @@ export const renderIndexHtml = (page, nextPage) =>
 ${Shared.googleAnalyticsHtml}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="日本神話に星の神は少ないと言われているが、実際は星が付く名の神社は多く祭神も様々で、日本神話では様々な星の神・神話が「見立て」を用いて語られている。">
 <title>${Shared.bookTitle}</title>
+<meta name="description" content="日本神話に星の神は少ないと言われているが、実際は星が付く名の神社は多く祭神も様々で、日本神話では様々な星の神・神話が「見立て」を用いて語られている。">
 <link rel="canonical" href="https://sakamachi-hideyuki.github.io/meteors/">
 <link rel="stylesheet" href="style.css">
 </head>
