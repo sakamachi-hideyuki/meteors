@@ -293,6 +293,7 @@ div#copyright {
 /* ページ先頭へスクロールするボタン */
 a.top-of-page {
   background-color: #222;
+  border-radius: 0.3rem;
   color: #fff;
   display: block;
   font-family: sans-serif;
@@ -303,8 +304,8 @@ a.top-of-page {
   z-index: 1;
 
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  bottom: 1.2rem;
+  right: 1.2rem;
   width: 2.5rem;
 }
 
