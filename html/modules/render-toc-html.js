@@ -8,6 +8,12 @@ ${Shared.googleAnalyticsHtml}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>目次 - ${Shared.bookTitle}</title>
+<style>
+/* FOUC(Flash of unstyled content)対策 */
+html {
+  visibility: hidden;
+}
+</style>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>

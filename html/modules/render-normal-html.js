@@ -10,6 +10,12 @@ ${Shared.googleAnalyticsHtml}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${renderDocumentTitle(page)}</title>
 ${renderDescMeta(page)}
+<style>
+/* FOUC(Flash of unstyled content)対策 */
+html {
+  visibility: hidden;
+}
+</style>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
