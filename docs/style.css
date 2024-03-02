@@ -234,7 +234,7 @@ figure.image-and-caption {
 }
 /* 画像 */
 figure.image-and-caption img {
-  animation-duration: 1s;
+  animation-duration: 1.5s;
   animation-name: fade-in;
   height: auto;
   width: 100%;
@@ -243,7 +243,7 @@ figure.image-and-caption img {
   0% {
     opacity: 0;
   }
-  33% {
+  25% {
     opacity: 0;
   }
   100% {
