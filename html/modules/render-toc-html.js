@@ -18,8 +18,8 @@ html {
 </head>
 <body>
 <main>
-<div id="content">
 <div class="h1-title">${Shared.bookTitle}</div>
+<div id="content">
 <h2>目次</h2>
 <nav id="toc">
 ${renderTocUl(pages)}

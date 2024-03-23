@@ -21,9 +21,9 @@ html {
 <body>
 ${renderHeader(page, prevPage, nextPage)}
 <main>
-<div id="content">
 <div class="h1-title">${Shared.bookTitle}</div>
 ${renderH2TitleDiv(page)}
+<div id="content">
 ${page.contentHtml}
 </div>
 </main>
