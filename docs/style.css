@@ -189,7 +189,7 @@ p.par {
 }
 /* 太字の段落 */
 p.heading {
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid #000;
   font-size: 1.1rem;
   font-weight: bold;
   margin: 1rem 0;
@@ -346,7 +346,6 @@ figure.image-and-caption#photo-pleiades > figcaption {
 }
 /* 先頭ページ　Webサイトの説明 */
 div#website-desc {
-  background-color: #eee;
   font-family: sans-serif;
   font-size: 0.75rem;
   line-height: 1.25rem;
