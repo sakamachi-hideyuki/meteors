@@ -7,11 +7,11 @@ export function validateSummaries(pages) {
 }
 
 function getSummariesS(pages) {
-  const begin = '<p class="heading">【まとめ】</p>\n';
+  const begin = '<p class="heading">まとめ</p>\n';
   const end1 = '<p class="blank">';
   const end2 = "</section>";
   const summaries = [];
-  // 補足以外の【まとめ】を収集
+  // 補足以外のまとめを収集
   pages
     .filter((p) => !p.h3Title.startsWith("補足"))
     .forEach((page) => {
