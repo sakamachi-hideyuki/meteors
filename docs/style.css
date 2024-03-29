@@ -190,6 +190,7 @@ p.par {
 /* 太字の段落 */
 p.heading {
   border-bottom: 1px solid #aaa;
+  font-size: 1.1rem;
   font-weight: bold;
   margin: 1rem 0;
 }
