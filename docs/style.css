@@ -239,6 +239,15 @@ figure.image-and-caption img {
   height: auto;
   width: 100%;
 }
+/* 画像のキャプション */
+figure.image-and-caption > figcaption {
+  animation-duration: 1.5s;
+  animation-name: fade-in;
+  font-family: sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  text-align: left;
+}
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -249,13 +258,6 @@ figure.image-and-caption img {
   100% {
     opacity: 1;
   }
-}
-/* 画像のキャプション */
-figure.image-and-caption > figcaption {
-  font-family: sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.25rem;
-  text-align: left;
 }
 
 /* ページ下部の次ページへのリンク */
@@ -335,15 +337,19 @@ html#html-toc nav#toc div.desc {
 /* 先頭ページ　画像 */
 figure.image-and-caption#photo-pleiades {
   background-color: #000;
+  color: #fff;
 }
 figure.image-and-caption#photo-pleiades img {
   max-width: 64rem;
 }
 figure.image-and-caption#photo-pleiades > figcaption {
-  background-color: #fff;
   padding: 0 0.5rem;
   text-align: right;
 }
+figure.image-and-caption#photo-pleiades > figcaption a {
+  color: #39f;
+}
+
 /* 先頭ページ　Webサイトの説明 */
 div#website-desc {
   font-family: sans-serif;
