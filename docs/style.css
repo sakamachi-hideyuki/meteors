@@ -6,6 +6,8 @@
 html {
   font-size: 16px;
   height: 100%;
+  /* iPhoneで画面幅で折り返さない問題に対処 */
+  overflow-wrap: anywhere;
   scroll-behavior: smooth;
   /* PCのChromeで文字が薄い点を改善 */
   text-shadow: 0px 0px 0px #00000080 !important;
