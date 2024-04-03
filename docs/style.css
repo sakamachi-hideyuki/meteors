@@ -11,6 +11,9 @@ html {
   scroll-behavior: smooth;
   /* PCのChromeで文字が薄い点を改善 */
   text-shadow: 0px 0px 0px #00000080 !important;
+  /* iPhoneで自動的に拡大される問題に対処 */
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
   /* FOUC(Flash of unstyled content)対策 */
   visibility: visible;
 }
