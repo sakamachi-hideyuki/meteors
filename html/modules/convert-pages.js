@@ -59,7 +59,6 @@ export function convertPages(html) {
 
   removeBlankLines(rootElem);
   removeBlankPsAtEndOfSections(rootElem);
-  removeLenticularBrackets(rootElem);
 
   return rootElem.innerHTML;
 }
@@ -327,15 +326,5 @@ function removeBlankPsAtEndOfSections(rootElem) {
   rootElem.querySelectorAll("section").forEach((el) => {
     // 末尾の空行のp要素は削除
     el.innerHTML = el.innerHTML.replace(/(<p[^>]*>&nbsp;<\/p>\n)+$/g, "");
-  });
-}
-
-/**
- * headingスタイル行の【】を削除する.
- */
-function removeLenticularBrackets(rootElem) {
-  rootElem.querySelectorAll("p.heading").forEach((el) => {
-    // 【】を削除
-    el.innerHTML = el.innerHTML.replace(/[【】]/g, "");
   });
 }
