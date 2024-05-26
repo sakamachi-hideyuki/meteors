@@ -1,11 +1,10 @@
 export function linkPages(pages) {
   for (let i = 0; i < pages.length; i++) {
     const page = pages[i];
-    // 目次、先頭ページ、序文、付録、改版履歴のページや、コンテンツなしのページはスキップ
+    // 目次、先頭ページ、付録、改版履歴のページや、コンテンツなしのページはスキップ
     if (
       page.id === "toc" ||
       page.id === "index" ||
-      page.id === "preface" ||
       page.id === "appendix" ||
       page.id === "revision-history" ||
       page.contentHtml === ""
@@ -32,37 +31,40 @@ export function linkPages(pages) {
 }
 
 function linkPreface(pages, page) {
+  // 序文のページでは"序文"をリンク化しない
+  if (page.id === "preface") {
+    return;
+  }
+  const target = pages.find((p) => p.id === "preface");
   // "序文"をリンク化
   page.contentHtml = page.contentHtml.replaceAll(/序文/g, (s) => {
-    const target = pages.find((p) => p.id === "preface");
     return `<a href="${target.filename}">${s}</a>`;
   });
 }
 
 function linkAppendix(pages, page) {
+  const target = pages.find((p) => p.id === "appendix");
   // "付録参照"をリンク化
   page.contentHtml = page.contentHtml.replaceAll(/付録参照/g, (s) => {
-    const target = pages.find((p) => p.id === "appendix");
     return `<a href="${target.filename}">${s}</a>`;
   });
   // 最初の"神名末尾のパターン"をリンク化
   page.contentHtml = page.contentHtml.replace(/神名末尾のパターン/, (s) => {
-    const target = pages.find((p) => p.id === "appendix");
     return `<a href="${target.filename}">${s}</a>`;
   });
 }
 
 function linkChapter(pages, page) {
-  // "「～の章」で"をリンク化
+  // "「～の章」で"、"「～の章」、"をリンク化
   page.contentHtml = page.contentHtml.replaceAll(
-    /「([^<>「」]+の章)」で/g,
-    (s, p1) => {
+    /「([^<>「」]+の章)」(で|、)/g,
+    (s, p1, p2) => {
       const target = pages.find((p) => p.h2Title === p1 && p.h3Title === "");
       if (target === undefined) {
         console.error(`createLinks: ${s} not found.`);
         return s;
       }
-      return `<a href="${target.filename}">「${p1}」</a>で`;
+      return `<a href="${target.filename}">「${p1}」</a>${p2}`;
     }
   );
   // "本章冒頭"をリンク化

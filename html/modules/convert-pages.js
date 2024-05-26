@@ -32,7 +32,7 @@ export function convertPages(html) {
   rootElem.innerHTML = html;
 
   removeElemsAndDescendants(rootElem, "[class^=MsoToc], br");
-  removeElems(rootElem, 'a[href], a[name^="_Toc"], span');
+  removeElems(rootElem, 'a[href], a[name^="_Toc"], span, p.heading b');
   removeUnnecessaryAttrs(rootElem);
 
   convertBlankPs(rootElem);

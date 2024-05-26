@@ -8,6 +8,7 @@ html {
   height: 100%;
   /* iPhoneで画面幅で折り返さない問題に対処 */
   overflow-wrap: anywhere;
+  /* ページ先頭へスクロールするボタンを押した際にスクロールのアニメーションを行う */
   scroll-behavior: smooth;
   /* PCのChromeで文字が薄い点を改善 */
   text-shadow: 0px 0px 0px #00000080 !important;
@@ -18,19 +19,24 @@ html {
   visibility: visible;
 }
 
-@media screen and (min-width: 641px) {
+@media screen and (min-width: 850px) {
   html {
-    font-size: 120%;
+    font-size: 125%;
   }
 }
-@media screen and (min-width: 1281px) {
+@media screen and (min-width: 1700px) {
   html {
-    font-size: 140%;
+    font-size: 150%;
   }
 }
-@media screen and (min-width: 1921px) {
+@media screen and (min-width: 2550px) {
   html {
-    font-size: 160%;
+    font-size: 175%;
+  }
+}
+@media screen and (min-width: 3400px) {
+  html {
+    font-size: 200%;
   }
 }
 
@@ -239,30 +245,15 @@ figure.image-and-caption {
 }
 /* 画像 */
 figure.image-and-caption img {
-  animation-duration: 1.5s;
-  animation-name: fade-in;
   height: auto;
   width: 100%;
 }
 /* 画像のキャプション */
 figure.image-and-caption > figcaption {
-  animation-duration: 1.5s;
-  animation-name: fade-in;
   font-family: sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.25rem;
+  font-size: 0.7rem;
+  line-height: 1.2rem;
   text-align: left;
-}
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  25% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 /* ページ下部の次ページへのリンク */
@@ -287,10 +278,9 @@ footer {
 /* ページ下部のコピーライト文 */
 div#copyright {
   font-family: sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.5rem;
+  font-size: 0.6rem;
+  line-height: 2.5rem;
   text-align: center;
-  border: #222 solid 1px;
 }
 
 /* ページ先頭へスクロールするボタン */
@@ -307,14 +297,18 @@ a.top-of-page {
   z-index: 1;
 
   position: fixed;
-  bottom: 1.2rem;
+  bottom: 2.1rem;
   right: 1.2rem;
   width: 2.5rem;
 }
 
 /* 目次 */
 html#html-toc {
+  /* 目次ページへ移動した際に元のページへのリンクにフォーカスを位置付けるが */
+  /* スクロールのアニメーションを行うとAndroidで位置付かないことがあるので行わない */
   scroll-behavior: auto;
+  /* 目次ページへ移動した際に元のページへのリンクにフォーカスを位置付けるが */
+  /* その際にフォーカス位置が上端となるのではなく、上端から10rem下とする */
   scroll-padding-top: 10rem;
 }
 html#html-toc > body {
@@ -345,22 +339,36 @@ figure.image-and-caption#photo-pleiades {
   color: #fff;
 }
 figure.image-and-caption#photo-pleiades img {
+  animation-duration: 1.5s;
+  animation-name: fade-in;
   max-width: 64rem;
 }
 figure.image-and-caption#photo-pleiades > figcaption {
+  animation-duration: 2s;
+  animation-name: fade-in;
   padding: 0 0.5rem;
   text-align: right;
 }
 figure.image-and-caption#photo-pleiades > figcaption a {
-  color: #39f;
+  color: #38f;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* 先頭ページ　Webサイトの説明 */
 div#website-desc {
   font-family: sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.25rem;
-  padding: 0.5rem 1rem;
+  font-size: 0.7rem;
+  padding: 0 1rem;
   text-align: center;
 }
 
