@@ -3,7 +3,7 @@ import { renderIndexHtml } from "./render-index-html.js";
 import { renderNormalHtml } from "./render-normal-html.js";
 
 export function renderPages(pages) {
-  pages[0].html = renderTocHtml(pages);
+  pages[0].html = renderTocHtml(pages[0], pages);
 
   pages[1].html = renderIndexHtml(pages[1], pages[2]);
 

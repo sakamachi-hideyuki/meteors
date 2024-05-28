@@ -1,4 +1,10 @@
 class Shared {
+  static bookTitle = "流星と昴の日本神話";
+  static websiteTitle = this.bookTitle;
+  static websiteDescription = "日本神話に星の神・神話は少ないと言われているが、実際は星が付く名の神社は多く、日本神話では様々な星の神・神話が「見立て」を用いて語られている。";
+  static websiteUrl = "https://sakamachi-hideyuki.github.io/meteors/";
+  static websiteImage = `${Shared.websiteUrl}images/photo-pleiades-web.webp`;
+
   static googleAnalyticsHtml = `
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45DHNXBNFZ"></script>
@@ -10,8 +16,6 @@ class Shared {
   gtag('config', 'G-45DHNXBNFZ');
 </script>
 `;
-
-  static bookTitle = "流星と昴の日本神話";
 
   static pleiadesAttributionHtml = `Adapted from <a href="https://commons.wikimedia.org/wiki/File:Orion,_Taurus_and_Pleiades.jpg" target="_blank">"Orion, Taurus and Pleiades"</a><br>
 by Panda~thwiki, used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;

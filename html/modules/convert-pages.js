@@ -313,7 +313,7 @@ function createH1Section(rootElem) {
   }
   const h1Section = htmlToElem(
     `<section class="h1-section" id="index">
-<h1>${Shared.bookTitle}</h1>${intro.innerHTML}
+<h1>${Shared.websiteTitle}</h1>${intro.innerHTML}
 </section>`
   );
   rootElem.prepend(h1Section);
