@@ -3,7 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hina+Mincho&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --cw: 50rem; /* キャンバスの幅 */
+        --ch: 75rem; /* キャンバスの高さ */
+
+        /* タイトル用変数 */
+        --tfsize: 3rem; /* フォントサイズ、1文字分のdivの幅・高さ */
+        --tscalex: 0.9; /* 長体 90% */
+        --tgap: 2rem; /* 1文字分のdiv間のギャップ */
+        --tstepy: calc(var(--tfsize) + var(--tgap)); /* y座標増分 */
+        --tx: calc((var(--cw) - var(--tfsize)) / 2); /* タイトル位置x座標 */
+        --ty: 4rem; /* タイトル位置y座標 */
+
+        /* 著者名用変数 */
+        --afsize: 2.5rem; /* フォントサイズ、1文字分のdivの幅・高さ */
+        --ascalex: 0.9; /* 長体 90% */
+        --agap: 2rem; /* 1文字分のdiv間のギャップ */
+        --astepy: calc(var(--afsize) + var(--agap)); /* y座標増分 */
+        --ax: calc((var(--cw) - var(--afsize)) / 2); /* 著者名x座標 */
+        --ay: calc(var(--ty) + var(--tstepy) * 10); /* 著者名y座標 */
+      }
       html {
         font-size: 400%;
       }
@@ -16,35 +42,104 @@
         background-image: url(sauna200-v.png);
         background-size: cover;
         overflow: hidden;
+        /* position: absolute の子要素に overflow: hidden を有効にするため */
+        position: relative;
 
-        width: 50rem;
+        width: var(--cw);
+        height: var(--ch);
+      }
+      #meteor {
+        background: linear-gradient(
+          rgba(255, 255, 255, 0) 30%,
+          rgba(255, 255, 255, 1) 80%,
+          rgba(255, 255, 255, 0) 90%
+        );
+        position: absolute;
+        transform: rotate(-25deg);
+        transform-origin: left top;
+
+        /* 始点は昴 */
+        width: 5px;
         height: 75rem;
+        left: 9rem;
+        top: 14rem;
       }
-      .text {
+      #title > div {
+        /* border: 1px solid red;
+        box-sizing: border-box; */
+
         color: #fff;
-        font-family: serif;
-        font-weight: bold;
-        padding-top: 19rem;
-        padding-right: 1rem;
-        text-align: right;
-        text-shadow: 0 0 1rem #fff;
+        font-family: "Hina Mincho", serif;
+        font-size: var(--tfsize);
+        line-height: var(--tfsize);
+        position: absolute;
+        text-align: center;
+        transform: scaleX(var(--tscalex));
+        transform-origin: left top;
+
+        filter: drop-shadow(0 0 2rem blue);
+        text-shadow: 0 0 2rem blue, 0 0 3rem blue, 0 0 4rem blue;
+
+        width: calc(var(--tfsize) / var(--tscalex));
+        height: var(--tfsize);
+        left: var(--tx);
       }
-      .title {
-        font-size: 9rem;
-        line-height: 10rem;
-      }
-      .author {
-        font-size: 4.5rem;
-        padding-top: 5rem;
+      #author > div {
+        /* border: 1px solid red;
+        box-sizing: border-box; */
+
+        color: #fff;
+        font-family: "Hina Mincho", serif;
+        font-size: var(--afsize);
+        line-height: var(--afsize);
+        position: absolute;
+        text-align: center;
+        transform: scaleX(var(--ascalex));
+        transform-origin: left top;
+
+        filter: drop-shadow(0 0 2rem orange);
+        text-shadow: 0 0 2rem orange, 0 0 3rem orange;
+
+        width: calc(var(--afsize) / var(--ascalex));
+        height: var(--afsize);
+        left: var(--ax);
       }
     </style>
   </head>
   <body>
     <main>
-      <div class="text">
-        <div class="title">流星と昴の</div>
-        <div class="title">日本神話</div>
-        <div class="author">坂町英之</div>
+
+      <!-- <div
+        style="
+          border: 1px solid red;
+          box-sizing: border-box;
+          position: absolute;
+          left: 23.5rem;
+          top: 4rem;
+          width: 3rem;
+          height: 67rem;
+        "
+      ></div> -->
+
+      <div id="meteor"></div>
+
+      <div id="title">
+        <div style="top: calc(var(--ty) + var(--tstepy) * 0)">流</div>
+        <div style="top: calc(var(--ty) + var(--tstepy) * 1)">星</div>
+        <div style="top: calc(var(--ty) + var(--tstepy) * 2)">と</div>
+        <div style="top: calc(var(--ty) + var(--tstepy) * 3)">昴</div>
+        <div style="top: calc(var(--ty) + var(--tstepy) * 4 - 0.3rem)">の</div>
+        <div style="top: calc(var(--ty) + var(--tstepy) * 5)">日</div>
+        <div style="top: calc(var(--ty) + var(--tstepy) * 6)">本</div>
+        <div style="top: calc(var(--ty) + var(--tstepy) * 7)">神</div>
+        <div style="top: calc(var(--ty) + var(--tstepy) * 8)">話</div>
+      </div>
+
+      <div id="author">
+        <div style="top: calc(var(--ay) + var(--astepy) * 0)">坂</div>
+        <div style="top: calc(var(--ay) + var(--astepy) * 1)">町</div>
+        <div style="top: calc(var(--ay) + var(--astepy) * 2)">英</div>
+        <div style="top: calc(var(--ay) + var(--astepy) * 3)">之</div>
       </div>
     </main>
   </body>

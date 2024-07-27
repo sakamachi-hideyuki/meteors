@@ -169,14 +169,23 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
   static altToHtml = {
     [Shared.photoPleiadesAlt]: "",
     [Shared.titleImageAlt]: "",
-    [Shared.photoMeteorAlt]: Shared.photoMeteorHtml,
+    [Shared.photoMeteorAlt]: "",
     [Shared.figUkeiAlt]: Shared.figUkeiHtml,
-    [Shared.photoTategushiAlt]: Shared.photoTategushiHtml,
-    [Shared.photoOgameAlt]: Shared.photoOgameHtml,
-    [Shared.photoMagatamaAlt]: Shared.photoMagatamaHtml,
+    [Shared.photoTategushiAlt]: "",
+    [Shared.photoOgameAlt]: "",
+    [Shared.photoMagatamaAlt]: "",
     [Shared.figIzanaginotsurugiAlt]: Shared.figIzanaginotsurugiHtml,
     [Shared.figAmanoyachimataAlt]: Shared.figAmanoyachimataHtml,
-    [Shared.photoOtomatsuriAlt]: Shared.photoOtomatsuriHtml,
-    [Shared.photoIwakuraAlt]: Shared.photoIwakuraHtml,
+    [Shared.photoOtomatsuriAlt]: "",
+    [Shared.photoIwakuraAlt]: "",
+  };
+
+  static pageIdToHtml = {
+    "chapter-of-haya": Shared.photoMeteorHtml,
+    "chapter-of-kushi": Shared.photoTategushiHtml,
+    "chapter-of-mika": Shared.photoOgameHtml,
+    "chapter-of-tama": Shared.photoMagatamaHtml,
+    "chapter-of-hi": Shared.photoOtomatsuriHtml,
+    "chapter-of-ishi": Shared.photoIwakuraHtml,
   };
 }

@@ -30,7 +30,9 @@ html {
 <body>
 ${renderHeader(page, undefined, nextPage)}
 <main>
+<div class="website-image">
 ${Shared.photoPleiadesWebHtml}
+</div>
 <div id="website-desc">
 本Webサイトは <a href="https://www.amazon.co.jp/dp/B09DX3WVX6/" target="_blank">書籍『${
     Shared.bookTitle

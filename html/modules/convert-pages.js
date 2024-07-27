@@ -48,7 +48,6 @@ export function convertPages(html) {
 
   createH2Sections(rootElem);
   setH2SectionIds(rootElem);
-  moveH2SectionImages(rootElem);
 
   createH3Sections(rootElem);
   setH3SectionIds(rootElem);
@@ -204,25 +203,6 @@ function setH2SectionIds(rootElem) {
     }
     el.id = id;
   });
-}
-
-/**
- * H2セクション先頭の画像は1つ前のH2セクションの最後の子要素となっているので、
- * H2セクションの最初の子要素に移動する.
- */
-function moveH2SectionImages(rootElem) {
-  const h2Sections = Array.from(rootElem.querySelectorAll(".h2-section"));
-  let prevH2Section = undefined;
-  for (const h2Section of h2Sections) {
-    // 1つ前のH2セクションの最後の子要素が .image-and-caption なら現在のH2セクションの最初の子要素に変更
-    if (
-      prevH2Section !== undefined &&
-      prevH2Section.lastElementChild.className === "image-and-caption"
-    ) {
-      h2Section.prepend(prevH2Section.lastElementChild);
-    }
-    prevH2Section = h2Section;
-  }
 }
 
 /**

@@ -123,7 +123,7 @@ div.h1-title {
   font-size: 0.8rem;
   font-weight: bold;
   letter-spacing: 0.3rem;
-  margin: 1rem 0 0 0;
+  margin: 2rem 0 0 0;
   text-align: center;
   text-indent: 0.3rem;
 }
@@ -237,25 +237,6 @@ u {
   text-underline-offset: 0.2rem;
 }
 
-/* 画像とキャプション */
-figure.image-and-caption {
-  font-size: 0;
-  margin: 0 0 2rem 0;
-  text-align: center;
-}
-/* 画像 */
-figure.image-and-caption img {
-  height: auto;
-  width: 100%;
-}
-/* 画像のキャプション */
-figure.image-and-caption > figcaption {
-  font-family: sans-serif;
-  font-size: 0.7rem;
-  line-height: 1.2rem;
-  text-align: left;
-}
-
 /* ページ下部の次ページへのリンク */
 nav#next-page {
   background-color: #f6f6f6;
@@ -333,51 +314,12 @@ html#html-toc nav#toc div.desc {
   font-size: 0.85rem;
 }
 
-/* 先頭ページ　画像 */
-figure.image-and-caption#photo-pleiades {
-  background-color: #000;
-  color: #fff;
-}
-figure.image-and-caption#photo-pleiades img {
-  animation-duration: 1.5s;
-  animation-name: fade-in;
-  max-width: 64rem;
-}
-figure.image-and-caption#photo-pleiades > figcaption {
-  animation-duration: 2s;
-  animation-name: fade-in;
-  padding: 0 0.5rem;
-  text-align: right;
-}
-figure.image-and-caption#photo-pleiades > figcaption a {
-  color: #38f;
-}
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  25% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 /* 先頭ページ　Webサイトの説明 */
 div#website-desc {
   font-family: sans-serif;
   font-size: 0.7rem;
   padding: 0 1rem;
   text-align: center;
-}
-
-/* 甕の章　大甕の画像 */
-figure.image-and-caption#photo-ogame {
-  margin-left: auto;
-  margin-right: auto;
-  min-width: 15rem;
-  width: 50%;
 }
 
 /* 改版履歴 */
@@ -388,4 +330,85 @@ section#revision-history p {
 section#revision-history p.blank {
   line-height: 0rem;
   margin: 0.6rem 0;
+}
+
+/* 画像とキャプション */
+figure.image-and-caption {
+  font-size: 0;
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+/* 画像 */
+figure.image-and-caption img {
+  height: auto;
+  width: 100%;
+}
+/* 画像のキャプション */
+figure.image-and-caption > figcaption {
+  font-family: sans-serif;
+  font-size: 0.7rem;
+  line-height: 1.2rem;
+  text-align: left;
+}
+
+/* 先頭ページの画像 */
+div.website-image {
+  background-color: #000;
+  color: #fff;
+  padding-top: 2.5rem;
+}
+div.website-image > figure.image-and-caption img {
+  animation-duration: 1.5s;
+  animation-name: fade-in;
+  max-width: 64rem;
+}
+div.website-image > figure.image-and-caption > figcaption {
+  animation-duration: 2s;
+  animation-name: fade-in;
+  padding: 0 0.5rem;
+  text-align: right;
+}
+div.website-image > figure.image-and-caption > figcaption a {
+  color: #38f;
+}
+
+/* 各章先頭の画像 */
+div.chapter-image {
+  background-color: #000;
+  color: #fff;
+  padding-top: 2.5rem;
+}
+div.chapter-image > figure.image-and-caption {
+  max-width: var(--max-content-width);
+  margin: 0 auto 2rem auto;
+}
+div.chapter-image > figure.image-and-caption img {
+  animation-duration: 1.5s;
+  animation-name: fade-in;
+}
+div.chapter-image > figure.image-and-caption > figcaption {
+  animation-duration: 2s;
+  animation-name: fade-in;
+  padding: 0.3rem;
+}
+div.chapter-image > figure.image-and-caption > figcaption a {
+  color: #38f;
+}
+
+/* 甕の章　大甕の画像 */
+div.chapter-image > figure.image-and-caption#photo-ogame {
+  max-width: calc(var(--max-content-width) * 0.67);
+  min-width: 15rem;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

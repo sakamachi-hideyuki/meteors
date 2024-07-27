@@ -28,7 +28,7 @@ html {
 <body>
 ${renderHeader(page, prevPage, nextPage)}
 <main>
-<div class="h1-title">${Shared.websiteTitle}</div>
+${renderChapterImage(page)}<div class="h1-title">${Shared.websiteTitle}</div>
 ${renderH2TitleDiv(page)}
 <div id="content">
 ${page.contentHtml}
@@ -55,6 +55,11 @@ const renderMetaOgDescription = (page) =>
   page.descText === ""
     ? ""
     : `<meta property="og:description" content="${page.descText}">`;
+
+const renderChapterImage = (page) =>
+  Shared.pageIdToHtml[page.id] === undefined
+    ? ""
+    : `<div class="chapter-image">${Shared.pageIdToHtml[page.id]}</div>`;
 
 const renderH2TitleDiv = (page) =>
   page.h3Title === "" ||
