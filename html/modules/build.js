@@ -1,6 +1,7 @@
 import { buildPages } from "./build-pages.js";
-import { validateSummaries } from "./validate-summaries.js";
 import { validateLinks } from "./validate-links.js";
+import { validateRelatedPages } from "./validate-related-pages.js";
+import { validateSummaries } from "./validate-summaries.js";
 
 document.getElementById("buildButton").addEventListener("click", () => {
   const inputIframe = document.getElementById("inputIframe");
@@ -15,6 +16,7 @@ document.getElementById("buildButton").addEventListener("click", () => {
 
   validateLinks(inputHtml, pages);
   validateSummaries(pages);
+  validateRelatedPages(pages);
 
   const outputElem = document.getElementById("outputElem");
   outputElem.innerHTML = "";

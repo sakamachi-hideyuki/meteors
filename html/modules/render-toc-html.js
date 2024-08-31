@@ -1,26 +1,15 @@
+import { renderHead } from "./render-head.js";
 import { renderFooter } from "./render-footer.js";
 
 export const renderTocHtml = (page, pages) =>
   `<!DOCTYPE html>
 <html lang="ja" id="html-${page.id}" prefix="og: https://ogp.me/ns#">
 <head>
-${Shared.googleAnalyticsHtml}
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${page.title} - ${Shared.websiteTitle}</title>
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ja_JP">
-<meta property="og:url" content="${Shared.websiteUrl}${page.filename}">
-<meta property="og:image" content="${Shared.websiteImage}">
-<meta property="og:site_name" content="${Shared.websiteTitle}">
-<meta property="og:title" content="${page.title} - ${Shared.websiteTitle}" />
-<style>
-/* FOUC(Flash of unstyled content)対策 */
-html {
-  visibility: hidden;
-}
-</style>
-<link rel="stylesheet" href="style.css">
+${renderHead(
+  `${page.title} - ${Shared.websiteTitle}`,
+  "",
+  `${Shared.websiteUrl}${page.filename}`
+)}
 </head>
 <body>
 <main>

@@ -59,7 +59,7 @@ function getSummariesC(pages) {
 function removeLinks(html) {
   const rootElem = document.createElement("div");
   rootElem.innerHTML = html;
-  removeElems(rootElem, 'a[href]');
+  removeElems(rootElem, "a[href]");
   return rootElem.innerHTML;
 }
 

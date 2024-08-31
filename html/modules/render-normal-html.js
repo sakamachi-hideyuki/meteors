@@ -1,3 +1,4 @@
+import { renderHead } from "./render-head.js";
 import { renderHeader } from "./render-header.js";
 import { renderFooter } from "./render-footer.js";
 
@@ -5,25 +6,11 @@ export const renderNormalHtml = (page, prevPage, nextPage) =>
   `<!DOCTYPE html>
 <html lang="ja" id="html-${page.id}" prefix="og: https://ogp.me/ns#">
 <head>
-${Shared.googleAnalyticsHtml}
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${renderTitle(page)} - ${Shared.websiteTitle}</title>
-${renderMetaDescription(page)}
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ja_JP">
-<meta property="og:url" content="${Shared.websiteUrl}${page.filename}">
-<meta property="og:image" content="${Shared.websiteImage}">
-<meta property="og:site_name" content="${Shared.websiteTitle}">
-<meta property="og:title" content="${renderTitle(page)} - ${Shared.websiteTitle}" />
-${renderMetaOgDescription(page)}
-<style>
-/* FOUC(Flash of unstyled content)対策 */
-html {
-  visibility: hidden;
-}
-</style>
-<link rel="stylesheet" href="style.css">
+${renderHead(
+  renderTitle(page),
+  page.descText,
+  `${Shared.websiteUrl}${page.filename}`
+)}
 </head>
 <body>
 ${renderHeader(page, prevPage, nextPage)}
@@ -40,21 +27,9 @@ ${renderFooter(nextPage)}
 `;
 
 const renderTitle = (page) =>
-  page.h3Title === "" ||
-  page.h3Title.endsWith("まとめ") ||
-  page.h3Title.startsWith("補足")
-    ? `${page.title}`
-    : `${page.h2Title}　${page.title}`;
-
-const renderMetaDescription = (page) =>
-  page.descText === ""
-    ? ""
-    : `<meta name="description" content="${page.descText}">`;
-
-const renderMetaOgDescription = (page) =>
-  page.descText === ""
-    ? ""
-    : `<meta property="og:description" content="${page.descText}">`;
+  page.h3Title === ""
+    ? `${page.title} - ${Shared.websiteTitle}`
+    : `${page.h2Title}／${page.title} - ${Shared.websiteTitle}`;
 
 const renderChapterImage = (page) =>
   Shared.pageIdToHtml[page.id] === undefined
@@ -62,8 +37,4 @@ const renderChapterImage = (page) =>
     : `<div class="chapter-image">${Shared.pageIdToHtml[page.id]}</div>`;
 
 const renderH2TitleDiv = (page) =>
-  page.h3Title === "" ||
-  page.h3Title.endsWith("まとめ") ||
-  page.h3Title.startsWith("補足")
-    ? ""
-    : `<div class="h2-title">${page.h2Title}</div>`;
+  page.h3Title === "" ? "" : `<div class="h2-title">${page.h2Title}</div>`;
