@@ -76,7 +76,6 @@ function validateMutualLinks(pages, page, linksOfSummary, linksOfRelatedPages) {
   const linksNotMutual = [...linksOfSummary, ...linksOfRelatedPages].filter(
     (link) =>
       !ignoredPages.includes(link) &&
-      !ignoredLinks.includes(link) &&
       !pages
         .find((p) => p.filename === link)
         .contentHtml.includes(`href="${page.filename}"`)

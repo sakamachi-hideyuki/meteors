@@ -191,7 +191,7 @@ p.blank {
 p.desc {
   font-size: 0.85rem;
   line-height: normal;
-  margin: 0.5rem 0 2rem 0;
+  margin: 1rem 0 2rem 0;
   text-align: center;
 }
 /* 段落 */
@@ -209,6 +209,12 @@ p.heading {
 p.list-1 {
   margin: 0 0 0 1rem;
   text-indent: -1rem;
+}
+/* リスト1(箇条書き レベル1) フォント小 */
+p.list-1s {
+  font-size: 0.85rem;
+  margin: 0 0 0 0.85rem;
+  text-indent: -0.85rem;
 }
 /* リスト2(箇条書き レベル2) */
 p.list-2 {
@@ -239,7 +245,7 @@ u {
 
 /* ページ下部の次ページへのリンク */
 nav#next-page {
-  background-color: #f6f6f6;
+  background-color: #eee;
   color: #000;
   padding: 3rem 1rem;
   text-align: center;
@@ -249,6 +255,7 @@ nav#next-page > a {
 }
 nav#next-page > div.desc {
   font-size: 0.85rem;
+  margin-top: 1rem;
 }
 
 /* フッター */

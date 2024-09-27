@@ -10,6 +10,7 @@ const availableClasses = [
   "desc",
   "heading",
   "list-1",
+  "list-1s",
   "list-2",
   "list-3",
   "par",
@@ -31,7 +32,7 @@ export function convertPages(html) {
   const rootElem = document.createElement("div");
   rootElem.innerHTML = html;
 
-  removeElemsAndDescendants(rootElem, "[class^=MsoToc], br");
+  removeElemsAndDescendants(rootElem, "[class^=MsoToc], br, p.chapter");
   removeElems(rootElem, 'a[href], a[name^="_Toc"], span, p.heading b');
   removeUnnecessaryAttrs(rootElem);
 
