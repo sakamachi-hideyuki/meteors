@@ -87,7 +87,7 @@ function removeUnnecessaryAttrs(rootElem) {
     }
     if (textIndent) {
       // style属性のtext-indentは復活
-      el.style.textIndent = textIndent;
+      el.setAttribute("style", "text-indent:" + textIndent);
     }
   });
 }

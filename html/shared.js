@@ -35,7 +35,7 @@ ${this.pleiadesAttributionHtml}</figcaption>
 
   static photoPleiadesEbookHtml = `
 <figure id="photo-pleiades" class="image-and-caption">
-<img src="sauna200.png" width="1280" height="853" alt="${this.photoPleiadesAlt}">
+<img src="dark100-light100contrast100x2.png" width="1280" height="853" alt="${this.photoPleiadesAlt}">
 <figcaption>${this.photoPleiadesAlt}<br>
 ${this.pleiadesAttributionHtml}</figcaption>
 </figure>
@@ -67,6 +67,32 @@ ${this.pleiadesAttributionHtml}</figcaption>
 </picture>
 <figcaption>${this.figUkeiAlt}<br>
 ${this.pleiadesAttributionHtml}</figcaption>
+</figure>
+`;
+
+  static figMilkywayinwinterAlt = "冬の天の川の位置(1月中旬午後20時東京の星空)";
+
+  static figMilkywayinwinterHtml = `
+<figure id="fig-milkywayinwinter" class="image-and-caption">
+<picture>
+  <source media="(max-width: 640px)" srcset="images/fig-milkywayinwinter-web-small.webp">
+  <img src="images/fig-milkywayinwinter-web.webp" width="1920" height="1920" alt="${this.figMilkywayinwinterAlt}">
+</picture>
+<figcaption>${this.figMilkywayinwinterAlt}<br>
+出典：<a href="https://www.nao.ac.jp/gallery/chart-list.html" target="_blank">国立天文台</a></figcaption>
+</figure>
+`;
+
+  static figMilkywayinsummerAlt = "夏の天の川の位置(7月中旬午後21時東京の星空)";
+
+  static figMilkywayinsummerHtml = `
+<figure id="fig-milkywayinsummer" class="image-and-caption">
+<picture>
+  <source media="(max-width: 640px)" srcset="images/fig-milkywayinsummer-web-small.webp">
+  <img src="images/fig-milkywayinsummer-web.webp" width="1920" height="1920" alt="${this.figMilkywayinsummerAlt}">
+</picture>
+<figcaption>${this.figMilkywayinsummerAlt}<br>
+出典：<a href="https://www.nao.ac.jp/gallery/chart-list.html" target="_blank">国立天文台</a></figcaption>
 </figure>
 `;
 
@@ -171,6 +197,8 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
     [Shared.titleImageAlt]: "",
     [Shared.photoMeteorAlt]: "",
     [Shared.figUkeiAlt]: Shared.figUkeiHtml,
+    [Shared.figMilkywayinwinterAlt]: Shared.figMilkywayinwinterHtml,
+    [Shared.figMilkywayinsummerAlt]: Shared.figMilkywayinsummerHtml,
     [Shared.photoTategushiAlt]: "",
     [Shared.photoOgameAlt]: "",
     [Shared.photoMagatamaAlt]: "",

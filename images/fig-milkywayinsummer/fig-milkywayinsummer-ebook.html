@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../photo.css" />
+<style>
+  img {
+    width: 800px;
+    height: 800px;
+  }
+</style>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script src="../../html/shared.js"></script>
+    <script>
+      document.getElementById("content").innerHTML =
+        Shared.figMilkywayinsummerHtml;
+      document.querySelector("img").src = "fig-milkywayinsummer-web.png";
+    </script>
+  </body>
+</html>

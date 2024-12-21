@@ -3,6 +3,8 @@ copy cover\cover-ebook.jpg _ebook\.
 copy fig-amanoyachimata\fig-amanoyachimata-ebook.jpg _ebook\.
 copy fig-izanakinotsurugi\fig-izanakinotsurugi-ebook.jpg _ebook\.
 copy fig-ukei\fig-ukei-ebook.jpg _ebook\.
+copy fig-milkywayinsummer\fig-milkywayinsummer-ebook.jpg _ebook\.
+copy fig-milkywayinwinter\fig-milkywayinwinter-ebook.jpg _ebook\.
 copy photo-iwakura\photo-iwakura-ebook.jpg _ebook\.
 copy photo-magatama\photo-magatama-ebook.jpg _ebook\.
 copy photo-meteor\photo-meteor-ebook.jpg _ebook\.
