@@ -271,7 +271,7 @@ div#website-notes {
   text-align: center;
 }
 div#website-notes > a {
-  color: #38f;
+  color: #39f;
 }
 
 /* ページ下部のコピーライト文 */
@@ -379,7 +379,7 @@ div.website-image > figure.image-and-caption > figcaption {
   text-align: right;
 }
 div.website-image > figure.image-and-caption > figcaption a {
-  color: #38f;
+  color: #39f;
 }
 
 /* 各章先頭の画像 */
@@ -402,7 +402,7 @@ div.chapter-image > figure.image-and-caption > figcaption {
   padding: 0.3rem;
 }
 div.chapter-image > figure.image-and-caption > figcaption a {
-  color: #38f;
+  color: #39f;
 }
 
 /* 甕の章　大甕の画像 */
