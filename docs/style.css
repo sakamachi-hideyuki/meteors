@@ -148,7 +148,7 @@ h1 {
   font-size: 1.4rem;
   font-weight: bold;
   letter-spacing: 0.7rem;
-  margin: 2rem 0 0 0;
+  margin: 0;
   text-align: center;
   text-indent: 0.7rem;
 }
@@ -263,11 +263,22 @@ footer {
   grid-area: footer;
 }
 
+/* ページ下部のWebサイトの説明 */
+div#website-notes {
+  font-family: sans-serif;
+  font-size: 0.6rem;
+  padding: 1rem 1rem 0 1rem;
+  text-align: center;
+}
+div#website-notes > a {
+  color: #38f;
+}
+
 /* ページ下部のコピーライト文 */
 div#copyright {
   font-family: sans-serif;
   font-size: 0.6rem;
-  line-height: 2.5rem;
+  padding: 0 1rem 1rem 1rem;
   text-align: center;
 }
 
@@ -285,8 +296,8 @@ a.top-of-page {
   z-index: 1;
 
   position: fixed;
-  bottom: 2.1rem;
-  right: 1.2rem;
+  bottom: 3.5rem;
+  right: 1rem;
   width: 2.5rem;
 }
 
@@ -319,14 +330,6 @@ html#html-toc nav#toc a {
 }
 html#html-toc nav#toc div.desc {
   font-size: 0.85rem;
-}
-
-/* 先頭ページ　Webサイトの説明 */
-div#website-notes {
-  font-family: sans-serif;
-  font-size: 0.7rem;
-  padding: 0 1rem;
-  text-align: center;
 }
 
 /* 改版履歴 */
