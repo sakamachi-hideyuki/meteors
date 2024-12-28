@@ -50,8 +50,8 @@ html {
 }
 
 body {
-  background-color: #222;
-  color: #fff;
+  background-color: #000;
+  color: #888;
   font-family: serif;
   height: 100%;
   margin: 0;
@@ -265,19 +265,17 @@ footer {
 
 /* ページ下部のWebサイトの説明 */
 div#website-notes {
-  color: #999;
   font-family: sans-serif;
   font-size: 0.6rem;
   padding: 1rem 1rem 0 1rem;
   text-align: center;
 }
 div#website-notes > a {
-  color: #39f;
+  color: #fff;
 }
 
 /* ページ下部のコピーライト文 */
 div#copyright {
-  color: #999;
   font-family: sans-serif;
   font-size: 0.6rem;
   padding: 0 1rem 1rem 1rem;
@@ -286,7 +284,7 @@ div#copyright {
 
 /* ページ先頭へスクロールするボタン */
 a.top-of-page {
-  background-color: #222;
+  background-color: #000;
   border-radius: 0.3rem;
   color: #fff;
   display: block;
@@ -381,7 +379,7 @@ div.website-image > figure.image-and-caption > figcaption {
   text-align: right;
 }
 div.website-image > figure.image-and-caption > figcaption a {
-  color: #39f;
+  color: #38f;
 }
 
 /* 各章先頭の画像 */
@@ -404,7 +402,7 @@ div.chapter-image > figure.image-and-caption > figcaption {
   padding: 0.3rem;
 }
 div.chapter-image > figure.image-and-caption > figcaption a {
-  color: #39f;
+  color: #38f;
 }
 
 /* 甕の章　大甕の画像 */
