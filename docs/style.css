@@ -284,7 +284,7 @@ div#copyright {
 
 /* ページ先頭へスクロールするボタン */
 a.top-of-page {
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.8);;
   border-radius: 0.3rem;
   color: #fff;
   display: block;
