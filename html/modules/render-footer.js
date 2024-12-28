@@ -2,7 +2,7 @@ export const renderFooter = (nextPage) =>
   `<footer>
 ${renderNextPageNav(nextPage)}
 <div id="website-notes">
-本Webサイトは <a href="https://www.amazon.co.jp/dp/B09DX3WVX6/" target="_blank">書籍『${
+本Webサイトは<a href="https://www.amazon.co.jp/dp/B09DX3WVX6/" target="_blank"> 書籍『${
     Shared.bookTitle
   }』</a>の内容を著者がWeb公開したものです。
 </div>

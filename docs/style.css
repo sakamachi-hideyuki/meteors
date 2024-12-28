@@ -272,6 +272,7 @@ div#website-notes {
 }
 div#website-notes > a {
   color: #fff;
+  text-decoration-thickness: 0.5px;
 }
 
 /* ページ下部のコピーライト文 */
