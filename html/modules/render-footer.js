@@ -4,7 +4,7 @@ ${renderNextPageNav(nextPage)}
 <div id="website-notes">
 本Webサイトは <a href="https://www.amazon.co.jp/dp/B09DX3WVX6/" target="_blank">書籍『${
     Shared.bookTitle
-  }』(著:坂町英之)</a> の内容を著者がWeb公開したものです。
+  }』</a>の内容を著者がWeb公開したものです。
 </div>
 <div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
 <a class="top-of-page" href="#" title="ページ先頭へ">▲</a>
