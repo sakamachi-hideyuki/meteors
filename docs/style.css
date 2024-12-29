@@ -285,7 +285,7 @@ div#copyright {
 
 /* ページ先頭へスクロールするボタン */
 a.top-of-page {
-  background-color: rgba(0, 0, 0, 0.8);;
+  background-color: #222;
   border-radius: 0.3rem;
   color: #fff;
   display: block;
@@ -297,7 +297,7 @@ a.top-of-page {
   z-index: 1;
 
   position: fixed;
-  bottom: 4.5rem;
+  bottom: 3.5rem;
   right: 1rem;
   width: 2.5rem;
 }
