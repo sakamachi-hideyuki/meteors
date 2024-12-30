@@ -285,9 +285,9 @@ div#copyright {
 
 /* ページ先頭へスクロールするボタン */
 a.top-of-page {
-  background-color: #222;
+  background-color: #eee;
   border-radius: 0.3rem;
-  color: #fff;
+  color: #000;
   display: block;
   font-family: sans-serif;
   line-height: 2.5rem;
