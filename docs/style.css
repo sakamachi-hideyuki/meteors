@@ -365,7 +365,7 @@ figure.image-and-caption > figcaption {
 /* 先頭ページの画像 */
 div.website-image {
   background-color: #000;
-  color: #ddd;
+  color: #fff;
   padding-top: 2.5rem;
 }
 div.website-image > figure.image-and-caption img {
@@ -386,7 +386,7 @@ div.website-image > figure.image-and-caption > figcaption a {
 /* 各章先頭の画像 */
 div.chapter-image {
   background-color: #000;
-  color: #ddd;
+  color: #fff;
   padding-top: 2.5rem;
 }
 div.chapter-image > figure.image-and-caption {
