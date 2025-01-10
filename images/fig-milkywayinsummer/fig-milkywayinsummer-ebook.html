@@ -3,21 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../photo.css" />
-<style>
-  img {
-    width: 800px;
-    height: 800px;
-  }
-</style>
+    <link rel="stylesheet" href="../images.css" />
+    <style>
+      :root {
+        --figcaption-height: 120px;
+        --img-width: 1920px;
+        --img-height: 1920px;
+      }
+      img {
+        width: var(--img-width);
+        height: var(--img-height);
+      }
+      figcaption {
+        height: var(--figcaption-height);
+      }
+    </style>
   </head>
   <body>
-    <div id="content"></div>
+    <figure>
+      <img src="fig-milkywayinsummer-web.png" />
+      <figcaption></figcaption>
+    </figure>
     <script src="../../html/shared.js"></script>
     <script>
-      document.getElementById("content").innerHTML =
-        Shared.figMilkywayinsummerHtml;
-      document.querySelector("img").src = "fig-milkywayinsummer-web.png";
+      document.querySelector("figcaption").innerHTML =
+        Shared.figMilkywayinsummerCaptionHtml;
     </script>
   </body>
 </html>

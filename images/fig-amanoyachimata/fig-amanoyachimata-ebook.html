@@ -3,15 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../photo.css" />
+    <link rel="stylesheet" href="../images.css" />
+    <style>
+      :root {
+        --figcaption-height: 180px;
+        --img-width: 2560px;
+      }
+      figcaption {
+        height: var(--figcaption-height);
+      }
+      figure {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        position: relative;
+        top: var(--img-width);
+      }
+    </style>
   </head>
   <body>
-    <div id="content"></div>
+    <figure>
+      <div id="content"></div>
+      <figcaption></figcaption>
+    </figure>
     <script src="../../html/shared.js"></script>
+    <script src="../fig-shared.js"></script>
     <script>
-      document.getElementById("content").innerHTML =
-        Shared.figAmanoyachimataHtml;
-      document.querySelector("img").src = "fig-amanoyachimata-web.BMP";
+      document.querySelector("#content").innerHTML = FigShared.amanoyachimataHtml;
+      document.querySelector("figcaption").innerHTML =
+        Shared.figAmanoyachimataCaptionHtml;
     </script>
   </body>
 </html>

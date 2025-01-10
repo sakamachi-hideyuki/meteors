@@ -11,42 +11,47 @@
     />
     <style>
       :root {
-        --cw: 50rem; /* キャンバスの幅 */
-        --ch: 75rem; /* キャンバスの高さ */
+        --cw: 3200px; /* キャンバスの幅 */
+        --ch: 4800px; /* キャンバスの高さ */
 
         /* タイトル用変数 */
-        --tfsize: 3rem; /* フォントサイズ、1文字分のdivの幅・高さ */
+        --tfsize: 192px; /* フォントサイズ、1文字分のdivの幅・高さ */
         --tscalex: 0.9; /* 長体 90% */
-        --tgap: 2rem; /* 1文字分のdiv間のギャップ */
+        --tgap: 128px; /* 1文字分のdiv間のギャップ */
         --tstepy: calc(var(--tfsize) + var(--tgap)); /* y座標増分 */
         --tx: calc((var(--cw) - var(--tfsize)) / 2); /* タイトル位置x座標 */
-        --ty: 4rem; /* タイトル位置y座標 */
+        --ty: 256px; /* タイトル位置y座標 */
 
         /* 著者名用変数 */
-        --afsize: 2.5rem; /* フォントサイズ、1文字分のdivの幅・高さ */
+        --afsize: 128px; /* フォントサイズ、1文字分のdivの幅・高さ */
         --ascalex: 0.9; /* 長体 90% */
-        --agap: 2rem; /* 1文字分のdiv間のギャップ */
+        --agap: 128px; /* 1文字分のdiv間のギャップ */
         --astepy: calc(var(--afsize) + var(--agap)); /* y座標増分 */
         --ax: calc((var(--cw) - var(--afsize)) / 2); /* 著者名x座標 */
         --ay: calc(var(--ty) + var(--tstepy) * 10); /* 著者名y座標 */
-      }
-      html {
-        font-size: 400%;
       }
       body {
         background-color: #f00;
         font-size: 0;
         margin: 0;
       }
-      main {
-        background-image: url(dark100-light100contrast100x2-left.png);
-        background-size: cover;
+      #content {
         overflow: hidden;
         /* position: absolute の子要素に overflow: hidden を有効にするため */
         position: relative;
 
         width: var(--cw);
         height: var(--ch);
+      }
+      #pleiades {
+        filter: brightness(70%) contrast(300%);
+        transform: rotate(-90deg);
+        transform-origin: left top;
+
+        position: absolute;
+        top: var(--ch);
+        width: var(--ch);
+        height: var(--cw);
       }
       #meteor {
         background: linear-gradient(
@@ -60,9 +65,9 @@
 
         /* 始点は昴 */
         width: 5px;
-        height: 75rem;
-        left: 9rem;
-        top: 14rem;
+        height: 4800px;
+        left: 576px;
+        top: 896px;
       }
       #title > div {
         /* border: 1px solid red;
@@ -77,8 +82,8 @@
         transform: scaleX(var(--tscalex));
         transform-origin: left top;
 
-        filter: drop-shadow(0 0 2rem blue);
-        text-shadow: 0 0 2rem blue, 0 0 3rem blue, 0 0 4rem blue;
+        filter: drop-shadow(0 0 128px blue);
+        text-shadow: 0 0 128px blue, 0 0 192px blue, 0 0 256px blue;
 
         width: calc(var(--tfsize) / var(--tscalex));
         height: var(--tfsize);
@@ -97,8 +102,8 @@
         transform: scaleX(var(--ascalex));
         transform-origin: left top;
 
-        filter: drop-shadow(0 0 2rem blue);
-        text-shadow: 0 0 2rem blue, 0 0 3rem blue;
+        filter: drop-shadow(0 0 128px blue);
+        text-shadow: 0 0 128px blue, 0 0 192px blue, 0 0 256px blue;
 
         width: calc(var(--afsize) / var(--ascalex));
         height: var(--afsize);
@@ -107,19 +112,11 @@
     </style>
   </head>
   <body>
-    <main>
-
-      <!-- <div
-        style="
-          border: 1px solid red;
-          box-sizing: border-box;
-          position: absolute;
-          left: 23.5rem;
-          top: 4rem;
-          width: 3rem;
-          height: 67rem;
-        "
-      ></div> -->
+    <div id="content">
+      <img
+        id="pleiades"
+        src="../photo-pleiades/Orion_Taurus_and_Pleiades.png"
+      />
 
       <div id="meteor"></div>
 
@@ -128,7 +125,7 @@
         <div style="top: calc(var(--ty) + var(--tstepy) * 1)">星</div>
         <div style="top: calc(var(--ty) + var(--tstepy) * 2)">と</div>
         <div style="top: calc(var(--ty) + var(--tstepy) * 3)">昴</div>
-        <div style="top: calc(var(--ty) + var(--tstepy) * 4 - 0.3rem)">の</div>
+        <div style="top: calc(var(--ty) + var(--tstepy) * 4 - 10px)">の</div>
         <div style="top: calc(var(--ty) + var(--tstepy) * 5)">日</div>
         <div style="top: calc(var(--ty) + var(--tstepy) * 6)">本</div>
         <div style="top: calc(var(--ty) + var(--tstepy) * 7)">神</div>
@@ -141,6 +138,6 @@
         <div style="top: calc(var(--ay) + var(--astepy) * 2)">英</div>
         <div style="top: calc(var(--ay) + var(--astepy) * 3)">之</div>
       </div>
-    </main>
+    </div>
   </body>
 </html>

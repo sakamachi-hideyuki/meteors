@@ -3,14 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../photo.css" />
+    <link rel="stylesheet" href="../images.css" />
+    <style>
+      :root {
+        --figcaption-height: 180px;
+        --img-width: 2560px;
+        --img-height: 1706px;
+      }
+      figure {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        position: relative;
+        top: var(--img-width);
+      }
+      img {
+        filter: brightness(70%) contrast(300%);
+        width: var(--img-width);
+        height: var(--img-height);
+      }
+      figcaption {
+        height: var(--figcaption-height);
+      }
+    </style>
   </head>
   <body>
-    <div id="content"></div>
+    <figure>
+      <img src="Orion_Taurus_and_Pleiades.png" />
+      <figcaption></figcaption>
+    </figure>
     <script src="../../html/shared.js"></script>
     <script>
-      document.getElementById("content").innerHTML =
-        Shared.photoPleiadesEbookHtml;
+      document.querySelector("figcaption").innerHTML =
+        Shared.photoPleiadesCaptionHtml;
     </script>
   </body>
 </html>

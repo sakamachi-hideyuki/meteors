@@ -3,12 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../photo.css" />
+    <link rel="stylesheet" href="../images.css" />
+    <style>
+      :root {
+        --figcaption-height: 180px;
+        --img-width: 1920px;
+        --img-height: 2560px;
+      }
+      #chapter-title {
+        width: var(--img-width);
+      }
+      img {
+        width: var(--img-width);
+        height: var(--img-height);
+      }
+      figcaption {
+        height: var(--figcaption-height);
+      }
+    </style>
   </head>
   <body>
-    <figure class="title-and-image">
-      <figcaption>甕の章</figcaption>
-      <img src="photo-ogame+caption.png" />
+    <div id="chapter-title">甕の章</div>
+    <figure>
+      <img src="001.png" />
+      <figcaption></figcaption>
     </figure>
+    <script src="../../html/shared.js"></script>
+    <script>
+      document.querySelector("figcaption").innerHTML =
+        Shared.photoOgameCaptionHtml;
+    </script>
   </body>
 </html>

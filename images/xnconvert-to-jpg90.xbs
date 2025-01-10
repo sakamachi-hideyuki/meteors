@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><XnView_script version="1.0" name="xnconvert-to-jpg90">
-    <Output folder="" filename="{Filename}" case="5" startIndex="1" format="JPEG">
-        <Options overwrite="1" orgDate="false" keepMeta="true" keepICC="false" keepFolder="false" keepParentFolder="false" keepExtension="false" delOrg="false" multipage="false" allPages="false" openExplorer="false" openBrowser="false" clearItems="false"/>
-        <JPEG quality="90" progressive="false" optimizeHuffman="false" rebuildThumb="true" orgQuality="false" DCTMethod="0" subSampling="0" smoothFactor="0"/>
-    </Output>
-</XnView_script>

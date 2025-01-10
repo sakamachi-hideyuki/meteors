@@ -1,0 +1,6 @@
+{
+  "name": "meteors",
+  "devDependencies": {
+    "playwright-core": "^1.49.1"
+  }
+}

@@ -13,7 +13,7 @@ ${renderHead(Shared.websiteTitle, Shared.websiteDescription, Shared.websiteUrl)}
 ${renderHeader(page, undefined, nextPage)}
 <main>
 <div class="website-image">
-${Shared.photoPleiadesWebHtml}
+${Shared.photoPleiadesHtml}
 </div>
 <div id="content">
 ${page.contentHtml}

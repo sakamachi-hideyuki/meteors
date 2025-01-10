@@ -3,12 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../photo.css" />
+    <link rel="stylesheet" href="../images.css" />
+    <style>
+      :root {
+        --figcaption-height: 180px;
+        --img-width: 2560px;
+        --img-height: 1714px;
+      }
+      #chapter-title {
+        width: calc(var(--img-height) + var(--figcaption-height));
+      }
+      figure {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        position: relative;
+        top: var(--img-width);
+      }
+      img {
+        width: var(--img-width);
+        height: var(--img-height);
+      }
+      figcaption {
+        height: var(--figcaption-height);
+      }
+    </style>
   </head>
   <body>
-    <figure class="title-and-image">
-      <figcaption>玉の章</figcaption>
-      <img src="photo-magatama+caption.png" />
+    <div id="chapter-title">玉の章</div>
+    <figure>
+      <img src="A200c000042.png" />
+      <figcaption></figcaption>
     </figure>
+    <script src="../../html/shared.js"></script>
+    <script>
+      document.querySelector("figcaption").innerHTML =
+        Shared.photoMagatamaCaptionHtml;
+    </script>
   </body>
 </html>
