@@ -108,7 +108,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 <figure id="photo-tategushi" class="image-and-caption">
 <picture>
   <source media="(max-width: 640px)" srcset="images/photo-tategushi-web-small.webp">
-  <img src="images/photo-tategushi-web.webp" width="2560" height="1720" alt="${this.photoTategushiAlt}">
+  <img src="images/photo-tategushi-web.webp" width="2560" height="1721" alt="${this.photoTategushiAlt}">
 </picture>
 <figcaption>${this.photoTategushiCaptionHtml}</figcaption>
 </figure>
@@ -217,7 +217,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 <figure id="photo-iwakura" class="image-and-caption">
 <picture>
   <source media="(max-width: 640px)" srcset="images/photo-iwakura-web-small.webp">
-  <img src="images/photo-iwakura-web.webp" width="2560" height="1706" alt="${this.photoIwakuraAlt}">
+  <img src="images/photo-iwakura-web.webp" width="2560" height="1707" alt="${this.photoIwakuraAlt}">
 </picture>
 <figcaption>${this.photoIwakuraCaptionHtml}</figcaption>
 </figure>

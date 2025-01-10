@@ -14,17 +14,17 @@ copy fig-milkywayinsummer\fig-milkywayinsummer-web.png build\png\.
 call screenshot.bat fig-milkywayinwinter\fig-milkywayinwinter-ebook.html build\png\fig-milkywayinwinter-ebook.png
 copy fig-milkywayinwinter\fig-milkywayinwinter-web.png build\png\.
 call screenshot.bat photo-iwakura\photo-iwakura-ebook.html build\png\photo-iwakura-ebook.png
-call screenshot.bat photo-iwakura\photo-iwakura-web.html build\png\photo-iwakura-web.png
+magick photo-iwakura\kyoto-Kamitaniiwakura.-xl.png -resize 2560x build\png\photo-iwakura-web.png
 call screenshot.bat photo-magatama\photo-magatama-ebook.html build\png\photo-magatama-ebook.png
-call screenshot.bat photo-magatama\photo-magatama-web.html build\png\photo-magatama-web.png
+magick photo-magatama\A200c000042.png -resize 2560x build\png\photo-magatama-web.png
 call screenshot.bat photo-meteor\photo-meteor-ebook.html build\png\photo-meteor-ebook.png
-call screenshot.bat photo-meteor\photo-meteor-web.html build\png\photo-meteor-web.png
+magick photo-meteor\tauride-20201204.png -resize 2560x build\png\photo-meteor-web.png
 call screenshot.bat photo-ogame\photo-ogame-ebook.html build\png\photo-ogame-ebook.png
-call screenshot.bat photo-ogame\photo-ogame-web.html build\png\photo-ogame-web.png
+magick photo-ogame\001.png -resize x2560 build\png\photo-ogame-web.png
 call screenshot.bat photo-otomatsuri\photo-otomatsuri-ebook.html build\png\photo-otomatsuri-ebook.png
-call screenshot.bat photo-otomatsuri\photo-otomatsuri-web.html build\png\photo-otomatsuri-web.png
+magick photo-otomatsuri\wakayama-Kumano_Oto_Festival-xl.png -resize 2560x build\png\photo-otomatsuri-web.png
 call screenshot.bat photo-pleiades\photo-pleiades-ebook.html build\png\photo-pleiades-ebook.png
 call screenshot.bat photo-pleiades\photo-pleiades-web.html build\png\photo-pleiades-web.png
 call screenshot.bat photo-tategushi\photo-tategushi-ebook.html build\png\photo-tategushi-ebook.png
-call screenshot.bat photo-tategushi\photo-tategushi-web.html build\png\photo-tategushi-web.png
+magick photo-tategushi\A017b000004.png -resize 2560x build\png\photo-tategushi-web.png
 call screenshot.bat title\title-ebook.html build\png\title-ebook.png
