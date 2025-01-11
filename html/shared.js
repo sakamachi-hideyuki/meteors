@@ -27,11 +27,22 @@ ${this.pleiadesAttributionHtml}`;
 
   static photoPleiadesHtml = `
 <figure id="photo-pleiades" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/photo-pleiades-web-small.webp">
-  <img src="images/photo-pleiades-web.webp" width="4096" height="2048" alt="${this.photoPleiadesAlt}">
-</picture>
-<figcaption>${this.photoPleiadesCaptionHtml}</figcaption>
+  <picture>
+    <source
+      srcset="
+        images/photo-pleiades-web-1024.webp 1024w,
+        images/photo-pleiades-web-2048.webp 2048w,
+        images/photo-pleiades-web-4096.webp 4096w
+      "
+    />
+    <img
+      src="images/photo-pleiades-web-4096.webp"
+      width="4096"
+      height="2048"
+      alt="${this.photoPleiadesAlt}"
+    />
+  </picture>
+  <figcaption>${this.photoPleiadesCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -45,11 +56,22 @@ ${this.pleiadesAttributionHtml}`;
 
   static photoMeteorHtml = `
 <figure id="photo-meteor" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/photo-meteor-web-small.webp">
-  <img src="images/photo-meteor-web.webp" width="2560" height="1689" alt="${this.photoMeteorAlt}">
-</picture>
-<figcaption>${this.photoMeteorCaptionHtml}</figcaption>
+  <picture>
+    <source
+      srcset="
+        images/photo-meteor-web-640.webp 640w,
+        images/photo-meteor-web-1280.webp 1280w,
+        images/photo-meteor-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/photo-meteor-2560-web.webp"
+      width="2560"
+      height="1689"
+      alt="${this.photoMeteorAlt}"
+    />
+  </picture>
+  <figcaption>${this.photoMeteorCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -60,11 +82,22 @@ ${this.pleiadesAttributionHtml}`;
 
   static figIotsunomisumaruHtml = `
 <figure id="fig-iotsunomisumaru" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/fig-iotsunomisumaru-web-small.webp">
-  <img src="images/fig-iotsunomisumaru-web.webp" width="2560" height="1706" alt="${this.figIotsunomisumaruAlt}">
-</picture>
-<figcaption>${this.figIotsunomisumaruCaptionHtml}</figcaption>
+  <picture>
+    <source
+      srcset="
+        images/fig-iotsunomisumaru-web-640.webp 640w,
+        images/fig-iotsunomisumaru-web-1280.webp 1280w,
+        images/fig-iotsunomisumaru-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-iotsunomisumaru-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figIotsunomisumaruAlt}"
+    />
+  </picture>
+  <figcaption>${this.figIotsunomisumaruCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -75,11 +108,22 @@ ${this.pleiadesAttributionHtml}`;
 
   static figMilkywayinwinterHtml = `
 <figure id="fig-milkywayinwinter" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/fig-milkywayinwinter-web-small.webp">
-  <img src="images/fig-milkywayinwinter-web.webp" width="1920" height="1920" alt="${this.figMilkywayinwinterAlt}">
-</picture>
-<figcaption>${this.figMilkywayinwinterCaptionHtml}</figcaption>
+  <picture>
+    <source
+      srcset="
+        images/fig-milkywayinwinter-web-480.webp 480w,
+        images/fig-milkywayinwinter-web-960.webp 960w,
+        images/fig-milkywayinwinter-web-1920.webp 1920w
+      "
+    />
+    <img
+      src="images/fig-milkywayinwinter-web-1920.webp"
+      width="1920"
+      height="1920"
+      alt="${this.figMilkywayinwinterAlt}"
+    />
+  </picture>
+  <figcaption>${this.figMilkywayinwinterCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -90,11 +134,22 @@ ${this.pleiadesAttributionHtml}`;
 
   static figMilkywayinsummerHtml = `
 <figure id="fig-milkywayinsummer" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/fig-milkywayinsummer-web-small.webp">
-  <img src="images/fig-milkywayinsummer-web.webp" width="1920" height="1920" alt="${this.figMilkywayinsummerAlt}">
-</picture>
-<figcaption>${this.figMilkywayinsummerCaptionHtml}</figcaption>
+  <picture>
+    <source
+      srcset="
+        images/fig-milkywayinsummer-web-480.webp 480w,
+        images/fig-milkywayinsummer-web-960.webp 960w,
+        images/fig-milkywayinsummer-web-1920.webp 1920w
+      "
+    />
+    <img
+      src="images/fig-milkywayinsummer-web-1920.webp"
+      width="1920"
+      height="1920"
+      alt="${this.figMilkywayinsummerAlt}"
+    />
+  </picture>
+  <figcaption>${this.figMilkywayinsummerCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -106,11 +161,22 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 
   static photoTategushiHtml = `
 <figure id="photo-tategushi" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/photo-tategushi-web-small.webp">
-  <img src="images/photo-tategushi-web.webp" width="2560" height="1721" alt="${this.photoTategushiAlt}">
-</picture>
-<figcaption>${this.photoTategushiCaptionHtml}</figcaption>
+  <picture>
+    <source
+      srcset="
+        images/photo-tategushi-web-640.webp 640w,
+        images/photo-tategushi-web-1280.webp 1280w,
+        images/photo-tategushi-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/photo-tategushi-web-2560.webp"
+      width="2560"
+      height="1721"
+      alt="${this.photoTategushiAlt}"
+    />
+  </picture>
+  <figcaption>${this.photoTategushiCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -122,11 +188,22 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 
   static photoOgameHtml = `
 <figure id="photo-ogame" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/photo-ogame-web-small.webp">
-  <img src="images/photo-ogame-web.webp" width="1920" height="2560" alt="${this.photoOgameAlt}">
-</picture>
-<figcaption>${this.photoOgameCaptionHtml}</figcaption>
+  <picture>
+    <source
+      srcset="
+        images/photo-ogame-web-480.webp 480w,
+        images/photo-ogame-web-960.webp 960w,
+        images/photo-ogame-web-1920.webp 1920w
+      "
+    />
+    <img
+      src="images/photo-ogame-web-1920.webp"
+      width="1920"
+      height="2560"
+      alt="${this.photoOgameAlt}"
+    />
+  </picture>
+  <figcaption>${this.photoOgameCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -138,11 +215,22 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 
   static photoMagatamaHtml = `
 <figure id="photo-magatama" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/photo-magatama-web-small.webp">
-  <img src="images/photo-magatama-web.webp" width="2560" height="1714" alt="${this.photoMagatamaAlt}">
-</picture>
-<figcaption>${this.photoMagatamaCaptionHtml}</figcaption>
+  <picture>
+    <source
+      srcset="
+        images/photo-magatama-web-640.webp 640w,
+        images/photo-magatama-web-1280.webp 1280w,
+        images/photo-magatama-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/photo-magatama-web-2560.webp"
+      width="2560"
+      height="1714"
+      alt="${this.photoMagatamaAlt}"
+    />
+  </picture>
+  <figcaption>${this.photoMagatamaCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -153,11 +241,22 @@ ${this.pleiadesAttributionHtml}`;
 
   static figIotsuiwamuraHtml = `
 <figure id="fig-iotsuiwamura" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/fig-iotsuiwamura-web-small.webp">
-  <img src="images/fig-iotsuiwamura-web.webp" width="2560" height="1706" alt="${this.figIotsuiwamuraAlt}">
-</picture>
-<figcaption>${this.figIotsuiwamuraCaptionHtml}</figcaption>
+  <picture>
+    <source
+      srcset="
+        images/fig-iotsuiwamura-web-640.webp 640w,
+        images/fig-iotsuiwamura-web-1280.webp 1280w,
+        images/fig-iotsuiwamura-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-iotsuiwamura-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figIotsuiwamuraAlt}"
+    />
+  </picture>
+  <figcaption>${this.figIotsuiwamuraCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -168,11 +267,22 @@ ${this.pleiadesAttributionHtml}`;
 
   static figAmanoiwatoHtml = `
 <figure id="fig-amanoiwato" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/fig-amanoiwato-web-small.webp">
-  <img src="images/fig-amanoiwato-web.webp" width="2560" height="1706" alt="${this.figAmanoiwatoAlt}">
-</picture>
-<figcaption>${this.figAmanoiwatoCaptionHtml}</figcaption>
+  <picture>
+    <source
+      srcset="
+        images/fig-amanoiwato-web-640.webp 640w,
+        images/fig-amanoiwato-web-1280.webp 1280w,
+        images/fig-amanoiwato-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-amanoiwato-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figAmanoiwatoAlt}"
+    />
+  </picture>
+  <figcaption>${this.figAmanoiwatoCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -183,11 +293,22 @@ ${this.pleiadesAttributionHtml}`;
 
   static figAmanoyachimataHtml = `
 <figure id="fig-amanoyachimata" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/fig-amanoyachimata-web-small.webp">
-  <img src="images/fig-amanoyachimata-web.webp" width="2560" height="1706" alt="${this.figAmanoyachimataAlt}">
-</picture>
-<figcaption>${this.figAmanoyachimataCaptionHtml}</figcaption>
+  <picture>
+    <source
+      srcset="
+        images/fig-amanoyachimata-web-640.webp 640w,
+        images/fig-amanoyachimata-web-1280.webp 1280w,
+        images/fig-amanoyachimata-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-amanoyachimata-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figAmanoyachimataAlt}"
+    />
+  </picture>
+  <figcaption>${this.figAmanoyachimataCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -199,11 +320,22 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 
   static photoOtomatsuriHtml = `
 <figure id="photo-otomatsuri" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/photo-otomatsuri-web-small.webp">
-  <img src="images/photo-otomatsuri-web.webp" width="2560" height="1704" alt="${this.photoOtomatsuriAlt}">
-</picture>
-<figcaption>${this.photoOtomatsuriCaptionHtml}</figcaption>
+  <picture>
+    <source
+      srcset="
+        images/photo-otomatsuri-web-640.webp 640w,
+        images/photo-otomatsuri-web-1280.webp 1280w,
+        images/photo-otomatsuri-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/photo-otomatsuri-web-2560.webp"
+      width="2560"
+      height="1704"
+      alt="${this.photoOtomatsuriAlt}"
+    />
+  </picture>
+  <figcaption>${this.photoOtomatsuriCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -215,11 +347,22 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 
   static photoIwakuraHtml = `
 <figure id="photo-iwakura" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/photo-iwakura-web-small.webp">
-  <img src="images/photo-iwakura-web.webp" width="2560" height="1707" alt="${this.photoIwakuraAlt}">
-</picture>
-<figcaption>${this.photoIwakuraCaptionHtml}</figcaption>
+  <picture>
+    <source
+      srcset="
+        images/photo-iwakura-web-640.webp 640w,
+        images/photo-iwakura-web-1280.webp 1280w,
+        images/photo-iwakura-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/photo-iwakura-web-2560.webp"
+      width="2560"
+      height="1707"
+      alt="${this.photoIwakuraAlt}"
+    />
+  </picture>
+  <figcaption>${this.photoIwakuraCaptionHtml}</figcaption>
 </figure>
 `;
 
