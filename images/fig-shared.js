@@ -7,7 +7,7 @@ class FigShared {
         margin: 0;
       }
       img {
-        filter: contrast(300%) saturate(0) invert(1);
+        filter: brightness(55%) contrast(300%) saturate(0) invert(1);
       }
       u {
         text-underline-offset: 8px;
@@ -23,8 +23,21 @@ class FigShared {
       }
       .bubble {
         background-color: #fff;
-        border: 1px solid #000;
+        border: 2px solid #000;
         padding: 40px 50px 30px 50px;
+      }
+      svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      svg rect {
+        stroke: #000;
+        stroke-width: 2;
+      }
+      svg line {
+        stroke: #000;
+        stroke-width: 2;
       }
     </style>
     <img src="../photo-pleiades/Orion_Taurus_and_Pleiades.png" width="2560" height="1706">
@@ -45,14 +58,12 @@ class FigShared {
     <svg
       width="2560px"
       height="1706px"
-      style="position: absolute; top: 0; left: 0"
     >
       <rect
-        x="0"
-        y="0"
-        width="2560"
-        height="1706"
-        stroke="#000000"
+        x="1"
+        y="1"
+        width="2558"
+        height="1704"
         fill="none"
       />
       <line
@@ -60,21 +71,18 @@ class FigShared {
         y1="1250"
         x2="2560"
         y2="200"
-        style="stroke: #000; stroke-width: 1"
       />
       <line
         x1="590"
         y1="1060"
         x2="1000"
         y2="1240"
-        style="stroke: #000; stroke-width: 1"
       />
       <line
         x1="2020"
         y1="480"
         x2="1800"
         y2="800"
-        style="stroke: #000; stroke-width: 1"
       />
     </svg>
     <div id="text">
@@ -89,14 +97,12 @@ class FigShared {
     <svg
       width="2560px"
       height="1706px"
-      style="position: absolute; top: 0; left: 0"
     >
       <rect
-        x="0"
-        y="0"
-        width="2560"
-        height="1706"
-        stroke="#000000"
+        x="1"
+        y="1"
+        width="2558"
+        height="1704"
         fill="none"
       />
       <line
@@ -104,49 +110,42 @@ class FigShared {
         y1="1250"
         x2="2560"
         y2="200"
-        style="stroke: #000; stroke-width: 1"
       />
       <line
         x1="375"
         y1="0"
         x2="530"
         y2="1035"
-        style="stroke: #000; stroke-width: 1"
       />
       <line
         x1="530"
         y1="1035"
         x2="750"
         y2="1706"
-        style="stroke: #000; stroke-width: 1"
       />
       <line
         x1="900"
         y1="0"
         x2="290"
         y2="1706"
-        style="stroke: #000; stroke-width: 1"
       />
       <line
         x1="1410"
         y1="0"
         x2="0"
         y2="1660"
-        style="stroke: #000; stroke-width: 1"
       />
       <line
         x1="590"
         y1="1060"
         x2="1000"
         y2="1240"
-        style="stroke: #000; stroke-width: 1"
       />
       <line
         x1="2020"
         y1="480"
         x2="1800"
         y2="800"
-        style="stroke: #000; stroke-width: 1"
       />
     </svg>
     <div id="text">
@@ -159,14 +158,12 @@ class FigShared {
     <svg
       width="2560px"
       height="1706px"
-      style="position: absolute; top: 0; left: 0"
     >
       <rect
-        x="0"
-        y="0"
-        width="2560"
-        height="1706"
-        stroke="#000000"
+        x="1"
+        y="1"
+        width="2558"
+        height="1704"
         fill="none"
       />
       <line
@@ -174,21 +171,18 @@ class FigShared {
         y1="1250"
         x2="2560"
         y2="200"
-        style="stroke: #000; stroke-width: 1"
       />
       <line
         x1="590"
         y1="1060"
         x2="1000"
         y2="1240"
-        style="stroke: #000; stroke-width: 1"
       />
       <line
         x1="2020"
         y1="480"
         x2="1800"
         y2="800"
-        style="stroke: #000; stroke-width: 1"
       />
     </svg>
     <div id="text">
@@ -207,14 +201,12 @@ class FigShared {
     <svg
       width="2560px"
       height="1706px"
-      style="position: absolute; top: 0; left: 0"
     >
       <rect
-        x="0"
-        y="0"
-        width="2560"
-        height="1706"
-        stroke="#000000"
+        x="1"
+        y="1"
+        width="2558"
+        height="1704"
         fill="none"
       />
       <line
@@ -222,21 +214,18 @@ class FigShared {
         y1="1250"
         x2="2560"
         y2="200"
-        style="stroke: #000; stroke-width: 1"
       />
       <line
         x1="590"
         y1="1060"
         x2="1000"
         y2="1240"
-        style="stroke: #000; stroke-width: 1"
       />
       <line
         x1="2020"
         y1="480"
         x2="1800"
         y2="800"
-        style="stroke: #000; stroke-width: 1"
       />
     </svg>
     <div id="text">
