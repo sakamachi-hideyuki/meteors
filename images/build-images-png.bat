@@ -28,3 +28,4 @@ call screenshot.bat photo-pleiades\photo-pleiades-web.html build\png\photo-pleia
 call screenshot.bat photo-tategushi\photo-tategushi-ebook.html build\png\photo-tategushi-ebook.png
 magick photo-tategushi\A017b000004.png -resize 2560x build\png\photo-tategushi-web.png
 call screenshot.bat title\title-ebook.html build\png\title-ebook.png
+magick mogrify -define png:exclude-chunk=tIME -strip build\png\*.png

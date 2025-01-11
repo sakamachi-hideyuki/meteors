@@ -29,7 +29,7 @@ ${this.pleiadesAttributionHtml}`;
 <figure id="photo-pleiades" class="image-and-caption">
 <picture>
   <source media="(max-width: 640px)" srcset="images/photo-pleiades-web-small.webp">
-  <img src="images/photo-pleiades-web.webp" width="3840" height="1920" alt="${this.photoPleiadesAlt}">
+  <img src="images/photo-pleiades-web.webp" width="4096" height="2048" alt="${this.photoPleiadesAlt}">
 </picture>
 <figcaption>${this.photoPleiadesCaptionHtml}</figcaption>
 </figure>
