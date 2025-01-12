@@ -87,7 +87,8 @@ class FigShared {
     </svg>
     <div id="text">
       <div class="bubble" style="left: 1000px; top: 1200px">
-        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣の神
+        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣の神<br>
+        (<ruby>伊都之尾羽張<rp>(</rp><rt>イツノオハバリ</rt><rp>)</rp></ruby>神、<ruby>稜威雄走<rp>(</rp><rt>イツノオバシリ</rt><rp>)</rp></ruby>神)
       </div>
       <div class="bubble" style="left: 1600px; top: 800px">天岩戸</div>
     </div>`;
@@ -149,7 +150,10 @@ class FigShared {
       />
     </svg>
     <div id="text">
-      <div class="bubble" style="left: 1000px; top: 1200px">アマノヤチマタ</div>
+      <div class="bubble" style="left: 1000px; top: 1200px">
+        アマノヤチマタ<br>
+        (天の八つの分かれ道)
+      </div>
       <div class="bubble" style="left: 1600px; top: 800px">天岩戸</div>
     </div>`;
 
@@ -187,7 +191,8 @@ class FigShared {
     </svg>
     <div id="text">
       <div class="bubble" style="left: 1000px; top: 1200px">
-        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣
+        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣<br>
+        (<ruby>伊都之尾羽張<rp>(</rp><rt>イツノオハバリ</rt><rp>)</rp></ruby>)
       </div>
       <div class="bubble" style="left: 1600px; top: 800px">
         <ruby>五百箇磐石<rp>(</rp><rt>いおついわむら</rt><rp>)</rp></ruby>(<ruby
@@ -230,10 +235,12 @@ class FigShared {
     </svg>
     <div id="text">
       <div class="bubble" style="left: 1000px; top: 1200px">
-        <ruby>素戔嗚<rp>(</rp><rt>スサノオ</rt><rp>)</rp></ruby>の剣
+        <ruby>素戔嗚<rp>(</rp><rt>スサノオ</rt><rp>)</rp></ruby>の剣<br>
+        (<ruby>蛇韓鋤之剣<rp>(</rp><rt>おろちのからすきのつるぎ</rt><rp>)</rp></ruby>)
       </div>
       <div class="bubble" style="left: 1600px; top: 800px">
-        <ruby>五百箇御統<rp>(</rp><rt>いおつのみすまる</rt><rp>)</rp></ruby>
+        <ruby>五百箇御統<rp>(</rp><rt>いおつのみすまる</rt><rp>)</rp></ruby><br>
+        (<ruby>耶佐賀珥迺伊朋津儒波屢濃多莽<rp>(</rp><rt>やさかにのいほつすばるのたま</rt><rp>)</rp></ruby>)
       </div>
     </div>`;
 }
