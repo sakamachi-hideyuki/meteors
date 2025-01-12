@@ -17,14 +17,20 @@ class FigShared {
         font-family: serif;
         font-size: 50px;
         font-weight: bold;
+        position: absolute;
         text-align: center;
         white-space: nowrap;
-        position: absolute;
       }
-      .bubble {
+      #bubble > div {
         background-color: #fff;
         border: 2px solid #000;
+        color: #000;
+        font-family: serif;
+        font-size: 50px;
+        font-weight: bold;
         padding: 40px 50px 30px 50px;
+        position: absolute;
+        white-space: nowrap;
       }
       svg {
         position: absolute;
@@ -50,7 +56,7 @@ class FigShared {
 
       <div style="left: 1600px; top: 140px;"><u>おうし座</u></div>
       <div style="left: 1140px; top: 460px;">アルデバラン</div>
-      <div style="left: 1920px; top: 320px;">プレアデス星団<br>(昴)</div>
+      <div style="left: 1920px; top: 340px;">プレアデス星団<br>(<ruby>昴<rp>(</rp><rt>すばる</rt><rp>)</rp></ruby>)</div>
     </div>`;
 
   static amanoiwatoHtml = `
@@ -79,18 +85,20 @@ class FigShared {
         y2="1240"
       />
       <line
-        x1="2020"
+        x1="2000"
         y1="480"
         x2="1800"
         y2="800"
       />
     </svg>
-    <div id="text">
-      <div class="bubble" style="left: 1000px; top: 1200px">
-        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣の神<br>
+    <div id="bubble">
+      <div style="left: 1000px; top: 1200px">
+        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣の神
         (<ruby>伊都之尾羽張<rp>(</rp><rt>イツノオハバリ</rt><rp>)</rp></ruby>神、<ruby>稜威雄走<rp>(</rp><rt>イツノオバシリ</rt><rp>)</rp></ruby>神)
       </div>
-      <div class="bubble" style="left: 1600px; top: 800px">天岩戸</div>
+      <div style="left: 1600px; top: 800px">
+        <ruby>天岩戸<rp>(</rp><rt>あまのいわと</rt><rp>)</rp></ruby>
+      </div>
     </div>`;
 
   static amanoyachimataHtml = `
@@ -143,18 +151,19 @@ class FigShared {
         y2="1240"
       />
       <line
-        x1="2020"
+        x1="2000"
         y1="480"
         x2="1800"
         y2="800"
       />
     </svg>
-    <div id="text">
-      <div class="bubble" style="left: 1000px; top: 1200px">
-        アマノヤチマタ<br>
-        (天の八つの分かれ道)
+    <div id="bubble">
+      <div style="left: 1000px; top: 1200px">
+        アマノヤチマタ
       </div>
-      <div class="bubble" style="left: 1600px; top: 800px">天岩戸</div>
+      <div style="left: 1600px; top: 800px">
+        <ruby>天岩戸<rp>(</rp><rt>あまのいわと</rt><rp>)</rp></ruby>
+      </div>
     </div>`;
 
   static iotsuiwamuraHtml = `
@@ -183,21 +192,20 @@ class FigShared {
         y2="1240"
       />
       <line
-        x1="2020"
+        x1="2000"
         y1="480"
         x2="1800"
         y2="800"
       />
     </svg>
-    <div id="text">
-      <div class="bubble" style="left: 1000px; top: 1200px">
-        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣<br>
-        (<ruby>伊都之尾羽張<rp>(</rp><rt>イツノオハバリ</rt><rp>)</rp></ruby>)
+    <div id="bubble">
+      <div style="left: 1000px; top: 1200px">
+        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣
+        (<ruby>伊都之尾羽張<rp>(</rp><rt>いつのおはばり</rt><rp>)</rp></ruby>)
       </div>
-      <div class="bubble" style="left: 1600px; top: 800px">
-        <ruby>五百箇磐石<rp>(</rp><rt>いおついわむら</rt><rp>)</rp></ruby>(<ruby
-          >湯津石村<rp>(</rp><rt>ゆついわむら</rt><rp>)</rp></ruby
-        >)
+      <div style="left: 1600px; top: 800px">
+        <ruby>五百箇磐石<rp>(</rp><rt>いおついわむら</rt><rp>)</rp></ruby>
+        (<ruby>湯津石村<rp>(</rp><rt>ゆついわむら</rt><rp>)</rp></ruby>)
       </div>
     </div>`;
 
@@ -227,20 +235,72 @@ class FigShared {
         y2="1240"
       />
       <line
-        x1="2020"
+        x1="2000"
         y1="480"
         x2="1800"
         y2="800"
       />
     </svg>
-    <div id="text">
-      <div class="bubble" style="left: 1000px; top: 1200px">
-        <ruby>素戔嗚<rp>(</rp><rt>スサノオ</rt><rp>)</rp></ruby>の剣<br>
+    <div id="bubble">
+      <div style="left: 1000px; top: 1200px">
+        <ruby>素戔嗚<rp>(</rp><rt>スサノオ</rt><rp>)</rp></ruby>の剣
         (<ruby>蛇韓鋤之剣<rp>(</rp><rt>おろちのからすきのつるぎ</rt><rp>)</rp></ruby>)
       </div>
-      <div class="bubble" style="left: 1600px; top: 800px">
+      <div style="left: 1600px; top: 800px">
+        <ruby>五百箇御統<rp>(</rp><rt>いおつのみすまる</rt><rp>)</rp></ruby>
+      </div>
+    </div>`;
+
+  static karasukisubaruHtml = `
+    ${this.baseHtml}
+    <svg
+      width="2560px"
+      height="1706px"
+    >
+      <rect
+        x="1"
+        y="1"
+        width="2558"
+        height="1704"
+        fill="none"
+      />
+      <line
+        x1="0"
+        y1="1250"
+        x2="2560"
+        y2="200"
+      />
+      <line
+        x1="590"
+        y1="1060"
+        x2="1000"
+        y2="1240"
+      />
+      <line
+        x1="2000"
+        y1="480"
+        x2="1800"
+        y2="800"
+      />
+    </svg>
+    <div id="bubble">
+      <div style="left: 1000px; top: 1200px">
+        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣
+        (<ruby>伊都之尾羽張<rp>(</rp><rt>いつのおはばり</rt><rp>)</rp></ruby>)<br>
+
+        <ruby>素戔嗚<rp>(</rp><rt>スサノオ</rt><rp>)</rp></ruby>の剣
+        (<ruby>蛇韓鋤之剣<rp>(</rp><rt>おろちのからすきのつるぎ</rt><rp>)</rp></ruby>)<br>
+
+        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣の神
+        (<ruby>伊都之尾羽張<rp>(</rp><rt>イツノオハバリ</rt><rp>)</rp></ruby>神、<ruby>稜威雄走<rp>(</rp><rt>イツノオバシリ</rt><rp>)</rp></ruby>神)
+      </div>
+      <div style="left: 1600px; top: 800px">
+        <ruby>五百箇磐石<rp>(</rp><rt>いおついわむら</rt><rp>)</rp></ruby>
+        (<ruby>湯津石村<rp>(</rp><rt>ゆついわむら</rt><rp>)</rp></ruby>)<br>
+
         <ruby>五百箇御統<rp>(</rp><rt>いおつのみすまる</rt><rp>)</rp></ruby><br>
-        (<ruby>耶佐賀珥迺伊朋津儒波屢濃多莽<rp>(</rp><rt>やさかにのいほつすばるのたま</rt><rp>)</rp></ruby>)
+
+        <ruby>天岩戸<rp>(</rp><rt>あまのいわと</rt><rp>)</rp></ruby>
       </div>
     </div>`;
 }

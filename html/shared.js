@@ -48,6 +48,32 @@ ${this.pleiadesAttributionHtml}`;
 
   static titleImageAlt = this.bookTitle;
 
+  static figKarasukisubaruAlt = "からすき星と昴";
+
+  static figKarasukisubaruCaptionHtml = `${this.figKarasukisubaruAlt}<br>
+${this.pleiadesAttributionHtml}`;
+
+  static figKarasukisubaruHtml = `
+<figure id="fig-karasukisubaru" class="image-and-caption">
+  <picture>
+    <source
+      srcset="
+        images/fig-karasukisubaru-web-640.webp 640w,
+        images/fig-karasukisubaru-web-1280.webp 1280w,
+        images/fig-karasukisubaru-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-karasukisubaru-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figKarasukisubaruAlt}"
+    />
+  </picture>
+  <figcaption>${this.figKarasukisubaruCaptionHtml}</figcaption>
+</figure>
+`;
+
   static photoMeteorAlt =
     "2020年12月4日14時30分(中央ヨーロッパ時間)、ノルウェーのシーボットンで撮影された、おうし座北流星群の火球";
 
@@ -369,6 +395,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
   static altToHtml = {
     [Shared.photoPleiadesAlt]: "",
     [Shared.titleImageAlt]: "",
+    [Shared.figKarasukisubaruAlt]: Shared.figKarasukisubaruHtml,
     [Shared.photoMeteorAlt]: "",
     [Shared.figIotsunomisumaruAlt]: Shared.figIotsunomisumaruHtml,
     [Shared.figMilkywayinwinterAlt]: Shared.figMilkywayinwinterHtml,

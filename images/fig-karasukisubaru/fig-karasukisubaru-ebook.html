@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../images.css" />
+    <style>
+      :root {
+        --figcaption-height: 180px;
+        --img-width: 2560px;
+      }
+      figcaption {
+        height: var(--figcaption-height);
+      }
+      figure {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        position: relative;
+        top: var(--img-width);
+      }
+    </style>
+  </head>
+  <body>
+    <figure>
+      <div id="content"></div>
+      <figcaption></figcaption>
+    </figure>
+    <script src="../../html/shared.js"></script>
+    <script src="../fig-shared.js"></script>
+    <script>
+      document.querySelector("#content").innerHTML = FigShared.karasukisubaruHtml;
+      document.querySelector("figcaption").innerHTML =
+        Shared.figKarasukisubaruCaptionHtml;
+    </script>
+  </body>
+</html>
