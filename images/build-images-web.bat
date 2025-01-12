@@ -16,10 +16,6 @@ magick build\png\fig-iotsunomisumaru-web.png build\web\fig-iotsunomisumaru-web-2
 magick build\png\fig-iotsunomisumaru-web.png -resize 1280x build\web\fig-iotsunomisumaru-web-1280.webp
 magick build\png\fig-iotsunomisumaru-web.png -resize 640x build\web\fig-iotsunomisumaru-web-640.webp
 
-magick build\png\fig-karasukisubaru-web.png build\web\fig-karasukisubaru-web-2560.webp
-magick build\png\fig-karasukisubaru-web.png -resize 1280x build\web\fig-karasukisubaru-web-1280.webp
-magick build\png\fig-karasukisubaru-web.png -resize 640x build\web\fig-karasukisubaru-web-640.webp
-
 magick build\png\fig-milkywayinsummer-web.png build\web\fig-milkywayinsummer-web-1920.webp
 magick build\png\fig-milkywayinsummer-web.png -resize 960x build\web\fig-milkywayinsummer-web-960.webp
 magick build\png\fig-milkywayinsummer-web.png -resize 480x build\web\fig-milkywayinsummer-web-480.webp
@@ -27,6 +23,14 @@ magick build\png\fig-milkywayinsummer-web.png -resize 480x build\web\fig-milkywa
 magick build\png\fig-milkywayinwinter-web.png build\web\fig-milkywayinwinter-web-1920.webp
 magick build\png\fig-milkywayinwinter-web.png -resize 960x build\web\fig-milkywayinwinter-web-960.webp
 magick build\png\fig-milkywayinwinter-web.png -resize 480x build\web\fig-milkywayinwinter-web-480.webp
+
+magick build\png\fig-subaru-web.png build\web\fig-subaru-web-2560.webp
+magick build\png\fig-subaru-web.png -resize 1280x build\web\fig-subaru-web-1280.webp
+magick build\png\fig-subaru-web.png -resize 640x build\web\fig-subaru-web-640.webp
+
+magick build\png\fig-subarunoko-web.png build\web\fig-subarunoko-web-2560.webp
+magick build\png\fig-subarunoko-web.png -resize 1280x build\web\fig-subarunoko-web-1280.webp
+magick build\png\fig-subarunoko-web.png -resize 640x build\web\fig-subarunoko-web-640.webp
 
 magick build\png\photo-iwakura-web.png build\web\photo-iwakura-web-2560.webp
 magick build\png\photo-iwakura-web.png -resize 1280x build\web\photo-iwakura-web-1280.webp

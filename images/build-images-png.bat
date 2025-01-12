@@ -9,12 +9,14 @@ call screenshot.bat fig-iotsuiwamura\fig-iotsuiwamura-ebook.html build\png\fig-i
 call screenshot.bat fig-iotsuiwamura\fig-iotsuiwamura-web.html build\png\fig-iotsuiwamura-web.png
 call screenshot.bat fig-iotsunomisumaru\fig-iotsunomisumaru-ebook.html build\png\fig-iotsunomisumaru-ebook.png
 call screenshot.bat fig-iotsunomisumaru\fig-iotsunomisumaru-web.html build\png\fig-iotsunomisumaru-web.png
-call screenshot.bat fig-karasukisubaru\fig-karasukisubaru-ebook.html build\png\fig-karasukisubaru-ebook.png
-call screenshot.bat fig-karasukisubaru\fig-karasukisubaru-web.html build\png\fig-karasukisubaru-web.png
 call screenshot.bat fig-milkywayinsummer\fig-milkywayinsummer-ebook.html build\png\fig-milkywayinsummer-ebook.png
 copy fig-milkywayinsummer\fig-milkywayinsummer-web.png build\png\.
 call screenshot.bat fig-milkywayinwinter\fig-milkywayinwinter-ebook.html build\png\fig-milkywayinwinter-ebook.png
 copy fig-milkywayinwinter\fig-milkywayinwinter-web.png build\png\.
+call screenshot.bat fig-subaru\fig-subaru-ebook.html build\png\fig-subaru-ebook.png
+call screenshot.bat fig-subaru\fig-subaru-web.html build\png\fig-subaru-web.png
+call screenshot.bat fig-subarunoko\fig-subarunoko-ebook.html build\png\fig-subarunoko-ebook.png
+call screenshot.bat fig-subarunoko\fig-subarunoko-web.html build\png\fig-subarunoko-web.png
 call screenshot.bat photo-iwakura\photo-iwakura-ebook.html build\png\photo-iwakura-ebook.png
 magick photo-iwakura\kyoto-Kamitaniiwakura.-xl.png -resize 2560x build\png\photo-iwakura-web.png
 call screenshot.bat photo-magatama\photo-magatama-ebook.html build\png\photo-magatama-ebook.png

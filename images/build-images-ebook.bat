@@ -5,9 +5,10 @@ magick build\png\fig-amanoiwato-ebook.png build\ebook\fig-amanoiwato-ebook.jpg
 magick build\png\fig-amanoyachimata-ebook.png build\ebook\fig-amanoyachimata-ebook.jpg
 magick build\png\fig-iotsuiwamura-ebook.png build\ebook\fig-iotsuiwamura-ebook.jpg
 magick build\png\fig-iotsunomisumaru-ebook.png build\ebook\fig-iotsunomisumaru-ebook.jpg
-magick build\png\fig-karasukisubaru-ebook.png build\ebook\fig-karasukisubaru-ebook.jpg
 magick build\png\fig-milkywayinsummer-ebook.png build\ebook\fig-milkywayinsummer-ebook.jpg
 magick build\png\fig-milkywayinwinter-ebook.png build\ebook\fig-milkywayinwinter-ebook.jpg
+magick build\png\fig-subaru-ebook.png build\ebook\fig-subaru-ebook.jpg
+magick build\png\fig-subarunoko-ebook.png build\ebook\fig-subarunoko-ebook.jpg
 magick build\png\photo-iwakura-ebook.png build\ebook\photo-iwakura-ebook.jpg
 magick build\png\photo-magatama-ebook.png build\ebook\photo-magatama-ebook.jpg
 magick build\png\photo-meteor-ebook.png build\ebook\photo-meteor-ebook.jpg

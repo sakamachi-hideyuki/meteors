@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../images.css" />
+    <style>
+      :root {
+        --figcaption-height: 60px;
+        --img-width: 2560px;
+        --img-height: 1706px;
+      }
+      figcaption {
+        height: var(--figcaption-height);
+      }
+      figure {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        position: relative;
+        top: var(--img-width);
+      }
+      #content {
+        width: var(--img-width);
+        height: var(--img-height);
+      }
+    </style>
+  </head>
+  <body>
+    <figure>
+      <div id="content"></div>
+      <figcaption></figcaption>
+    </figure>
+    <script src="../../html/shared.js"></script>
+    <script src="fig-subarunoko.js"></script>
+    <script>
+      document.querySelector("#content").innerHTML = FigSubarunoko.figSubarunokoContentHtml;
+      document.querySelector("figcaption").innerHTML =
+        Shared.figSubarunokoCaptionHtml;
+    </script>
+  </body>
+</html>

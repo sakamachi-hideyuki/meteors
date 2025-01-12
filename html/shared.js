@@ -48,29 +48,54 @@ ${this.pleiadesAttributionHtml}`;
 
   static titleImageAlt = this.bookTitle;
 
-  static figKarasukisubaruAlt = "からすき星と昴";
+  static figSubaruAlt = "天の川・からすき星・昴の神話";
 
-  static figKarasukisubaruCaptionHtml = `${this.figKarasukisubaruAlt}<br>
+  static figSubaruCaptionHtml = `${this.figSubaruAlt}<br>
 ${this.pleiadesAttributionHtml}`;
 
-  static figKarasukisubaruHtml = `
-<figure id="fig-karasukisubaru" class="image-and-caption">
+  static figSubaruHtml = `
+<figure id="fig-subaru" class="image-and-caption">
   <picture>
     <source
       srcset="
-        images/fig-karasukisubaru-web-640.webp 640w,
-        images/fig-karasukisubaru-web-1280.webp 1280w,
-        images/fig-karasukisubaru-web-2560.webp 2560w
+        images/fig-subaru-web-640.webp 640w,
+        images/fig-subaru-web-1280.webp 1280w,
+        images/fig-subaru-web-2560.webp 2560w
       "
     />
     <img
-      src="images/fig-karasukisubaru-web-2560.webp"
+      src="images/fig-subaru-web-2560.webp"
       width="2560"
       height="1706"
-      alt="${this.figKarasukisubaruAlt}"
+      alt="${this.figSubaruAlt}"
     />
   </picture>
-  <figcaption>${this.figKarasukisubaruCaptionHtml}</figcaption>
+  <figcaption>${this.figSubaruCaptionHtml}</figcaption>
+</figure>
+`;
+
+  static figSubarunokoAlt = "からすき星と昴の子";
+
+  static figSubarunokoCaptionHtml = this.figSubarunokoAlt;
+
+  static figSubarunokoHtml = `
+<figure id="fig-subarunoko" class="image-and-caption">
+  <picture>
+    <source
+      srcset="
+        images/fig-subarunoko-web-640.webp 640w,
+        images/fig-subarunoko-web-1280.webp 1280w,
+        images/fig-subarunoko-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-subarunoko-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figSubaruAlt}"
+    />
+  </picture>
+  <figcaption>${this.figSubarunokoCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -395,7 +420,8 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
   static altToHtml = {
     [Shared.photoPleiadesAlt]: "",
     [Shared.titleImageAlt]: "",
-    [Shared.figKarasukisubaruAlt]: Shared.figKarasukisubaruHtml,
+    [Shared.figSubaruAlt]: Shared.figSubaruHtml,
+    [Shared.figSubarunokoAlt]: Shared.figSubarunokoHtml,
     [Shared.photoMeteorAlt]: "",
     [Shared.figIotsunomisumaruAlt]: Shared.figIotsunomisumaruHtml,
     [Shared.figMilkywayinwinterAlt]: Shared.figMilkywayinwinterHtml,
