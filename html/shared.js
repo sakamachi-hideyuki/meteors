@@ -74,7 +74,7 @@ ${this.pleiadesAttributionHtml}`;
 </figure>
 `;
 
-  static figSubarunokoAlt = "からすき星と昴の子";
+  static figSubarunokoAlt = "からすき星と昴から生まれた神";
 
   static figSubarunokoCaptionHtml = this.figSubarunokoAlt;
 
