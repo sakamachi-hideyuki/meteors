@@ -9,8 +9,26 @@ class FigPleiades {
       img {
         filter: brightness(55%) contrast(300%) saturate(0) invert(1);
       }
-      u {
-        text-underline-offset: 8px;
+      #milkyway-container {
+        overflow: hidden;
+
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2560px;
+        height: 800px;
+      }
+      #milkyway {
+        background: linear-gradient(#666, #fff);
+        opacity: 0.5;
+        transform: rotate(-30deg);
+        transform-origin: left bottom;
+
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2560px;
+        height: 800px;
       }
       #text > div {
         color: #000;
@@ -20,6 +38,9 @@ class FigPleiades {
         position: absolute;
         text-align: center;
         white-space: nowrap;
+      }
+      u {
+        text-underline-offset: 8px;
       }
       #bubble > div {
         background-color: #fff;
@@ -31,27 +52,6 @@ class FigPleiades {
         padding: 40px 50px 20px 50px;
         position: absolute;
         white-space: nowrap;
-      }
-      #amanogawa-container {
-        overflow: hidden;
-
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 2560px;
-        height: 800px;
-      }
-      #amanogawa {
-        background: linear-gradient(#666, #fff);
-        opacity: 0.5;
-        transform: rotate(-30deg);
-        transform-origin: left bottom;
-
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 2560px;
-        height: 800px;
       }
       svg {
         position: absolute;
@@ -68,8 +68,8 @@ class FigPleiades {
       }
     </style>
     <img src="../photo-pleiades/Orion_Taurus_and_Pleiades.png" width="2560" height="1706">
-    <div id="amanogawa-container">
-      <div id="amanogawa"></div>
+    <div id="milkyway-container">
+      <div id="milkyway"></div>
     </div>
     <div id="text">
       <div style="left: 500px; top: 70px;">天の川</div>

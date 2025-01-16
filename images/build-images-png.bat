@@ -1,35 +1,46 @@
 cd /d %~dp0
 mkdir build\png
-call screenshot.bat cover\cover-ebook.html build\png\cover-ebook.png
-call screenshot.bat fig-amanoiwato\fig-amanoiwato-ebook.html build\png\fig-amanoiwato-ebook.png
-call screenshot.bat fig-amanoiwato\fig-amanoiwato-web.html build\png\fig-amanoiwato-web.png
-call screenshot.bat fig-amanoyachimata\fig-amanoyachimata-ebook.html build\png\fig-amanoyachimata-ebook.png
-call screenshot.bat fig-amanoyachimata\fig-amanoyachimata-web.html build\png\fig-amanoyachimata-web.png
-call screenshot.bat fig-iotsuiwamura\fig-iotsuiwamura-ebook.html build\png\fig-iotsuiwamura-ebook.png
-call screenshot.bat fig-iotsuiwamura\fig-iotsuiwamura-web.html build\png\fig-iotsuiwamura-web.png
-call screenshot.bat fig-iotsunomisumaru\fig-iotsunomisumaru-ebook.html build\png\fig-iotsunomisumaru-ebook.png
-call screenshot.bat fig-iotsunomisumaru\fig-iotsunomisumaru-web.html build\png\fig-iotsunomisumaru-web.png
-call screenshot.bat fig-milkywayinsummer\fig-milkywayinsummer-ebook.html build\png\fig-milkywayinsummer-ebook.png
-copy fig-milkywayinsummer\fig-milkywayinsummer-web.png build\png\.
-call screenshot.bat fig-milkywayinwinter\fig-milkywayinwinter-ebook.html build\png\fig-milkywayinwinter-ebook.png
-copy fig-milkywayinwinter\fig-milkywayinwinter-web.png build\png\.
-call screenshot.bat fig-subaru\fig-subaru-ebook.html build\png\fig-subaru-ebook.png
-call screenshot.bat fig-subaru\fig-subaru-web.html build\png\fig-subaru-web.png
-call screenshot.bat fig-subarunoko\fig-subarunoko-ebook.html build\png\fig-subarunoko-ebook.png
-call screenshot.bat fig-subarunoko\fig-subarunoko-web.html build\png\fig-subarunoko-web.png
-call screenshot.bat photo-iwakura\photo-iwakura-ebook.html build\png\photo-iwakura-ebook.png
-magick photo-iwakura\kyoto-Kamitaniiwakura.-xl.png -resize 2560x build\png\photo-iwakura-web.png
-call screenshot.bat photo-magatama\photo-magatama-ebook.html build\png\photo-magatama-ebook.png
-magick photo-magatama\A200c000042.png -resize 2560x build\png\photo-magatama-web.png
-call screenshot.bat photo-meteor\photo-meteor-ebook.html build\png\photo-meteor-ebook.png
-magick photo-meteor\tauride-20201204.png -resize 2560x build\png\photo-meteor-web.png
-call screenshot.bat photo-ogame\photo-ogame-ebook.html build\png\photo-ogame-ebook.png
-magick photo-ogame\001.png -resize x2560 build\png\photo-ogame-web.png
-call screenshot.bat photo-otomatsuri\photo-otomatsuri-ebook.html build\png\photo-otomatsuri-ebook.png
-magick photo-otomatsuri\wakayama-Kumano_Oto_Festival-xl.png -resize 2560x build\png\photo-otomatsuri-web.png
-call screenshot.bat photo-pleiades\photo-pleiades-ebook.html build\png\photo-pleiades-ebook.png
-call screenshot.bat photo-pleiades\photo-pleiades-web.html build\png\photo-pleiades-web.png
-call screenshot.bat photo-tategushi\photo-tategushi-ebook.html build\png\photo-tategushi-ebook.png
-magick photo-tategushi\A017b000004.png -resize 2560x build\png\photo-tategushi-web.png
-call screenshot.bat title\title-ebook.html build\png\title-ebook.png
-magick mogrify -define png:exclude-chunk=tIME -strip build\png\*.png
+copy cover\cover-ebook.png build\png\.
+copy fig-amanoiwato\fig-amanoiwato-ebook.png build\png\.
+copy fig-amanoiwato\fig-amanoiwato-web.png build\png\.
+copy fig-amanoyachimata\fig-amanoyachimata-ebook.png build\png\.
+copy fig-amanoyachimata\fig-amanoyachimata-web.png build\png\.
+copy fig-iotsuiwamura\fig-iotsuiwamura-ebook.png build\png\.
+copy fig-iotsuiwamura\fig-iotsuiwamura-web.png build\png\.
+copy fig-iotsunomisumaru\fig-iotsunomisumaru-ebook.png build\png\.
+copy fig-iotsunomisumaru\fig-iotsunomisumaru-web.png build\png\.
+copy fig-milkywayinsummer\fig-milkywayinsummer-ebook.png build\png\.
+magick fig-milkywayinsummer\fig-milkywayinsummer-web.png -define png:exclude-chunk=tIME -strip build\png\fig-milkywayinsummer-web.png
+copy fig-milkywayinwinter\fig-milkywayinwinter-ebook.png build\png\.
+magick fig-milkywayinwinter\fig-milkywayinwinter-web.png -define png:exclude-chunk=tIME -strip build\png\fig-milkywayinwinter-web.png
+copy fig-subaru\fig-subaru-ebook.png build\png\.
+copy fig-subaru\fig-subaru-web.png build\png\.
+copy fig-subarunoko\fig-subarunoko-ebook.png build\png\.
+copy fig-subarunoko\fig-subarunoko-web.png build\png\.
+magick fig-summary\fig-summary-haya-web.png -define png:exclude-chunk=tIME -strip build\png\fig-summary-haya-web.png
+copy fig-summary\fig-summary-haya-ebook.png build\png\.
+magick fig-summary\fig-summary-hi-web.png -define png:exclude-chunk=tIME -strip build\png\fig-summary-hi-web.png
+copy fig-summary\fig-summary-hi-ebook.png build\png\.
+magick fig-summary\fig-summary-ishi-web.png -define png:exclude-chunk=tIME -strip build\png\fig-summary-ishi-web.png
+copy fig-summary\fig-summary-ishi-ebook.png build\png\.
+magick fig-summary\fig-summary-kushi-web.png -define png:exclude-chunk=tIME -strip build\png\fig-summary-kushi-web.png
+copy fig-summary\fig-summary-kushi-ebook.png build\png\.
+magick fig-summary\fig-summary-mika-web.png -define png:exclude-chunk=tIME -strip build\png\fig-summary-mika-web.png
+copy fig-summary\fig-summary-mika-ebook.png build\png\.
+magick fig-summary\fig-summary-tama-web.png -define png:exclude-chunk=tIME -strip build\png\fig-summary-tama-web.png
+copy fig-summary\fig-summary-tama-ebook.png build\png\.
+copy photo-iwakura\photo-iwakura-ebook.png build\png\.
+magick photo-iwakura\kyoto-Kamitaniiwakura.-xl.png -resize 2560x -define png:exclude-chunk=tIME -strip build\png\photo-iwakura-web.png
+copy photo-magatama\photo-magatama-ebook.png build\png\.
+magick photo-magatama\A200c000042.png -resize 2560x -define png:exclude-chunk=tIME -strip build\png\photo-magatama-web.png
+copy photo-meteor\photo-meteor-ebook.png build\png\.
+magick photo-meteor\tauride-20201204.png -resize 2560x -define png:exclude-chunk=tIME -strip build\png\photo-meteor-web.png
+copy photo-ogame\photo-ogame-ebook.png build\png\.
+magick photo-ogame\001.png -resize x2560 -define png:exclude-chunk=tIME -strip build\png\photo-ogame-web.png
+copy photo-otomatsuri\photo-otomatsuri-ebook.png build\png\.
+magick photo-otomatsuri\wakayama-Kumano_Oto_Festival-xl.png -resize 2560x -define png:exclude-chunk=tIME -strip build\png\photo-otomatsuri-web.png
+copy photo-pleiades\photo-pleiades-ebook.png build\png\.
+copy photo-pleiades\photo-pleiades-web.png build\png\.
+copy photo-tategushi\photo-tategushi-ebook.png build\png\.
+magick photo-tategushi\A017b000004.png -resize 2560x -define png:exclude-chunk=tIME -strip build\png\photo-tategushi-web.png
+copy title\title-ebook.png build\png\.

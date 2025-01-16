@@ -32,6 +32,30 @@ magick build\png\fig-subarunoko-web.png build\web\fig-subarunoko-web-2560.webp
 magick build\png\fig-subarunoko-web.png -resize 1280x build\web\fig-subarunoko-web-1280.webp
 magick build\png\fig-subarunoko-web.png -resize 640x build\web\fig-subarunoko-web-640.webp
 
+magick build\png\fig-summary-haya-web.png build\web\fig-summary-haya-web-2560.webp
+magick build\png\fig-summary-haya-web.png -resize 1280x build\web\fig-summary-haya-web-1280.webp
+magick build\png\fig-summary-haya-web.png -resize 640x build\web\fig-summary-haya-web-640.webp
+
+magick build\png\fig-summary-hi-web.png build\web\fig-summary-hi-web-2560.webp
+magick build\png\fig-summary-hi-web.png -resize 1280x build\web\fig-summary-hi-web-1280.webp
+magick build\png\fig-summary-hi-web.png -resize 640x build\web\fig-summary-hi-web-640.webp
+
+magick build\png\fig-summary-ishi-web.png build\web\fig-summary-ishi-web-2560.webp
+magick build\png\fig-summary-ishi-web.png -resize 1280x build\web\fig-summary-ishi-web-1280.webp
+magick build\png\fig-summary-ishi-web.png -resize 640x build\web\fig-summary-ishi-web-640.webp
+
+magick build\png\fig-summary-kushi-web.png build\web\fig-summary-kushi-web-2560.webp
+magick build\png\fig-summary-kushi-web.png -resize 1280x build\web\fig-summary-kushi-web-1280.webp
+magick build\png\fig-summary-kushi-web.png -resize 640x build\web\fig-summary-kushi-web-640.webp
+
+magick build\png\fig-summary-mika-web.png build\web\fig-summary-mika-web-2560.webp
+magick build\png\fig-summary-mika-web.png -resize 1280x build\web\fig-summary-mika-web-1280.webp
+magick build\png\fig-summary-mika-web.png -resize 640x build\web\fig-summary-mika-web-640.webp
+
+magick build\png\fig-summary-tama-web.png build\web\fig-summary-tama-web-2560.webp
+magick build\png\fig-summary-tama-web.png -resize 1280x build\web\fig-summary-tama-web-1280.webp
+magick build\png\fig-summary-tama-web.png -resize 640x build\web\fig-summary-tama-web-640.webp
+
 magick build\png\photo-iwakura-web.png build\web\photo-iwakura-web-2560.webp
 magick build\png\photo-iwakura-web.png -resize 1280x build\web\photo-iwakura-web-1280.webp
 magick build\png\photo-iwakura-web.png -resize 640x build\web\photo-iwakura-web-640.webp

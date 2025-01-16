@@ -204,6 +204,31 @@ ${this.pleiadesAttributionHtml}`;
 </figure>
 `;
 
+  static figSummaryHayaAlt = "神名に「ハヤ」が付く神";
+
+  static figSummaryHayaCaptionHtml = this.figSummaryHayaAlt;
+
+  static figSummaryHayaHtml = `
+<figure id="fig-summary-haya" class="image-and-caption">
+  <picture>
+    <source
+      srcset="
+        images/fig-summary-haya-web-640.webp 640w,
+        images/fig-summary-haya-web-1280.webp 1280w,
+        images/fig-summary-haya-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-summary-haya-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figSummaryHayaAlt}"
+    />
+  </picture>
+  <figcaption>${this.figSummaryHayaCaptionHtml}</figcaption>
+</figure>
+`;
+
   static photoTategushiAlt = "是川石器時代遺跡　漆塗り櫛出土状況";
 
   static photoTategushiCaptionHtml = `${this.photoTategushiAlt}<br>
@@ -231,6 +256,31 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 </figure>
 `;
 
+  static figSummaryKushiAlt = "神名に「クシ」またはその変化が付く神";
+
+  static figSummaryKushiCaptionHtml = this.figSummaryKushiAlt;
+
+  static figSummaryKushiHtml = `
+<figure id="fig-summary-kushi" class="image-and-caption">
+  <picture>
+    <source
+      srcset="
+        images/fig-summary-kushi-web-640.webp 640w,
+        images/fig-summary-kushi-web-1280.webp 1280w,
+        images/fig-summary-kushi-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-summary-kushi-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figSummaryKushiAlt}"
+    />
+  </picture>
+  <figcaption>${this.figSummaryKushiCaptionHtml}</figcaption>
+</figure>
+`;
+
   static photoOgameAlt = "須惠器　大甕";
 
   static photoOgameCaptionHtml = `${this.photoOgameAlt}<br>
@@ -255,6 +305,31 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
     />
   </picture>
   <figcaption>${this.photoOgameCaptionHtml}</figcaption>
+</figure>
+`;
+
+  static figSummaryMikaAlt = "神名に「ミカ」またはその変化が付く神";
+
+  static figSummaryMikaCaptionHtml = this.figSummaryMikaAlt;
+
+  static figSummaryMikaHtml = `
+<figure id="fig-summary-mika" class="image-and-caption">
+  <picture>
+    <source
+      srcset="
+        images/fig-summary-mika-web-640.webp 640w,
+        images/fig-summary-mika-web-1280.webp 1280w,
+        images/fig-summary-mika-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-summary-mika-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figSummaryMikaAlt}"
+    />
+  </picture>
+  <figcaption>${this.figSummaryMikaCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -363,6 +438,31 @@ ${this.pleiadesAttributionHtml}`;
 </figure>
 `;
 
+  static figSummaryTamaAlt = "神名に「玉」が付く神";
+
+  static figSummaryTamaCaptionHtml = this.figSummaryTamaAlt;
+
+  static figSummaryTamaHtml = `
+<figure id="fig-summary-tama" class="image-and-caption">
+  <picture>
+    <source
+      srcset="
+        images/fig-summary-tama-web-640.webp 640w,
+        images/fig-summary-tama-web-1280.webp 1280w,
+        images/fig-summary-tama-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-summary-tama-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figSummaryTamaAlt}"
+    />
+  </picture>
+  <figcaption>${this.figSummaryTamaCaptionHtml}</figcaption>
+</figure>
+`;
+
   static photoOtomatsuriAlt = "新宮の御燈祭";
 
   static photoOtomatsuriCaptionHtml = `${this.photoOtomatsuriAlt} © panpanzupan<br>
@@ -387,6 +487,31 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
     />
   </picture>
   <figcaption>${this.photoOtomatsuriCaptionHtml}</figcaption>
+</figure>
+`;
+
+  static figSummaryHiAlt = "神名に「乙類のヒ」「ホ」が付く神";
+
+  static figSummaryHiCaptionHtml = this.figSummaryHiAlt;
+
+  static figSummaryHiHtml = `
+<figure id="fig-summary-hi" class="image-and-caption">
+  <picture>
+    <source
+      srcset="
+        images/fig-summary-hi-web-640.webp 640w,
+        images/fig-summary-hi-web-1280.webp 1280w,
+        images/fig-summary-hi-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-summary-hi-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figSummaryHiAlt}"
+    />
+  </picture>
+  <figcaption>${this.figSummaryHiCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -417,6 +542,31 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 </figure>
 `;
 
+  static figSummaryIshiAlt = "神名に「イシ」「イワ（イハ）」またはその変化が付く神";
+
+  static figSummaryIshiCaptionHtml = this.figSummaryIshiAlt;
+
+  static figSummaryIshiHtml = `
+<figure id="fig-summary-ishi" class="image-and-caption">
+  <picture>
+    <source
+      srcset="
+        images/fig-summary-ishi-web-640.webp 640w,
+        images/fig-summary-ishi-web-1280.webp 1280w,
+        images/fig-summary-ishi-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-summary-ishi-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figSummaryIshiAlt}"
+    />
+  </picture>
+  <figcaption>${this.figSummaryIshiCaptionHtml}</figcaption>
+</figure>
+`;
+
   static altToHtml = {
     [Shared.photoPleiadesAlt]: "",
     [Shared.titleImageAlt]: "",
@@ -426,14 +576,20 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
     [Shared.figIotsunomisumaruAlt]: Shared.figIotsunomisumaruHtml,
     [Shared.figMilkywayinwinterAlt]: Shared.figMilkywayinwinterHtml,
     [Shared.figMilkywayinsummerAlt]: Shared.figMilkywayinsummerHtml,
+    [Shared.figSummaryHayaAlt]: Shared.figSummaryHayaHtml,
     [Shared.photoTategushiAlt]: "",
+    [Shared.figSummaryKushiAlt]: Shared.figSummaryKushiHtml,
     [Shared.photoOgameAlt]: "",
+    [Shared.figSummaryMikaAlt]: Shared.figSummaryMikaHtml,
     [Shared.photoMagatamaAlt]: "",
     [Shared.figIotsuiwamuraAlt]: Shared.figIotsuiwamuraHtml,
     [Shared.figAmanoiwatoAlt]: Shared.figAmanoiwatoHtml,
     [Shared.figAmanoyachimataAlt]: Shared.figAmanoyachimataHtml,
+    [Shared.figSummaryTamaAlt]: Shared.figSummaryTamaHtml,
     [Shared.photoOtomatsuriAlt]: "",
+    [Shared.figSummaryHiAlt]: Shared.figSummaryHiHtml,
     [Shared.photoIwakuraAlt]: "",
+    [Shared.figSummaryIshiAlt]: Shared.figSummaryIshiHtml,
   };
 
   static pageIdToHtml = {
