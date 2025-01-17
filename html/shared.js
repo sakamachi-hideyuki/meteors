@@ -542,7 +542,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 </figure>
 `;
 
-  static figSummaryIshiAlt = "神名に「イシ」「イワ（イハ）」またはその変化が付く神";
+  static figSummaryIshiAlt = "神名に「イシ」「イワ」またはその変化が付く神";
 
   static figSummaryIshiCaptionHtml = this.figSummaryIshiAlt;
 
