@@ -129,7 +129,7 @@ class FigPleiades {
         <ruby>天安河<rp>(</rp><rt>あまのやすのかわ</rt><rp>)</rp></ruby>
       </div>
       <div style="left: 1000px; top: 1200px">
-        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣の神（<ruby>伊都之尾羽張<rp>(</rp><rt>イツノオハバリ</rt><rp>)</rp></ruby>神、<ruby>稜威雄走<rp>(</rp><rt>イツノオバシリ</rt><rp>)</rp></ruby>神）
+        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>尊の剣の神（<ruby>伊都之尾羽張<rp>(</rp><rt>イツノオハバリ</rt><rp>)</rp></ruby>神、<ruby>稜威雄走<rp>(</rp><rt>イツノオバシリ</rt><rp>)</rp></ruby>神）
       </div>
       <div style="left: 1600px; top: 800px">
         <ruby>天岩戸<rp>(</rp><rt>あまのいわと</rt><rp>)</rp></ruby>
@@ -244,7 +244,7 @@ class FigPleiades {
         <ruby>天安河<rp>(</rp><rt>あまのやすのかわ</rt><rp>)</rp></ruby>
       </div>
       <div style="left: 1000px; top: 1200px">
-        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣（<ruby>伊都之尾羽張<rp>(</rp><rt>いつのおはばり</rt><rp>)</rp></ruby>）
+        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>尊の剣（<ruby>伊都之尾羽張<rp>(</rp><rt>いつのおはばり</rt><rp>)</rp></ruby>）
       </div>
       <div style="left: 1600px; top: 800px">
         <ruby>五百箇磐石<rp>(</rp><rt>いおついわむら</rt><rp>)</rp></ruby>（<ruby>湯津石村<rp>(</rp><rt>ゆついわむら</rt><rp>)</rp></ruby>）
@@ -294,7 +294,7 @@ class FigPleiades {
         <ruby>天安河<rp>(</rp><rt>あまのやすのかわ</rt><rp>)</rp></ruby>
       </div>
       <div style="left: 1000px; top: 1200px">
-        <ruby>素戔嗚<rp>(</rp><rt>スサノオ</rt><rp>)</rp></ruby>の剣（<ruby>蛇韓鋤之剣<rp>(</rp><rt>おろちのからすきのつるぎ</rt><rp>)</rp></ruby>）
+        <ruby>素戔嗚<rp>(</rp><rt>スサノオ</rt><rp>)</rp></ruby>尊の剣（<ruby>蛇韓鋤之剣<rp>(</rp><rt>おろちのからすきのつるぎ</rt><rp>)</rp></ruby>）
       </div>
       <div style="left: 1600px; top: 800px">
         <ruby>五百箇御統<rp>(</rp><rt>いおつのみすまる</rt><rp>)</rp></ruby>
@@ -344,11 +344,11 @@ class FigPleiades {
         <ruby>天安河<rp>(</rp><rt>あまのやすのかわ</rt><rp>)</rp></ruby>
       </div>
       <div style="left: 1000px; top: 1200px">
-        <ruby>素戔嗚<rp>(</rp><rt>スサノオ</rt><rp>)</rp></ruby>の剣（<ruby>蛇韓鋤之剣<rp>(</rp><rt>おろちのからすきのつるぎ</rt><rp>)</rp></ruby>）<br>
+        <ruby>素戔嗚<rp>(</rp><rt>スサノオ</rt><rp>)</rp></ruby>尊の剣（<ruby>蛇韓鋤之剣<rp>(</rp><rt>おろちのからすきのつるぎ</rt><rp>)</rp></ruby>）<br>
 
-        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣（<ruby>伊都之尾羽張<rp>(</rp><rt>いつのおはばり</rt><rp>)</rp></ruby>）<br>
+        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>尊の剣（<ruby>伊都之尾羽張<rp>(</rp><rt>いつのおはばり</rt><rp>)</rp></ruby>）<br>
 
-        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>の剣の神（<ruby>伊都之尾羽張<rp>(</rp><rt>イツノオハバリ</rt><rp>)</rp></ruby>神、<ruby>稜威雄走<rp>(</rp><rt>イツノオバシリ</rt><rp>)</rp></ruby>神）
+        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>尊の剣の神（<ruby>伊都之尾羽張<rp>(</rp><rt>イツノオハバリ</rt><rp>)</rp></ruby>神、<ruby>稜威雄走<rp>(</rp><rt>イツノオバシリ</rt><rp>)</rp></ruby>神）
       </div>
       <div style="left: 1600px; top: 800px">
         <ruby>五百箇御統<rp>(</rp><rt>いおつのみすまる</rt><rp>)</rp></ruby><br>
