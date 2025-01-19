@@ -346,7 +346,7 @@ section#revision-history p.blank {
 /* 画像とキャプション */
 figure.image-and-caption {
   font-size: 0;
-  margin: 0 0 2rem 0;
+  margin: 0 auto 2rem auto;
   text-align: center;
 }
 /* 画像 */
@@ -391,7 +391,6 @@ div.chapter-image {
 }
 div.chapter-image > figure.image-and-caption {
   max-width: var(--max-content-width);
-  margin: 0 auto 2rem auto;
 }
 div.chapter-image > figure.image-and-caption img {
   animation-duration: 1.5s;
@@ -406,10 +405,19 @@ div.chapter-image > figure.image-and-caption > figcaption a {
   color: #57f;
 }
 
+/* 冬の天の川の画像 */
+figure.image-and-caption#fig-milkywayinwinter {
+  max-width: calc(var(--max-content-width) * 0.75);
+}
+
+/* 夏の天の川の画像 */
+figure.image-and-caption#fig-milkywayinsummer {
+  max-width: calc(var(--max-content-width) * 0.75);
+}
+
 /* 甕の章　大甕の画像 */
 div.chapter-image > figure.image-and-caption#photo-ogame {
-  max-width: calc(var(--max-content-width) * 0.67);
-  min-width: 15rem;
+  max-width: calc(var(--max-content-width) * 0.75);
 }
 
 @keyframes fade-in {

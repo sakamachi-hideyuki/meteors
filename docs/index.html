@@ -52,11 +52,22 @@ html {
 <div class="website-image">
 
 <figure id="photo-pleiades" class="image-and-caption">
-<picture>
-  <source media="(max-width: 640px)" srcset="images/photo-pleiades-web-small.webp">
-  <img src="images/photo-pleiades-web.webp" width="1920" height="960" alt="オリオン座、おうし座、昴">
-</picture>
-<figcaption>オリオン座、おうし座、昴<br>
+  <picture>
+    <source
+      srcset="
+        images/photo-pleiades-web-1024.webp 1024w,
+        images/photo-pleiades-web-2048.webp 2048w,
+        images/photo-pleiades-web-4096.webp 4096w
+      "
+    />
+    <img
+      src="images/photo-pleiades-web-4096.webp"
+      width="4096"
+      height="2048"
+      alt="オリオン座、おうし座、昴"
+    />
+  </picture>
+  <figcaption>オリオン座、おうし座、昴<br>
 Adapted from <a href="https://commons.wikimedia.org/wiki/File:Orion,_Taurus_and_Pleiades.jpg" target="_blank">"Orion, Taurus and Pleiades"</a><br>
 by Panda~thwiki, used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></figcaption>
 </figure>

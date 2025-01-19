@@ -360,7 +360,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 </figure>
 `;
 
-  static figIotsuiwamuraAlt = "伊奘諾尊の剣と五百箇磐石（湯津石村）";
+  static figIotsuiwamuraAlt = "伊奘諾尊の剣と五百箇磐石";
 
   static figIotsuiwamuraCaptionHtml = `${this.figIotsuiwamuraAlt}<br>
 ${this.pleiadesAttributionHtml}`;
