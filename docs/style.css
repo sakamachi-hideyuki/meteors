@@ -51,7 +51,7 @@ html {
 
 body {
   background-color: #000;
-  color: #eee;
+  color: #fff;
   font-family: serif;
   height: 100%;
   margin: 0;
@@ -271,7 +271,7 @@ div#website-notes {
   text-align: center;
 }
 div#website-notes > a {
-  color: #57f;
+  color: #68f;
   text-decoration-thickness: 0.5px;
 }
 
@@ -365,7 +365,7 @@ figure.image-and-caption > figcaption {
 /* 先頭ページの画像 */
 div.website-image {
   background-color: #000;
-  color: #eee;
+  color: #fff;
   padding-top: 2.5rem;
 }
 div.website-image > figure.image-and-caption img {
@@ -380,13 +380,13 @@ div.website-image > figure.image-and-caption > figcaption {
   text-align: right;
 }
 div.website-image > figure.image-and-caption > figcaption a {
-  color: #57f;
+  color: #68f;
 }
 
 /* 各章先頭の画像 */
 div.chapter-image {
   background-color: #000;
-  color: #eee;
+  color: #fff;
   padding-top: 2.5rem;
 }
 div.chapter-image > figure.image-and-caption {
@@ -402,7 +402,7 @@ div.chapter-image > figure.image-and-caption > figcaption {
   padding: 0.3rem;
 }
 div.chapter-image > figure.image-and-caption > figcaption a {
-  color: #57f;
+  color: #68f;
 }
 
 /* 冬の天の川の画像 */
