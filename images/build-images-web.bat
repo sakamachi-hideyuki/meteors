@@ -79,7 +79,7 @@ magick build\png\photo-otomatsuri-web.png -resize 640x build\web\photo-otomatsur
 magick build\png\photo-pleiades-web.png build\web\photo-pleiades-web-4096.webp
 magick build\png\photo-pleiades-web.png -resize 2048x build\web\photo-pleiades-web-2048.webp
 magick build\png\photo-pleiades-web.png -resize 1024x build\web\photo-pleiades-web-1024.webp
-copy build\web\photo-pleiades-web-1024.webp build\web\photo-pleiades-web.webp
+copy build\web\photo-pleiades-web-2048.webp build\web\photo-pleiades-web.webp
 
 magick build\png\photo-tategushi-web.png build\web\photo-tategushi-web-2560.webp
 magick build\png\photo-tategushi-web.png -resize 1280x build\web\photo-tategushi-web-1280.webp
