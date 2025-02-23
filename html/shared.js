@@ -1,7 +1,7 @@
 class Shared {
   static bookTitle = "流星と昴の日本神話";
   static websiteTitle = this.bookTitle;
-  static websiteDescription = "日本神話に星の神・神話は少ないと言われているが、実際は星が付く名の神社は多く、日本神話では様々な星の神・神話が「見立て」を用いて語られている。";
+  static websiteDescription = "日本神話に星の神・神話は少ないと言われているが、実際は様々な星の神・神話が「見立て」を用いて語られている。";
   static websiteUrl = "https://sakamachi-hideyuki.github.io/meteors/";
   static websiteImage = `${Shared.websiteUrl}images/photo-pleiades-web.webp`;
 
@@ -48,7 +48,7 @@ ${this.pleiadesAttributionHtml}`;
 
   static titleImageAlt = this.bookTitle;
 
-  static figSubaruAlt = "天の川・からすき星・昴の神話";
+  static figSubaruAlt = "天の川・からすき星・昴";
 
   static figSubaruCaptionHtml = `${this.figSubaruAlt}<br>
 ${this.pleiadesAttributionHtml}`;
@@ -74,7 +74,7 @@ ${this.pleiadesAttributionHtml}`;
 </figure>
 `;
 
-  static figSubarunokoAlt = "からすき星と昴から生まれた神";
+  static figSubarunokoAlt = "からすき星と昴から生まれた流星の神";
 
   static figSubarunokoCaptionHtml = this.figSubarunokoAlt;
 
@@ -92,7 +92,7 @@ ${this.pleiadesAttributionHtml}`;
       src="images/fig-subarunoko-web-2560.webp"
       width="2560"
       height="1706"
-      alt="${this.figSubaruAlt}"
+      alt="${this.figSubarunokoAlt}"
     />
   </picture>
   <figcaption>${this.figSubarunokoCaptionHtml}</figcaption>
