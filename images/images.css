@@ -18,11 +18,13 @@ figure > figcaption {
 }
 figure > figcaption > a {
   color: #000;
+  font-weight: bold;
   text-decoration: none;
 }
 figure > figcaption > a::after {
   content: " " attr(href);
   font-size: 32px;
+  font-weight: normal;
 }
 #chapter-title {
   background-color: #fff;
