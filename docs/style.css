@@ -198,6 +198,10 @@ p.desc {
 p.par {
   margin: 1rem 0;
 }
+/* 引用文 */
+p.bquote {
+  margin: 0 2rem;
+}
 /* 太字の段落 */
 p.heading {
   border-bottom: 1px solid #000;
@@ -209,6 +213,11 @@ p.heading {
 p.list-1 {
   margin: 0 0 0 1rem;
   text-indent: -1rem;
+}
+/* リスト1(箇条書き レベル1)の継続行 */
+p.list-1c {
+  margin: 0 0 0 1rem;
+  text-indent: 0;
 }
 /* リスト1(箇条書き レベル1) フォント小 */
 p.list-1s {
@@ -247,7 +256,7 @@ u {
 nav#next-page {
   background-color: #fff;
   color: #000;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
   text-align: center;
 }
 nav#next-page > a {
@@ -266,28 +275,30 @@ footer {
 /* ページ下部のWebサイトの説明 */
 div#website-notes {
   font-family: sans-serif;
-  font-size: 0.6rem;
-  padding: 2rem 0.5rem 0 0.5rem;
+  font-size: 0.7rem;
+  padding: 2rem 1rem 0 1rem;
   text-align: center;
 }
 div#website-notes > a {
   color: #68f;
-  text-decoration-thickness: 0.5px;
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
 }
 
 /* ページ下部のコピーライト文 */
 div#copyright {
   font-family: sans-serif;
   font-size: 0.6rem;
-  padding: 0 0.5rem 2rem 0.5rem;
+  padding: 0 1rem 2rem 1rem;
   text-align: center;
 }
 
 /* ページ先頭へスクロールするボタン */
 a.top-of-page {
-  background-color: #eee;
+  background-color: #333;
   border-radius: 0.3rem;
-  color: #000;
+  color: #fff;
   display: block;
   font-family: sans-serif;
   line-height: 2.5rem;
@@ -297,8 +308,8 @@ a.top-of-page {
   z-index: 1;
 
   position: fixed;
-  bottom: 5rem;
-  right: 1rem;
+  bottom: 4rem;
+  right: 2rem;
   width: 2.5rem;
 }
 

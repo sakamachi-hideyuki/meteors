@@ -7,9 +7,11 @@ import {
 } from "./dom-utils.js";
 
 const availableClasses = [
+  "bquote",
   "desc",
   "heading",
   "list-1",
+  "list-1c",
   "list-1s",
   "list-2",
   "list-3",
@@ -37,7 +39,6 @@ export function convertPages(html) {
   removeUnnecessaryAttrs(rootElem);
 
   convertBlankPs(rootElem);
-  convertTextIndents(rootElem);
   convertImages(rootElem);
 
   removeBlankLines(rootElem);
@@ -68,7 +69,6 @@ export function convertPages(html) {
  */
 function removeUnnecessaryAttrs(rootElem) {
   rootElem.querySelectorAll("*").forEach((el) => {
-    const textIndent = el.style.textIndent;
     const attrNames = el.getAttributeNames();
     for (const attrName of attrNames) {
       if (attrName === "alt" || attrName === "name") {
@@ -85,10 +85,6 @@ function removeUnnecessaryAttrs(rootElem) {
       // それ以外の属性は削除
       el.removeAttribute(attrName);
     }
-    if (textIndent) {
-      // style属性のtext-indentは復活
-      el.setAttribute("style", "text-indent:" + textIndent);
-    }
   });
 }
 
@@ -103,38 +99,6 @@ function convertBlankPs(rootElem) {
       el.removeAttribute("style");
     }
   });
-}
-
-/**
- * 各text-indentスタイルの値の単位をremに変換する.
- */
-function convertTextIndents(rootElem) {
-  rootElem.querySelectorAll("*[style]").forEach((el) => {
-    if (el.style.textIndent) {
-      el.style.textIndent = toRem(el.style.textIndent);
-    }
-  });
-}
-
-/**
- * 指定のtext-indentの値の単位をremに変換する.
- * ptまたは0mmのみを想定.
- *
- * @param textIndent text-indentの値
- * @retrun remに単位変換後の値
- */
-function toRem(textIndent) {
-  if (textIndent.endsWith("pt")) {
-    // ptを数値で取得
-    const pt = Number(textIndent.substring(0, textIndent.length - 2));
-    // 10.5ptあたり1remに変換、四捨五入で小数部１桁にする
-    const rem = Math.round((pt / 10.5) * 10) / 10;
-    return `${rem}rem`;
-  } else if (textIndent === "0mm") {
-    return "0rem";
-  } else {
-    throw new Error(`Unexpected text-indent: ${textIndent}`);
-  }
 }
 
 /**
