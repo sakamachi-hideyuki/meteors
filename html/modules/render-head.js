@@ -15,6 +15,7 @@ ${
     ? ""
     : `<meta property="og:description" content="${descText}">`
 }
+<meta name="format-detection" content="address=no, date=no, email=no, telephone=no">
 <style>
 /* FOUC(Flash of unstyled content)対策 */
 html {

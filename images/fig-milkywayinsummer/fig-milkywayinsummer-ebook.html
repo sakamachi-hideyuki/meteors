@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="../images.css" />
     <style>
       :root {
-        --figcaption-height: 120px;
         --img-width: 1920px;
         --img-height: 1920px;
       }
@@ -15,7 +14,7 @@
         height: var(--img-height);
       }
       figcaption {
-        height: var(--figcaption-height);
+        height: calc(var(--caption-line-height) * 2 + var(--gap) * 2);
       }
     </style>
   </head>

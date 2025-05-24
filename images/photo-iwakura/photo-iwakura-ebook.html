@@ -6,12 +6,8 @@
     <link rel="stylesheet" href="../images.css" />
     <style>
       :root {
-        --figcaption-height: 180px;
         --img-width: 2560px;
         --img-height: 1707px;
-      }
-      #chapter-title {
-        width: calc(var(--img-height) + var(--figcaption-height));
       }
       figure {
         transform: rotate(-90deg);
@@ -19,21 +15,27 @@
         position: relative;
         top: var(--img-width);
       }
-      img {
+      figure > img {
         width: var(--img-width);
         height: var(--img-height);
       }
-      figcaption {
-        height: var(--figcaption-height);
+      figure > figcaption {
+        height: calc(var(--title-font-size) + var(--gap) * 2);
+        padding-right: calc(var(--title-font-size) * 3 + var(--gap));
+      }
+      #chapter-title {
+        left: calc(var(--img-height) + var(--gap));
+        top: 0;
       }
     </style>
   </head>
   <body>
-    <div id="chapter-title">石の章</div>
     <figure>
       <img src="kyoto-Kamitaniiwakura.-xl.png" />
       <figcaption></figcaption>
     </figure>
+    <div id="chapter-title">石<br>の<br>章</div>
+
     <script src="../../html/shared.js"></script>
     <script>
       document.querySelector("figcaption").innerHTML =

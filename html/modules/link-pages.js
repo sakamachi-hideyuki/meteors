@@ -85,10 +85,6 @@ function linkSection(pages, page, prevPage) {
       return `<a href="${target.filename}">${s}</a>`;
     }
   );
-  // "前項"をリンク化
-  page.contentHtml = page.contentHtml.replaceAll(/前項/g, (s) => {
-    return `<a href="${prevPage.filename}">${s}</a>`;
-  });
 }
 
 function linkSummary(pages, page) {

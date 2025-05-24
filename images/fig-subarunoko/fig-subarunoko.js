@@ -181,7 +181,7 @@ class FigSubarunoko {
 
       <div style="left: 2010px; top: 1570px; font-size: 40px; text-align: left;">
         ★名前に星が付く神社の祭神<br>
-        ▼天降る神
+        ▼記紀に天降る神話がある神
       </div>
     </div>`;
 

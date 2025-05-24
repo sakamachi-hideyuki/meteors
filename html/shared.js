@@ -20,7 +20,7 @@ class Shared {
   static pleiadesAttributionHtml = `Adapted from <a href="https://commons.wikimedia.org/wiki/File:Orion,_Taurus_and_Pleiades.jpg" target="_blank">"Orion, Taurus and Pleiades"</a><br>
 by Panda~thwiki, used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
-  static photoPleiadesAlt = "オリオン座、おうし座、昴";
+  static photoPleiadesAlt = "からすき星と昴";
 
   static photoPleiadesCaptionHtml = `${this.photoPleiadesAlt}<br>
 ${this.pleiadesAttributionHtml}`;
@@ -100,7 +100,7 @@ ${this.pleiadesAttributionHtml}`;
 `;
 
   static photoMeteorAlt =
-    "2020年12月4日14時30分(中央ヨーロッパ時間)、ノルウェーのシーボットンで撮影された、おうし座北流星群の火球";
+    "2020年12月4日14時30分(中部欧州標準時)、ノルウェーのシーボットンで撮影された、おうし座北流星群の火球";
 
   static photoMeteorCaptionHtml = `${this.photoMeteorAlt}<br>
 出典：<a href="http://norskmeteornettverk.no/wordpress/?p=3202" target="_blank">Norsk meteornettverk/Universitetet i Tromsø/Ketil Vegum</a>`;
@@ -284,7 +284,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
   static photoOgameAlt = "須惠器　大甕";
 
   static photoOgameCaptionHtml = `${this.photoOgameAlt}<br>
-出典：<a href="https://adeac.jp/choshi-city/catalog/mp010261-200010" target="_blank">銚子市／銚子市デジタルアーカイブ</a><br>
+出典：<a href="https://adeac.jp/choshi-city/catalog/mp010261-200010" target="_blank">銚子市デジタルアーカイブ</a><br>
 Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoOgameHtml = `

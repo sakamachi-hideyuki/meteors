@@ -6,17 +6,16 @@
     <link rel="stylesheet" href="../images.css" />
     <style>
       :root {
-        --figcaption-height: 180px;
         --img-width: 2560px;
-      }
-      figcaption {
-        height: var(--figcaption-height);
       }
       figure {
         transform: rotate(-90deg);
         transform-origin: left top;
         position: relative;
         top: var(--img-width);
+      }
+      figcaption {
+        height: calc(var(--caption-line-height) * 3 + var(--gap) * 2);
       }
     </style>
   </head>
