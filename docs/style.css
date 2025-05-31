@@ -299,20 +299,28 @@ div#copyright {
 /* ページ先頭へスクロールするボタン */
 a.top-of-page {
   background-color: #333;
-  border-radius: 0.3rem;
+  background-color: #5555;
+  border-radius: 50%;
   color: #fff;
   display: block;
   font-family: sans-serif;
-  line-height: 2.5rem;
+  line-height: 6rem;
   outline: none;
   text-align: center;
   text-decoration-line: none;
+  transform: scaleY(0.5);
+  transform-origin: right bottom;
+  transition-duration: 200ms;
+  transition-property: background-color;
   z-index: 1;
 
   position: fixed;
-  bottom: 4.5rem;
-  right: 2.5rem;
-  width: 2.5rem;
+  bottom: 1rem;
+  right: 1rem;
+  width: 3rem;
+}
+a.top-of-page:hover {
+  background-color: #555a;
 }
 
 /* 目次 */
