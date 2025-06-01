@@ -298,8 +298,7 @@ div#copyright {
 
 /* ページ先頭へスクロールするボタン */
 a.top-of-page {
-  background-color: #333;
-  background-color: #5555;
+  background-color: #3339;
   border-radius: 50%;
   color: #fff;
   display: block;
@@ -320,7 +319,7 @@ a.top-of-page {
   width: 3rem;
 }
 a.top-of-page:hover {
-  background-color: #555a;
+  background-color: #333;
 }
 
 /* 目次 */
