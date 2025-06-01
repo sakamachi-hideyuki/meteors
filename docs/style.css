@@ -10,8 +10,6 @@ html {
   overflow-wrap: anywhere;
   /* ページ先頭へスクロールするボタンを押した際にスクロールのアニメーションを行う */
   scroll-behavior: smooth;
-  /* PCのChromeで文字が薄い点を改善 */
-  text-shadow: 0px 0px 0px #00000080 !important;
   /* iPhoneで自動的に拡大される問題に対処 */
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -67,8 +65,8 @@ body {
 header {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  background-color: #fff5;
+  box-shadow: 0 1px 1px #0003;
   grid-area: header;
 
   position: fixed;
@@ -95,7 +93,7 @@ nav#navbar > ul {
 nav#navbar > ul > li {
   border-left: 1px solid #333;
   font-size: 0.9rem;
-  height: 1rem; /* 文字がなくてもボーダーを付けるため */
+  height: 1rem; /* 文字がない場合でもボーダーを付けるため */
   letter-spacing: 0.3rem;
   line-height: 1rem;
   text-align: center;
