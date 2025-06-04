@@ -63,9 +63,7 @@ body {
 
 /* 固定ヘッダー */
 header {
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  background-color: #fff5;
+  background-color: #fff;
   box-shadow: 0 1px 1px #0003;
   grid-area: header;
 
@@ -349,6 +347,19 @@ html#html-toc nav#toc a {
 }
 html#html-toc nav#toc div.desc {
   font-size: 0.85rem;
+}
+
+/* 先頭ページ、各章冒頭の固定ヘッダー */
+html#html-index header,
+html#html-chapter-of-haya header,
+html#html-chapter-of-kushi header,
+html#html-chapter-of-mika header,
+html#html-chapter-of-tama header,
+html#html-chapter-of-hi header,
+html#html-chapter-of-ishi header {
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background-color: #fff5;
 }
 
 /* 改版履歴 */
