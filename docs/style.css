@@ -305,8 +305,6 @@ a.top-of-page {
   text-decoration-line: none;
   transform: scaleY(0.5);
   transform-origin: right bottom;
-  transition-duration: 200ms;
-  transition-property: background-color;
   z-index: 1;
 
   position: fixed;
