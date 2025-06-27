@@ -20,13 +20,9 @@ export function linkPages(pages) {
 }
 
 function linkPreface(pages, page) {
-  // 序文のページでは"序文"をリンク化しない
-  if (page.id === "preface") {
-    return;
-  }
   const target = pages.find((p) => p.id === "preface");
-  // "序文"をリンク化
-  page.contentHtml = page.contentHtml.replaceAll(/序文/g, (s) => {
+  // "【序文】"をリンク化
+  page.contentHtml = page.contentHtml.replaceAll(/【序文】/g, (s) => {
     return `<a href="${target.filename}">${s}</a>`;
   });
 }

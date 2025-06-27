@@ -16,15 +16,13 @@
 
         /* タイトル用変数 */
         --tfsize: 200px; /* フォントサイズ、1文字分のdivの幅・高さ */
-        --tscalex: 0.9; /* 長体 90% */
         --tgap: 120px; /* 1文字分のdiv間のギャップ */
         --tstepy: calc(var(--tfsize) + var(--tgap)); /* y座標増分 */
         --tx: calc((var(--cw) - var(--tfsize)) / 2); /* タイトル位置x座標 */
-        --ty: 200px; /* タイトル位置y座標 */
+        --ty: 300px; /* タイトル位置y座標 */
 
         /* 著者名用変数 */
         --afsize: 120px; /* フォントサイズ、1文字分のdivの幅・高さ */
-        --ascalex: 0.9; /* 長体 90% */
         --agap: 120px; /* 1文字分のdiv間のギャップ */
         --astepy: calc(var(--afsize) + var(--agap)); /* y座標増分 */
         --ax: calc((var(--cw) - var(--afsize)) / 2); /* 著者名x座標 */
@@ -63,13 +61,11 @@
         line-height: var(--tfsize);
         position: absolute;
         text-align: center;
-        transform: scaleX(var(--tscalex));
-        transform-origin: left top;
 
         filter: drop-shadow(0 0 128px blue);
         text-shadow: 0 0 128px blue, 0 0 192px blue, 0 0 256px blue;
 
-        width: calc(var(--tfsize) / var(--tscalex));
+        width: var(--tfsize);
         height: var(--tfsize);
         left: var(--tx);
       }
@@ -83,13 +79,11 @@
         line-height: var(--afsize);
         position: absolute;
         text-align: center;
-        transform: scaleX(var(--ascalex));
-        transform-origin: left top;
 
         filter: drop-shadow(0 0 128px blue);
         text-shadow: 0 0 128px blue, 0 0 192px blue, 0 0 256px blue;
 
-        width: calc(var(--afsize) / var(--ascalex));
+        width: var(--afsize);
         height: var(--afsize);
         left: var(--ax);
       }

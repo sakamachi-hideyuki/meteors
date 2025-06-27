@@ -1,4 +1,7 @@
-import { buildPages } from "./build-pages.js";
+import { convertPages } from "./convert-pages.js";
+import { linkPages } from "./link-pages.js";
+import { renderPages } from "./render-pages.js";
+import { splitPages } from "./split-pages.js";
 import { validateLinks } from "./validate-links.js";
 import { validateRelatedPages } from "./validate-related-pages.js";
 import { validateSummaries } from "./validate-summaries.js";
@@ -9,7 +12,9 @@ document.getElementById("buildButton").addEventListener("click", () => {
     inputIframe.contentWindow.document.querySelector("body>div");
   const inputHtml = inputElem.innerHTML;
 
-  const pages = buildPages(inputHtml);
+  const pages = splitPages(convertPages(inputHtml));
+  linkPages(pages);
+  renderPages(pages);
 
   console.log("pages:");
   console.log(pages);
