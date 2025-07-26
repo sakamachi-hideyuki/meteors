@@ -18,15 +18,18 @@
         --tfsize: 200px; /* フォントサイズ、1文字分のdivの幅・高さ */
         --tgap: 120px; /* 1文字分のdiv間のギャップ */
         --tstepy: calc(var(--tfsize) + var(--tgap)); /* y座標増分 */
-        --tx: calc((var(--cw) - var(--tfsize)) / 2); /* タイトル位置x座標 */
-        --ty: 300px; /* タイトル位置y座標 */
+        --tx: calc((var(--cw) - var(--tfsize)) / 2); /* タイトルx座標 1500px */
+        --ty: 400px; /* タイトルy座標 */
+        --th: calc(var(--tfsize) * 9 + var(--tgap) * 8); /* タイトル高さ 2760px */
+
+        --tagap: 400px; /* タイトルと著者名の間のギャップ */
 
         /* 著者名用変数 */
         --afsize: 120px; /* フォントサイズ、1文字分のdivの幅・高さ */
         --agap: 120px; /* 1文字分のdiv間のギャップ */
         --astepy: calc(var(--afsize) + var(--agap)); /* y座標増分 */
         --ax: calc((var(--cw) - var(--afsize)) / 2); /* 著者名x座標 */
-        --ay: calc(var(--ty) + var(--tstepy) * 10); /* 著者名y座標 */
+        --ay: calc(var(--ty) + var(--th) + var(--tagap)); /* 著者名y座標 */
       }
       body {
         background-color: #f00;
@@ -114,6 +117,10 @@
         <div style="top: calc(var(--ay) + var(--astepy) * 2)">英</div>
         <div style="top: calc(var(--ay) + var(--astepy) * 3)">之</div>
       </div>
+
+      <!-- <div id="rect" style="position: absolute; top: 400px; left: 1500px; width: 200px; height: 4000px; border: 1px solid #f00;">
+      </div> -->
+
     </div>
   </body>
 </html>

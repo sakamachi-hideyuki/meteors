@@ -48,7 +48,7 @@ ${this.pleiadesAttributionHtml}`;
 
   static titleImageAlt = this.bookTitle;
 
-  static figSubaruAlt = "天の川・からすき星・昴";
+  static figSubaruAlt = "日本神話に登場する天の川・からすき星・昴";
 
   static figSubaruCaptionHtml = `${this.figSubaruAlt}<br>
 ${this.pleiadesAttributionHtml}`;
