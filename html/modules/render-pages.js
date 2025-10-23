@@ -2,6 +2,10 @@ import { renderTocHtml } from "./render-toc-html.js";
 import { renderIndexHtml } from "./render-index-html.js";
 import { renderNormalHtml } from "./render-normal-html.js";
 
+/**
+ * 各ページのHTMLをレンダリングする.
+ * @param {Array} pages ページデータ配列
+ */
 export function renderPages(pages) {
   pages[0].html = renderTocHtml(pages[0], pages);
 
@@ -22,5 +26,10 @@ export function renderPages(pages) {
       }
     }
     page.html = renderNormalHtml(page, prevPage, nextPage);
+  }
+
+  // 空行（改行コードのみの行）を削除
+  for (const page of pages) {
+    page.html = page.html.replace(/\n+/g, "\n").replace(/^\n/, "");
   }
 }

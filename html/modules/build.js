@@ -61,6 +61,11 @@ document
     }
   });
 
+/**
+ * 指定ミリ秒だけ処理を一時停止する.
+ * @param {number} millisec 一時停止するミリ秒数
+ * @returns {Promise} 一時停止完了のPromise
+ */
 function pause(millisec) {
   return new Promise((resolve, reject) => {
     setTimeout(resolve, millisec);

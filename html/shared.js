@@ -1,28 +1,13 @@
 class Shared {
   static bookTitle = "流星と昴の日本神話";
   static websiteTitle = this.bookTitle;
-  static websiteDescription = "日本神話に星の神・神話は少ないと言われているが、実際は様々な星の神・神話が「見立て」を用いて語られている。";
-  static websiteUrl = "https://sakamachi-hideyuki.github.io/meteors/";
-  static websiteImage = `${Shared.websiteUrl}images/photo-pleiades-web.webp`;
 
-  static googleAnalyticsHtml = `
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-45DHNXBNFZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-45DHNXBNFZ');
-</script>
-`;
-
-  static pleiadesAttributionHtml = `Adapted from <a href="https://commons.wikimedia.org/wiki/File:Orion,_Taurus_and_Pleiades.jpg" target="_blank">"Orion, Taurus and Pleiades"</a><br>
+  static pleiadesAttributionHtml = `Adapted from <a href="https://commons.wikimedia.org/wiki/File:Orion,_Taurus_and_Pleiades.jpg" target="_blank">"Orion, Taurus and Pleiades"</a><br />
 by Panda~thwiki, used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoPleiadesAlt = "からすき星と昴";
 
-  static photoPleiadesCaptionHtml = `${this.photoPleiadesAlt}<br>
+  static photoPleiadesCaptionHtml = `${this.photoPleiadesAlt}<br />
 ${this.pleiadesAttributionHtml}`;
 
   static photoPleiadesHtml = `
@@ -50,7 +35,7 @@ ${this.pleiadesAttributionHtml}`;
 
   static figSubaruAlt = "日本神話に登場する天の川・からすき星・昴";
 
-  static figSubaruCaptionHtml = `${this.figSubaruAlt}<br>
+  static figSubaruCaptionHtml = `${this.figSubaruAlt}<br />
 ${this.pleiadesAttributionHtml}`;
 
   static figSubaruHtml = `
@@ -102,7 +87,7 @@ ${this.pleiadesAttributionHtml}`;
   static photoMeteorAlt =
     "2020年12月4日14時30分(中部欧州標準時)、ノルウェーのシーボットンで撮影された、おうし座北流星群の火球";
 
-  static photoMeteorCaptionHtml = `${this.photoMeteorAlt}<br>
+  static photoMeteorCaptionHtml = `${this.photoMeteorAlt}<br />
 出典：<a href="http://norskmeteornettverk.no/wordpress/?p=3202" target="_blank">Norsk meteornettverk/Universitetet i Tromsø/Ketil Vegum</a>`;
 
   static photoMeteorHtml = `
@@ -128,7 +113,7 @@ ${this.pleiadesAttributionHtml}`;
 
   static figIotsunomisumaruAlt = "素戔嗚尊の剣と五百箇御統";
 
-  static figIotsunomisumaruCaptionHtml = `${this.figIotsunomisumaruAlt}<br>
+  static figIotsunomisumaruCaptionHtml = `${this.figIotsunomisumaruAlt}<br />
 ${this.pleiadesAttributionHtml}`;
 
   static figIotsunomisumaruHtml = `
@@ -154,7 +139,7 @@ ${this.pleiadesAttributionHtml}`;
 
   static figMilkywayinwinterAlt = "冬の天の川の位置(1月中旬午後20時東京の星空)";
 
-  static figMilkywayinwinterCaptionHtml = `${this.figMilkywayinwinterAlt}<br>
+  static figMilkywayinwinterCaptionHtml = `${this.figMilkywayinwinterAlt}<br />
 出典：<a href="https://www.nao.ac.jp/gallery/chart-list.html" target="_blank">国立天文台</a>`;
 
   static figMilkywayinwinterHtml = `
@@ -180,7 +165,7 @@ ${this.pleiadesAttributionHtml}`;
 
   static figMilkywayinsummerAlt = "夏の天の川の位置(7月中旬午後21時東京の星空)";
 
-  static figMilkywayinsummerCaptionHtml = `${this.figMilkywayinsummerAlt}<br>
+  static figMilkywayinsummerCaptionHtml = `${this.figMilkywayinsummerAlt}<br />
 出典：<a href="https://www.nao.ac.jp/gallery/chart-list.html" target="_blank">国立天文台</a>`;
 
   static figMilkywayinsummerHtml = `
@@ -231,8 +216,8 @@ ${this.pleiadesAttributionHtml}`;
 
   static photoTategushiAlt = "是川石器時代遺跡　漆塗り櫛出土状況";
 
-  static photoTategushiCaptionHtml = `${this.photoTategushiAlt}<br>
-出典：<a href="https://jomon-japan.jp/archives#/asset/360" target="_blank">JOMON ARCHIVES（八戸市教育委員会撮影）</a><br>
+  static photoTategushiCaptionHtml = `${this.photoTategushiAlt}<br />
+出典：<a href="https://jomon-japan.jp/archives#/asset/360" target="_blank">JOMON ARCHIVES（八戸市教育委員会撮影）</a><br />
 Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoTategushiHtml = `
@@ -283,8 +268,8 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 
   static photoOgameAlt = "須惠器　大甕";
 
-  static photoOgameCaptionHtml = `${this.photoOgameAlt}<br>
-出典：<a href="https://adeac.jp/choshi-city/catalog/mp010261-200010" target="_blank">銚子市デジタルアーカイブ</a><br>
+  static photoOgameCaptionHtml = `${this.photoOgameAlt}<br />
+出典：<a href="https://adeac.jp/choshi-city/catalog/mp010261-200010" target="_blank">銚子市デジタルアーカイブ</a><br />
 Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoOgameHtml = `
@@ -335,8 +320,8 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 
   static photoMagatamaAlt = "朝日山(1)遺跡　ヒスイ製玉類";
 
-  static photoMagatamaCaptionHtml = `${this.photoMagatamaAlt}<br>
-出典：<a href="https://jomon-japan.jp/archives#/asset/504" target="_blank">JOMON ARCHIVES（青森県埋蔵文化財調査センター所蔵、田中義道撮影）</a><br>
+  static photoMagatamaCaptionHtml = `${this.photoMagatamaAlt}<br />
+出典：<a href="https://jomon-japan.jp/archives#/asset/504" target="_blank">JOMON ARCHIVES（青森県埋蔵文化財調査センター所蔵、田中義道撮影）</a><br />
 Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoMagatamaHtml = `
@@ -362,7 +347,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 
   static figIotsuiwamuraAlt = "伊奘諾尊の剣と五百箇磐石";
 
-  static figIotsuiwamuraCaptionHtml = `${this.figIotsuiwamuraAlt}<br>
+  static figIotsuiwamuraCaptionHtml = `${this.figIotsuiwamuraAlt}<br />
 ${this.pleiadesAttributionHtml}`;
 
   static figIotsuiwamuraHtml = `
@@ -388,7 +373,7 @@ ${this.pleiadesAttributionHtml}`;
 
   static figAmanoiwatoAlt = "伊奘諾尊の剣の神と天岩戸";
 
-  static figAmanoiwatoCaptionHtml = `${this.figAmanoiwatoAlt}<br>
+  static figAmanoiwatoCaptionHtml = `${this.figAmanoiwatoAlt}<br />
 ${this.pleiadesAttributionHtml}`;
 
   static figAmanoiwatoHtml = `
@@ -414,7 +399,7 @@ ${this.pleiadesAttributionHtml}`;
 
   static figAmanoyachimataAlt = "アマノヤチマタと天岩戸";
 
-  static figAmanoyachimataCaptionHtml = `${this.figAmanoyachimataAlt}<br>
+  static figAmanoyachimataCaptionHtml = `${this.figAmanoyachimataAlt}<br />
 ${this.pleiadesAttributionHtml}`;
 
   static figAmanoyachimataHtml = `
@@ -465,8 +450,8 @@ ${this.pleiadesAttributionHtml}`;
 
   static photoOtomatsuriAlt = "新宮の御燈祭";
 
-  static photoOtomatsuriCaptionHtml = `${this.photoOtomatsuriAlt} © panpanzupan<br>
-出典：<a href="https://find47.jp/ja/i/t5MU6" target="_blank">FIND/47</a><br>
+  static photoOtomatsuriCaptionHtml = `${this.photoOtomatsuriAlt} © panpanzupan<br />
+出典：<a href="https://find47.jp/ja/i/t5MU6" target="_blank">FIND/47</a><br />
 Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoOtomatsuriHtml = `
@@ -517,8 +502,8 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 
   static photoIwakuraAlt = "神谷磐座";
 
-  static photoIwakuraCaptionHtml = `${this.photoIwakuraAlt} © rikky_photography<br>
-出典：<a href="https://find47.jp/ja/i/o0gM4" target="_blank">FIND/47</a><br>
+  static photoIwakuraCaptionHtml = `${this.photoIwakuraAlt} © rikky_photography<br />
+出典：<a href="https://find47.jp/ja/i/o0gM4" target="_blank">FIND/47</a><br />
 Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoIwakuraHtml = `

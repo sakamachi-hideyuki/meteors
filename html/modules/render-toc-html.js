@@ -1,31 +1,38 @@
 import { renderHead } from "./render-head.js";
 import { renderFooter } from "./render-footer.js";
 
-export const renderTocHtml = (page, pages) =>
-  `<!DOCTYPE html>
+/**
+ * 目次ページをレンダリングする.
+ * @param {Object} page 処理対象のページデータ
+ * @param {Array} pages ページデータ配列
+ * @returns {string} レンダリング結果のHTML文字列
+ */
+export const renderTocHtml = (page, pages) => `
+<!DOCTYPE html>
 <html lang="ja" id="html-${page.id}" prefix="og: https://ogp.me/ns#">
-<head>
-${renderHead(
-  `${page.title} - ${Shared.websiteTitle}`,
-  "",
-  `${Shared.websiteUrl}${page.filename}`
-)}
-</head>
-<body>
-<main>
-<div class="h1-title">${Shared.websiteTitle}</div>
-<div id="content">
-<h2>${page.title}</h2>
-<nav id="toc">
+  <head>
+${renderHead(`${page.title} - ${Shared.websiteTitle}`, "", page.filename)}
+  </head>
+  <body>
+    <main>
+      <div class="h1-title">${Shared.websiteTitle}</div>
+      <div id="content">
+        <h2>${page.title}</h2>
+        <nav id="toc">
 ${renderTocUl(pages)}
-</nav>
-</div>
-</main>
+        </nav>
+      </div>
+    </main>
 ${renderFooter(undefined)}
-</body>
+  </body>
 </html>
 `;
 
+/**
+ * 目次のul要素をレンダリングする.
+ * @param {Array} pages ページデータ配列
+ * @returns {string} レンダリング結果のHTML文字列
+ */
 function renderTocUl(pages) {
   const tocUl = document.createElement("ul");
   let curUls = [undefined, tocUl, undefined];

@@ -1,11 +1,13 @@
+/**
+ * ページ間リンクを作成する.
+ * @param {Array} pages ページデータ配列
+ */
 export function linkPages(pages) {
-  for (let i = 0; i < pages.length; i++) {
-    const page = pages[i];
+  for (const page of pages) {
     // 目次、先頭ページ、付録、改版履歴のページや、コンテンツなしのページはスキップ
     if (
       page.id === "toc" ||
       page.id === "index" ||
-      page.id === "appendix" ||
       page.id === "revision-history" ||
       page.contentHtml === ""
     ) {
@@ -14,11 +16,16 @@ export function linkPages(pages) {
     linkPreface(pages, page);
     linkAppendix(pages, page);
     linkChapter(pages, page);
-    linkSection(pages, page, pages[i - 1]);
+    linkSection(pages, page);
     linkSummary(pages, page);
   }
 }
 
+/**
+ * 序文ページへのリンクを作成する.
+ * @param {Array} pages ページデータ配列
+ * @param {Object} page 処理対象のページデータ
+ */
 function linkPreface(pages, page) {
   const target = pages.find((p) => p.id === "preface");
   // "【序文】"をリンク化
@@ -27,18 +34,30 @@ function linkPreface(pages, page) {
   });
 }
 
+/**
+ * 付録ページへのリンクを作成する.
+ * @param {Array} pages ページデータ配列
+ * @param {Object} page 処理対象のページデータ
+ */
 function linkAppendix(pages, page) {
   const target = pages.find((p) => p.id === "appendix");
   // "付録参照"をリンク化
   page.contentHtml = page.contentHtml.replaceAll(/付録参照/g, (s) => {
     return `<a href="${target.filename}">${s}</a>`;
   });
-  // 最初の"神名末尾のパターン"をリンク化
-  page.contentHtml = page.contentHtml.replace(/神名末尾のパターン/, (s) => {
-    return `<a href="${target.filename}">${s}</a>`;
-  });
+  if (page.id !== "appendix") {
+    // 付録ページ以外では、最初の"神名末尾のパターン"をリンク化
+    page.contentHtml = page.contentHtml.replace(/神名末尾のパターン/, (s) => {
+      return `<a href="${target.filename}">${s}</a>`;
+    });
+  }
 }
 
+/**
+ * 章ページへのリンクを作成する.
+ * @param {Array} pages ページデータ配列
+ * @param {Object} page 処理対象のページデータ
+ */
 function linkChapter(pages, page) {
   // "【～の章】"をリンク化
   page.contentHtml = page.contentHtml.replaceAll(/【(.の章)】/g, (s, p1) => {
@@ -62,7 +81,12 @@ function linkChapter(pages, page) {
   });
 }
 
-function linkSection(pages, page, prevPage) {
+/**
+ * 各項のページへのリンクを作成する.
+ * @param {Array} pages ページデータ配列
+ * @param {Object} page 処理対象のページデータ
+ */
+function linkSection(pages, page) {
   // "【～の章／～】"をリンク化
   page.contentHtml = page.contentHtml.replaceAll(
     /【(.の章)／([^】]+)】/g,
@@ -83,6 +107,11 @@ function linkSection(pages, page, prevPage) {
   );
 }
 
+/**
+ * 章のまとめページから各項のページへのリンクを作成する.
+ * @param {Array} pages ページデータ配列
+ * @param {Object} page 処理対象のページデータ
+ */
 function linkSummary(pages, page) {
   // 章のまとめのページ以外はリンク化しない
   if (!page.id.endsWith("--summary")) {

@@ -1,11 +1,22 @@
 import { removeElems } from "./dom-utils.js";
 
+/**
+ * 各項のまとめと各章のまとめが一致しているかの検証を行う.
+ * 不一致があればエラーメッセージをコンソールに出力し、例外をスローする.
+ * @param {Array} pages ページデータ配列
+ * @throws {Error} 各項のまとめと各章のまとめが一致しない場合
+ */
 export function validateSummaries(pages) {
   const summariesS = getSummariesS(pages).map(removeLinks);
   const summariesC = getSummariesC(pages).map(removeLinks);
   validate(summariesS, summariesC);
 }
 
+/**
+ * ページデータ配列から各項のまとめHTMLを収集する.
+ * @param {Array} pages ページデータ配列
+ * @returns {Array} 各項のまとめHTML配列
+ */
 function getSummariesS(pages) {
   const begin = '<p class="heading">まとめ</p>\n';
   const end1 = '<p class="blank">';
@@ -35,6 +46,11 @@ function getSummariesS(pages) {
   return summaries;
 }
 
+/**
+ * ページデータ配列から各章のまとめHTMLを収集する.
+ * @param {Array} pages ページデータ配列
+ * @returns {Array} 各章のまとめHTML配列
+ */
 function getSummariesC(pages) {
   const begin = '<p class="list-1">';
   const end = "</section>";
@@ -56,6 +72,11 @@ function getSummariesC(pages) {
   return summaries;
 }
 
+/**
+ * HTML文字列からリンクを削除する.
+ * @param {string} html HTML文字列
+ * @returns {string} リンク削除後のHTML文字列
+ */
 function removeLinks(html) {
   const rootElem = document.createElement("div");
   rootElem.innerHTML = html;
@@ -63,6 +84,13 @@ function removeLinks(html) {
   return rootElem.innerHTML;
 }
 
+/**
+ * 各項のまとめHTML配列と各章のまとめHTML配列が一致しているかの検証を行う.
+ * 不一致があればエラーメッセージをコンソールに出力し、例外をスローする.
+ * @param {Array} summariesS 各項のまとめHTML配列
+ * @param {Array} summariesC 各章のまとめHTML配列
+ * @throws {Error} 各項のまとめHTML配列と各章のまとめHTML配列が一致しない場合
+ */
 function validate(summariesS, summariesC) {
   console.log("summariesS:");
   console.log(summariesS);
@@ -79,10 +107,7 @@ function validate(summariesS, summariesC) {
       summaryS !== summaryC
     ) {
       errors.push(
-        `summary unmatch: i=${i} summaryS=
-${summaryS}
-, summaryC=
-${summaryC}`
+        `summary unmatch: i=${i} summaryS="${summaryS}", summaryC="${summaryC}"`
       );
     }
   }

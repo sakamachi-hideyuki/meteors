@@ -1,11 +1,22 @@
 import { removeElems } from "./dom-utils.js";
 
+/**
+ * HTML文字列をセクションごとに分割し、タイトルのみのセクションのページはまとめた
+ * ページデータ配列を作成する.
+ * @param {string} html HTML文字列
+ * @returns {Array} 分割後のページデータ配列
+ */
 export function splitPages(html) {
   const pages = createPages(html);
   combineTitleOnlyPages(pages);
   return pages;
 }
 
+/**
+ * HTML文字列をセクションごとに分割したページデータ配列を作成する.
+ * @param {string} html HTML文字列
+ * @returns {Array} 分割後のページデータ配列
+ */
 function createPages(html) {
   const rootElem = document.createElement("div");
   rootElem.innerHTML = html;
@@ -24,6 +35,10 @@ function createPages(html) {
   return pages;
 }
 
+/**
+ * 目次ページのページデータを作成する.
+ * @returns {Object} 目次ページのページデータ
+ */
 function createTocPageData() {
   return {
     id: "toc",
@@ -39,7 +54,15 @@ function createTocPageData() {
   };
 }
 
+/**
+ * 先頭ページのページデータを作成する.
+ * @param {Element} h1 H1要素
+ * @returns {Object} 先頭ページのページデータ
+ */
 function createIndexPageData(h1) {
+  const websiteDescription =
+    "日本神話には星の神・神話が少ないと言われているが、実際は様々な星の神・神話が「見立て」を用いて語られている。";
+
   return {
     id: "index",
     title: "先頭ページ",
@@ -47,13 +70,19 @@ function createIndexPageData(h1) {
     h3Title: "",
     filename: "index.html",
     contentHtml: h1.parentElement.outerHTML,
-    descHtml: "",
-    descText: "",
+    descHtml: "", // 目次上の先頭ページには説明文を入れない
+    descText: websiteDescription,
     titleOnly: false,
     anchorNames: [],
   };
 }
 
+/**
+ * 通常ページのページデータを作成する.
+ * @param {Element} h2h3 H2またはH3要素
+ * @param {string} h2Title 親のH2タイトル
+ * @returns {Object} 通常ページのページデータ
+ */
 function createNormalPageData(h2h3, h2Title) {
   const anchorNames = Array.from(h2h3.querySelectorAll("a")).map((a) =>
     a.getAttribute("name")
@@ -75,6 +104,10 @@ function createNormalPageData(h2h3, h2Title) {
   };
 }
 
+/**
+ * タイトルのみのセクションがある場合、ページをまとめる.
+ * @param {Array} pages ページデータ配列
+ */
 function combineTitleOnlyPages(pages) {
   // タイトルのみのセクションがある場合、title、contentHtml、descHtml、descText、filenameを修正
   for (let i = 0; i < pages.length; i++) {

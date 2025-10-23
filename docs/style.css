@@ -175,7 +175,7 @@ h4 {
 }
 
 p {
-  line-height: 2rem;
+  line-height: 2;
   margin: 0;
 }
 /* 空行 */
@@ -246,6 +246,14 @@ a:hover {
 u {
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2rem;
+}
+/* 上付き文字 */
+sup {
+  font-size: 50%;
+}
+/* 下付き文字 */
+sub {
+  font-size: 50%;
 }
 
 /* ページ下部の次ページへのリンク */
@@ -363,7 +371,7 @@ section#revision-history p {
   line-height: 1.2rem;
 }
 section#revision-history p.blank {
-  line-height: 0rem;
+  line-height: 0;
   margin: 0.6rem 0;
 }
 

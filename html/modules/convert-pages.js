@@ -1,11 +1,11 @@
 import {
   changeTagNames,
   htmlToElem,
-  removeBlankLines,
   removeElems,
   removeElemsAndDescendants,
 } from "./dom-utils.js";
 
+// 利用しているclass属性の一覧
 const availableClasses = [
   "bquote",
   "desc",
@@ -18,6 +18,7 @@ const availableClasses = [
   "par",
 ];
 
+// h2タイトルからidへの対応表
 const h2TitleToId = {
   "序文　星の神を祀る神社": "preface",
   速の章: "chapter-of-haya",
@@ -30,19 +31,24 @@ const h2TitleToId = {
   改版履歴: "revision-history",
 };
 
+/**
+ * Word文書の原稿をWebページ(フィルター後)形式で保存したHTMLをWeb公開用に変換する.
+ * 不要な要素や属性、空行などを削除し、画像をWeb用に置換し、セクション分けを行う.
+ * @param {string} html 変換前のHTML文字列
+ * @return {string} 変換後のHTML文字列
+ */
 export function convertPages(html) {
   const rootElem = document.createElement("div");
   rootElem.innerHTML = html;
 
+  // 目次、br要素、各項見出しの前の章名を削除
   removeElemsAndDescendants(rootElem, "[class^=MsoToc], br, p.chapter");
-  removeElems(rootElem, 'a[href], a[name^="_Toc"], span, p.heading b');
+  // リンク、span要素、太字見出し中のb要素を削除（配下ノードは残す）
+  removeElems(rootElem, "a[href], span, p.heading b");
   removeUnnecessaryAttrs(rootElem);
 
   convertBlankPs(rootElem);
-  convertImages(rootElem);
-
-  removeBlankLines(rootElem);
-  removeUnnecessaryPs(rootElem);
+  replaceImages(rootElem);
 
   changeTagNames(rootElem, "h3", "h4");
   changeTagNames(rootElem, "h2", "h3");
@@ -57,15 +63,18 @@ export function convertPages(html) {
   setTitleOnlyClasses(rootElem);
 
   createH1Section(rootElem);
-
-  removeBlankLines(rootElem);
   removeBlankPsAtEndOfSections(rootElem);
 
-  return rootElem.innerHTML;
+  // 空行（改行コードのみの行）を削除
+  return rootElem.innerHTML.replace(/\n+/g, "\n").replace(/^\n/, "");
 }
 
 /**
  * 不要な属性を削除する.
+ * alt属性、name属性は削除しない.
+ * class属性は利用しているものだけ削除しない.
+ * それ以外の属性はすべて削除する.
+ * @param {Element} rootElem ルート要素
  */
 function removeUnnecessaryAttrs(rootElem) {
   rootElem.querySelectorAll("*").forEach((el) => {
@@ -90,6 +99,7 @@ function removeUnnecessaryAttrs(rootElem) {
 
 /**
  * 空行のp要素をclass属性が"blank"、style属性なしに変換する.
+ * @param {Element} rootElem ルート要素
  */
 function convertBlankPs(rootElem) {
   rootElem.querySelectorAll("*").forEach((el) => {
@@ -102,9 +112,10 @@ function convertBlankPs(rootElem) {
 }
 
 /**
- * 電子書籍用画像をWeb用画像に変換する.
+ * 電子書籍用画像をWeb用画像に置換する.
+ * @param {Element} rootElem ルート要素
  */
-function convertImages(rootElem) {
+function replaceImages(rootElem) {
   Array.from(rootElem.querySelectorAll("img")).forEach((el) => {
     const alt = el.getAttribute("alt") ?? "";
     // imgのaltに対応するWeb用画像HTMLを取得
@@ -131,16 +142,10 @@ function convertImages(rootElem) {
 }
 
 /**
- * 内容のないp要素を削除する.
- */
-function removeUnnecessaryPs(rootElem) {
-  rootElem.innerHTML = rootElem.innerHTML.replace(/<p[^>]*>\n?<\/p>\n?/g, "");
-}
-
-/**
  * 各H2セクションを作成する.
  * ルート要素の子ノードにH2要素があればH2セクションを作成し、
  * H2要素と後続の子ノードをそのH2セクションの子とする.
+ * @param {Element} rootElem ルート要素
  */
 function createH2Sections(rootElem) {
   let h2Section = undefined;
@@ -158,6 +163,7 @@ function createH2Sections(rootElem) {
 /**
  * 各H2セクションのidを設定する.
  * H2のタイトルに対応するidとする.
+ * @param {Element} rootElem ルート要素
  */
 function setH2SectionIds(rootElem) {
   rootElem.querySelectorAll(".h2-section").forEach((el) => {
@@ -174,6 +180,7 @@ function setH2SectionIds(rootElem) {
  * 各H3セクションを作成する.
  * 各H2セクションの子ノードにH3要素があればH3セクションを作成し、
  * H3要素と後続の子ノードをそのH3セクションの子とする.
+ * @param {Element} rootElem ルート要素
  */
 function createH3Sections(rootElem) {
   const h2Sections = Array.from(rootElem.querySelectorAll(".h2-section"));
@@ -193,6 +200,7 @@ function createH3Sections(rootElem) {
 
 /**
  * 各H3セクションのidを設定する.
+ * @param {Element} rootElem ルート要素
  */
 function setH3SectionIds(rootElem) {
   const h2Sections = Array.from(rootElem.querySelectorAll(".h2-section"));
@@ -221,6 +229,7 @@ function setH3SectionIds(rootElem) {
  * 各H3セクションをH2セクションの子要素からそのH2セクションの弟要素に移動する.
  * H2セクションもH3セクションもそれぞれHTMLの1ページとするため、
  * H2セクション内からH3セクションを分離する.
+ * @param {Element} rootElem ルート要素
  */
 function moveH3Sections(rootElem) {
   const h2Sections = Array.from(rootElem.querySelectorAll(".h2-section"));
@@ -235,6 +244,7 @@ function moveH3Sections(rootElem) {
 
 /**
  * 配下にp要素がないH3セクションには "title-only" という class 属性を付ける.
+ * @param {Element} rootElem ルート要素
  */
 function setTitleOnlyClasses(rootElem) {
   rootElem.querySelectorAll(".h3-section").forEach((el) => {
@@ -246,6 +256,10 @@ function setTitleOnlyClasses(rootElem) {
 
 /**
  * H1セクションを作成する.
+ * ルート要素の最初のsection要素の手前までのノードを
+ * H1セクションの子ノードとする.
+ * H1セクションのタイトルはWebサイトのタイトルとする.
+ * @param {Element} rootElem ルート要素
  */
 function createH1Section(rootElem) {
   const intro = document.createElement("div");
@@ -266,10 +280,11 @@ function createH1Section(rootElem) {
 
 /**
  * 各セクションの末尾の空行のp要素を削除する.
+ * @param {Element} rootElem ルート要素
  */
 function removeBlankPsAtEndOfSections(rootElem) {
   rootElem.querySelectorAll("section").forEach((el) => {
     // 末尾の空行のp要素は削除
-    el.innerHTML = el.innerHTML.replace(/(<p[^>]*>&nbsp;<\/p>\n)+$/g, "");
+    el.innerHTML = el.innerHTML.replace(/(<p[^>]*>&nbsp;<\/p>\n+)+$/g, "");
   });
 }
