@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja" id="html-index" prefix="og: https://ogp.me/ns#">
   <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-45DHNXBNFZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-45DHNXBNFZ');
-</script>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        script-src 'self' https://*.googletagmanager.com;
+        img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com;
+        connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
+        style-src 'self' 'sha256-+9+6y2OyIeRrO4dSTJt/awKsfEc/P47u6msFCxf+gFM=';
+      "
+    />
     <title>流星と昴の日本神話</title>
+    <script src="google-analytics.js"></script>
     <style>html{visibility:hidden}</style>
     <link rel="stylesheet" href="style.css" />
     <meta name="description" content="日本神話には星の神・神話が少ないと言われているが、実際は様々な星の神・神話が「見立て」を用いて語られている。" />
