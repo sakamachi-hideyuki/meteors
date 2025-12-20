@@ -4,6 +4,7 @@ import { renderPages } from "./render-pages.js";
 import { splitPages } from "./split-pages.js";
 import { validateLinks } from "./validate-links.js";
 import { validateRelatedPages } from "./validate-related-pages.js";
+import { validateSmallTexts } from "./validate-small-texts.js";
 import { validateSummaries } from "./validate-summaries.js";
 
 document.getElementById("buildButton").addEventListener("click", () => {
@@ -19,6 +20,7 @@ document.getElementById("buildButton").addEventListener("click", () => {
   console.log("pages:");
   console.log(pages);
 
+  validateSmallTexts(pages);
   validateLinks(inputHtml, pages);
   validateSummaries(pages);
   validateRelatedPages(pages);

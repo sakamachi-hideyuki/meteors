@@ -196,7 +196,16 @@ p.par {
 }
 /* 引用文 */
 p.bquote {
-  margin: 0 2rem;
+  border: 1px solid #999;
+  margin: 0 0 0 2rem;
+  padding: 0.5rem 1rem;
+}
+/* 引用文(改行を残す) */
+p.bquote-pl {
+  border: 1px solid #999;
+  margin: 0 0 0 2rem;
+  padding: 0.5rem 1rem;
+  white-space: pre-line;
 }
 /* 太字の段落 */
 p.heading {
@@ -230,6 +239,10 @@ p.list-2 {
 p.list-3 {
   margin: 0 0 0 3rem;
   text-indent: -1rem;
+}
+/* 小さい文字 */
+span.small {
+  font-size: 0.75rem;
 }
 
 /* リンク */

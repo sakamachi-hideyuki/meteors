@@ -8,6 +8,7 @@ import {
 // 利用しているclass属性の一覧
 const availableClasses = [
   "bquote",
+  "bquote-pl",
   "desc",
   "heading",
   "list-1",
@@ -16,6 +17,7 @@ const availableClasses = [
   "list-2",
   "list-3",
   "par",
+  "small",
 ];
 
 // h2タイトルからidへの対応表
@@ -43,8 +45,8 @@ export function convertPages(html) {
 
   // 目次、br要素、各項見出しの前の章名を削除
   removeElemsAndDescendants(rootElem, "[class^=MsoToc], br, p.chapter");
-  // リンク、span要素、太字見出し中のb要素を削除（配下ノードは残す）
-  removeElems(rootElem, "a[href], span, p.heading b");
+  // リンク、span要素(class="small"以外)、太字見出し中のb要素を削除（配下ノードは残す）
+  removeElems(rootElem, "a[href], span:not(.small), p.heading b");
   removeUnnecessaryAttrs(rootElem);
 
   convertBlankPs(rootElem);
