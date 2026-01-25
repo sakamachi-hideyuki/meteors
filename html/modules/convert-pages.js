@@ -272,9 +272,23 @@ function createH1Section(rootElem) {
     }
     intro.appendChild(node);
   }
+  // 先頭の<p class="par">の手前までのノードは削除
+  while (true) {
+    const node = intro.firstChild;
+    if (
+      node.nodeType === 1 &&
+      node.tagName.toLowerCase() === "p" &&
+      node.className === "par"
+    ) {
+      break;
+    }
+    node.remove();
+  }
   const h1Section = htmlToElem(
     `<section class="h1-section" id="index">
-<h1>${Shared.websiteTitle}</h1>${intro.innerHTML}
+<h1>${Shared.websiteTitle}</h1>
+<p class="blank">&nbsp;</p>
+${intro.innerHTML}
 </section>`
   );
   rootElem.prepend(h1Section);
