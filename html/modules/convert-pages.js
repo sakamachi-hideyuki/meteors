@@ -16,12 +16,11 @@ const availableClasses = [
   "list-1s",
   "list-2",
   "list-3",
-  "par",
   "small",
 ];
 
-// h2タイトルからidへの対応表
-const h2TitleToId = {
+// h1タイトルからLevel1セクションidへの対応表
+const h1TitleToLevel1SectionId = {
   "序文　星の神を祀る神社": "preface",
   速の章: "chapter-of-haya",
   櫛の章: "chapter-of-kushi",
@@ -52,20 +51,20 @@ export function convertPages(html) {
   convertBlankPs(rootElem);
   replaceImages(rootElem);
 
-  changeTagNames(rootElem, "h3", "h4");
-  changeTagNames(rootElem, "h2", "h3");
-  changeTagNames(rootElem, "h1", "h2");
+  createLevel1Sections(rootElem);
+  setLevel1SectionIds(rootElem);
 
-  createH2Sections(rootElem);
-  setH2SectionIds(rootElem);
-
-  createH3Sections(rootElem);
-  setH3SectionIds(rootElem);
-  moveH3Sections(rootElem);
+  createLevel2Sections(rootElem);
+  setLevel2SectionIds(rootElem);
+  moveLevel2Sections(rootElem);
   setTitleOnlyClasses(rootElem);
 
-  createH1Section(rootElem);
+  createLevel0Section(rootElem);
   removeBlankPsAtEndOfSections(rootElem);
+
+  changeTagNames(rootElem, "h2", "h1");
+  changeTagNames(rootElem, "p.heading", "h2");
+  changeTagNames(rootElem, "p.bquote, p.bquote-pl", "blockquote");
 
   // 空行（改行コードのみの行）を削除
   return rootElem.innerHTML.replace(/\n+/g, "\n").replace(/^\n/, "");
@@ -144,112 +143,124 @@ function replaceImages(rootElem) {
 }
 
 /**
- * 各H2セクションを作成する.
- * ルート要素の子ノードにH2要素があればH2セクションを作成し、
- * H2要素と後続の子ノードをそのH2セクションの子とする.
+ * 各Level1セクションを作成する.
+ * ルート要素の子ノードにh1要素があればLevel1セクションを作成し、
+ * h1要素と後続の子ノードをそのLevel1セクションの子とする.
  * @param {Element} rootElem ルート要素
  */
-function createH2Sections(rootElem) {
-  let h2Section = undefined;
+function createLevel1Sections(rootElem) {
+  let level1Section = undefined;
   for (const node of Array.from(rootElem.childNodes)) {
-    if (node.nodeType === 1 && node.tagName.toLowerCase() === "h2") {
-      h2Section = htmlToElem('<section class="h2-section"></section>');
-      node.replaceWith(h2Section);
+    if (node.nodeType === 1 && node.tagName.toLowerCase() === "h1") {
+      level1Section = htmlToElem('<section class="level1-section"></section>');
+      node.replaceWith(level1Section);
     }
-    if (h2Section !== undefined) {
-      h2Section.appendChild(node);
+    if (level1Section !== undefined) {
+      level1Section.appendChild(node);
     }
   }
 }
 
 /**
- * 各H2セクションのidを設定する.
- * H2のタイトルに対応するidとする.
+ * 各Level1セクションのidを設定する.
+ * h1のタイトルに対応するidとする.
  * @param {Element} rootElem ルート要素
  */
-function setH2SectionIds(rootElem) {
-  rootElem.querySelectorAll(".h2-section").forEach((el) => {
-    const h2Title = el.querySelector("h2").innerText;
-    const id = h2TitleToId[h2Title];
+function setLevel1SectionIds(rootElem) {
+  rootElem.querySelectorAll(".level1-section").forEach((el) => {
+    const h1Title = el.querySelector("h1").innerText;
+    const id = h1TitleToLevel1SectionId[h1Title];
     if (id === undefined) {
-      throw new Error(`Unknown h2 title: ${h2Title}`);
+      throw new Error(`Unknown h1 title: ${h1Title}`);
     }
     el.id = id;
   });
 }
 
 /**
- * 各H3セクションを作成する.
- * 各H2セクションの子ノードにH3要素があればH3セクションを作成し、
- * H3要素と後続の子ノードをそのH3セクションの子とする.
+ * 各Level2セクションを作成する.
+ * 各Level1セクションの子ノードにh2要素があればLevel2セクションを作成し、
+ * h2要素と後続の子ノードをそのLevel2セクションの子とする.
  * @param {Element} rootElem ルート要素
  */
-function createH3Sections(rootElem) {
-  const h2Sections = Array.from(rootElem.querySelectorAll(".h2-section"));
-  for (const h2Section of h2Sections) {
-    let h3Section = undefined;
-    for (const node of Array.from(h2Section.childNodes)) {
-      if (node.nodeType === 1 && node.tagName.toLowerCase() === "h3") {
-        h3Section = htmlToElem('<section class="h3-section"></section>');
-        node.replaceWith(h3Section);
+function createLevel2Sections(rootElem) {
+  const level1Sections = Array.from(
+    rootElem.querySelectorAll(".level1-section"),
+  );
+  for (const level1Section of level1Sections) {
+    let level2Section = undefined;
+    for (const node of Array.from(level1Section.childNodes)) {
+      if (node.nodeType === 1 && node.tagName.toLowerCase() === "h2") {
+        level2Section = htmlToElem(
+          '<section class="level2-section"></section>',
+        );
+        node.replaceWith(level2Section);
       }
-      if (h3Section !== undefined) {
-        h3Section.appendChild(node);
+      if (level2Section !== undefined) {
+        level2Section.appendChild(node);
       }
     }
   }
 }
 
 /**
- * 各H3セクションのidを設定する.
+ * 各Level2セクションのidを設定する.
  * @param {Element} rootElem ルート要素
  */
-function setH3SectionIds(rootElem) {
-  const h2Sections = Array.from(rootElem.querySelectorAll(".h2-section"));
-  for (const h2Section of h2Sections) {
-    const h3Sections = Array.from(h2Section.querySelectorAll(".h3-section"));
+function setLevel2SectionIds(rootElem) {
+  const level1Sections = Array.from(
+    rootElem.querySelectorAll(".level1-section"),
+  );
+  for (const level1Section of level1Sections) {
+    const level2Sections = Array.from(
+      level1Section.querySelectorAll(".level2-section"),
+    );
     let sectionCount = 0;
     let supplementCount = 0;
-    for (const h3Section of h3Sections) {
-      const h3Title = h3Section.querySelector("h3").innerText;
-      if (h3Title === "その他の神") {
-        h3Section.id = `${h2Section.id}--section-o`;
-      } else if (h3Title.endsWith("まとめ")) {
-        h3Section.id = `${h2Section.id}--summary`;
-      } else if (h3Title.startsWith("補足")) {
+    for (const level2Section of level2Sections) {
+      const h2Title = level2Section.querySelector("h2").innerText;
+      if (h2Title === "その他の神") {
+        level2Section.id = `${level1Section.id}--section-o`;
+      } else if (h2Title.endsWith("まとめ")) {
+        level2Section.id = `${level1Section.id}--summary`;
+      } else if (h2Title.startsWith("補足")) {
         supplementCount++;
-        h3Section.id = `${h2Section.id}--supplement-${supplementCount}`;
+        level2Section.id = `${level1Section.id}--supplement-${supplementCount}`;
       } else {
         sectionCount++;
-        h3Section.id = `${h2Section.id}--section-${sectionCount}`;
+        level2Section.id = `${level1Section.id}--section-${sectionCount}`;
       }
     }
   }
 }
 
 /**
- * 各H3セクションをH2セクションの子要素からそのH2セクションの弟要素に移動する.
- * H2セクションもH3セクションもそれぞれHTMLの1ページとするため、
- * H2セクション内からH3セクションを分離する.
+ * 各Level2セクションをLevel1セクションの子要素からそのLevel1セクションの弟要素に移動する.
+ * Level1セクションもLevel2セクションもそれぞれHTMLの1ページとするため、
+ * Level1セクション内からLevel2セクションを分離する.
  * @param {Element} rootElem ルート要素
  */
-function moveH3Sections(rootElem) {
-  const h2Sections = Array.from(rootElem.querySelectorAll(".h2-section"));
-  for (const h2Section of h2Sections) {
-    const h3Sections = Array.from(h2Section.querySelectorAll(".h3-section"));
-    const nextH2Section = h2Section.nextElementSibling;
-    for (const h3Section of h3Sections) {
-      nextH2Section.before(h3Section);
+function moveLevel2Sections(rootElem) {
+  const level1Sections = Array.from(
+    rootElem.querySelectorAll(".level1-section"),
+  );
+  for (const level1Section of level1Sections) {
+    const level2Sections = Array.from(
+      level1Section.querySelectorAll(".level2-section"),
+    );
+    const nextLevel1Section = level1Section.nextElementSibling;
+    for (const level2Section of level2Sections) {
+      nextLevel1Section.before(level2Section);
     }
   }
 }
 
 /**
- * 配下にp要素がないH3セクションには "title-only" という class 属性を付ける.
+ * 配下にp要素がないLevel2セクションには "title-only" という class 属性を付ける.
  * @param {Element} rootElem ルート要素
  */
 function setTitleOnlyClasses(rootElem) {
-  rootElem.querySelectorAll(".h3-section").forEach((el) => {
+  rootElem.querySelectorAll(".level2-section").forEach((el) => {
     if (el.querySelector("p") === null) {
       el.classList.add("title-only");
     }
@@ -257,13 +268,13 @@ function setTitleOnlyClasses(rootElem) {
 }
 
 /**
- * H1セクションを作成する.
+ * Level0セクションを作成する.
  * ルート要素の最初のsection要素の手前までのノードを
- * H1セクションの子ノードとする.
- * H1セクションのタイトルはWebサイトのタイトルとする.
+ * Level0セクションの子ノードとする.
+ * Level0セクションのタイトルはWebサイトのタイトルとする.
  * @param {Element} rootElem ルート要素
  */
-function createH1Section(rootElem) {
+function createLevel0Section(rootElem) {
   const intro = document.createElement("div");
   // 最初のsectionの手前までのノードを取り出す
   for (const node of Array.from(rootElem.childNodes)) {
@@ -272,24 +283,24 @@ function createH1Section(rootElem) {
     }
     intro.appendChild(node);
   }
-  // 先頭の<p class="par">の手前までのノードは削除
+  // 先頭の<p>の手前までのノードは削除
   while (true) {
     const node = intro.firstChild;
     if (
       node.nodeType === 1 &&
       node.tagName.toLowerCase() === "p" &&
-      node.className === "par"
+      !node.hasAttribute("class")
     ) {
       break;
     }
     node.remove();
   }
   const h1Section = htmlToElem(
-    `<section class="h1-section" id="index">
+    `<section class="level0-section" id="index">
 <h1>${Shared.websiteTitle}</h1>
 <p class="blank">&nbsp;</p>
 ${intro.innerHTML}
-</section>`
+</section>`,
   );
   rootElem.prepend(h1Section);
 }

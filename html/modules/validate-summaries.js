@@ -18,13 +18,13 @@ export function validateSummaries(pages) {
  * @returns {Array} 各項のまとめHTML配列
  */
 function getSummariesS(pages) {
-  const begin = '<p class="heading">まとめ</p>\n';
+  const begin = '<h2 class="heading">まとめ</h2>\n';
   const end1 = '<p class="blank">';
   const end2 = "</section>";
   const summaries = [];
   // 補足以外のまとめを収集
   pages
-    .filter((p) => !p.h3Title.startsWith("補足"))
+    .filter((p) => !p.level2Title.startsWith("補足"))
     .forEach((page) => {
       const beginIndex = page.contentHtml.indexOf(begin);
       if (beginIndex === -1) {
@@ -39,7 +39,7 @@ function getSummariesS(pages) {
       }
       const summary = page.contentHtml.substring(
         beginIndex + begin.length,
-        endIndex
+        endIndex,
       );
       summaries.push(summary);
     });
@@ -58,7 +58,7 @@ function getSummariesC(pages) {
   const summaries = [];
   // 章のまとめを収集
   pages
-    .filter((p) => p.h3Title.endsWith("まとめ"))
+    .filter((p) => p.level2Title.endsWith("まとめ"))
     .forEach((page) => {
       const beginIndex = page.contentHtml.indexOf(begin);
       const endIndex = page.contentHtml.indexOf(end);
@@ -107,7 +107,7 @@ function validate(summariesS, summariesC) {
       summaryS !== summaryC
     ) {
       errors.push(
-        `summary unmatch: i=${i} summaryS="${summaryS}", summaryC="${summaryC}"`
+        `summary unmatch: i=${i} summaryS="${summaryS}", summaryC="${summaryC}"`,
       );
     }
   }

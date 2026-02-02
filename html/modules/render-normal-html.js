@@ -19,8 +19,8 @@ ${renderHead(renderTitle(page), page.descText, page.filename)}
 ${renderHeader(page, prevPage, nextPage)}
     <main>
 ${renderChapterImage(page)}
-      <div class="h1-title">${Shared.websiteTitle}</div>
-${renderH2TitleDiv(page)}
+      <div id="website-title">${Shared.websiteTitle}</div>
+${renderChapterTitleDiv(page)}
       <div id="content">
 ${page.contentHtml}
       </div>
@@ -31,20 +31,20 @@ ${renderFooter(nextPage)}
 `;
 
 const renderTitle = (page) =>
-  page.h3Title === ""
+  page.level2Title === ""
     ? `${page.title} - ${Shared.websiteTitle}`
-    : `${page.h2Title}／${page.title} - ${Shared.websiteTitle}`;
+    : `${page.level1Title}／${page.title} - ${Shared.websiteTitle}`;
 
 const renderChapterImage = (page) =>
   Shared.pageIdToHtml[page.id] === undefined
     ? ""
     : `
-      <div class="chapter-image">
+      <div id="chapter-image">
 ${Shared.pageIdToHtml[page.id]}
       </div>
 `;
 
-const renderH2TitleDiv = (page) =>
-  page.h3Title === ""
+const renderChapterTitleDiv = (page) =>
+  page.level2Title === ""
     ? ""
-    : `      <div class="h2-title">${page.h2Title}</div>`;
+    : `      <div id="chapter-title">${page.level1Title}</div>`;

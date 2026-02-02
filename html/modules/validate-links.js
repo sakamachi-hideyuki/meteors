@@ -96,7 +96,7 @@ function validate(oldLinks, newLinks) {
       const oldLinkJson = JSON.stringify(oldLink);
       const newLinkJson = JSON.stringify(newLink);
       throw new Error(
-        `link unmatch: i=${i} oldLinkJson=${oldLinkJson}, newLinkJson=${newLinkJson}`
+        `link unmatch: i=${i} oldLinkJson=${oldLinkJson}, newLinkJson=${newLinkJson}`,
       );
     }
   }

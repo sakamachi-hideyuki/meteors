@@ -115,7 +115,7 @@ main {
 }
 
 /* Webサイトのタイトル */
-div.h1-title {
+div#website-title {
   font-size: 0.8rem;
   font-weight: bold;
   letter-spacing: 0.3rem;
@@ -124,7 +124,7 @@ div.h1-title {
   text-indent: 0.3rem;
 }
 /* 章のタイトル */
-div.h2-title {
+div#chapter-title {
   font-size: 0.8rem;
   font-weight: bold;
   letter-spacing: 0.3rem;
@@ -140,7 +140,7 @@ div#content {
 }
 
 /* Webサイトの先頭ページのページタイトル */
-h1 {
+section.level0-section h1 {
   font-size: 1.4rem;
   font-weight: bold;
   letter-spacing: 0.7rem;
@@ -149,7 +149,7 @@ h1 {
   text-indent: 0.7rem;
 }
 /* 章の先頭ページのページタイトル */
-h2 {
+section.level1-section h1 {
   font-size: 1.3rem;
   font-weight: bold;
   letter-spacing: 0.5rem;
@@ -158,7 +158,7 @@ h2 {
   text-indent: 0.5rem;
 }
 /* 項のページのページタイトル */
-h3 {
+section.level2-section h1 {
   font-size: 1.2rem;
   font-weight: bold;
   letter-spacing: 0.3rem;
@@ -166,17 +166,37 @@ h3 {
   text-align: center;
   text-indent: 0.3rem;
 }
+/* 目次ページのページタイトル */
+section.toc-section h1 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  margin: 0;
+  text-align: center;
+  text-indent: 0.5rem;
+}
+
+/* 太字見出し */
+h2.heading {
+  border-bottom: 1px solid #000;
+  font-size: 1.1rem;
+  font-weight: bold;
+  line-height: 2;
+  margin: 1rem 0;
+}
+
 /* その他の神の項の各神名 */
-h4 {
+h3 {
   font-size: 1.1rem;
   font-weight: bold;
   margin: 0;
   text-align: center;
 }
 
+/* 段落 */
 p {
   line-height: 2;
-  margin: 0;
+  margin: 1rem 0;
 }
 /* 空行 */
 p.blank {
@@ -186,60 +206,58 @@ p.blank {
 /* 項の短い説明 */
 p.desc {
   font-size: 0.85rem;
-  line-height: normal;
+  line-height: 2;
   margin: 1rem 0 2rem 0;
   text-align: center;
 }
-/* 段落 */
-p.par {
-  margin: 1rem 0;
-}
-/* 引用文 */
-p.bquote {
-  border: 1px solid #999;
-  margin: 0 0 0 2rem;
-  padding: 0.5rem 1rem;
-}
-/* 引用文(改行を残す) */
-p.bquote-pl {
-  border: 1px solid #999;
-  margin: 0 0 0 2rem;
-  padding: 0.5rem 1rem;
-  white-space: pre-line;
-}
-/* 太字の段落 */
-p.heading {
-  border-bottom: 1px solid #000;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin: 1rem 0;
-}
 /* リスト1(箇条書き レベル1) */
 p.list-1 {
+  line-height: 2;
   margin: 0 0 0 1rem;
   text-indent: -1rem;
 }
 /* リスト1(箇条書き レベル1)の継続行 */
 p.list-1c {
+  line-height: 2;
   margin: 0 0 0 1rem;
   text-indent: 0;
 }
 /* リスト1(箇条書き レベル1) フォント小 */
 p.list-1s {
   font-size: 0.85rem;
+  line-height: 2;
   margin: 0 0 0 0.85rem;
   text-indent: -0.85rem;
 }
 /* リスト2(箇条書き レベル2) */
 p.list-2 {
+  line-height: 2;
   margin: 0 0 0 2rem;
   text-indent: -1rem;
 }
 /* リスト3(箇条書き レベル3) */
 p.list-3 {
+  line-height: 2;
   margin: 0 0 0 3rem;
   text-indent: -1rem;
 }
+
+/* 引用文 */
+blockquote.bquote {
+  border: 1px solid #999;
+  line-height: 2;
+  margin: 0 0 0 2rem;
+  padding: 0.5rem 1rem;
+}
+/* 引用文(改行を残す) */
+blockquote.bquote-pl {
+  border: 1px solid #999;
+  line-height: 2;
+  margin: 0 0 0 2rem;
+  padding: 0.5rem 1rem;
+  white-space: pre-line;
+}
+
 /* 小さい文字 */
 span.small {
   font-size: 0.75rem;
@@ -262,11 +280,11 @@ u {
 }
 /* 上付き文字 */
 sup {
-  font-size: 50%;
+  font-size: 0.5rem;
 }
 /* 下付き文字 */
 sub {
-  font-size: 50%;
+  font-size: 0.5rem;
 }
 
 /* ページ下部の次ページへのリンク */
@@ -314,7 +332,7 @@ div#copyright {
 }
 
 /* ページ先頭へスクロールするボタン */
-a.top-of-page {
+a#top-of-page {
   background-color: #333;
   border-radius: 50%;
   color: #fff;
@@ -329,8 +347,8 @@ a.top-of-page {
   z-index: 1;
 
   position: fixed;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   width: 3rem;
 }
 
@@ -382,6 +400,8 @@ html#html-chapter-of-ishi header {
 section#revision-history p {
   font-size: 0.8rem;
   line-height: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 section#revision-history p.blank {
   line-height: 0;
@@ -408,45 +428,45 @@ figure.image-and-caption > figcaption {
 }
 
 /* 先頭ページの画像 */
-div.website-image {
+div#website-image {
   background-color: #000;
   color: #fff;
   padding-top: 2.5rem;
 }
-div.website-image > figure.image-and-caption img {
+div#website-image > figure.image-and-caption img {
   animation-duration: 1.5s;
   animation-name: fade-in;
   max-width: 64rem;
 }
-div.website-image > figure.image-and-caption > figcaption {
+div#website-image > figure.image-and-caption > figcaption {
   animation-duration: 2s;
   animation-name: fade-in;
   padding: 0 0.5rem;
   text-align: right;
 }
-div.website-image > figure.image-and-caption > figcaption a {
+div#website-image > figure.image-and-caption > figcaption a {
   color: #68f;
 }
 
 /* 各章先頭の画像 */
-div.chapter-image {
+div#chapter-image {
   background-color: #000;
   color: #fff;
   padding-top: 2.5rem;
 }
-div.chapter-image > figure.image-and-caption {
+div#chapter-image > figure.image-and-caption {
   max-width: var(--max-content-width);
 }
-div.chapter-image > figure.image-and-caption img {
+div#chapter-image > figure.image-and-caption img {
   animation-duration: 1.5s;
   animation-name: fade-in;
 }
-div.chapter-image > figure.image-and-caption > figcaption {
+div#chapter-image > figure.image-and-caption > figcaption {
   animation-duration: 2s;
   animation-name: fade-in;
   padding: 0.3rem;
 }
-div.chapter-image > figure.image-and-caption > figcaption a {
+div#chapter-image > figure.image-and-caption > figcaption a {
   color: #68f;
 }
 
@@ -461,7 +481,7 @@ figure.image-and-caption#fig-milkywayinsummer {
 }
 
 /* 甕の章　大甕の画像 */
-div.chapter-image > figure.image-and-caption#photo-ogame {
+div#chapter-image > figure.image-and-caption#photo-ogame {
   max-width: calc(var(--max-content-width) * 0.75);
 }
 

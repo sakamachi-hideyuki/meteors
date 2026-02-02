@@ -34,8 +34,8 @@ ${
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ja_JP" />
     <meta property="og:url" content="${websiteUrl}${
-  filename === "index.html" ? "" : filename
-}" />
+      filename === "index.html" ? "" : filename
+    }" />
     <meta property="og:image" content="${websiteUrl}images/photo-pleiades-web.webp" />
     <meta property="og:site_name" content="${Shared.websiteTitle}" />
     <meta property="og:title" content="${title}" />

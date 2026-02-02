@@ -26,12 +26,15 @@ export function removeElems(rootElem, selector) {
 /**
  * 指定ルート要素配下の指定のタグ名を変更する.
  * @param {Element} rootElem ルート要素
- * @param {string} oldTagName 変更前のタグ名
+ * @param {string} selector 変更対象要素のセレクター
  * @param {string} newTagName 変更後のタグ名
  */
-export function changeTagNames(rootElem, oldTagName, newTagName) {
-  Array.from(rootElem.querySelectorAll(oldTagName)).forEach((oldTag) => {
+export function changeTagNames(rootElem, selector, newTagName) {
+  Array.from(rootElem.querySelectorAll(selector)).forEach((oldTag) => {
     const newTag = document.createElement(newTagName);
+    if (oldTag.hasAttribute("class")) {
+      newTag.className = oldTag.className;
+    }
     while (oldTag.firstChild) {
       newTag.appendChild(oldTag.firstChild);
     }

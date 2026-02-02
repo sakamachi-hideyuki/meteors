@@ -16,9 +16,9 @@ import { chromium } from "playwright-core";
     links.map((el) => ({
       filename: el.getAttribute("download"),
       html: decodeURIComponent(
-        el.href.substring("data:text/html;charset=UTF-8,".length)
+        el.href.substring("data:text/html;charset=UTF-8,".length),
       ),
-    }))
+    })),
   );
   for (const { filename, html } of htmlFiles) {
     const outFilePath = path.resolve(outDirPath, filename);

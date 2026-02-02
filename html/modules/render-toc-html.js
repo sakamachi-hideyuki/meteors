@@ -15,12 +15,14 @@ ${renderHead(`${page.title} - ${Shared.websiteTitle}`, "", page.filename)}
   </head>
   <body>
     <main>
-      <div class="h1-title">${Shared.websiteTitle}</div>
+      <div id="website-title">${Shared.websiteTitle}</div>
       <div id="content">
-        <h2>${page.title}</h2>
-        <nav id="toc">
+        <section class="toc-section" id="toc">
+          <h1>${page.title}</h1>
+          <nav id="toc">
 ${renderTocUl(pages)}
-        </nav>
+          </nav>
+        </section>
       </div>
     </main>
 ${renderFooter(undefined)}
@@ -41,7 +43,7 @@ function renderTocUl(pages) {
     if (page.id === "toc") {
       continue; // 目次ページは目次に入れない
     }
-    const newLevel = page.h3Title === "" ? 1 : 2;
+    const newLevel = page.level2Title === "" ? 1 : 2;
     if (newLevel === curLevel) {
     } else if (newLevel === curLevel + 1) {
       const newUl = document.createElement("ul");

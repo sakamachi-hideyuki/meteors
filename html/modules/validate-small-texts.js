@@ -56,7 +56,7 @@ function validateSmallSpanContents(page) {
     // foundTextがsmallTextsに含まれているかチェック
     if (!smallTexts.includes(foundText)) {
       console.error(
-        `${page.filename} ${page.title}: <span class="small">に含まれているテキスト "${foundText}" がsmallTextsに含まれていません`
+        `${page.filename} ${page.title}: <span class="small">に含まれているテキスト "${foundText}" がsmallTextsに含まれていません`,
       );
       errorCount++;
     }
@@ -87,7 +87,7 @@ function validateSmallSpan(page, smallText) {
   // <span class="small">テキスト</span> の形式で囲まれているすべてのテキストを取得
   const patternInSpan = new RegExp(
     `<span class="small">${smallText}</span>`,
-    "g"
+    "g",
   );
   const matchedInSpan = html.match(patternInSpan)?.length ?? 0;
 
@@ -96,7 +96,7 @@ function validateSmallSpan(page, smallText) {
 
   if (!isValid) {
     console.error(
-      `${page.filename} ${page.title}: "${smallText}" が正しく<span class="small">で囲まれていません`
+      `${page.filename} ${page.title}: "${smallText}" が正しく<span class="small">で囲まれていません`,
     );
   }
 

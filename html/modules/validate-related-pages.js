@@ -20,7 +20,7 @@ export function validateRelatedPages(pages) {
  */
 function validate(page) {
   const html = page.contentHtml;
-  const relatedPagesBegin = html.indexOf('<p class="heading">関連ページ</p>');
+  const relatedPagesBegin = html.indexOf('<h2 class="heading">関連ページ</h2>');
   if (relatedPagesBegin === -1) {
     return 0;
   }
@@ -35,11 +35,11 @@ function validate(page) {
 
   // 関連ページへのリンクが関連ページより前のHTMLに存在するか検証
   const linksFound = linksOfRelatedPages.filter((link) =>
-    linksBeforeRelatedPages.includes(link)
+    linksBeforeRelatedPages.includes(link),
   );
   linksFound.forEach((link) => {
     console.error(
-      `${page.filename} ${page.title}: 関連ページ ${link} はそれより前にリンクがあるので不要です。`
+      `${page.filename} ${page.title}: 関連ページ ${link} はそれより前にリンクがあるので不要です。`,
     );
   });
   return linksFound.length;

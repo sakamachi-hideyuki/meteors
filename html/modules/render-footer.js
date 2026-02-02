@@ -12,7 +12,7 @@ ${renderNextPageNav(nextPage)}
         }』</a>の内容を著者がWeb公開したものです。
       </div>
       <div id="copyright">© 2021 SAKAMACHI HIDEYUKI</div>
-      <a class="top-of-page" href="#" title="ページ先頭へ">∧</a>
+      <a id="top-of-page" href="#" title="ページ先頭へ">∧</a>
     </footer>
 `;
 

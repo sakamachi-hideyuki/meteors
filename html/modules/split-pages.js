@@ -23,14 +23,21 @@ function createPages(html) {
 
   const pages = [];
   pages.push(createTocPageData());
-  pages.push(createIndexPageData(rootElem.querySelector("h1")));
+  pages.push(createIndexPageData(rootElem.querySelector(".level0-section")));
 
-  let h2Title = "";
-  for (const h2h3 of rootElem.querySelectorAll("h2, h3")) {
-    if (h2h3.tagName.toLowerCase() === "h2") {
-      h2Title = h2h3.innerText;
+  let level1Title = "";
+  let level2Title = "";
+  for (const section of rootElem.querySelectorAll(
+    ".level1-section, .level2-section",
+  )) {
+    const title = section.querySelector("h1").innerText;
+    if (section.className === "level1-section") {
+      level1Title = title;
+      level2Title = "";
+    } else {
+      level2Title = title;
     }
-    pages.push(createNormalPageData(h2h3, h2Title));
+    pages.push(createNormalPageData(section, title, level1Title, level2Title));
   }
   return pages;
 }
@@ -43,8 +50,8 @@ function createTocPageData() {
   return {
     id: "toc",
     title: "目次",
-    h2Title: "",
-    h3Title: "",
+    level1Title: "",
+    level2Title: "",
     filename: "toc.html",
     contentHtml: "",
     descHtml: "",
@@ -56,20 +63,20 @@ function createTocPageData() {
 
 /**
  * 先頭ページのページデータを作成する.
- * @param {Element} h1 H1要素
+ * @param {Element} section Level0セクション要素
  * @returns {Object} 先頭ページのページデータ
  */
-function createIndexPageData(h1) {
+function createIndexPageData(section) {
   const websiteDescription =
     "日本神話には星の神・神話が少ないと言われているが、実際は様々な星の神・神話が「見立て」を用いて語られている。";
 
   return {
     id: "index",
     title: "先頭ページ",
-    h2Title: "",
-    h3Title: "",
+    level1Title: "",
+    level2Title: "",
     filename: "index.html",
-    contentHtml: h1.parentElement.outerHTML,
+    contentHtml: section.outerHTML,
     descHtml: "", // 目次上の先頭ページには説明文を入れない
     descText: websiteDescription,
     titleOnly: false,
@@ -79,22 +86,23 @@ function createIndexPageData(h1) {
 
 /**
  * 通常ページのページデータを作成する.
- * @param {Element} h2h3 H2またはH3要素
- * @param {string} h2Title 親のH2タイトル
+ * @param {Element} section Level1またはLevel2セクション要素
+ * @param {string} title セクションタイトル
+ * @param {string} level1Title Level1タイトル
+ * @param {string} level2Title Level2タイトル
  * @returns {Object} 通常ページのページデータ
  */
-function createNormalPageData(h2h3, h2Title) {
-  const anchorNames = Array.from(h2h3.querySelectorAll("a")).map((a) =>
-    a.getAttribute("name")
+function createNormalPageData(section, title, level1Title, level2Title) {
+  const anchorNames = Array.from(section.querySelectorAll("h1 a")).map((a) =>
+    a.getAttribute("name"),
   );
-  const section = h2h3.parentElement;
   removeElems(section, "a[name]");
   const descElem = section.querySelector("p.desc");
   return {
     id: section.id,
-    title: h2h3.innerText,
-    h2Title,
-    h3Title: h2h3.tagName.toLowerCase() === "h2" ? "" : h2h3.innerText,
+    title,
+    level1Title,
+    level2Title,
     filename: `${section.id}.html`,
     contentHtml: section.outerHTML,
     descHtml: descElem?.innerHTML ?? "",

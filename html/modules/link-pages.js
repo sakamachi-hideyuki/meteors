@@ -61,7 +61,9 @@ function linkAppendix(pages, page) {
 function linkChapter(pages, page) {
   // "【～の章】"をリンク化
   page.contentHtml = page.contentHtml.replaceAll(/【(.の章)】/g, (s, p1) => {
-    const target = pages.find((p) => p.h2Title === p1 && p.h3Title === "");
+    const target = pages.find(
+      (p) => p.level1Title === p1 && p.level2Title === "",
+    );
     if (target === undefined) {
       console.error(`createLinks: ${s} not found.`);
       return s;
@@ -71,7 +73,7 @@ function linkChapter(pages, page) {
   // "本章冒頭"をリンク化
   page.contentHtml = page.contentHtml.replaceAll(/本章冒頭/g, (s) => {
     const target = pages.find(
-      (p) => p.h2Title === page.h2Title && p.h3Title === ""
+      (p) => p.level1Title === page.level1Title && p.level2Title === "",
     );
     if (target === undefined) {
       console.error(`createLinks: ${s} not found.`);
@@ -97,13 +99,15 @@ function linkSection(pages, page) {
           p2 = p2.substring(0, index);
         }
       }
-      const target = pages.find((p) => p.h2Title === p1 && p.h3Title === p2);
+      const target = pages.find(
+        (p) => p.level1Title === p1 && p.level2Title === p2,
+      );
       if (target === undefined) {
         console.error(`createLinks: ${s} not found.`);
         return s;
       }
       return `<a href="${target.filename}">${s}</a>`;
-    }
+    },
   );
 }
 
@@ -122,13 +126,13 @@ function linkSummary(pages, page) {
     /<p class="list-1">・([^（…<]+)/g,
     (s, p1) => {
       const target = pages.find(
-        (p) => p.h2Title === page.h2Title && p.h3Title === p1
+        (p) => p.level1Title === page.level1Title && p.level2Title === p1,
       );
       if (target === undefined) {
         console.error(`createLinks: ${p1} not found.`);
         return s;
       }
       return `<p class="list-1">・<a href="${target.filename}">${p1}</a>`;
-    }
+    },
   );
 }
