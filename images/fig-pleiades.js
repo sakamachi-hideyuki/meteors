@@ -33,21 +33,20 @@ class FigPleiades {
       #text > div {
         color: #000;
         font-family: serif;
-        font-size: 50px;
+        font-size: 60px;
         font-weight: bold;
         position: absolute;
         text-align: center;
         white-space: nowrap;
       }
       u {
-        text-underline-offset: 8px;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 20px;
       }
       #bubble > div {
-        background-color: #fff;
-        border: 2px solid #000;
         color: #000;
         font-family: serif;
-        font-size: 50px;
+        font-size: 80px;
         font-weight: bold;
         padding: 40px 50px 20px 50px;
         position: absolute;
@@ -72,17 +71,17 @@ class FigPleiades {
       <div id="milkyway"></div>
     </div>
     <div id="text">
-      <div style="left: 500px; top: 70px;">天の川</div>
+      <div style="left: 550px; top: 50px;">天の川</div>
 
-      <div style="left: 500px; top: 280px;"><u>オリオン座</u></div>
-      <div style="left: 120px; top: 530px;">ベテルギウス</div>
-      <div style="left: 150px; top: 880px;">三つ星<br>（からすき星）</div>
-      <div style="left: 500px; top: 1200px;">小三つ星</div>
-      <div style="left: 700px; top: 1400px;">リゲル</div>
+      <div style="left: 450px; top: 300px;"><u>オリオン座</u></div>
+      <div style="left: 50px; top: 520px;">ベテルギウス</div>
+      <div style="left: 90px; top: 850px;">三つ星<br>（からすき星）</div>
+      <div style="left: 500px; top: 1190px;">小三つ星</div>
+      <div style="left: 700px; top: 1390px;">リゲル</div>
 
-      <div style="left: 1600px; top: 140px;"><u>おうし座</u></div>
-      <div style="left: 1140px; top: 460px;">アルデバラン</div>
-      <div style="left: 1920px; top: 340px;">プレアデス星団<br>（<ruby>昴<rp>(</rp><rt>すばる</rt><rp>)</rp></ruby>）
+      <div style="left: 1600px; top: 100px;"><u>おうし座</u></div>
+      <div style="left: 1280px; top: 390px;">アルデバラン</div>
+      <div style="left: 1880px; top: 320px;">プレアデス星団<br>（<ruby>昴<rp>(</rp><rt>すばる</rt><rp>)</rp></ruby>）
       </div>
     </div>`;
 
@@ -92,6 +91,7 @@ class FigPleiades {
       width="2560px"
       height="1706px"
     >
+      <!-- 全体の枠 -->
       <rect
         x="1"
         y="1"
@@ -99,39 +99,43 @@ class FigPleiades {
         height="1704"
         fill="none"
       />
+      <!-- からすき星と昴を結ぶ線 -->
       <line
         x1="0"
         y1="1250"
         x2="2560"
         y2="200"
       />
+      <!-- 天の川とふきだしを結ぶ線 -->
       <line
-        x1="680"
-        y1="140"
+        x1="750"
+        y1="120"
         x2="900"
-        y2="250"
+        y2="200"
       />
+      <!-- からすき星とふきだしを結ぶ線 -->
       <line
-        x1="590"
-        y1="1060"
+        x1="600"
+        y1="1080"
         x2="1000"
-        y2="1240"
+        y2="1280"
       />
+      <!-- 昴とふきだしを結ぶ線 -->
       <line
-        x1="2000"
-        y1="480"
-        x2="1800"
-        y2="800"
+        x1="1940"
+        y1="500"
+        x2="1760"
+        y2="700"
       />
     </svg>
     <div id="bubble">
-      <div style="left: 900px; top: 200px">
+      <div style="left: 900px; top: 150px">
         <ruby>天安河<rp>(</rp><rt>あまのやすのかわ</rt><rp>)</rp></ruby>
       </div>
       <div style="left: 1000px; top: 1200px">
-        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>尊の剣の神（<ruby>伊都之尾羽張<rp>(</rp><rt>イツノオハバリ</rt><rp>)</rp></ruby>神、<ruby>稜威雄走<rp>(</rp><rt>イツノオバシリ</rt><rp>)</rp></ruby>神）
+        <ruby><ruby>伊都之尾羽張<rp>(</rp><rt>イツノオハバリ</rt><rp>)</rp></ruby>神
       </div>
-      <div style="left: 1600px; top: 800px">
+      <div style="left: 1500px; top: 700px">
         <ruby>天岩戸<rp>(</rp><rt>あまのいわと</rt><rp>)</rp></ruby>
       </div>
     </div>`;
@@ -142,6 +146,7 @@ class FigPleiades {
       width="2560px"
       height="1706px"
     >
+      <!-- 全体の枠 -->
       <rect
         x="1"
         y="1"
@@ -149,6 +154,7 @@ class FigPleiades {
         height="1704"
         fill="none"
       />
+      <!-- からすき星と昴を結ぶ線 -->
       <line
         x1="0"
         y1="1250"
@@ -179,24 +185,26 @@ class FigPleiades {
         x2="0"
         y2="1660"
       />
+      <!-- からすき星とふきだしを結ぶ線 -->
       <line
-        x1="590"
-        y1="1060"
+        x1="600"
+        y1="1080"
         x2="1000"
-        y2="1240"
+        y2="1280"
       />
+      <!-- 昴とふきだしを結ぶ線 -->
       <line
-        x1="2000"
-        y1="480"
-        x2="1800"
-        y2="800"
+        x1="1940"
+        y1="500"
+        x2="1760"
+        y2="700"
       />
     </svg>
     <div id="bubble">
       <div style="left: 1000px; top: 1200px">
         アマノヤチマタ
       </div>
-      <div style="left: 1600px; top: 800px">
+      <div style="left: 1500px; top: 700px">
         <ruby>天岩戸<rp>(</rp><rt>あまのいわと</rt><rp>)</rp></ruby>
       </div>
     </div>`;
@@ -207,6 +215,7 @@ class FigPleiades {
       width="2560px"
       height="1706px"
     >
+      <!-- 全体の枠 -->
       <rect
         x="1"
         y="1"
@@ -214,40 +223,44 @@ class FigPleiades {
         height="1704"
         fill="none"
       />
+      <!-- からすき星と昴を結ぶ線 -->
       <line
         x1="0"
         y1="1250"
         x2="2560"
         y2="200"
       />
+      <!-- 天の川とふきだしを結ぶ線 -->
       <line
-        x1="680"
-        y1="140"
+        x1="750"
+        y1="120"
         x2="900"
-        y2="250"
+        y2="200"
       />
+      <!-- からすき星とふきだしを結ぶ線 -->
       <line
-        x1="590"
-        y1="1060"
+        x1="600"
+        y1="1080"
         x2="1000"
-        y2="1240"
+        y2="1280"
       />
+      <!-- 昴とふきだしを結ぶ線 -->
       <line
-        x1="2000"
-        y1="480"
-        x2="1800"
-        y2="800"
+        x1="1940"
+        y1="500"
+        x2="1760"
+        y2="700"
       />
     </svg>
     <div id="bubble">
-      <div style="left: 900px; top: 200px">
+      <div style="left: 900px; top: 150px">
         <ruby>天安河<rp>(</rp><rt>あまのやすのかわ</rt><rp>)</rp></ruby>
       </div>
       <div style="left: 1000px; top: 1200px">
-        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>尊の剣（<ruby>伊都之尾羽張<rp>(</rp><rt>いつのおはばり</rt><rp>)</rp></ruby>）
+        <ruby><ruby>伊都之尾羽張<rp>(</rp><rt>いつのおはばり</rt><rp>)</rp></ruby>
       </div>
-      <div style="left: 1600px; top: 800px">
-        <ruby>五百箇磐石<rp>(</rp><rt>いおついわむら</rt><rp>)</rp></ruby>（<ruby>湯津石村<rp>(</rp><rt>ゆついわむら</rt><rp>)</rp></ruby>）
+      <div style="left: 1500px; top: 700px">
+        <ruby>五百箇磐石<rp>(</rp><rt>いおついわむら</rt><rp>)</rp></ruby>
       </div>
     </div>`;
 
@@ -257,6 +270,7 @@ class FigPleiades {
       width="2560px"
       height="1706px"
     >
+      <!-- 全体の枠 -->
       <rect
         x="1"
         y="1"
@@ -264,39 +278,43 @@ class FigPleiades {
         height="1704"
         fill="none"
       />
+      <!-- からすき星と昴を結ぶ線 -->
       <line
         x1="0"
         y1="1250"
         x2="2560"
         y2="200"
       />
+      <!-- 天の川とふきだしを結ぶ線 -->
       <line
-        x1="680"
-        y1="140"
+        x1="750"
+        y1="120"
         x2="900"
-        y2="250"
+        y2="200"
       />
+      <!-- からすき星とふきだしを結ぶ線 -->
       <line
-        x1="590"
-        y1="1060"
+        x1="600"
+        y1="1080"
         x2="1000"
-        y2="1240"
+        y2="1280"
       />
+      <!-- 昴とふきだしを結ぶ線 -->
       <line
-        x1="2000"
-        y1="480"
-        x2="1800"
-        y2="800"
+        x1="1940"
+        y1="500"
+        x2="1760"
+        y2="700"
       />
     </svg>
     <div id="bubble">
-      <div style="left: 900px; top: 200px">
+      <div style="left: 900px; top: 150px">
         <ruby>天安河<rp>(</rp><rt>あまのやすのかわ</rt><rp>)</rp></ruby>
       </div>
       <div style="left: 1000px; top: 1200px">
-        <ruby>素戔嗚<rp>(</rp><rt>スサノオ</rt><rp>)</rp></ruby>尊の剣（<ruby>蛇韓鋤之剣<rp>(</rp><rt>おろちのからすきのつるぎ</rt><rp>)</rp></ruby>）
+        <ruby><ruby>蛇韓鋤之剣<rp>(</rp><rt>おろちのからすきのつるぎ</rt><rp>)</rp></ruby>
       </div>
-      <div style="left: 1600px; top: 800px">
+      <div style="left: 1500px; top: 700px">
         <ruby>五百箇御統<rp>(</rp><rt>いおつのみすまる</rt><rp>)</rp></ruby>
       </div>
     </div>`;
@@ -307,6 +325,7 @@ class FigPleiades {
       width="2560px"
       height="1706px"
     >
+      <!-- 全体の枠 -->
       <rect
         x="1"
         y="1"
@@ -314,46 +333,50 @@ class FigPleiades {
         height="1704"
         fill="none"
       />
+      <!-- からすき星と昴を結ぶ線 -->
       <line
         x1="0"
         y1="1250"
         x2="2560"
         y2="200"
       />
+      <!-- 天の川とふきだしを結ぶ線 -->
       <line
-        x1="680"
-        y1="140"
+        x1="750"
+        y1="120"
         x2="900"
-        y2="250"
+        y2="200"
       />
+      <!-- からすき星とふきだしを結ぶ線 -->
       <line
-        x1="590"
-        y1="1060"
+        x1="600"
+        y1="1080"
         x2="1000"
-        y2="1240"
+        y2="1280"
       />
+      <!-- 昴とふきだしを結ぶ線 -->
       <line
-        x1="2000"
-        y1="480"
-        x2="1800"
-        y2="800"
+        x1="1940"
+        y1="500"
+        x2="1760"
+        y2="700"
       />
     </svg>
     <div id="bubble">
-      <div style="left: 900px; top: 200px">
+      <div style="left: 900px; top: 150px">
         <ruby>天安河<rp>(</rp><rt>あまのやすのかわ</rt><rp>)</rp></ruby>
       </div>
       <div style="left: 1000px; top: 1200px">
-        <ruby>素戔嗚<rp>(</rp><rt>スサノオ</rt><rp>)</rp></ruby>尊の剣（<ruby>蛇韓鋤之剣<rp>(</rp><rt>おろちのからすきのつるぎ</rt><rp>)</rp></ruby>）<br>
+        <ruby>蛇韓鋤之剣<rp>(</rp><rt>おろちのからすきのつるぎ</rt><rp>)</rp></ruby><br>
 
-        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>尊の剣（<ruby>伊都之尾羽張<rp>(</rp><rt>いつのおはばり</rt><rp>)</rp></ruby>）<br>
+        <ruby>伊都之尾羽張<rp>(</rp><rt>いつのおはばり</rt><rp>)</rp></ruby><br>
 
-        <ruby>伊奘諾<rp>(</rp><rt>イザナキ</rt><rp>)</rp></ruby>尊の剣の神（<ruby>伊都之尾羽張<rp>(</rp><rt>イツノオハバリ</rt><rp>)</rp></ruby>神、<ruby>稜威雄走<rp>(</rp><rt>イツノオバシリ</rt><rp>)</rp></ruby>神）
+        <ruby><ruby>伊都之尾羽張<rp>(</rp><rt>イツノオハバリ</rt><rp>)</rp></ruby>神
       </div>
-      <div style="left: 1600px; top: 800px">
+      <div style="left: 1500px; top: 700px">
         <ruby>五百箇御統<rp>(</rp><rt>いおつのみすまる</rt><rp>)</rp></ruby><br>
 
-        <ruby>五百箇磐石<rp>(</rp><rt>いおついわむら</rt><rp>)</rp></ruby>（<ruby>湯津石村<rp>(</rp><rt>ゆついわむら</rt><rp>)</rp></ruby>）<br>
+        <ruby>五百箇磐石<rp>(</rp><rt>いおついわむら</rt><rp>)</rp></ruby><br>
 
         <ruby>天岩戸<rp>(</rp><rt>あまのいわと</rt><rp>)</rp></ruby>
       </div>

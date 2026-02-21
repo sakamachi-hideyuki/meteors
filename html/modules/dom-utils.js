@@ -32,9 +32,11 @@ export function removeElems(rootElem, selector) {
 export function changeTagNames(rootElem, selector, newTagName) {
   Array.from(rootElem.querySelectorAll(selector)).forEach((oldTag) => {
     const newTag = document.createElement(newTagName);
-    if (oldTag.hasAttribute("class")) {
-      newTag.className = oldTag.className;
+    // 属性をコピー
+    for (const attr of oldTag.attributes) {
+      newTag.setAttribute(attr.name, attr.value);
     }
+    // 子ノードを移動
     while (oldTag.firstChild) {
       newTag.appendChild(oldTag.firstChild);
     }

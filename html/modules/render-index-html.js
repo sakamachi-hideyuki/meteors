@@ -17,7 +17,7 @@ ${renderHead(Shared.websiteTitle, page.descText, page.filename)}
   <body>
 ${renderHeader(page, undefined, nextPage)}
     <main>
-      <div id="website-image">
+      <div id="main-image">
 ${Shared.photoPleiadesHtml}
       </div>
       <div id="content">

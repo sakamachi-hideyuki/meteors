@@ -65,7 +65,7 @@ function linkChapter(pages, page) {
       (p) => p.level1Title === p1 && p.level2Title === "",
     );
     if (target === undefined) {
-      console.error(`createLinks: ${s} not found.`);
+      console.error(`${page.filename} ${page.title}: createLinks: ${s} not found.`);
       return s;
     }
     return `<a href="${target.filename}">${s}</a>`;
@@ -76,7 +76,7 @@ function linkChapter(pages, page) {
       (p) => p.level1Title === page.level1Title && p.level2Title === "",
     );
     if (target === undefined) {
-      console.error(`createLinks: ${s} not found.`);
+      console.error(`${page.filename} ${page.title}: createLinks: ${s} not found.`);
       return s;
     }
     return `<a href="${target.filename}">${s}</a>`;
@@ -103,7 +103,7 @@ function linkSection(pages, page) {
         (p) => p.level1Title === p1 && p.level2Title === p2,
       );
       if (target === undefined) {
-        console.error(`createLinks: ${s} not found.`);
+        console.error(`${page.filename} ${page.title}: createLinks: ${s} not found.`);
         return s;
       }
       return `<a href="${target.filename}">${s}</a>`;
@@ -121,18 +121,18 @@ function linkSummary(pages, page) {
   if (!page.id.endsWith("--summary")) {
     return;
   }
-  // "<p class="list-1">・～"をリンク化
+  // "<p class="list-1">～"をリンク化
   page.contentHtml = page.contentHtml.replaceAll(
-    /<p class="list-1">・([^（…<]+)/g,
+    /<p class="list-1">([^（…<]+)/g,
     (s, p1) => {
       const target = pages.find(
         (p) => p.level1Title === page.level1Title && p.level2Title === p1,
       );
       if (target === undefined) {
-        console.error(`createLinks: ${p1} not found.`);
+        console.error(`${page.filename} ${page.title}: createLinks: ${p1} not found.`);
         return s;
       }
-      return `<p class="list-1">・<a href="${target.filename}">${p1}</a>`;
+      return `<p class="list-1"><a href="${target.filename}">${p1}</a>`;
     },
   );
 }

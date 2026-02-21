@@ -93,10 +93,9 @@ function createIndexPageData(section) {
  * @returns {Object} 通常ページのページデータ
  */
 function createNormalPageData(section, title, level1Title, level2Title) {
-  const anchorNames = Array.from(section.querySelectorAll("h1 a")).map((a) =>
-    a.getAttribute("name"),
-  );
-  removeElems(section, "a[name]");
+  const h1 = section.querySelector("h1");
+  const anchorNames = h1.getAttribute("data-names")?.split(",") ?? [];
+  h1.removeAttribute("data-names");
   const descElem = section.querySelector("p.desc");
   return {
     id: section.id,

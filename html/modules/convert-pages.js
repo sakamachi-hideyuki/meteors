@@ -8,16 +8,17 @@ import {
 // 利用しているclass属性の一覧
 const availableClasses = [
   "bquote",
-  "bquote-pl",
   "desc",
   "heading",
   "list-1",
-  "list-1c",
   "list-1s",
   "list-2",
   "list-3",
   "small",
 ];
+
+// リスト要素のセレクター
+const listSelector = "p.list-1, p.list-1s, p.list-2, p.list-3";
 
 // h1タイトルからLevel1セクションidへの対応表
 const h1TitleToLevel1SectionId = {
@@ -42,32 +43,62 @@ export function convertPages(html) {
   const rootElem = document.createElement("div");
   rootElem.innerHTML = html;
 
+  // 各見出しにdata-names属性を設定
+  setDataNames(rootElem);
   // 目次、br要素、各項見出しの前の章名を削除
   removeElemsAndDescendants(rootElem, "[class^=MsoToc], br, p.chapter");
-  // リンク、span要素(class="small"以外)、太字見出し中のb要素を削除（配下ノードは残す）
-  removeElems(rootElem, "a[href], span:not(.small), p.heading b");
+  // a要素、span要素(class="small"以外)、ページ内区切りの見出し中のb要素を削除（配下ノードは残す）
+  removeElems(rootElem, "a, span:not(.small), p.heading b");
+  // 不要な属性を削除
   removeUnnecessaryAttrs(rootElem);
+  // リストの先頭の１文字を削除
+  removeListMarkers(rootElem);
 
+  // 空行のp要素をclass属性が"blank"、style属性なしに変換
   convertBlankPs(rootElem);
+  // 電子書籍用画像をWeb用画像に置換
   replaceImages(rootElem);
 
+  // Level1セクションを作成
   createLevel1Sections(rootElem);
+  // Level1セクションのidを設定
   setLevel1SectionIds(rootElem);
 
+  // Level2セクションを作成
   createLevel2Sections(rootElem);
+  // Level2セクションのidを設定
   setLevel2SectionIds(rootElem);
+  // Level2セクションをLevel1セクションの弟要素に移動
   moveLevel2Sections(rootElem);
+  // 配下にp要素がないLevel2セクションには "title-only" という class 属性を付ける
   setTitleOnlyClasses(rootElem);
 
+  // Level0セクションを作成
   createLevel0Section(rootElem);
+  // 各セクションの末尾の空行のp要素を削除
   removeBlankPsAtEndOfSections(rootElem);
 
+  // タグ名を変更
   changeTagNames(rootElem, "h2", "h1");
   changeTagNames(rootElem, "p.heading", "h2");
-  changeTagNames(rootElem, "p.bquote, p.bquote-pl", "blockquote");
+  changeTagNames(rootElem, "p.bquote", "blockquote");
 
   // 空行（改行コードのみの行）を削除
   return rootElem.innerHTML.replace(/\n+/g, "\n").replace(/^\n/, "");
+}
+
+/**
+ * 各h1、h2要素にdata-names属性を設定する.
+ * data-names属性の値はその見出し内のa要素のname属性の値をカンマ区切りで連結したものとする.
+ * @param {Element} rootElem ルート要素
+ */
+function setDataNames(rootElem) {
+  Array.from(rootElem.querySelectorAll("h1, h2")).forEach((h) => {
+    const names = Array.from(h.querySelectorAll("a[name]"))
+      .map((a) => a.getAttribute("name"))
+      .join(",");
+    h.setAttribute("data-names", names);
+  });
 }
 
 /**
@@ -81,8 +112,8 @@ function removeUnnecessaryAttrs(rootElem) {
   rootElem.querySelectorAll("*").forEach((el) => {
     const attrNames = el.getAttributeNames();
     for (const attrName of attrNames) {
-      if (attrName === "alt" || attrName === "name") {
-        // alt, name属性は削除しない
+      if (attrName === "alt" || attrName === "data-names") {
+        // alt, data-names属性は削除しない
         continue;
       }
       if (attrName === "class") {
@@ -95,6 +126,20 @@ function removeUnnecessaryAttrs(rootElem) {
       // それ以外の属性は削除
       el.removeAttribute(attrName);
     }
+  });
+}
+
+/**
+ * リストの先頭の１文字を削除する.
+ * @param {Element} rootElem ルート要素
+ */
+function removeListMarkers(rootElem) {
+  rootElem.querySelectorAll(listSelector).forEach((el) => {
+    if (el.innerHTML[0] !== "・") {
+      throw new Error("Unexpected list marker: " + el.innerHTML);
+    }
+    // 先頭の１文字を削除
+    el.innerHTML = el.innerHTML.replace(/^./, "");
   });
 }
 
@@ -283,7 +328,7 @@ function createLevel0Section(rootElem) {
     }
     intro.appendChild(node);
   }
-  // 先頭の<p>の手前までのノードは削除
+  // 先頭のclass属性なしの<p>の手前までのノードは削除
   while (true) {
     const node = intro.firstChild;
     if (

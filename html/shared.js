@@ -11,7 +11,7 @@ by Panda~thwiki, used under <a href="https://creativecommons.org/licenses/by/4.0
 ${this.pleiadesAttributionHtml}`;
 
   static photoPleiadesHtml = `
-<figure id="photo-pleiades" class="image-and-caption">
+<figure id="photo-pleiades">
   <picture>
     <source
       srcset="
@@ -25,6 +25,7 @@ ${this.pleiadesAttributionHtml}`;
       width="4096"
       height="2048"
       alt="${this.photoPleiadesAlt}"
+      fetchpriority="high"
     />
   </picture>
   <figcaption>${this.photoPleiadesCaptionHtml}</figcaption>
@@ -39,7 +40,7 @@ ${this.pleiadesAttributionHtml}`;
 ${this.pleiadesAttributionHtml}`;
 
   static figSubaruHtml = `
-<figure id="fig-subaru" class="image-and-caption">
+<figure id="fig-subaru">
   <picture>
     <source
       srcset="
@@ -64,7 +65,7 @@ ${this.pleiadesAttributionHtml}`;
   static figSubarunokoCaptionHtml = this.figSubarunokoAlt;
 
   static figSubarunokoHtml = `
-<figure id="fig-subarunoko" class="image-and-caption">
+<figure id="fig-subarunoko">
   <picture>
     <source
       srcset="
@@ -91,7 +92,7 @@ ${this.pleiadesAttributionHtml}`;
 出典：<a href="http://norskmeteornettverk.no/wordpress/?p=3202" target="_blank">Norsk meteornettverk/Universitetet i Tromsø/Ketil Vegum</a>`;
 
   static photoMeteorHtml = `
-<figure id="photo-meteor" class="image-and-caption">
+<figure id="photo-meteor">
   <picture>
     <source
       srcset="
@@ -105,19 +106,20 @@ ${this.pleiadesAttributionHtml}`;
       width="2560"
       height="1689"
       alt="${this.photoMeteorAlt}"
+      fetchpriority="high"
     />
   </picture>
   <figcaption>${this.photoMeteorCaptionHtml}</figcaption>
 </figure>
 `;
 
-  static figIotsunomisumaruAlt = "素戔嗚尊の剣と五百箇御統";
+  static figIotsunomisumaruAlt = "蛇韓鋤之剣と五百箇御統";
 
   static figIotsunomisumaruCaptionHtml = `${this.figIotsunomisumaruAlt}<br />
 ${this.pleiadesAttributionHtml}`;
 
   static figIotsunomisumaruHtml = `
-<figure id="fig-iotsunomisumaru" class="image-and-caption">
+<figure id="fig-iotsunomisumaru">
   <picture>
     <source
       srcset="
@@ -143,7 +145,7 @@ ${this.pleiadesAttributionHtml}`;
 出典：<a href="https://www.nao.ac.jp/gallery/chart-list.html" target="_blank">国立天文台</a>`;
 
   static figMilkywayinwinterHtml = `
-<figure id="fig-milkywayinwinter" class="image-and-caption">
+<figure id="fig-milkywayinwinter">
   <picture>
     <source
       srcset="
@@ -169,7 +171,7 @@ ${this.pleiadesAttributionHtml}`;
 出典：<a href="https://www.nao.ac.jp/gallery/chart-list.html" target="_blank">国立天文台</a>`;
 
   static figMilkywayinsummerHtml = `
-<figure id="fig-milkywayinsummer" class="image-and-caption">
+<figure id="fig-milkywayinsummer">
   <picture>
     <source
       srcset="
@@ -194,7 +196,7 @@ ${this.pleiadesAttributionHtml}`;
   static figSummaryHayaCaptionHtml = this.figSummaryHayaAlt;
 
   static figSummaryHayaHtml = `
-<figure id="fig-summary-haya" class="image-and-caption">
+<figure id="fig-summary-haya">
   <picture>
     <source
       srcset="
@@ -208,6 +210,7 @@ ${this.pleiadesAttributionHtml}`;
       width="2560"
       height="1706"
       alt="${this.figSummaryHayaAlt}"
+      fetchpriority="high"
     />
   </picture>
   <figcaption>${this.figSummaryHayaCaptionHtml}</figcaption>
@@ -221,7 +224,7 @@ ${this.pleiadesAttributionHtml}`;
 Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoTategushiHtml = `
-<figure id="photo-tategushi" class="image-and-caption">
+<figure id="photo-tategushi">
   <picture>
     <source
       srcset="
@@ -235,6 +238,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
       width="2560"
       height="1721"
       alt="${this.photoTategushiAlt}"
+      fetchpriority="high"
     />
   </picture>
   <figcaption>${this.photoTategushiCaptionHtml}</figcaption>
@@ -246,7 +250,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
   static figSummaryKushiCaptionHtml = this.figSummaryKushiAlt;
 
   static figSummaryKushiHtml = `
-<figure id="fig-summary-kushi" class="image-and-caption">
+<figure id="fig-summary-kushi">
   <picture>
     <source
       srcset="
@@ -260,6 +264,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
       width="2560"
       height="1706"
       alt="${this.figSummaryKushiAlt}"
+      fetchpriority="high"
     />
   </picture>
   <figcaption>${this.figSummaryKushiCaptionHtml}</figcaption>
@@ -273,7 +278,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoOgameHtml = `
-<figure id="photo-ogame" class="image-and-caption">
+<figure id="photo-ogame">
   <picture>
     <source
       srcset="
@@ -287,6 +292,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
       width="1920"
       height="2560"
       alt="${this.photoOgameAlt}"
+      fetchpriority="high"
     />
   </picture>
   <figcaption>${this.photoOgameCaptionHtml}</figcaption>
@@ -298,7 +304,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
   static figSummaryMikaCaptionHtml = this.figSummaryMikaAlt;
 
   static figSummaryMikaHtml = `
-<figure id="fig-summary-mika" class="image-and-caption">
+<figure id="fig-summary-mika">
   <picture>
     <source
       srcset="
@@ -312,6 +318,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
       width="2560"
       height="1706"
       alt="${this.figSummaryMikaAlt}"
+      fetchpriority="high"
     />
   </picture>
   <figcaption>${this.figSummaryMikaCaptionHtml}</figcaption>
@@ -325,7 +332,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoMagatamaHtml = `
-<figure id="photo-magatama" class="image-and-caption">
+<figure id="photo-magatama">
   <picture>
     <source
       srcset="
@@ -339,19 +346,20 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
       width="2560"
       height="1714"
       alt="${this.photoMagatamaAlt}"
+      fetchpriority="high"
     />
   </picture>
   <figcaption>${this.photoMagatamaCaptionHtml}</figcaption>
 </figure>
 `;
 
-  static figIotsuiwamuraAlt = "伊奘諾尊の剣と五百箇磐石";
+  static figIotsuiwamuraAlt = "伊都之尾羽張と五百箇磐石";
 
   static figIotsuiwamuraCaptionHtml = `${this.figIotsuiwamuraAlt}<br />
 ${this.pleiadesAttributionHtml}`;
 
   static figIotsuiwamuraHtml = `
-<figure id="fig-iotsuiwamura" class="image-and-caption">
+<figure id="fig-iotsuiwamura">
   <picture>
     <source
       srcset="
@@ -371,13 +379,13 @@ ${this.pleiadesAttributionHtml}`;
 </figure>
 `;
 
-  static figAmanoiwatoAlt = "伊奘諾尊の剣の神と天岩戸";
+  static figAmanoiwatoAlt = "伊都之尾羽張神と天岩戸";
 
   static figAmanoiwatoCaptionHtml = `${this.figAmanoiwatoAlt}<br />
 ${this.pleiadesAttributionHtml}`;
 
   static figAmanoiwatoHtml = `
-<figure id="fig-amanoiwato" class="image-and-caption">
+<figure id="fig-amanoiwato">
   <picture>
     <source
       srcset="
@@ -403,7 +411,7 @@ ${this.pleiadesAttributionHtml}`;
 ${this.pleiadesAttributionHtml}`;
 
   static figAmanoyachimataHtml = `
-<figure id="fig-amanoyachimata" class="image-and-caption">
+<figure id="fig-amanoyachimata">
   <picture>
     <source
       srcset="
@@ -428,7 +436,7 @@ ${this.pleiadesAttributionHtml}`;
   static figSummaryTamaCaptionHtml = this.figSummaryTamaAlt;
 
   static figSummaryTamaHtml = `
-<figure id="fig-summary-tama" class="image-and-caption">
+<figure id="fig-summary-tama">
   <picture>
     <source
       srcset="
@@ -442,6 +450,7 @@ ${this.pleiadesAttributionHtml}`;
       width="2560"
       height="1706"
       alt="${this.figSummaryTamaAlt}"
+      fetchpriority="high"
     />
   </picture>
   <figcaption>${this.figSummaryTamaCaptionHtml}</figcaption>
@@ -455,7 +464,7 @@ ${this.pleiadesAttributionHtml}`;
 Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoOtomatsuriHtml = `
-<figure id="photo-otomatsuri" class="image-and-caption">
+<figure id="photo-otomatsuri">
   <picture>
     <source
       srcset="
@@ -469,6 +478,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
       width="2560"
       height="1704"
       alt="${this.photoOtomatsuriAlt}"
+      fetchpriority="high"
     />
   </picture>
   <figcaption>${this.photoOtomatsuriCaptionHtml}</figcaption>
@@ -480,7 +490,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
   static figSummaryHiCaptionHtml = this.figSummaryHiAlt;
 
   static figSummaryHiHtml = `
-<figure id="fig-summary-hi" class="image-and-caption">
+<figure id="fig-summary-hi">
   <picture>
     <source
       srcset="
@@ -494,6 +504,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
       width="2560"
       height="1706"
       alt="${this.figSummaryHiAlt}"
+      fetchpriority="high"
     />
   </picture>
   <figcaption>${this.figSummaryHiCaptionHtml}</figcaption>
@@ -507,7 +518,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>`;
 
   static photoIwakuraHtml = `
-<figure id="photo-iwakura" class="image-and-caption">
+<figure id="photo-iwakura">
   <picture>
     <source
       srcset="
@@ -521,6 +532,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
       width="2560"
       height="1707"
       alt="${this.photoIwakuraAlt}"
+      fetchpriority="high"
     />
   </picture>
   <figcaption>${this.photoIwakuraCaptionHtml}</figcaption>
@@ -532,7 +544,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
   static figSummaryIshiCaptionHtml = this.figSummaryIshiAlt;
 
   static figSummaryIshiHtml = `
-<figure id="fig-summary-ishi" class="image-and-caption">
+<figure id="fig-summary-ishi">
   <picture>
     <source
       srcset="
@@ -546,6 +558,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
       width="2560"
       height="1706"
       alt="${this.figSummaryIshiAlt}"
+      fetchpriority="high"
     />
   </picture>
   <figcaption>${this.figSummaryIshiCaptionHtml}</figcaption>

@@ -18,7 +18,7 @@ ${renderHead(renderTitle(page), page.descText, page.filename)}
   <body>
 ${renderHeader(page, prevPage, nextPage)}
     <main>
-${renderChapterImage(page)}
+${renderMainImage(page)}
       <div id="website-title">${Shared.websiteTitle}</div>
 ${renderChapterTitleDiv(page)}
       <div id="content">
@@ -35,11 +35,11 @@ const renderTitle = (page) =>
     ? `${page.title} - ${Shared.websiteTitle}`
     : `${page.level1Title}／${page.title} - ${Shared.websiteTitle}`;
 
-const renderChapterImage = (page) =>
+const renderMainImage = (page) =>
   Shared.pageIdToHtml[page.id] === undefined
     ? ""
     : `
-      <div id="chapter-image">
+      <div id="main-image">
 ${Shared.pageIdToHtml[page.id]}
       </div>
 `;
