@@ -163,18 +163,14 @@ h1 {
 /* 先頭ページタイトル */
 section.level0-section h1 {
   font-size: 1.4rem;
-  letter-spacing: 0.7rem;
-  text-indent: 0.7rem;
+  letter-spacing: 0.6rem;
+  text-indent: 0.6rem;
 }
 /* 目次ページタイトル */
 /* 各章のページタイトル(Wordスタイル:見出し 1) */
-section.toc-section h1,
-section.level1-section h1 {
-  font-size: 1.3rem;
-  letter-spacing: 0.5rem;
-  text-indent: 0.5rem;
-}
 /* 各項のページタイトル(Wordスタイル:見出し 2) */
+section.toc-section h1,
+section.level1-section h1,
 section.level2-section h1 {
   font-size: 1.2rem;
   letter-spacing: 0.3rem;
