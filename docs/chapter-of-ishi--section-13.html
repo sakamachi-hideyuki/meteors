@@ -6,9 +6,10 @@
     <meta
       http-equiv="Content-Security-Policy"
       content="
-        script-src 'self' https://*.googletagmanager.com;
-        img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com;
+        default-src 'none';
         connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
+        img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com;
+        script-src 'self' https://*.googletagmanager.com;
         style-src 'self' 'sha256-+9+6y2OyIeRrO4dSTJt/awKsfEc/P47u6msFCxf+gFM=';
       "
     />
