@@ -156,25 +156,24 @@ div#content {
 
 /* ページタイトル */
 h1 {
+  font-size: 1.2rem;
   font-weight: bold;
+  letter-spacing: 0.3rem;
   margin: 0;
   text-align: center;
+  text-indent: 0.3rem;
 }
-/* 先頭ページタイトル */
-section.level0-section h1 {
+/* 先頭ページや各章冒頭のタイトル */
+#html-index h1,
+#html-chapter-of-haya h1,
+#html-chapter-of-kushi h1,
+#html-chapter-of-mika h1,
+#html-chapter-of-tama h1,
+#html-chapter-of-hi h1,
+#html-chapter-of-ishi h1 {
   font-size: 1.4rem;
   letter-spacing: 0.6rem;
   text-indent: 0.6rem;
-}
-/* 目次ページタイトル */
-/* 各章のページタイトル(Wordスタイル:見出し 1) */
-/* 各項のページタイトル(Wordスタイル:見出し 2) */
-section.toc-section h1,
-section.level1-section h1,
-section.level2-section h1 {
-  font-size: 1.2rem;
-  letter-spacing: 0.3rem;
-  text-indent: 0.3rem;
 }
 /* ページ先頭の概要説明文(Wordスタイル:desc) */
 p.desc {
