@@ -355,9 +355,6 @@ nav#next-page {
   padding: 2rem 1rem;
   text-align: center;
 }
-nav#next-page a {
-  font-size: 1.1rem;
-}
 nav#next-page > div.desc {
   font-size: 0.85rem;
   font-weight: bold;
