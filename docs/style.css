@@ -351,6 +351,7 @@ footer {
 /* フッター：次ページへのナビゲーション */
 nav#next-page {
   background-color: #fcfcfc;
+  font-size: 1.1rem;
   padding: 2rem 1rem;
   text-align: center;
 }
