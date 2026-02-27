@@ -164,13 +164,13 @@ h1 {
   text-indent: 0.3rem;
 }
 /* 先頭ページや各章冒頭のタイトル */
-#html-index h1,
-#html-chapter-of-haya h1,
-#html-chapter-of-kushi h1,
-#html-chapter-of-mika h1,
-#html-chapter-of-tama h1,
-#html-chapter-of-hi h1,
-#html-chapter-of-ishi h1 {
+html#html-index h1,
+html#html-chapter-of-haya h1,
+html#html-chapter-of-kushi h1,
+html#html-chapter-of-mika h1,
+html#html-chapter-of-tama h1,
+html#html-chapter-of-hi h1,
+html#html-chapter-of-ishi h1 {
   font-size: 1.4rem;
   letter-spacing: 0.6rem;
   text-indent: 0.6rem;
@@ -351,9 +351,11 @@ footer {
 /* フッター：次ページへのナビゲーション */
 nav#next-page {
   background-color: #fcfcfc;
-  font-size: 1.1rem;
   padding: 2rem 1rem;
   text-align: center;
+}
+nav#next-page > a {
+  font-size: 1.1rem;
 }
 nav#next-page > div.desc {
   font-size: 0.85rem;
