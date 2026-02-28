@@ -397,8 +397,11 @@ a#top-of-page {
   outline: none;
   text-align: center;
   text-decoration-line: none;
+  /* ∧の縦幅を半分にして上矢印らしくする */
   transform: scaleY(0.5);
+  /* タップ時に拡大するアニメーションの再生時間 */
   transition: transform 0.1s;
+  /* 長押しで文字選択されるのを防ぐ */
   user-select: none;
   -webkit-user-select: none;
   z-index: 1;
@@ -411,6 +414,7 @@ a#top-of-page {
   width: 3rem;
 }
 a#top-of-page:active {
+  /* タップ時に拡大する */
   transform: scale(1.4, 0.7);
 }
 
