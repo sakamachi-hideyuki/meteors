@@ -401,7 +401,7 @@ a#top-of-page {
   transform-origin: right bottom;
   z-index: 1;
   /* スマホでタップ時に矩形のハイライトが表示されるのを抑制 */
-  /* -webkit-tap-highlight-color: transparent; */
+  -webkit-tap-highlight-color: transparent;
 
   position: fixed;
   bottom: 2rem;
