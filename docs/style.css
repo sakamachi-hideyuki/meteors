@@ -400,8 +400,8 @@ a#top-of-page {
   transform: scaleY(0.5);
   transform-origin: right bottom;
   z-index: 1;
-  /* Androidでタップ時に矩形のハイライトが表示されるのを抑制 */
-  -webkit-tap-highlight-color: transparent;
+  /* スマホでタップ時に矩形のハイライトが表示されるのを抑制 */
+  /* -webkit-tap-highlight-color: transparent; */
 
   position: fixed;
   bottom: 2rem;
