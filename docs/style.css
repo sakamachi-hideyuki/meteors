@@ -388,6 +388,7 @@ a#top-of-page {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   background-color: #eee5;
+  /* 円形にする */
   border-radius: 50%;
   box-shadow: 0 0.5rem 0.5rem #0003;
   color: #000;
