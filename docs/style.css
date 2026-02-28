@@ -398,15 +398,20 @@ a#top-of-page {
   text-align: center;
   text-decoration-line: none;
   transform: scaleY(0.5);
-  transform-origin: right bottom;
+  transition: transform 0.1s;
+  user-select: none;
+  -webkit-user-select: none;
   z-index: 1;
   /* スマホでタップ時に矩形のハイライトが表示されるのを抑制 */
   -webkit-tap-highlight-color: transparent;
 
   position: fixed;
-  bottom: 2rem;
+  bottom: 0.5rem;
   right: 2rem;
   width: 3rem;
+}
+a#top-of-page:active {
+  transform: scale(1.4, 0.7);
 }
 
 /* 改版履歴 */
