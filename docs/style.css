@@ -401,7 +401,7 @@ a#top-of-page {
   /* ∧の縦幅を半分にして上矢印らしくする */
   transform: scaleY(0.5);
   /* タップ時のアニメーションの再生時間 */
-  transition: all 0.2s;
+  transition: all 0.1s;
   /* 長押しで文字選択されるのを防ぐ */
   user-select: none;
   -webkit-user-select: none;
