@@ -12,3 +12,6 @@ function gtag() {
 gtag("js", new Date());
 
 gtag("config", ga4Id);
+
+// iOSで:hoverや:activeを有効にする
+document.addEventListener('touchstart', function() {}, true);
