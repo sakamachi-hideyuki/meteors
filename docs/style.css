@@ -387,10 +387,10 @@ div#copyright {
 a#top-of-page {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  background-color: #eee5;
+  background-color: #fcfcfc55;
   border-radius: 50%;
   box-shadow: 0 0.5rem 0.5rem #0003;
-  color: #000;
+  color: #222;
   display: block;
   font-family: sans-serif;
   font-weight: bold;
@@ -415,10 +415,11 @@ a#top-of-page {
   width: 3rem;
 }
 a#top-of-page:active {
-  background-color: #fff9;
-  color: #ccc;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 0.5rem #eee;
+  color: #eee;
   /* タップ時に拡大する */
-  transform: scale(1.4, 0.7);
+  transform: scale(1.2, 0.6);
 }
 
 /* 改版履歴 */
