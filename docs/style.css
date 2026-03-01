@@ -393,14 +393,15 @@ a#top-of-page {
   color: #000;
   display: block;
   font-family: sans-serif;
+  font-weight: bold;
   line-height: 6rem;
   outline: none;
   text-align: center;
   text-decoration-line: none;
   /* ∧の縦幅を半分にして上矢印らしくする */
   transform: scaleY(0.5);
-  /* タップ時に拡大するアニメーションの再生時間 */
-  transition: transform 0.1s;
+  /* タップ時のアニメーションの再生時間 */
+  transition: all 0.2s;
   /* 長押しで文字選択されるのを防ぐ */
   user-select: none;
   -webkit-user-select: none;
@@ -414,6 +415,8 @@ a#top-of-page {
   width: 3rem;
 }
 a#top-of-page:active {
+  background-color: #fff9;
+  color: #ccc;
   /* タップ時に拡大する */
   transform: scale(1.4, 0.7);
 }
