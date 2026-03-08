@@ -120,6 +120,15 @@ nav#navbar > ul > li:first-child {
 nav#navbar > ul > li > a {
   color: #222;
 }
+nav#navbar > ul > li:nth-child(1) > a::before {
+  content: '◀';
+}
+nav#navbar > ul > li:nth-child(2) > a::before {
+  font-family: sans-serif;
+}
+nav#navbar > ul > li:nth-child(3) > a::after {
+  content: '▶';
+}
 
 /* メイン */
 main {
