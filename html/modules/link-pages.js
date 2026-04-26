@@ -41,8 +41,8 @@ function linkPreface(pages, page) {
  */
 function linkAppendix(pages, page) {
   const target = pages.find((p) => p.id === "appendix");
-  // "付録参照"をリンク化
-  page.contentHtml = page.contentHtml.replaceAll(/付録参照/g, (s) => {
+  // "【付録】"をリンク化
+  page.contentHtml = page.contentHtml.replaceAll(/【付録】/g, (s) => {
     return `<a href="${target.filename}">${s}</a>`;
   });
   if (page.id !== "appendix") {

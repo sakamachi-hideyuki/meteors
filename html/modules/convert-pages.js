@@ -45,8 +45,9 @@ export function convertPages(html) {
 
   // 各見出しにdata-names属性を設定
   setDataNames(rootElem);
-  // 目次、br要素、各項見出しの前の章名を削除
-  removeElemsAndDescendants(rootElem, "[class^=MsoToc], br, p.chapter");
+  // 目次、clear属性付きbr要素(改ページ位置等)、各項見出しの前の章名を削除
+  // 序文の引用文中の改行(clear属性なしbr要素)は残す
+  removeElemsAndDescendants(rootElem, "[class^=MsoToc], br[clear], p.chapter");
   // a要素、span要素(class="small"以外)、ページ内区切りの見出し中のb要素を削除（配下ノードは残す）
   removeElems(rootElem, "a, span:not(.small), p.heading b");
   // 不要な属性を削除

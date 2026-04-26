@@ -107,10 +107,10 @@ nav#navbar > ul > li {
   font-size: 0.9rem;
   /* 前ページや次ページの文字がない場合でもボーダーを付けるために高さを指定 */
   height: 1rem;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.2rem;
   line-height: 1rem;
   text-align: center;
-  text-indent: 0.3rem;
+  text-indent: 0.2rem;
 
   width: 100%;
 }
@@ -122,9 +122,6 @@ nav#navbar > ul > li > a {
 }
 nav#navbar > ul > li:nth-child(1) > a::before {
   content: '◀';
-}
-nav#navbar > ul > li:nth-child(2) > a::before {
-  font-family: sans-serif;
 }
 nav#navbar > ul > li:nth-child(3) > a::after {
   content: '▶';
@@ -212,10 +209,6 @@ p.list-1 {
   margin: 0 0 0 1rem;
   text-indent: -1rem;
 }
-/* 指定すると変な位置で折り返す場合があるため、必要なページでのみ指定 */
-html#html-appendix p.list-1 {
-  white-space: pre-line;
-}
 /* リスト1(箇条書き レベル1) フォント小(Wordスタイル:list-1s) */
 p.list-1s {
   font-size: 0.85rem;
@@ -261,10 +254,6 @@ blockquote.bquote {
   line-height: 2;
   margin: 0 0 0 1rem;
   padding: 0.5rem 1rem;
-}
-/* 指定すると変な位置で折り返す場合があるため、必要なページでのみ指定 */
-html#html-preface blockquote.bquote {
-  white-space: pre-line;
 }
 /* 小さい文字(Wordスタイル:small) */
 span.small {
