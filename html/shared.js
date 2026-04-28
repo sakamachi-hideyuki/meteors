@@ -102,7 +102,7 @@ ${this.pleiadesAttributionHtml}`;
       "
     />
     <img
-      src="images/photo-meteor-2560-web.webp"
+      src="images/photo-meteor-web-2560.webp"
       width="2560"
       height="1689"
       alt="${this.photoMeteorAlt}"
