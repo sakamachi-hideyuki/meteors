@@ -245,7 +245,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 </figure>
 `;
 
-  static figSummaryKushiAlt = "神名に「クシ」またはその変化が付く神";
+  static figSummaryKushiAlt = "神名に「クシ」が付く神";
 
   static figSummaryKushiCaptionHtml = this.figSummaryKushiAlt;
 
@@ -299,7 +299,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 </figure>
 `;
 
-  static figSummaryMikaAlt = "神名に「ミカ」またはその変化が付く神";
+  static figSummaryMikaAlt = "神名に「ミカ」が付く神";
 
   static figSummaryMikaCaptionHtml = this.figSummaryMikaAlt;
 
@@ -350,6 +350,32 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
     />
   </picture>
   <figcaption>${this.photoMagatamaCaptionHtml}</figcaption>
+</figure>
+`;
+
+  static figSummaryTamaAlt = "神名に「玉」が付く神";
+
+  static figSummaryTamaCaptionHtml = this.figSummaryTamaAlt;
+
+  static figSummaryTamaHtml = `
+<figure id="fig-summary-tama">
+  <picture>
+    <source
+      srcset="
+        images/fig-summary-tama-web-640.webp 640w,
+        images/fig-summary-tama-web-1280.webp 1280w,
+        images/fig-summary-tama-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-summary-tama-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figSummaryTamaAlt}"
+      fetchpriority="high"
+    />
+  </picture>
+  <figcaption>${this.figSummaryTamaCaptionHtml}</figcaption>
 </figure>
 `;
 
@@ -431,32 +457,6 @@ ${this.pleiadesAttributionHtml}`;
 </figure>
 `;
 
-  static figSummaryTamaAlt = "神名に「玉」が付く神";
-
-  static figSummaryTamaCaptionHtml = this.figSummaryTamaAlt;
-
-  static figSummaryTamaHtml = `
-<figure id="fig-summary-tama">
-  <picture>
-    <source
-      srcset="
-        images/fig-summary-tama-web-640.webp 640w,
-        images/fig-summary-tama-web-1280.webp 1280w,
-        images/fig-summary-tama-web-2560.webp 2560w
-      "
-    />
-    <img
-      src="images/fig-summary-tama-web-2560.webp"
-      width="2560"
-      height="1706"
-      alt="${this.figSummaryTamaAlt}"
-      fetchpriority="high"
-    />
-  </picture>
-  <figcaption>${this.figSummaryTamaCaptionHtml}</figcaption>
-</figure>
-`;
-
   static photoOtomatsuriAlt = "新宮の御燈祭";
 
   static photoOtomatsuriCaptionHtml = `${this.photoOtomatsuriAlt} © panpanzupan<br />
@@ -511,6 +511,32 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 </figure>
 `;
 
+  static figAmanohahakiriAlt = "天羽々斬";
+
+  static figAmanohahakiriCaptionHtml = `${this.figAmanohahakiriAlt}<br />
+${this.pleiadesAttributionHtml}`;
+
+  static figAmanohahakiriHtml = `
+<figure id="fig-amanohahakiri">
+  <picture>
+    <source
+      srcset="
+        images/fig-amanohahakiri-web-640.webp 640w,
+        images/fig-amanohahakiri-web-1280.webp 1280w,
+        images/fig-amanohahakiri-web-2560.webp 2560w
+      "
+    />
+    <img
+      src="images/fig-amanohahakiri-web-2560.webp"
+      width="2560"
+      height="1706"
+      alt="${this.figAmanohahakiriAlt}"
+    />
+  </picture>
+  <figcaption>${this.figAmanohahakiriCaptionHtml}</figcaption>
+</figure>
+`;
+
   static photoIwakuraAlt = "神谷磐座";
 
   static photoIwakuraCaptionHtml = `${this.photoIwakuraAlt} © rikky_photography<br />
@@ -539,7 +565,7 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
 </figure>
 `;
 
-  static figSummaryIshiAlt = "神名に「イシ」「イワ」またはその変化が付く神";
+  static figSummaryIshiAlt = "神名に「イシ」「イワ」が付く神";
 
   static figSummaryIshiCaptionHtml = this.figSummaryIshiAlt;
 
@@ -580,12 +606,13 @@ Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_b
     [Shared.photoOgameAlt]: "",
     [Shared.figSummaryMikaAlt]: Shared.figSummaryMikaHtml,
     [Shared.photoMagatamaAlt]: "",
+    [Shared.figSummaryTamaAlt]: Shared.figSummaryTamaHtml,
     [Shared.figIotsuiwamuraAlt]: Shared.figIotsuiwamuraHtml,
     [Shared.figAmanoiwatoAlt]: Shared.figAmanoiwatoHtml,
     [Shared.figAmanoyachimataAlt]: Shared.figAmanoyachimataHtml,
-    [Shared.figSummaryTamaAlt]: Shared.figSummaryTamaHtml,
     [Shared.photoOtomatsuriAlt]: "",
     [Shared.figSummaryHiAlt]: Shared.figSummaryHiHtml,
+    [Shared.figAmanohahakiriAlt]: Shared.figAmanohahakiriHtml,
     [Shared.photoIwakuraAlt]: "",
     [Shared.figSummaryIshiAlt]: Shared.figSummaryIshiHtml,
   };

@@ -1,5 +1,10 @@
 cd /d %~dp0
 mkdir build\web
+
+magick build\png\fig-amanohahakiri-web.png build\web\fig-amanohahakiri-web-2560.webp
+magick build\png\fig-amanohahakiri-web.png -resize 1280x build\web\fig-amanohahakiri-web-1280.webp
+magick build\png\fig-amanohahakiri-web.png -resize 640x build\web\fig-amanohahakiri-web-640.webp
+
 magick build\png\fig-amanoiwato-web.png build\web\fig-amanoiwato-web-2560.webp
 magick build\png\fig-amanoiwato-web.png -resize 1280x build\web\fig-amanoiwato-web-1280.webp
 magick build\png\fig-amanoiwato-web.png -resize 640x build\web\fig-amanoiwato-web-640.webp

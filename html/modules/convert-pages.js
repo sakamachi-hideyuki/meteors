@@ -8,12 +8,14 @@ import {
 // 利用しているclass属性の一覧
 const availableClasses = [
   "bquote",
+  "citation",
   "desc",
   "heading",
   "list-1",
   "list-1s",
   "list-2",
   "list-3",
+  "par",
   "small",
 ];
 
@@ -329,13 +331,13 @@ function createLevel0Section(rootElem) {
     }
     intro.appendChild(node);
   }
-  // 先頭のclass属性なしの<p>の手前までのノードは削除
+  // 先頭の<p class="par">の手前までのノードは削除
   while (true) {
     const node = intro.firstChild;
     if (
       node.nodeType === 1 &&
       node.tagName.toLowerCase() === "p" &&
-      !node.hasAttribute("class")
+      node.classList.contains("par")
     ) {
       break;
     }

@@ -85,6 +85,41 @@ class FigPleiades {
       </div>
     </div>`;
 
+  static figAmanohahakiriContentHtml = `
+    ${this.baseHtml}
+    <svg
+      width="2560px"
+      height="1706px"
+    >
+      <!-- 全体の枠 -->
+      <rect
+        x="1"
+        y="1"
+        width="2558"
+        height="1704"
+        fill="none"
+      />
+      <!-- からすき星と昴を結ぶ線 -->
+      <line
+        x1="0"
+        y1="1250"
+        x2="2560"
+        y2="200"
+      />
+      <!-- からすき星とふきだしを結ぶ線 -->
+      <line
+        x1="600"
+        y1="1080"
+        x2="1000"
+        y2="1280"
+      />
+    </svg>
+    <div id="bubble">
+      <div style="left: 1000px; top: 1200px">
+        <ruby><ruby>天羽々斬<rp>(</rp><rt>アマノハハキリ</rt><rp>)</rp></ruby>
+      </div>
+    </div>`;
+
   static figAmanoiwatoContentHtml = `
     ${this.baseHtml}
     <svg

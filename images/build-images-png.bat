@@ -1,6 +1,8 @@
 cd /d %~dp0
 mkdir build\png
 copy cover\cover-ebook.png build\png\.
+copy fig-amanohahakiri\fig-amanohahakiri-ebook.png build\png\.
+copy fig-amanohahakiri\fig-amanohahakiri-web.png build\png\.
 copy fig-amanoiwato\fig-amanoiwato-ebook.png build\png\.
 copy fig-amanoiwato\fig-amanoiwato-web.png build\png\.
 copy fig-amanoyachimata\fig-amanoyachimata-ebook.png build\png\.

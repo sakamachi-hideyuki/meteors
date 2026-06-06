@@ -1,6 +1,7 @@
 cd /d %~dp0
 mkdir build\ebook
 magick build\png\cover-ebook.png build\ebook\cover-ebook.jpg
+magick build\png\fig-amanohahakiri-ebook.png build\ebook\fig-amanohahakiri-ebook.jpg
 magick build\png\fig-amanoiwato-ebook.png build\ebook\fig-amanoiwato-ebook.jpg
 magick build\png\fig-amanoyachimata-ebook.png build\ebook\fig-amanoyachimata-ebook.jpg
 magick build\png\fig-iotsuiwamura-ebook.png build\ebook\fig-iotsuiwamura-ebook.jpg
