@@ -68,6 +68,18 @@ a {
 a:hover {
   text-decoration-line: underline;
 }
+/* 外部リンクのアイコン */
+a[target="_blank"]::after {
+  background-image: url(images/icon-external-link.svg);
+  background-size: cover;
+  content: "";
+  display: inline-block;
+
+  position: relative;
+  top: 0.15rem;
+  width: 0.8rem;
+  height: 0.8rem;
+}
 /* 下線 */
 u {
   text-decoration-thickness: 1px;
@@ -121,10 +133,10 @@ nav#navbar > ul > li > a {
   color: #222;
 }
 nav#navbar > ul > li:nth-child(1) > a::before {
-  content: '◀';
+  content: "◀";
 }
 nav#navbar > ul > li:nth-child(3) > a::after {
-  content: '▶';
+  content: "▶";
 }
 
 /* メイン */
